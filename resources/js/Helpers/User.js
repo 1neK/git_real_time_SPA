@@ -69,6 +69,10 @@ own(id){
 
 }
 
+admin(){
+    return this.id() == 15
+}
+
 
 }
 

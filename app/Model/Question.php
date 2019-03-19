@@ -18,6 +18,8 @@ protected static function boot(){
 protected $fillable=['title','slug','body','category_id','user_id'];
 // protected $guarded = [];
 
+protected $with = ['replies'];
+
     public function getRouteKeyName()
     {
         return 'slug';
@@ -33,7 +35,7 @@ protected $fillable=['title','slug','body','category_id','user_id'];
 
     public function replies()
     {
-        return $this->hasMany(Reply::class);
+        return $this->hasMany(Reply::class)->latest();
     }
 
     public function category()
