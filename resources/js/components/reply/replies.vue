@@ -27,9 +27,7 @@ export default {
             })
 
             EventBus.$on('deleteReply',(index)=>{
-                //remove this reply totally from the DB too
                 axios.delete(`/api/question/${this.question.slug}/reply/${this.content[index].id}`)
-                //remove from the list
                      .then(res =>{
                          this.content.splice(index,1)
                      })
