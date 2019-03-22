@@ -32,6 +32,12 @@ export default {
         if(User.loggedIn()){
             this.getNotifications()
         }
+
+        Echo.private('App.User.' + User.id())
+                .notification((notification) => {
+                    this.unread.unshift(notification)
+                    this.unreadCount++
+                });
     },
     methods:{
         getNotifications(){
@@ -41,12 +47,13 @@ export default {
                     this.unread = res.data.unread
                     this.unreadCount = res.data.unread.length
                 })
+                .catch(error => Exception.handle(error))
         },
         readIt(notification){
             axios.post('/api/markAsRead',{id:notification.id})
             .then(res => {
                 this.unread.splice(notification,1)
-                this.read.push(notification,1)
+                this.read.push(notification)
                 this.unreadCount--
             })
         }

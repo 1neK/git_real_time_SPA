@@ -10,15 +10,20 @@ require('./bootstrap');
 window.Vue = require('vue');
 import Vue from 'vue'
 import Vuetify from 'vuetify'
-import User from './Helpers/User'
-window.User =User
 Vue.use(Vuetify)
 
 import VueSimplemde from 'vue-simplemde'
+Vue.use(VueSimplemde)
 import md from 'marked'
 window.md=md
 
-Vue.use(VueSimplemde)
+import User from './Helpers/User'
+window.User =User
+
+import Exception from './Helpers/Exception'
+window.Exception = Exception
+
+
 window.EventBus = new Vue();
 
 
