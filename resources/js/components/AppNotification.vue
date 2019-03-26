@@ -25,7 +25,8 @@ export default {
         return{
             read:{},
             unread:{},
-            unreadCount:0
+            unreadCount:0,
+            sound: "https://www.redringtones.com/wp-content/uploads/2016/09/twitter-notification-sound.mp3"
         }
     },
     created(){
@@ -35,11 +36,16 @@ export default {
 
         Echo.private('App.User.' + User.id())
                 .notification((notification) => {
+                    this.playSound()
                     this.unread.unshift(notification)
                     this.unreadCount++
                 });
     },
     methods:{
+        playSound(){
+            let alert = new Audio(this.sound)
+            alert.play()
+        },
         getNotifications(){
             axios.post('/api/notifications')
                 .then(res => {

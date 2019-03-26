@@ -32,6 +32,10 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
+    public function role(){
+        return $this->belongsTo(App\Role);
+    }
+
 
     public function question(){
         return $this->hasMany(Question::class);

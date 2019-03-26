@@ -10,7 +10,7 @@ export default {
     data(){
         return{
             liked:this.content.liked,
-            count:this.content.like_count
+            count:this.content.like_count,
         }
     },
     computed:{

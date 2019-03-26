@@ -1,25 +1,40 @@
 import Token from "./Token";
 import AppStorage from './AppStorage'
 class User{
-    login(data){
+    login(data,router){ /* router :this.$router */
 
         axios.post('/api/auth/login',data)
-
-        .then(res =>
-                this.responseAfterLogin(res))
-
-
-
-        .catch(error => console.log(error.response.data))
+        .then(res =>this.responseAfterLogin(res,router))
+        .catch(error => console.log(error.response))
     }
-responseAfterLogin(res){
+responseAfterLogin(res,router){
 const access_token = res.data.access_token
-const username = res.data.user
-console.log('tr')
-if(Token.isValid(access_token)){
+const user = res.data.user
+console.log(access_token);
+if(access_token != ''){
 
-    AppStorage.store(username,access_token)
-    window.location='/forum'
+    AppStorage.store(user.name,access_token);
+    console.log(AppStorage.getToken());
+
+
+
+    if(user.role_id =='1' ){
+        console.log('admin')
+         router.push({name:'admin'})
+
+    }
+    if(user.role_id ==2 ){
+        console.log('designer')
+
+        router.push({name:'admin'})
+
+    }
+    if(user.role_id ==3 ){
+        console.log('coordinator')
+        router.push({name:'coordinator'})
+
+    }
+   // window.location='/forum'
 
 }
 
@@ -28,12 +43,14 @@ if(Token.isValid(access_token)){
 hasToken(){
 
     const storedToken = AppStorage.getToken();
+    console.log(storedToken);
     if (storedToken){
 
-            return Token.isValid(storedToken)? true : this.logout()
+            return  true ;
         }
 
-        return false
+
+        return false;
 
 }
 
@@ -70,7 +87,7 @@ own(id){
 }
 
 admin(){
-    return this.id() == 15
+    return this.id() == 1
 }
 
 

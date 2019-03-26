@@ -1,7 +1,9 @@
 <template>
-      <v-toolbar>
+      <v-toolbar color="indigo" dark>
     <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
-    <v-toolbar-title>Forum</v-toolbar-title>
+    <v-toolbar-title>
+        <router-link class="white--text" to="/">Forum</router-link>
+    </v-toolbar-title>
     <v-spacer></v-spacer>
     <app-notification v-if="loggedIn"></app-notification>
     <div class="hidden-sm-and-down">
@@ -39,6 +41,8 @@ export default {
 
     },
       created(){
+
+          console.log(User.loggedIn());
             EventBus.$on('logout',()=>{
                 User.logout()
             })

@@ -1,5 +1,10 @@
 <template>
     <v-container>
+
+            <v-alert v-if="errors" type="error" :value="true" >
+                Category name is required.
+            </v-alert>
+
         <v-form @submit.prevent="submit">
 
             <v-text-field
@@ -8,9 +13,9 @@
             required
           ></v-text-field>
 
-          <v-btn type="submit" color="cyan" v-if="editSlug">Update</v-btn>
+          <v-btn type="submit" :disabled="disabled" color="cyan" v-if="editSlug">Update</v-btn>
 
-          <v-btn type="submit" color="teal" v-else>Create</v-btn>
+          <v-btn type="submit" :disabled="disabled" color="teal" v-else>Create</v-btn>
 
         </v-form>
 
@@ -60,7 +65,8 @@ export default {
                 name:null
             },
             categories:{},
-            editSlug:null
+            editSlug:null,
+            errors:null
         }
     },
         created(){
@@ -87,6 +93,7 @@ export default {
                     this.categories.unshift(res.data)
                     this.form.name = null
                 })
+                .catch(error => this.errors = error.response.data.errors)
         },
         destroy(slug, index){
             axios.delete(`/api/category/${slug}`)
@@ -98,6 +105,11 @@ export default {
             this.editSlug = this.categories[index].slug
             this.categories.splice(index,1)
 
+        }
+    },
+    computed:{
+        disabled(){
+            return !(this.form.name)
         }
     }
 
