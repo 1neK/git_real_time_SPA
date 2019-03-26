@@ -1,5 +1,5 @@
 <template>
-
+    <h1>Hello Coordinator</h1>
 </template>
 
 <script>

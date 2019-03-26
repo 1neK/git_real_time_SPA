@@ -25,6 +25,8 @@
 
 
 <script>
+
+import User from '../../Helpers/User';
 export default {
         data()
         {
@@ -36,9 +38,6 @@ export default {
             }
         },
         created(){
-            if(User.loggedIn()){
-              //  this.$router.push({name:'forum'})
-            }
 
         },
 

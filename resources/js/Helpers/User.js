@@ -10,31 +10,35 @@ class User{
 responseAfterLogin(res,router){
 const access_token = res.data.access_token
 const user = res.data.user
-console.log(access_token);
+//console.log(access_token);
 if(access_token != ''){
 
-    AppStorage.store(user.name,access_token);
-    console.log(AppStorage.getToken());
+    AppStorage.storeToken(access_token);
+    AppStorage.storeUser(user.name);
 
 
 
-    if(user.role_id =='1' ){
-        console.log('admin')
-         router.push({name:'admin'})
+   if(user.role_id ==1 ){
+    AppStorage.storeRole('admin');
+    window.location='/admin'
 
     }
     if(user.role_id ==2 ){
-        console.log('designer')
+        AppStorage.storeRole('designer');
 
-        router.push({name:'admin'})
+        window.location='/designer'
 
     }
     if(user.role_id ==3 ){
         console.log('coordinator')
-        router.push({name:'coordinator'})
+
+        AppStorage.storeRole('coordinator');
+
+        window.location='/coordinator'
 
     }
-   // window.location='/forum'
+
+
 
 }
 
@@ -43,7 +47,7 @@ if(access_token != ''){
 hasToken(){
 
     const storedToken = AppStorage.getToken();
-    console.log(storedToken);
+
     if (storedToken){
 
             return  true ;
@@ -82,12 +86,12 @@ id()
 }
 
 own(id){
-    return this.id() ==id
+    return this.id() == id
 
 }
 
 admin(){
-    return this.id() == 1
+   return AppStorage.getRole()=='admin';
 }
 
 

@@ -2649,6 +2649,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Helpers/User */ "./resources/js/Helpers/User.js");
 //
 //
 //
@@ -2675,6 +2676,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2684,13 +2686,10 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  created: function created() {
-    if (User.loggedIn()) {//  this.$router.push({name:'forum'})
-    }
-  },
+  created: function created() {},
   methods: {
     login: function login() {
-      User.login(this.form, this.$router);
+      _Helpers_User__WEBPACK_IMPORTED_MODULE_0__["default"].login(this.form, this.$router);
     }
   }
 });
@@ -3077,8 +3076,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -68288,7 +68285,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("h1", [_vm._v("Hello Admin")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -68312,7 +68309,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("h1", [_vm._v("Hello Coordinator")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -109029,16 +109026,23 @@ function () {
       localStorage.setItem('user', user);
     }
   }, {
+    key: "storeRole",
+    value: function storeRole(role) {
+      localStorage.setItem('role', role);
+    }
+  }, {
     key: "store",
-    value: function store(user, token) {
+    value: function store(user, token, role) {
       this.storeToken(token);
       this.storeUser(user);
+      this.storeUser(role);
     }
   }, {
     key: "clear",
     value: function clear() {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      localStorage.removeItem('role');
     }
   }, {
     key: "getToken",
@@ -109049,6 +109053,11 @@ function () {
     key: "getUser",
     value: function getUser() {
       return localStorage.getItem('user');
+    }
+  }, {
+    key: "getRole",
+    value: function getRole() {
+      return localStorage.getItem('role');
     }
   }]);
 
@@ -109214,41 +109223,33 @@ function () {
     key: "responseAfterLogin",
     value: function responseAfterLogin(res, router) {
       var access_token = res.data.access_token;
-      var user = res.data.user;
-      console.log(access_token);
+      var user = res.data.user; //console.log(access_token);
 
       if (access_token != '') {
-        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].store(user.name, access_token);
-        console.log(_AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getToken());
+        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].storeToken(access_token);
+        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].storeUser(user.name);
 
-        if (user.role_id == '1') {
-          console.log('admin');
-          router.push({
-            name: 'admin'
-          });
+        if (user.role_id == 1) {
+          _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].storeRole('admin');
+          window.location = '/admin';
         }
 
         if (user.role_id == 2) {
-          console.log('designer');
-          router.push({
-            name: 'admin'
-          });
+          _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].storeRole('designer');
+          window.location = '/designer';
         }
 
         if (user.role_id == 3) {
           console.log('coordinator');
-          router.push({
-            name: 'coordinator'
-          });
-        } // window.location='/forum'
-
+          _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].storeRole('coordinator');
+          window.location = '/coordinator';
+        }
       }
     }
   }, {
     key: "hasToken",
     value: function hasToken() {
       var storedToken = _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getToken();
-      console.log(storedToken);
 
       if (storedToken) {
         return true;
@@ -109290,7 +109291,7 @@ function () {
   }, {
     key: "admin",
     value: function admin() {
-      return this.id() == 1;
+      return _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getRole() == 'admin';
     }
   }]);
 
@@ -109298,6 +109299,68 @@ function () {
 }();
 
 /* harmony default export */ __webpack_exports__["default"] = (User = new User());
+
+/***/ }),
+
+/***/ "./resources/js/Router/middleware/log.js":
+/*!***********************************************!*\
+  !*** ./resources/js/Router/middleware/log.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return log; });
+/* harmony import */ var _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Helpers/AppStorage */ "./resources/js/Helpers/AppStorage.js");
+
+function log(_ref) {
+  var next = _ref.next,
+      router = _ref.router;
+  // eslint-disable-next-line no-console
+  console.log('token :' + _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_0__["default"].getToken());
+
+  if (!_Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_0__["default"].getToken()) {
+    console.log('not logged');
+  } else {
+    return router.push({
+      name: 'forum'
+    });
+  }
+
+  return next();
+}
+
+/***/ }),
+
+/***/ "./resources/js/Router/middleware/logged.js":
+/*!**************************************************!*\
+  !*** ./resources/js/Router/middleware/logged.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return log; });
+/* harmony import */ var _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Helpers/AppStorage */ "./resources/js/Helpers/AppStorage.js");
+
+function log(_ref) {
+  var next = _ref.next,
+      router = _ref.router;
+  // eslint-disable-next-line no-console
+  console.log('token :' + _Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_0__["default"].getToken());
+
+  if (_Helpers_AppStorage__WEBPACK_IMPORTED_MODULE_0__["default"].getToken()) {
+    console.log(' logged');
+  } else {
+    return router.push({
+      name: 'login'
+    });
+  }
+
+  return next();
+}
 
 /***/ }),
 
@@ -109324,9 +109387,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_users_Coordinator__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/users/Coordinator */ "./resources/js/components/users/Coordinator.vue");
 /* harmony import */ var _components_users_Designer__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/users/Designer */ "./resources/js/components/users/Designer.vue");
 /* harmony import */ var _components_category_CreateCategory__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/category/CreateCategory */ "./resources/js/components/category/CreateCategory.vue");
+/* harmony import */ var _middleware_log__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./middleware/log */ "./resources/js/Router/middleware/log.js");
+/* harmony import */ var _middleware_logged__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./middleware/logged */ "./resources/js/Router/middleware/logged.js");
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+
+
 
 
 
@@ -109343,13 +109414,21 @@ var routes = [{
   component: _components_parallex__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/login',
-  component: _components_login_Login__WEBPACK_IMPORTED_MODULE_3__["default"]
+  component: _components_login_Login__WEBPACK_IMPORTED_MODULE_3__["default"],
+  name: 'login',
+  meta: {
+    middleware: _middleware_log__WEBPACK_IMPORTED_MODULE_13__["default"]
+  }
 }, {
   path: '/logout',
   component: _components_login_Logout__WEBPACK_IMPORTED_MODULE_5__["default"]
 }, {
   path: '/signup',
-  component: _components_login_Signup__WEBPACK_IMPORTED_MODULE_4__["default"]
+  component: _components_login_Signup__WEBPACK_IMPORTED_MODULE_4__["default"],
+  name: 'signup',
+  meta: {
+    middleware: _middleware_log__WEBPACK_IMPORTED_MODULE_13__["default"]
+  }
 }, {
   path: '/category',
   component: _components_category_CreateCategory__WEBPACK_IMPORTED_MODULE_12__["default"]
@@ -109359,13 +109438,24 @@ var routes = [{
 }, {
   path: '/admin',
   component: _components_users_Admin__WEBPACK_IMPORTED_MODULE_9__["default"],
-  name: 'admin'
+  name: 'admin',
+  meta: {
+    middleware: _middleware_logged__WEBPACK_IMPORTED_MODULE_14__["default"]
+  }
 }, {
   path: '/coordinator',
-  component: _components_users_Coordinator__WEBPACK_IMPORTED_MODULE_10__["default"]
+  component: _components_users_Coordinator__WEBPACK_IMPORTED_MODULE_10__["default"],
+  name: 'coordinator',
+  meta: {
+    middleware: _middleware_logged__WEBPACK_IMPORTED_MODULE_14__["default"]
+  }
 }, {
   path: '/designer',
-  component: _components_users_Designer__WEBPACK_IMPORTED_MODULE_11__["default"]
+  component: _components_users_Designer__WEBPACK_IMPORTED_MODULE_11__["default"],
+  name: 'designer',
+  meta: {
+    middleware: _middleware_logged__WEBPACK_IMPORTED_MODULE_14__["default"]
+  }
 }, {
   path: '/forum',
   component: _components_forum_Forum__WEBPACK_IMPORTED_MODULE_6__["default"],
@@ -109380,6 +109470,41 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   // short for `routes: routes`
   hashbang: false,
   mode: 'history'
+});
+
+function nextFactory(context, middleware, index) {
+  var subsequentMiddleware = middleware[index]; // If no subsequent Middleware exists,
+  // the default `next()` callback is returned.
+
+  if (!subsequentMiddleware) return context.next;
+  return function () {
+    // Run the default Vue Router `next()` callback first.
+    context.next.apply(context, arguments); // Than run the subsequent Middleware with a new
+    // `nextMiddleware()` callback.
+
+    var nextMiddleware = nextFactory(context, middleware, index + 1);
+    subsequentMiddleware(_objectSpread({}, context, {
+      next: nextMiddleware
+    }));
+  };
+}
+
+router.beforeEach(function (to, from, next) {
+  if (to.meta.middleware) {
+    var middleware = Array.isArray(to.meta.middleware) ? to.meta.middleware : [to.meta.middleware];
+    var context = {
+      from: from,
+      next: next,
+      router: router,
+      to: to
+    };
+    var nextMiddleware = nextFactory(context, middleware, 1);
+    return middleware[0](_objectSpread({}, context, {
+      next: nextMiddleware
+    }));
+  }
+
+  return next();
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 
