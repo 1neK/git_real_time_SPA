@@ -2488,12 +2488,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['question']
 });
@@ -2698,8 +2692,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {},
   methods: {
+    validEmail: function validEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    },
     login: function login() {
-      _Helpers_User__WEBPACK_IMPORTED_MODULE_0__["default"].login(this.form, this.$router);
+      if (this.form.password && this.form.email && this.validEmail(this.form.email)) _Helpers_User__WEBPACK_IMPORTED_MODULE_0__["default"].login(this.form, this.$router);
     }
   }
 });
@@ -2796,18 +2794,21 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    validEmail: function validEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    },
     signup: function signup() {
       var _this = this;
 
-      axios.post('/api/auth/signup', this.form).then(function (res) {
-        User.responseAfterLogin(res);
-
-        _this.$router.push({
-          name: 'forum'
+      if (this.form.name && this.form.email && this.validEmail(this.form.email)) {
+        axios.post('/api/auth/signup', this.form).then(function (res) {
+          User.responseAfterLogin(res);
+          window.location = '/forum';
+        }).catch(function (error) {
+          return _this.errors = error.response.data.errors;
         });
-      }).catch(function (error) {
-        return _this.errors = error.response.data.errors;
-      });
+      }
     }
   }
 });
@@ -67924,7 +67925,7 @@ var render = function() {
         },
         [
           _c("v-text-field", {
-            attrs: { label: "Name", type: "text", required: "" },
+            attrs: { id: "name", type: "text", name: "name", required: "" },
             model: {
               value: _vm.form.name,
               callback: function($$v) {

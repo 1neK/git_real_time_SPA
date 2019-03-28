@@ -43,8 +43,13 @@ export default {
 
 
         methods:{
+            validEmail: function (email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            },
             login()
             {
+                if(this.form.password && this.form.email && this.validEmail(this.form.email))
                 User.login(this.form,this.$router)
 
             }

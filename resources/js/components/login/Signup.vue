@@ -3,13 +3,13 @@
   <v-form @submit.prevent="signup">
 
           <v-text-field
-
-            label="Name"
+            id="name"
              v-model="form.name"
             type="text"
+            name="name"
             required
           ></v-text-field>
-        <span class="red--text" v-if="errors.name" >{{errors.name[0]}}</span>
+   <span class="red--text" v-if="errors.name" >{{errors.name[0]}}</span>
 
           <v-text-field
             v-model="form.email"
@@ -24,7 +24,7 @@
             label="Password"
             required
           ></v-text-field>
-          <span class="red--text" v-if="errors.password" >{{errors.password[0]}}</span>
+   <span class="red--text" v-if="errors.password" >{{errors.password[0]}}</span>
         <v-text-field
             v-model="form.password_confirmation"
             type="password"
@@ -61,14 +61,23 @@ export default {
         },
 
     methods:{
+    validEmail: function (email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    },
      signup(){
-         axios.post('/api/auth/signup',this.form)
-        .then(res => {
-         User.responseAfterLogin(res)
-        this.$router.push({name:'forum'})
+         if (this.form.name && this.form.email && this.validEmail(this.form.email) ){
+            axios.post('/api/auth/signup',this.form)
+            .then(res => {
+            User.responseAfterLogin(res)
+            window.location='/forum'
 
         })
         .catch(error=>this.errors=error.response.data.errors)
+         }
+
+
+
     }
 }
 }
