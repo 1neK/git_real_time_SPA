@@ -1,24 +1,29 @@
 <template>
-      <v-toolbar color="indigo" dark>
-    <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
-    <v-toolbar-title>
-        <router-link class="white--text" to="/">Forum</router-link>
-    </v-toolbar-title>
-    <v-spacer></v-spacer>
-    <app-notification v-if="loggedIn"></app-notification>
-    <div class="hidden-sm-and-down">
+    <v-toolbar>
+        <div id="app">
+            <v-app id="inspire" dark>
+                <v-spacer></v-spacer>
+                <v-toolbar app fixed clipped-left>
+                   <!-- <v-toolbar-side-icon v-if="loggedIn" class="white--text"  @click.stop="drawer = !drawer"></v-toolbar-side-icon>-->
+                    <v-toolbar-title>
+                        <router-link class="white--text" to="/">Forum</router-link>
+                    </v-toolbar-title>
+                    <v-spacer></v-spacer>
+                <app-notification v-if="loggedIn"></app-notification>
+                    <div class="hidden-sm-and-down">
+                        <router-link
+                         v-for="item in items"
+                         :key="item.title"
+                         :to="item.to"
+                         v-if="item.show" >
+                         <v-btn flat>{{item.title}}</v-btn>
+                        </router-link>
+                    </div>
+                </v-toolbar>
+            </v-app>
 
-      <router-link
-      v-for="item in items"
-        :key="item.title"
-        :to="item.to"
-        v-if="item.show" >
-      <v-btn flat>{{item.title}}</v-btn>
-      </router-link>
-    </div>
-  </v-toolbar>
-
-
+        </div>
+    </v-toolbar>
 </template>
 
 <script>
@@ -27,6 +32,7 @@ export default {
     components:{AppNotification},
     data(){
         return {
+            drawer: false,
             loggedIn : User.loggedIn(),
             items:[
 

@@ -1775,7 +1775,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
+ //import navbar from './Navbar'
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1937,6 +1941,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -1944,6 +1953,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      drawer: false,
       loggedIn: User.loggedIn(),
       items: [{
         'title': 'Forum',
@@ -66972,48 +66982,66 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-toolbar",
-    { attrs: { color: "indigo", dark: "" } },
-    [
-      _c(
-        "v-toolbar-title",
-        [
-          _c(
-            "router-link",
-            { staticClass: "white--text", attrs: { to: "/" } },
-            [_vm._v("Forum")]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("v-spacer"),
-      _vm._v(" "),
-      _vm.loggedIn ? _c("app-notification") : _vm._e(),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "hidden-sm-and-down" },
-        _vm._l(_vm.items, function(item) {
-          return item.show
-            ? _c(
-                "router-link",
-                { key: item.title, attrs: { to: item.to } },
-                [
-                  _c("v-btn", { attrs: { flat: "" } }, [
-                    _vm._v(_vm._s(item.title))
-                  ])
-                ],
-                1
-              )
-            : _vm._e()
-        }),
-        1
-      )
-    ],
-    1
-  )
+  return _c("v-toolbar", [
+    _c(
+      "div",
+      { attrs: { id: "app" } },
+      [
+        _c(
+          "v-app",
+          { attrs: { id: "inspire", dark: "" } },
+          [
+            _c("v-spacer"),
+            _vm._v(" "),
+            _c(
+              "v-toolbar",
+              { attrs: { app: "", fixed: "", "clipped-left": "" } },
+              [
+                _c(
+                  "v-toolbar-title",
+                  [
+                    _c(
+                      "router-link",
+                      { staticClass: "white--text", attrs: { to: "/" } },
+                      [_vm._v("Forum")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("v-spacer"),
+                _vm._v(" "),
+                _vm.loggedIn ? _c("app-notification") : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "hidden-sm-and-down" },
+                  _vm._l(_vm.items, function(item) {
+                    return item.show
+                      ? _c(
+                          "router-link",
+                          { key: item.title, attrs: { to: item.to } },
+                          [
+                            _c("v-btn", { attrs: { flat: "" } }, [
+                              _vm._v(_vm._s(item.title))
+                            ])
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  }),
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -68333,7 +68361,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("h1", [_vm._v("Hello Designer")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -109405,6 +109433,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 
+ //import AllUsers from '../components/users/AllUsers'
 
 
 

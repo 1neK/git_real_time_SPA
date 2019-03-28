@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use App\Model\Question;
+use App\Model\Task;
 
 
 class User extends Authenticatable implements JWTSubject
@@ -33,7 +34,15 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     public function role(){
-        return $this->belongsTo(App\Role);
+        return $this->belongsTo(App\Role::class);
+    }
+
+    public function task(){
+        return $this->hasMany(Task::class);
+    }
+
+    public function photo(){
+        return $this->belongsTo(App\Photos::class);
     }
 
 
