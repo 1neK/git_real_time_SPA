@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use App\Model\Question;
 use App\Model\Task;
+use App\Model\Project;
 
 
 class User extends Authenticatable implements JWTSubject
@@ -39,6 +40,10 @@ class User extends Authenticatable implements JWTSubject
 
     public function task(){
         return $this->hasMany(Task::class);
+    }
+
+    public function project(){
+        return $this->hasMany(Project::class);
     }
 
     public function photo(){

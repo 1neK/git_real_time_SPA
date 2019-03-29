@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Symfony\Component\HttpFoundation\Request;
 use App\Http\Requests\SignupRequest;
+use Illuminate\Support\Facades\Validator;
+
 class AuthController extends Controller
 {
      /**
@@ -26,10 +28,24 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
+/* that s validae your data in server */
+        $rules = [
+            'email' => 'required|email',
+            'password' => 'required',
+        ];
+        $validator = Validator::make($credentials, $rules);
+/* end validation */
 
+        if($validator->fails()) {
+            return response()->json(['success'=> false, 'error'=> $validator->messages()], 401);
+        }
+ $credentials['is_active'] = 1;
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+
+
+
 
 
         return $this->respondWithToken($token);
@@ -37,9 +53,18 @@ class AuthController extends Controller
 
     public function signup(SignupRequest $request)
     {
+        $credentials = $request->only('name', 'email', 'password');
 
-        User::create($request->all());
-        return $this->login($request);
+
+        $rules = [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' =>'required|min:6'
+        ];
+        $validator = Validator::make($credentials, $rules);
+
+        User::create($credentials);
+        return $this->login($credentials);
     }
     /**
      * Get the authenticated User.

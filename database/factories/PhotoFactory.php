@@ -3,9 +3,8 @@
 use Faker\Generator as Faker;
 
 $factory->define(Model::class, function (Faker $faker) {
+    $file = $faker->sentence;
     return [
-        'user_id' => function(){
-            return App\User::all()->random();
-        }
+        'file'=>$file
     ];
 });
