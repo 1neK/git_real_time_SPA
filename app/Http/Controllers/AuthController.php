@@ -28,7 +28,7 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
-/* that s validae your data in server */
+/* that s validate your data in server */
         $rules = [
             'email' => 'required|email',
             'password' => 'required',

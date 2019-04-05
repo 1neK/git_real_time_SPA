@@ -93,6 +93,12 @@ own(id){
 admin(){
    return AppStorage.getRole()=='admin';
 }
+coordinator(){
+    return AppStorage.getRole()=='coordinator';
+ }
+ designer(){
+    return AppStorage.getRole()=='designer';
+ }
 
 
 }

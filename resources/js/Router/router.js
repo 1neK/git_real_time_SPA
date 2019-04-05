@@ -14,10 +14,20 @@ import Create from '../components/forum/create'
 import Admin from '../components/users/Admin'
 import Coordinator from '../components/users/Coordinator'
 import Designer from '../components/users/Designer'
-//import AllUsers from '../components/users/AllUsers'
+import Team from '../components/users/Team'
+import AllUsers from '../components/users/AllUsers'
+import CreateUser from '../components/users/CreateUser'
+import CreateProject from '../components/project/CreateProject'
+import project from '../components/project/project'
+import CreateTask from '../components/task/CreateTask'
+import Task from '../components/task/Task'
 import CreateCategory from '../components/category/CreateCategory'
+import CreateTeam from '../components/team/CreateTeam'
+import ListeTeam from '../components/team/ListeTeam'
+import dashboard from '../components/dashboard/dashboard'
 import log from './middleware/log'
 import logged from './middleware/logged'
+import adminMiddleware from './middleware/AdminMiddleware'
 
 
 const routes = [
@@ -37,12 +47,31 @@ const routes = [
         middleware: log,
        }
     },
+    { path: '/allusers', component: AllUsers },
+    { path: '/createuser', component: CreateUser },
+
+    { path: '/createproject', component: CreateProject },
+    { path: '/project', component: project },
+
+    { path: '/createtask', component: CreateTask },
+    { path: '/task', component: Task },
+
      { path: '/category', component: CreateCategory },
+
+
+
+     { path: '/create_team', component:CreateTeam   },
+     { path: '/liste_team', component:ListeTeam   },
+     { path: '/team', component: Team },
+
+     { path: '/dashboard', component: dashboard },
+
      { path: '/ask', component: Create },
      { path: '/admin', component: Admin ,name:'admin'
      ,
+
      meta: {
-        middleware: logged,
+        middleware: adminMiddleware,
        }
     },
      { path: '/coordinator', component: Coordinator,name:'coordinator',

@@ -4,7 +4,6 @@
       v-model="dialog"
       width="500"
     >
-
       <template v-slot:activator="{ on }">
 
           <v-card-text style="height: 100px; position: relative">
@@ -24,67 +23,31 @@
           </v-card-text>
       </template>
 
-
       <v-card>
             <v-form @submit.prevent="submit">
         <v-card-title
           class="headline grey lighten-2"
           primary-title
         >
-          <v-icon x-large>supervisor_account</v-icon>
+          <v-icon>supervised_user_circle</v-icon>
         </v-card-title>
 
         <v-card-text>
-        <v-text-field
-            label="name"
-             v-model="form.name"
-            type="text"
-            required
-        ></v-text-field>
-   <!--<span class="red--text" v-if="errors.name" >{{errors.name[0]}}</span>-->
 
-        <v-text-field
-            v-model="form.email"
-            label="Email"
-            type="email"
-            required
-        ></v-text-field>
-  <!--<span class="red--text" v-if="errors.email" >{{errors.email[0]}}</span>-->
-        <v-text-field
-            v-model="form.password"
-            type="password"
-            label="Password"
-            required
-        ></v-text-field>
-   <!--<span class="red--text" v-if="errors.password" >{{errors.password[0]}}</span>-->
-        <v-text-field
-            v-model="form.password_confirmation"
-            type="password"
-            label="Password"
-            required
-        ></v-text-field>
+            <v-alert v-if="errors" type="error" :value="true" >
+                Team name is required.
+            </v-alert>
 
-        <v-flex xs12>
-        <v-combobox
-          v-model="select"
-          :items="items"
-          chips
-          label="status"
-        ></v-combobox>
-      </v-flex>
 
-      <v-flex xs12>
-        <v-combobox
-          v-model="select1"
-          :items="items1"
-          label="Role"
-        ></v-combobox>
-      </v-flex>
 
-        <input
-            type="file"
-            label="file"
-            @change="onFileSelected">
+            <v-text-field
+            label="Team Name"
+            v-model="form.name"
+            required ></v-text-field>
+
+
+
+
 
 
 
@@ -115,26 +78,13 @@
   export default {
  data(){
         return{
-            select: 'Active',
-            select1: 'Programming',
-            items: [
-                'Active',
-                'Inactive',
-            ],
-            items1: [
-                'Programming',
-                'Design',
-                'coordination',
-                'administration'
-            ],
             dialog:false,
             form:{
                 name:null
             },
             roles:{},
             editSlugt:null,
-            errors:null,
-            selectedFile:null
+            errors:null
         }
     },
         created(){
@@ -145,9 +95,6 @@
             .then(res => this.roles = res.data.data)
     },
     methods:{
-        onFileSelected(event){
-            this.selectedFile = event.target.files[0]
-        },
         submit(){
             this.editSlugt  ?  this.update() : this.create()
         },

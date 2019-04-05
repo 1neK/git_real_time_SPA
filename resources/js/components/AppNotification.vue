@@ -2,7 +2,7 @@
     <div class="text-xs-center">
     <v-menu offset-y>
             <v-btn icon slot="activator">
-                <v-icon :color="color"> add_alert </v-icon> {{unreadCount}}
+                <v-icon :color="color"> notifications </v-icon> {{unreadCount}}
             </v-btn>
       <v-list>
         <v-list-tile v-for="item in unread" :key="item.id">

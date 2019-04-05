@@ -3,15 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Project;
-use Symfony\Component\HttpFoundation\Response;
-use App\Http\Resources\ProjectResource;
-use App\Http\Requests\ProjectRequest;
+use App\Http\Resources\UserResource;
+use App\Http\Requests\UserRequest;
+use App\User;
 
-class ProjectController extends Controller
+class UserController extends Controller
 {
-
-       /**
+     /**
      * Create a new AuthController instance.
      *
      * @return void
@@ -27,7 +25,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return ProjectResource::collection(Project::latest()->get());
+        return UserResource::collection(App\User::latest()->get());
     }
 
 
@@ -37,50 +35,51 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProjectRequest $request )
+    public function store(UserRequest $request)
     {
-      //  $request['slug'] = str_slug($request->title);
-      $project =  auth()->user()->project()->create($request->all());
-
-       return response(new ProjectResource($project),Response::HTTP_CREATED);
+        // Category::create($request->all());
+       $user  = new User();
+       $user->name  = $request->name;
+       $user->slug  = str_slug($request->name);
+       $user->save();
+       return response(new UserResource($user),Response::HTTP_CREATED);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Project  $question
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show(User $user)
     {
-        return new ProjectResource($project);
+        return new UserResource($user);
     }
-
 
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Project  $question
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, User $user)
     {
-        $project->update($request->all());
-        return response('Update', Response::HTTP_ACCEPTED);
+        $user->update(['name'=>$request->name,
+        'slug'=>str_slug($request->name)]);
+        return response(new UserResource($user), Response::HTTP_ACCEPTED);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Project  $question
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(User $user)
     {
-        $project->delete();
+        $user->delete();
         return response(null,Response::HTTP_NO_CONTENT);
     }
 }
-

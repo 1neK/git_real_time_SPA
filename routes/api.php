@@ -4,6 +4,10 @@ Route::apiResource('/question','QuestionController');
 
 Route::apiResource('/category','CategoryController');
 
+Route::apiResource('/team','RoleController');
+Route::get('/count-team','RoleController@count_team');
+Route::get('/liste-team','RoleController@affiche');
+
 Route::apiResource('/question/{question}/reply','ReplyController');
 
 Route::post('/like/{reply}','LikeController@likeIt');
@@ -13,6 +17,7 @@ Route::post('notifications', 'NotificationController@index');
 Route::post('markAsRead', 'NotificationController@markAsRead');
 
 Route::apiResource('/project','ProjectController');
+Route::apiResource('/task','TaskController');
 
 Route::group([
 

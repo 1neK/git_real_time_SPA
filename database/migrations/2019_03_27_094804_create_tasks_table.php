@@ -17,14 +17,14 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('project_id')->unsigned();
-            //$table->integer('role_id')->unsigned();
+            $table->integer('role_id')->unsigned();
             $table->string('type');
             $table->date('start_date');
             $table->date('due_date');
             $table->text('link');
             $table->text('description');
             $table->string('status');
-           // $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->timestamps();
         });

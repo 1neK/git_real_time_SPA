@@ -22,7 +22,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role_id','is_active','photo_id'
+        'name', 'email', 'password','role_id','is_active'
     ];
 
     /**
@@ -35,7 +35,7 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     public function role(){
-        return $this->belongsTo(App\Role::class);
+        return $this->belongsToMany(App\Role::class);
     }
 
     public function task(){
@@ -45,11 +45,6 @@ class User extends Authenticatable implements JWTSubject
     public function project(){
         return $this->hasMany(Project::class);
     }
-
-    public function photo(){
-        return $this->belongsTo(App\Photos::class);
-    }
-
 
     public function question(){
         return $this->hasMany(Question::class);

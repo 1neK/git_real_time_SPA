@@ -40,7 +40,10 @@ export default {
                    { 'title':'Ask Question',to:'/ask',show:User.loggedIn() },
                    { 'title':'Category',to:'/category',show:User.admin() },
                    { 'title':'Login',to:'/login',show:!User.loggedIn() },
-                   { 'title':'Logout',to:'/logout',show:User.loggedIn() }
+                   { 'title':'Logout',to:'/logout',show:User.loggedIn() },
+                   /*{ 'title':'Designer',to:'/logout',show:User.designer() },
+                   { 'title':'Admin',to:'/logout',show:User.admin() },
+                   { 'title':'Coordinator',to:'/logout',show:User.coordinator() }*/
             ]
 
         }

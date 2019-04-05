@@ -2,6 +2,7 @@
 
 use Faker\Generator as Faker;
 use App\Model\Question;
+use App\User;
 
 
 $factory->define(App\Model\Reply::class, function (Faker $faker) {
@@ -10,8 +11,6 @@ $factory->define(App\Model\Reply::class, function (Faker $faker) {
         'question_id' => function(){
             return Question::all()->random();
         },
-        'user_id' => function(){
-            return App\User::all()->random();
-        }
+        'user_id' => '1'
     ];
 });

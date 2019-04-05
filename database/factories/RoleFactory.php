@@ -3,8 +3,9 @@
 use Faker\Generator as Faker;
 
 $factory->define(Model::class, function (Faker $faker) {
-    $file = $faker->sentence;
+    $word = $faker->word;
     return [
-        'file'=>$file
+        'name'=> $word,
+        'slug' => str_slug($word)
     ];
 });
