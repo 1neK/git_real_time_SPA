@@ -17,7 +17,11 @@ Route::post('notifications', 'NotificationController@index');
 Route::post('markAsRead', 'NotificationController@markAsRead');
 
 Route::apiResource('/project','ProjectController');
+
 Route::apiResource('/task','TaskController');
+Route::get('/count-task','RoleController@count_task');
+Route::get('/liste-task','RoleController@affiche_task');
+
 
 Route::group([
 

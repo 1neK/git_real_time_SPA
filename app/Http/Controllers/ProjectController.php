@@ -7,6 +7,7 @@ use App\Model\Project;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Resources\ProjectResource;
 use App\Http\Requests\ProjectRequest;
+use App\Task;
 
 class ProjectController extends Controller
 {
@@ -18,7 +19,7 @@ class ProjectController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('JWT', ['except' => ['index','show']]);
+        $this->middleware('JWT', ['except' => ['index','show','count_task','affiche_task']]);
     }
     /**
      * Display a listing of the resource.
@@ -29,6 +30,35 @@ class ProjectController extends Controller
     {
         return ProjectResource::collection(Project::latest()->get());
     }
+
+    public  function count_task()
+    {
+
+        $projects = Project::all();
+
+        foreach ($projects as $project)
+        {
+             $count =Task::where('project_id',$project->id)->count();
+             $project->task_number=$count;
+             /*$task =Task::where('project_id',$project->id)->count();
+             $project->task_number=$task;*/
+
+        }
+
+return response()->json($projects);
+
+    }
+
+    public function affiche_task(){
+        $projects=Project::all();
+        foreach($projects as $project)
+        {
+            $task =Task::where('project_id',$project->id)->get();
+            $project->task_list = $task;
+        }
+        return response()->json($projects);
+    }
+
 
 
     /**

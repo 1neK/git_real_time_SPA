@@ -1,91 +1,81 @@
 <template>
-<div class="text-xs-right">
-    <v-dialog
-      v-model="dialog"
-      width="500"
-    >
+    <div class="">
+        <v-dialog  v-model="dialog"  width="500"  >
+            <template v-slot:activator="{ on }">
+                <v-card-text class="text-right" style="height: 100px; position: relative">
 
-      <template v-slot:activator="{ on }">
+                <v-btn
+                v-on="on"
+                 absolute
+                 dark
+                 fab
+                 top
+                 right
+                 color="pink"
 
-          <v-card-text style="height: 100px; position: relative">
+                >
+                <v-icon>add</v-icon>
+                </v-btn>
+                </v-card-text>
 
-            <v-btn
-             v-on="on"
-              absolute
-              dark
-              fab
-              top
-              right
-              color="pink"
+            <v-layout row wrap>
 
-            >
-              <v-icon>add</v-icon>
-            </v-btn>
-          </v-card-text>
-      </template>
+            <v-flex> <v-card-text class="px-0">ID</v-card-text> </v-flex>
+            <v-flex> <v-card-text class="px-0">Name</v-card-text> </v-flex>
+            <v-flex> <v-card-text class="px-0">Email</v-card-text> </v-flex>
+            <v-flex> <v-card-text class="px-0">Created_at</v-card-text> </v-flex>
+            <v-flex> <v-card-text class="px-0">Last Connection</v-card-text> </v-flex>
+            <v-flex> <v-card-text class="px-0">Role</v-card-text> </v-flex>
+            <v-flex> <v-card-text class="px-0">Status</v-card-text> </v-flex>
+            <v-flex> <v-card-text class="px-0">Action</v-card-text> </v-flex>
 
+            <v-flex xs10 v-for="team in teams" :key="team.id">
+                <v-card to="/liste_team">
+                    <div v-for="user in team.user_list" :key="user.id">
+                        <v-flex>
+                            {{ user.id }}
+                            {{ user.name }}
+                            {{ user.email }}
+                            {{ user.last_login_at }}
+                            {{ user.email }}
+                            {{ team.name }}
+                            {{ user.is_active }}
+                            <v-btn icon small  @click="destroy(team.slug,index)">
+                                <v-icon color="red">delete</v-icon>
+                            </v-btn>
+                            <v-btn icon small @click="edit(index)">
+                                <v-icon color="orange">edit</v-icon>
+                            </v-btn>
+                        </v-flex>
+                        <v-flex xs2></v-flex>
+                    </div>
 
-      <v-card>
+           </v-card>
+          </v-flex>
+        </v-layout>
+    </template>
+    <v-card>
             <v-form @submit.prevent="submit">
         <v-card-title
           class="headline grey lighten-2"
           primary-title
         >
-          <v-icon x-large>supervisor_account</v-icon>
+          <v-icon x-large>supervised_user_circle</v-icon>
         </v-card-title>
 
         <v-card-text>
+
+            <v-alert v-if="errors" type="error" :value="true" >
+                User name is required.
+            </v-alert>
+
+
         <v-text-field
             label="name"
              v-model="form.name"
             type="text"
             required
         ></v-text-field>
-   <!--<span class="red--text" v-if="errors.name" >{{errors.name[0]}}</span>-->
-
-        <v-text-field
-            v-model="form.email"
-            label="Email"
-            type="email"
-            required
-        ></v-text-field>
-  <!--<span class="red--text" v-if="errors.email" >{{errors.email[0]}}</span>-->
-        <v-text-field
-            v-model="form.password"
-            type="password"
-            label="Password"
-            required
-        ></v-text-field>
-   <!--<span class="red--text" v-if="errors.password" >{{errors.password[0]}}</span>-->
-        <v-text-field
-            v-model="form.password_confirmation"
-            type="password"
-            label="Password"
-            required
-        ></v-text-field>
-
-        <v-flex xs12>
-        <v-combobox
-          v-model="select"
-          :items="items"
-          chips
-          label="status"
-        ></v-combobox>
-      </v-flex>
-
-      <v-flex xs12>
-        <v-combobox
-          v-model="select1"
-          :items="items1"
-          label="Role"
-        ></v-combobox>
-      </v-flex>
-
-        <input
-            type="file"
-            label="file"
-            @change="onFileSelected">
-
 
 
         </v-card-text>
@@ -108,81 +98,44 @@
          </v-form>
       </v-card>
     </v-dialog>
-  </div>
+</div>
+
 </template>
 
 <script>
-  export default {
+export default {
  data(){
         return{
-            select: 'Active',
-            select1: 'Programming',
-            items: [
-                'Active',
-                'Inactive',
-            ],
-            items1: [
-                'Programming',
-                'Design',
-                'coordination',
-                'administration'
-            ],
+            team:{},
+            teams:{},
             dialog:false,
             form:{
-                name:null
+                name:null,
             },
-            roles:{},
             editSlugt:null,
-            errors:null,
-            selectedFile:null
+            errors:null
         }
     },
-        created(){
-            if(!User.admin()){
+     created(){
+         if(!User.admin()){
                 this.$router.push('/forum')
             }
-        axios.get('/api/role')
-            .then(res => this.roles = res.data.data)
+        axios.get('/api/liste-team')
+            .then(res => this.teams = res.data)
     },
     methods:{
-        onFileSelected(event){
-            this.selectedFile = event.target.files[0]
-        },
-        submit(){
-            this.editSlugt  ?  this.update() : this.create()
-        },
-        update(){
-            axios.post(`/api/role/${this.editSlugt}`,this.form)
-            .then(res =>{
-                    this.roles.unshift(res.data)
-                    this.form.name = null
-                })
-        },
-        create(){
-            axios.post('/api/role',this.form)
-                .then(res =>{
-                    this.roles.unshift(res.data)
-                    this.form.name = null
-                })
-                .catch(error => this.errors = error.response.data.errors)
-        },
         destroy(slug, index){
-            axios.delete(`/api/role/${slug}`)
+            axios.delete(`/api/user/${slug}`)
                 .then(res => this.roles.splice(index,1))
         },
         edit(index){
 
-            this.form.name = this.roles[index].name
-            this.editSlugt = this.roles[index].slug
-            this.roles.splice(index,1)
+            this.form.name = this.users[index].name
+            this.editSlugt = this.users[index].slug
+            this.users.splice(index,1)
 
         }
     },
-    computed:{
-        disabled(){
-            return !(this.form.name)
-        }
-    }
 
 }
 </script>

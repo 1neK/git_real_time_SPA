@@ -51,7 +51,7 @@ export default {
     },
       created(){
 
-          console.log(User.loggedIn());
+
             EventBus.$on('logout',()=>{
                 User.logout()
             })

@@ -67,8 +67,8 @@ export default {
             categories:{},
             editSlug:null,
             errors:null
-        }
-    },
+            }
+        },
         created(){
             if(!User.admin()){
                 this.$router.push('/forum')

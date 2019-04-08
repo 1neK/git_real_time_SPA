@@ -62,6 +62,7 @@ return response()->json($teams);
     }
 
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -84,9 +85,19 @@ return response()->json($teams);
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show($team)
     {
-        return new RoleResource($role);
+
+        $role=  Role::where('slug',$team)->first();
+
+        $user =User::where('role_id',$role->id)->get();
+        $role->users = $user;
+
+
+        return response()->json($role);
+
+
+
     }
 
 

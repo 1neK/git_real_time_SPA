@@ -19,12 +19,12 @@ export default {
         }
     },
     created(){
-        Echo.channel('likeChannel')
-            .listen('likeEvent', (e) => {
-                if(this.content.id ==  e.id){
-                    e.type == 1 ? this.count ++ : this.count --
-                }
-            });
+        // Echo.channel('likeChannel')
+        //     .listen('likeEvent', (e) => {
+        //         if(this.content.id ==  e.id){
+        //             e.type == 1 ? this.count ++ : this.count --
+        //         }
+        //     });
     },
     methods:{
         likeIt(){

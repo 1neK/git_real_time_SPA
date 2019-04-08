@@ -15,15 +15,17 @@ import Admin from '../components/users/Admin'
 import Coordinator from '../components/users/Coordinator'
 import Designer from '../components/users/Designer'
 import Team from '../components/users/Team'
+import AddUsers from '../components/users/AddUsers'
 import AllUsers from '../components/users/AllUsers'
 import CreateUser from '../components/users/CreateUser'
 import CreateProject from '../components/project/CreateProject'
-import project from '../components/project/project'
+import Project from '../components/project/Project'
 import CreateTask from '../components/task/CreateTask'
 import Task from '../components/task/Task'
 import CreateCategory from '../components/category/CreateCategory'
-import CreateTeam from '../components/team/CreateTeam'
-import ListeTeam from '../components/team/ListeTeam'
+//import CreateTeam from '../components/team/CreateTeam'
+//import ListeTeam from '../components/team/ListeTeam'
+import TeamSingle from '../components/team/TeamSingle'
 import dashboard from '../components/dashboard/dashboard'
 import log from './middleware/log'
 import logged from './middleware/logged'
@@ -47,11 +49,12 @@ const routes = [
         middleware: log,
        }
     },
+    { path: '/addusers', component: AddUsers },
     { path: '/allusers', component: AllUsers },
     { path: '/createuser', component: CreateUser },
 
     { path: '/createproject', component: CreateProject },
-    { path: '/project', component: project },
+    { path: '/project', component: Project },
 
     { path: '/createtask', component: CreateTask },
     { path: '/task', component: Task },
@@ -60,9 +63,10 @@ const routes = [
 
 
 
-     { path: '/create_team', component:CreateTeam   },
-     { path: '/liste_team', component:ListeTeam   },
+     //{ path: '/create_team', component:CreateTeam   },
+     //{ path: '/liste_team', component:ListeTeam   },
      { path: '/team', component: Team },
+     { path: '/team/:id', component: TeamSingle ,name:'team-single'},
 
      { path: '/dashboard', component: dashboard },
 
@@ -95,10 +99,12 @@ const routes = [
 
   ]
 
+
   const router = new VueRouter({
     routes, // short for `routes: routes`
     hashbang : false,
-    mode : 'history'
+    mode : 'history',
+
   })
 
 
