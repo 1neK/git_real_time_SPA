@@ -6,6 +6,7 @@ use App\Http\Requests\ProjectRequest;
 use App\Http\Resources\ProjectResource;
 use App\Model\Project;
 use App\Task;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
@@ -88,9 +89,27 @@ class ProjectController extends Controller
      * @param  \App\Model\Project $question
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show($slug)
     {
-        return new ProjectResource($project);
+        $project=  Project::where('slug',$slug)->first();
+
+        $tasks =Task::where('project_id',$project->id)->get();
+        $project->tasks = $tasks;
+
+        foreach ($tasks as $task){
+
+            $user=User::find($task->user_id);
+            if (!empty($user)){
+
+                $task->user=$user->name;
+            }
+
+        }
+
+
+
+
+        return response()->json($project);
     }
 
 

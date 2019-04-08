@@ -4,6 +4,8 @@ Route::apiResource('/question','QuestionController');
 
 Route::apiResource('/category','CategoryController');
 
+Route::get('/user','RoleController@all_users');
+
 Route::apiResource('/team','RoleController');
 Route::get('/count-team','RoleController@count_team');
 Route::get('/liste-team','RoleController@affiche');

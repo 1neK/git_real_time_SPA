@@ -126,4 +126,9 @@ return response()->json($teams);
         $role->delete();
         return response(null,Response::HTTP_NO_CONTENT);
     }
+
+    public function all_users()
+    {
+        return response()->json(User::all())  ;
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Task;
 use Illuminate\Http\Request;
 use App\Http\Resources\TaskResource;
 use App\Model\Project;
@@ -24,9 +25,9 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Project $project)
+    public function index()
     {
-        return  TaskResource::collection($project->tasks);
+        return Task::all();
     }
 
 

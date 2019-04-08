@@ -20,6 +20,7 @@ import AllUsers from '../components/users/AllUsers'
 import CreateUser from '../components/users/CreateUser'
 import CreateProject from '../components/project/CreateProject'
 import Project from '../components/project/Project'
+import  ProjectSingle from  '../components/project/ProjectSingle'
 import CreateTask from '../components/task/CreateTask'
 import Task from '../components/task/Task'
 import CreateCategory from '../components/category/CreateCategory'
@@ -55,6 +56,7 @@ const routes = [
 
     { path: '/createproject', component: CreateProject },
     { path: '/project', component: Project },
+    { path: '/project/:id', component: ProjectSingle ,name:'project-single' },
 
     { path: '/createtask', component: CreateTask },
     { path: '/task', component: Task },

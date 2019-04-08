@@ -1,7 +1,7 @@
 <template>
     <div class="">
 
-        <v-data-table colmd12  :headers="headers" :items="team.users" class="elevation-1">
+        <v-data-table colmd12  :headers="headers" :items="teams" class="elevation-1">
             <template v-slot:items="props">
                 <td>{{ props.item.id }}</td>
                 <td class="text-center">{{ props.item.name }}</td>
@@ -38,38 +38,7 @@
 
             <v-layout row wrap>
 
-            <v-flex> <v-card-text class="px-0">ID</v-card-text> </v-flex>
-            <v-flex> <v-card-text class="px-0">Name</v-card-text> </v-flex>
-            <v-flex> <v-card-text class="px-0">Email</v-card-text> </v-flex>
-            <v-flex> <v-card-text class="px-0">Created_at</v-card-text> </v-flex>
-            <v-flex> <v-card-text class="px-0">Last Connection</v-card-text> </v-flex>
-            <v-flex> <v-card-text class="px-0">Role</v-card-text> </v-flex>
-            <v-flex> <v-card-text class="px-0">Status</v-card-text> </v-flex>
-            <v-flex> <v-card-text class="px-0">Action</v-card-text> </v-flex>
 
-            <v-flex xs10 v-for="team in teams" :key="team.id">
-                <v-card to="/liste_team">
-                    <div v-for="user in team.user_list" :key="user.id">
-                        <v-flex>
-                            {{ user.id }}
-                            {{ user.name }}
-                            {{ user.email }}
-                            {{ user.last_login_at }}
-                            {{ user.email }}
-                            {{ team.name }}
-                            {{ user.is_active }}
-                            <v-btn icon small  @click="destroy(team.slug,index)">
-                                <v-icon color="red">delete</v-icon>
-                            </v-btn>
-                            <v-btn icon small @click="edit(index)">
-                                <v-icon color="orange">edit</v-icon>
-                            </v-btn>
-                        </v-flex>
-                        <v-flex xs2></v-flex>
-                    </div>
-
-           </v-card>
-          </v-flex>
         </v-layout>
     </template>
     <v-card>
@@ -124,8 +93,21 @@
 export default {
  data(){
         return{
-            team:{},
-            teams:{},
+            headers: [
+                {
+                    text: 'id',
+                    sortable: false,
+                    value: 'name'
+                },
+                {text: 'name', value: 'name'},
+                {text: 'email', value: 'email'},
+                {text: 'status ', value: 'status'},
+                {text: 'action ', value: 'action'},
+
+            ],
+
+
+            teams:[],
             dialog:false,
             form:{
                 name:null,
@@ -135,10 +117,8 @@ export default {
         }
     },
      created(){
-         if(!User.admin()){
-                this.$router.push('/forum')
-            }
-        axios.get('/api/liste-team')
+
+        axios.get('/api/user')
             .then(res => this.teams = res.data)
     },
     methods:{

@@ -104,8 +104,4 @@ export default {
 }
 </script>
 
-<style>
-div{
-    height: 100%;
-}
-</style>
+

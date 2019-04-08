@@ -23,7 +23,7 @@
           </v-card-text>
           <v-layout row wrap>
           <v-flex xs9 sm4  v-for="project in projects" :key="project.id">
-            <v-card to="/task/:id">
+            <v-card :to="{ name: 'project-single', params: { id:  project.slug } }">
               <v-card-title primary-title>
                 <div>
                   <h3 class="headline mb-0">{{ project.name }}</h3>
@@ -125,7 +125,8 @@
         create(){
             axios.post('/api/project?token='+localStorage.getItem('token'),this.form)
                 .then(res =>{
-                    this.projects.unshift(res.data)
+
+                    this.form.name='';
                     this.dialog=false;
                     this.getData();
 
