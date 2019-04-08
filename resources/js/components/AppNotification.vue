@@ -34,12 +34,12 @@ export default {
             this.getNotifications()
         }
 
-        Echo.private('App.User.' + User.id())
-                .notification((notification) => {
-                    this.playSound()
-                    this.unread.unshift(notification)
-                    this.unreadCount++
-                });
+        // Echo.private('App.User.' + User.id())
+        //         .notification((notification) => {
+        //             this.playSound()
+        //             this.unread.unshift(notification)
+        //             this.unreadCount++
+        //         });
     },
     methods:{
         playSound(){

@@ -7,12 +7,16 @@
                 <td class="text-center">{{ props.item.name }}</td>
                 <td class="text-center">{{ props.item.email }}</td>
                 <td class="text-center">
-                <span class="text-danger">activated
+                <span class="text-danger" v-if="props.item.is_active">activated
                 </span>
 
+                    <span class="label bg-danger" v-else="">diascvated
+                </span>
 
                 </td>
+                <td class="text-center">{{ props.item.roles }}</td>
                 <td class="text-center">
+                    <v-icon large danger>edit</v-icon>
                     <v-icon large danger>delete_forever</v-icon>
                 </td>
 
@@ -102,6 +106,8 @@ export default {
                 {text: 'name', value: 'name'},
                 {text: 'email', value: 'email'},
                 {text: 'status ', value: 'status'},
+                {text: 'role ', value: 'role'},
+
                 {text: 'action ', value: 'action'},
 
             ],

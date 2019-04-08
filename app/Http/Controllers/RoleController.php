@@ -128,7 +128,23 @@ return response()->json($teams);
     }
 
     public function all_users()
+
     {
-        return response()->json(User::all())  ;
+        $users =User::all();
+        foreach ($users as $user)
+        {
+            $role=Role::find($user->role_id);
+            if(!empty($role)){
+
+                $user->roles=$role->name;
+            }else{
+                $user->roles="undifined";
+
+            }
+
+
+        }
+
+        return response()->json($users)  ;
     }
 }
