@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         factory(App\User::class,10)->create();
         factory(Category::class,5)->create();
         factory(Question::class,10)->create();
-        factory(Reply::class,50)->create()->each(function($reply){
-            return $reply->like()->save(factory(Like::class)->make());
-        });
+//        factory(Reply::class,50)->create()->each(function($reply){
+//            return $reply->like()->save(factory(Like::class)->make());
+//        });
 
 
 

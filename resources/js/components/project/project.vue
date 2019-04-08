@@ -103,8 +103,9 @@
             if(!User.admin()){
                 this.$router.push('/forum')
             }
-            axios.get('/api/project')
-                .then(res => this.projects = res.data.data)
+
+          this.getData();
+
 
             axios.get('/api/count-task')
                 .then( res => {this.projects = res.data ;console.log(res.data); } )
@@ -118,26 +119,34 @@
             axios.post(`/api/project/${this.editSlugt}`,this.form)
             .then(res =>{
                     this.roles.unshift(res.data)
-                    this.form.name = null
+                this.getData();
                 })
         },
         create(){
-            axios.post('/api/project',this.form)
+            axios.post('/api/project?token='+localStorage.getItem('token'),this.form)
                 .then(res =>{
                     this.projects.unshift(res.data)
-                    this.form.name = null
+                    this.dialog=false;
+                    this.getData();
+
                 })
                 .catch(error => this.errors = error.response.data.errors)
         },
         destroy(slug, index){
             axios.delete(`/api/project/${slug}`)
-                .then(res => this.projects.splice(index,1))
+                .then(res =>   this.getData())
         },
         edit(index){
 
             this.form.name = this.projects[index].name
             this.editSlugt = this.projects[index].slug
             this.projects.splice(index,1)
+
+        }
+        ,
+        getData(){
+            axios.get('/api/project')
+                .then(res => this.projects = res.data.data)
 
         }
     },

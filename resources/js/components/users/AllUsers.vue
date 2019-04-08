@@ -1,5 +1,23 @@
 <template>
     <div class="">
+
+        <v-data-table colmd12  :headers="headers" :items="team.users" class="elevation-1">
+            <template v-slot:items="props">
+                <td>{{ props.item.id }}</td>
+                <td class="text-center">{{ props.item.name }}</td>
+                <td class="text-center">{{ props.item.email }}</td>
+                <td class="text-center">
+                <span class="text-danger">activated
+                </span>
+
+
+                </td>
+                <td class="text-center">
+                    <v-icon large danger>delete_forever</v-icon>
+                </td>
+
+            </template>
+        </v-data-table>
         <v-dialog  v-model="dialog"  width="500"  >
             <template v-slot:activator="{ on }">
                 <v-card-text class="text-right" style="height: 100px; position: relative">

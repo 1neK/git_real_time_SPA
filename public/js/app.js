@@ -3083,7 +3083,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -3309,9 +3308,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.push('/forum');
     }
 
-    axios.get('/api/project').then(function (res) {
-      return _this.projects = res.data.data;
-    });
+    this.getData();
     axios.get('/api/count-task').then(function (res) {
       _this.projects = res.data;
       console.log(res.data);
@@ -3327,16 +3324,18 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/api/project/".concat(this.editSlugt), this.form).then(function (res) {
         _this2.roles.unshift(res.data);
 
-        _this2.form.name = null;
+        _this2.getData();
       });
     },
     create: function create() {
       var _this3 = this;
 
-      axios.post('/api/project', this.form).then(function (res) {
+      axios.post('/api/project?token=' + localStorage.getItem('token'), this.form).then(function (res) {
         _this3.projects.unshift(res.data);
 
-        _this3.form.name = null;
+        _this3.dialog = false;
+
+        _this3.getData();
       }).catch(function (error) {
         return _this3.errors = error.response.data.errors;
       });
@@ -3345,13 +3344,20 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       axios.delete("/api/project/".concat(slug)).then(function (res) {
-        return _this4.projects.splice(index, 1);
+        return _this4.getData();
       });
     },
     edit: function edit(index) {
       this.form.name = this.projects[index].name;
       this.editSlugt = this.projects[index].slug;
       this.projects.splice(index, 1);
+    },
+    getData: function getData() {
+      var _this5 = this;
+
+      axios.get('/api/project').then(function (res) {
+        return _this5.projects = res.data.data;
+      });
     }
   },
   computed: {
@@ -3899,6 +3905,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3919,7 +3948,8 @@ __webpack_require__.r(__webpack_exports__);
         text: 'action ',
         value: 'action'
       }],
-      team: {}
+      team: {},
+      dialog: false
     };
   },
   created: function created() {
@@ -4157,6 +4187,24 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -71757,45 +71805,134 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-data-table", {
-    staticClass: "elevation-1",
-    attrs: { headers: _vm.headers, items: _vm.team.users },
-    scopedSlots: _vm._u([
-      {
-        key: "items",
-        fn: function(props) {
-          return [
-            _c("td", [_vm._v(_vm._s(props.item.id))]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-center" }, [
-              _vm._v(_vm._s(props.item.name))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-center" }, [
-              _vm._v(_vm._s(props.item.email))
-            ]),
-            _vm._v(" "),
-            _c("td", { staticClass: "text-center" }, [
-              _c("span", { staticClass: "text-danger" }, [
-                _vm._v("activated\n            ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "td",
-              { staticClass: "text-center" },
-              [
-                _c("v-icon", { attrs: { large: "", danger: "" } }, [
-                  _vm._v("delete_forever")
+  return _c(
+    "v-layout",
+    { attrs: { row: "" } },
+    [
+      _c("v-data-table", {
+        staticClass: "elevation-1",
+        attrs: { colmd12: "", headers: _vm.headers, items: _vm.team.users },
+        scopedSlots: _vm._u([
+          {
+            key: "items",
+            fn: function(props) {
+              return [
+                _c("td", [_vm._v(_vm._s(props.item.id))]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _vm._v(_vm._s(props.item.name))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _vm._v(_vm._s(props.item.email))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _c("span", { staticClass: "text-danger" }, [
+                    _vm._v("activated\n            ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  { staticClass: "text-center" },
+                  [
+                    _c("v-icon", { attrs: { large: "", danger: "" } }, [
+                      _vm._v("delete_forever")
+                    ])
+                  ],
+                  1
+                )
+              ]
+            }
+          }
+        ])
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "600px" },
+          scopedSlots: _vm._u([
+            {
+              key: "activator",
+              fn: function(ref) {
+                var on = ref.on
+                return [
+                  _c(
+                    "v-btn",
+                    _vm._g({ attrs: { color: "primary", dark: "" } }, on),
+                    [_vm._v("Open Dialog")]
+                  )
+                ]
+              }
+            }
+          ]),
+          model: {
+            value: _vm.dialog,
+            callback: function($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog"
+          }
+        },
+        [
+          _vm._v(" "),
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", [
+                _c("span", { staticClass: "headline" }, [
+                  _vm._v("User Profile")
                 ])
-              ],
-              1
-            )
-          ]
-        }
-      }
-    ])
-  })
+              ]),
+              _vm._v(" "),
+              _c("v-card-text"),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "blue darken-1", flat: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialog = false
+                        }
+                      }
+                    },
+                    [_vm._v("Close")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "blue darken-1", flat: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialog = false
+                        }
+                      }
+                    },
+                    [_vm._v("Save")]
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -72116,6 +72253,46 @@ var render = function() {
     "div",
     {},
     [
+      _c("v-data-table", {
+        staticClass: "elevation-1",
+        attrs: { colmd12: "", headers: _vm.headers, items: _vm.team.users },
+        scopedSlots: _vm._u([
+          {
+            key: "items",
+            fn: function(props) {
+              return [
+                _c("td", [_vm._v(_vm._s(props.item.id))]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _vm._v(_vm._s(props.item.name))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _vm._v(_vm._s(props.item.email))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _c("span", { staticClass: "text-danger" }, [
+                    _vm._v("activated\n                ")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "td",
+                  { staticClass: "text-center" },
+                  [
+                    _c("v-icon", { attrs: { large: "", danger: "" } }, [
+                      _vm._v("delete_forever")
+                    ])
+                  ],
+                  1
+                )
+              ]
+            }
+          }
+        ])
+      }),
+      _vm._v(" "),
       _c(
         "v-dialog",
         {
