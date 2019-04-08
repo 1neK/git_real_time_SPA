@@ -4330,6 +4330,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -61352,15 +61354,26 @@ var render = function() {
                   _vm._v(_vm._s(props.item.email))
                 ]),
                 _vm._v(" "),
-                _c("td", { staticClass: "text-center" }, [
-                  props.item.is_active
-                    ? _c("span", { staticClass: "text-danger" }, [
-                        _vm._v("activated\n                ")
-                      ])
-                    : _c("span", { staticClass: "label bg-danger" }, [
-                        _vm._v("diascvated\n                ")
-                      ])
-                ]),
+                _c(
+                  "td",
+                  { staticClass: "text-center" },
+                  [
+                    _c("span", { staticClass: "text-danger" }),
+                    _vm._v(" "),
+                    props.item.is_active
+                      ? _c(
+                          "v-chip",
+                          { attrs: { color: "green", "text-color": "white" } },
+                          [_vm._v("activated")]
+                        )
+                      : _c(
+                          "v-chip",
+                          { attrs: { color: "blue", "text-color": "white" } },
+                          [_vm._v("Pending")]
+                        )
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _c("td", { staticClass: "text-center" }, [
                   _vm._v(_vm._s(props.item.roles))

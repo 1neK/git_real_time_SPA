@@ -7,10 +7,12 @@
                 <td class="text-center">{{ props.item.name }}</td>
                 <td class="text-center">{{ props.item.email }}</td>
                 <td class="text-center">
-                <span class="text-danger" v-if="props.item.is_active">activated
+                <span class="text-danger">
                 </span>
 
-                    <span class="label bg-danger" v-else="">diascvated
+                    <v-chip color="green" v-if="props.item.is_active" text-color="white">activated</v-chip>
+
+                    <v-chip color="blue" v-else text-color="white">Pending</v-chip>
                 </span>
 
                 </td>
