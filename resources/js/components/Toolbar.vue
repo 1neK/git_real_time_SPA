@@ -9,19 +9,34 @@
                         <router-link class="white--text" to="/">Forum</router-link>
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
-                <app-notification v-if="loggedIn"></app-notification>
-                    <div class="hidden-sm-and-down">
-                        <router-link
-                         v-for="item in items"
-                         :key="item.title"
-                         :to="item.to"
-                         v-if="item.show" >
-                         <v-btn flat>{{item.title}}</v-btn>
-                        </router-link>
+                    <app-notification v-if="loggedIn"></app-notification>
+                    <div class="hidden-sm-and-down" >
+                        <v-menu offset-y>
+                        <template v-slot:activator="{ on }">
+                            <v-btn
+                            icon slot="activator"
+                            dark
+                            v-on="on"
+                            >
+                                <v-icon>menu</v-icon>
+                            </v-btn>
+                        </template>
+                        <v-list dense>
+                            <router-link
+                            v-for="item in items"
+                            :key="item.title"
+                            :to="item.to"
+                            v-if="item.show" >
+                                <v-list-tile-title>
+                                    {{item.title}}
+                                </v-list-tile-title>
+                            </router-link>
+                        </v-list>
+                        </v-menu>
                     </div>
+
                 </v-toolbar>
             </v-app>
-
         </div>
     </v-toolbar>
 </template>

@@ -1,7 +1,14 @@
 
 <template>
-<v-container>
-  <v-form @submit.prevent="login">
+<v-layout>
+    <v-flex xs12 sm6 offset-sm3>
+        <v-card class="text-xs-center">
+            <v-card-title primary-title>
+                <div>
+                    <h2> Login </h2>
+                </div>
+            </v-card-title>
+         <v-form @submit.prevent="login">
 
           <v-text-field
             v-model="form.email"
@@ -17,10 +24,12 @@
             required
           ></v-text-field>
 
-  <v-btn color="green" type="submit">Login</v-btn>
-  <router-link to="/signup"><v-btn color="blue">Sign Up</v-btn></router-link>
+  <v-btn color="blue-grey" type="submit">Login</v-btn>
+  <router-link to="/signup"><v-btn color="light">Sign Up</v-btn></router-link>
   </v-form>
-  </v-container>
+  </v-card>
+    </v-flex>
+</v-layout>
 </template>
 
 
@@ -33,7 +42,7 @@ export default {
             return {
                 form :{
                     email:null,
-                    password:null
+                    password:null,
                 }
             }
         },

@@ -79,7 +79,7 @@
             </coordinator>-->
 
 </v-list>
-      </div>
+</div>
 </template>
 
 <script>

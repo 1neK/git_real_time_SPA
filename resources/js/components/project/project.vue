@@ -22,18 +22,24 @@
             </v-btn>
           </v-card-text>
           <v-layout row wrap>
-          <v-flex xs9 sm4  v-for="project in projects" :key="project.id">
+
+          <v-flex xs9 sm4 offset-sm1  v-for="project in projects" :key="project.id">
             <v-card :to="{ name: 'project-single', params: { id:  project.slug } }">
-              <v-card-title primary-title>
+                <v-toolbar color="white" flat>
+                    <v-spacer></v-spacer>
+                    <v-card-actions>
+                        <v-btn flat >
+                            <v-icon color="grey darken-4"> edit </v-icon>
+                        </v-btn>
+                    </v-card-actions>
+                </v-toolbar>
+              <v-card-title>
                 <div>
-                  <h3 class="headline mb-0">{{ project.name }}</h3>
-                  <div>  task :  {{ project.task_number }} </div>
+                    <h3 class="headline mb-0">{{ project.name }}</h3>
+                    <div>  task :  {{ project.task_number }} </div>
                 </div>
               </v-card-title>
-            <v-card-actions>
-                <v-btn flat color="orange">edit</v-btn>
 
-             </v-card-actions>
            </v-card>
           </v-flex>
   </v-layout>

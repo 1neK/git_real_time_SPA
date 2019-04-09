@@ -22,9 +22,18 @@
                     </v-btn>
                 </v-card-text>
                 <v-layout row wrap>
-                    <v-flex xs9 sm4 v-for="team in teams" :key="team.id">
+
+                    <v-flex xs9 sm4 offset-sm1 v-for="team in teams" :key="team.id">
 
                         <v-card :to="{ name: 'team-single', params: { id:  team.slug } }">
+                            <v-toolbar color="white" flat>
+                                <v-spacer></v-spacer>
+                                     <v-card-actions>
+                                        <v-btn flat >
+                                            <v-icon color="grey darken-4"> edit </v-icon>
+                                        </v-btn>
+                                    </v-card-actions>
+                            </v-toolbar>
                             <v-card-title primary-title>
                                 <div>
                                     <h3 class="headline mb-0">{{ team.name }}</h3>
@@ -32,12 +41,9 @@
                                     <div> users : {{ team.user_number }}</div>
                                 </div>
                             </v-card-title>
-                            <v-card-actions>
-                                <v-btn flat color="orange">edit</v-btn>
-
-                            </v-card-actions>
                         </v-card>
                     </v-flex>
+
                 </v-layout>
             </template>
 
@@ -99,6 +105,7 @@
                 editSlugt: null,
                 errors: null
             }
+
         },
         created() {
             if (!User.admin()) {

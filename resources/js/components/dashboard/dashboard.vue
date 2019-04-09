@@ -68,7 +68,7 @@
                                     <v-icon>check_circle</v-icon>
                                 </v-flex>
                                 <v-flex>
-                                    Total Validated
+                                    Total Completed
                                 </v-flex>
                             </v-flex>
                         </div>
@@ -77,7 +77,7 @@
                                     <v-icon>check_circle</v-icon>
                             </v-flex>
                             <v-flex>
-                                Total Completed
+                                Productivity
                             </v-flex>
                         </v-flex>
                         <v-spacer></v-spacer>
@@ -91,6 +91,27 @@
             <v-flex xs2>
                 <v-btn color="grey"> Download Excell </v-btn>
             </v-flex>
+
+            <div>
+                 <v-data-table colmd12  :headers="headers"  class="elevation-1">
+            <template v-slot:items="props">
+                <td>{{ props.item.id }}</td>
+                <td class="text-center">{{ props.item.type }}</td>
+                <td class="text-center">{{ props.item.user }}</td>
+                <td class="text-center">{{ props.item.start_date }}</td>
+                <td class="text-center">
+                <span class="text-danger">activated
+                </span>
+                </td>
+                <td class="text-center">
+                    <v-icon large danger>edit</v-icon>
+                    <v-icon large danger>delete_forever</v-icon>
+                </td>
+
+
+            </template>
+        </v-data-table>
+            </div>
 
 
         </v-layout>

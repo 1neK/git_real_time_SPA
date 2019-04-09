@@ -1,4 +1,5 @@
 <template>
+
     <v-container>
 
             <v-alert v-if="errors" type="error" :value="true" >
@@ -19,21 +20,16 @@
 
         </v-form>
 
-        <v-card>
-             <v-toolbar color="indigo" dark dense>
+        <v-layout>
+        <v-flex xs12 sm8 offset-sm2>
+        <v-card class="text-xs-center">
+             <v-toolbar color="grey darken-1" dark dense>
           <v-toolbar-title>Categories</v-toolbar-title>
         </v-toolbar>
 
-        <v-list>
+        <v-list >
             <div v-for="(category,index) in categories" :key="category.id">
                 <v-list-tile>
-
-                <v-list-tile-action>
-                    <v-btn icon small @click="edit(index)">
-                        <v-icon color="orange">edit</v-icon>
-                    </v-btn>
-                </v-list-tile-action>
-
 
                 <v-list-tile-content>
                     <v-list-tile-content>
@@ -41,10 +37,16 @@
                     </v-list-tile-content>
                 </v-list-tile-content>
 
+                <v-list-tile-action>
+                    <v-btn icon small @click="edit(index)">
+                        <v-icon color="grey darken-4">edit</v-icon>
+                    </v-btn>
+                </v-list-tile-action>
+
 
                 <v-list-tile-action icon small @click="destroy(category.slug,index)">
                     <v-btn icon small>
-                        <v-icon color="red">delete</v-icon>
+                        <v-icon color="grey darken-4">delete</v-icon>
                     </v-btn>
                 </v-list-tile-action>
             </v-list-tile>
@@ -54,7 +56,10 @@
         </v-list>
 
         </v-card>
+        </v-flex>
+        </v-layout>
     </v-container>
+
 </template>
 
 <script>

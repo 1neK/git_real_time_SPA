@@ -1,5 +1,12 @@
 <template>
-    <v-container>
+<v-layout>
+    <v-flex xs12 sm6 offset-sm3>
+        <v-card class="text-xs-center">
+            <v-card-title primary-title>
+                <div>
+                    <h2> Sign Up </h2>
+                </div>
+            </v-card-title>
   <v-form @submit.prevent="signup">
 
           <v-text-field
@@ -17,24 +24,26 @@
             required
           ></v-text-field>
   <!--<span class="red--text" v-if="errors.email" >{{errors.email[0]}}</span>-->
-        <v-text-field
+          <v-text-field
             v-model="form.password"
             type="password"
             label="Password"
             required
           ></v-text-field>
    <!--<span class="red--text" v-if="errors.password" >{{errors.password[0]}}</span>-->
-        <v-text-field
+          <v-text-field
             v-model="form.password_confirmation"
             type="password"
             label="Password"
             required
           ></v-text-field>
 
-  <v-btn color="green" type="submit">Signup</v-btn>
-  <router-link to="/login"><v-btn color="blue">Login</v-btn></router-link>
-  </v-form>
-  </v-container>
+            <v-btn color="blue-grey" type="submit">Signup</v-btn>
+            <router-link to="/login"><v-btn color="light">Login</v-btn></router-link>
+            </v-form>
+        </v-card>
+    </v-flex>
+</v-layout>
 </template>
 
 <script>
@@ -45,7 +54,7 @@ export default {
                 name:null,
                 email:null,
                 password:null,
-                password_confirmation:null
+                password_confirmation:null,
             },
             errors:{name:null, email:null,}
 
