@@ -10,21 +10,69 @@
                          <v-flex xs2>
                             <v-card-text class="px-0">Project</v-card-text>
                             <v-select
-                            :items="items"
+                            :items="projects"
+                            item-text="name"
+                            item-value="id"
                             label="Standard"
                             ></v-select>
 
                             <v-card-text class="px-0">Start Date</v-card-text>
-                            <v-select
-                            :items="items"
-                            label="Standard"
-                            ></v-select>
+                             <v-menu
+                                     ref="menu"
+                                     v-model="menu"
+                                     :close-on-content-click="false"
+                                     :nudge-right="40"
+                                     :return-value.sync="date"
+                                     lazy
+                                     transition="scale-transition"
+                                     offset-y
+                                     full-width
+                                     min-width="290px"
+                             >
+                                 <template v-slot:activator="{ on }">
+                                     <v-text-field
+                                             v-model="date"
+                                             label="Picker in menu"
+                                             prepend-icon="event"
+                                             readonly
+                                             v-on="on"
+                                     ></v-text-field>
+                                 </template>
+                                 <v-date-picker v-model="date" no-title scrollable>
+                                     <v-spacer></v-spacer>
+                                     <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
+                                     <v-btn flat color="primary" @click="$refs.menu.save(date)">OK</v-btn>
+                                 </v-date-picker>
+                             </v-menu>
 
                             <v-card-text class="px-0">Due Date</v-card-text>
-                            <v-select
-                            :items="items"
-                            label="Standard"
-                            ></v-select>
+                             <v-menu
+                                     ref="menu"
+                                     v-model="menu"
+                                     :close-on-content-click="false"
+                                     :nudge-right="40"
+                                     :return-value.sync="date"
+                                     lazy
+                                     transition="scale-transition"
+                                     offset-y
+                                     full-width
+                                     min-width="290px"
+                             >
+                                 <template v-slot:activator="{ on }">
+                                     <v-text-field
+                                             v-model="date"
+                                             label="Picker in menu"
+                                             prepend-icon="event"
+                                             readonly
+                                             v-on="on"
+                                     ></v-text-field>
+                                 </template>
+                                 <v-date-picker v-model="date" no-title scrollable>
+                                     <v-spacer></v-spacer>
+                                     <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
+                                     <v-btn flat color="primary" @click="$refs.menu.save(date)">OK</v-btn>
+                                 </v-date-picker>
+                             </v-menu>
                         </v-flex>
 
                         <v-flex xs2>
@@ -36,8 +84,10 @@
 
                             <v-card-text class="px-0">Affected To</v-card-text>
                             <v-select
-                            :items="items"
+                            :items="users"
                             label="Standard"
+                            item-text="name"
+                            item-value="id"
                             ></v-select>
 
                             <v-card-text class="px-0">Link</v-card-text>
@@ -106,12 +156,15 @@
                 ],
 
 
+
+
                 dialog: false,
                 form: {
                     name: null
                 },
                 tasks: [],
-                projects: {},
+                users: [],
+                projects: [],
                 editSlugt: null,
                 errors: null
             }
@@ -125,6 +178,7 @@
 
 
             axios.get('/api/project').then(res => this.projects = res.data.data);
+            axios.get('/api/user').then(res => this.users = res.data)
         },
 
         methods: {

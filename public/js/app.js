@@ -3857,6 +3857,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3882,7 +3932,8 @@ __webpack_require__.r(__webpack_exports__);
         name: null
       },
       tasks: [],
-      projects: {},
+      users: [],
+      projects: [],
       editSlugt: null,
       errors: null
     };
@@ -3899,6 +3950,9 @@ __webpack_require__.r(__webpack_exports__);
     });
     axios.get('/api/project').then(function (res) {
       return _this.projects = res.data.data;
+    });
+    axios.get('/api/user').then(function (res) {
+      return _this.users = res.data;
     });
   },
   methods: {
@@ -60897,24 +60951,239 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("v-select", {
-                      attrs: { items: _vm.items, label: "Standard" }
+                      attrs: {
+                        items: _vm.projects,
+                        "item-text": "name",
+                        "item-value": "id",
+                        label: "Standard"
+                      }
                     }),
                     _vm._v(" "),
                     _c("v-card-text", { staticClass: "px-0" }, [
                       _vm._v("Start Date")
                     ]),
                     _vm._v(" "),
-                    _c("v-select", {
-                      attrs: { items: _vm.items, label: "Standard" }
-                    }),
+                    _c(
+                      "v-menu",
+                      {
+                        ref: "menu",
+                        attrs: {
+                          "close-on-content-click": false,
+                          "nudge-right": 40,
+                          "return-value": _vm.date,
+                          lazy: "",
+                          transition: "scale-transition",
+                          "offset-y": "",
+                          "full-width": "",
+                          "min-width": "290px"
+                        },
+                        on: {
+                          "update:returnValue": function($event) {
+                            _vm.date = $event
+                          },
+                          "update:return-value": function($event) {
+                            _vm.date = $event
+                          }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "activator",
+                            fn: function(ref) {
+                              var on = ref.on
+                              return [
+                                _c(
+                                  "v-text-field",
+                                  _vm._g(
+                                    {
+                                      attrs: {
+                                        label: "Picker in menu",
+                                        "prepend-icon": "event",
+                                        readonly: ""
+                                      },
+                                      model: {
+                                        value: _vm.date,
+                                        callback: function($$v) {
+                                          _vm.date = $$v
+                                        },
+                                        expression: "date"
+                                      }
+                                    },
+                                    on
+                                  )
+                                )
+                              ]
+                            }
+                          }
+                        ]),
+                        model: {
+                          value: _vm.menu,
+                          callback: function($$v) {
+                            _vm.menu = $$v
+                          },
+                          expression: "menu"
+                        }
+                      },
+                      [
+                        _vm._v(" "),
+                        _c(
+                          "v-date-picker",
+                          {
+                            attrs: { "no-title": "", scrollable: "" },
+                            model: {
+                              value: _vm.date,
+                              callback: function($$v) {
+                                _vm.date = $$v
+                              },
+                              expression: "date"
+                            }
+                          },
+                          [
+                            _c("v-spacer"),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { flat: "", color: "primary" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.menu = false
+                                  }
+                                }
+                              },
+                              [_vm._v("Cancel")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { flat: "", color: "primary" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.$refs.menu.save(_vm.date)
+                                  }
+                                }
+                              },
+                              [_vm._v("OK")]
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
                     _c("v-card-text", { staticClass: "px-0" }, [
                       _vm._v("Due Date")
                     ]),
                     _vm._v(" "),
-                    _c("v-select", {
-                      attrs: { items: _vm.items, label: "Standard" }
-                    })
+                    _c(
+                      "v-menu",
+                      {
+                        ref: "menu",
+                        attrs: {
+                          "close-on-content-click": false,
+                          "nudge-right": 40,
+                          "return-value": _vm.date,
+                          lazy: "",
+                          transition: "scale-transition",
+                          "offset-y": "",
+                          "full-width": "",
+                          "min-width": "290px"
+                        },
+                        on: {
+                          "update:returnValue": function($event) {
+                            _vm.date = $event
+                          },
+                          "update:return-value": function($event) {
+                            _vm.date = $event
+                          }
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "activator",
+                            fn: function(ref) {
+                              var on = ref.on
+                              return [
+                                _c(
+                                  "v-text-field",
+                                  _vm._g(
+                                    {
+                                      attrs: {
+                                        label: "Picker in menu",
+                                        "prepend-icon": "event",
+                                        readonly: ""
+                                      },
+                                      model: {
+                                        value: _vm.date,
+                                        callback: function($$v) {
+                                          _vm.date = $$v
+                                        },
+                                        expression: "date"
+                                      }
+                                    },
+                                    on
+                                  )
+                                )
+                              ]
+                            }
+                          }
+                        ]),
+                        model: {
+                          value: _vm.menu,
+                          callback: function($$v) {
+                            _vm.menu = $$v
+                          },
+                          expression: "menu"
+                        }
+                      },
+                      [
+                        _vm._v(" "),
+                        _c(
+                          "v-date-picker",
+                          {
+                            attrs: { "no-title": "", scrollable: "" },
+                            model: {
+                              value: _vm.date,
+                              callback: function($$v) {
+                                _vm.date = $$v
+                              },
+                              expression: "date"
+                            }
+                          },
+                          [
+                            _c("v-spacer"),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { flat: "", color: "primary" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.menu = false
+                                  }
+                                }
+                              },
+                              [_vm._v("Cancel")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: { flat: "", color: "primary" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.$refs.menu.save(_vm.date)
+                                  }
+                                }
+                              },
+                              [_vm._v("OK")]
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
                   ],
                   1
                 ),
@@ -60936,7 +61205,12 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("v-select", {
-                      attrs: { items: _vm.items, label: "Standard" }
+                      attrs: {
+                        items: _vm.users,
+                        label: "Standard",
+                        "item-text": "name",
+                        "item-value": "id"
+                      }
                     }),
                     _vm._v(" "),
                     _c("v-card-text", { staticClass: "px-0" }, [
