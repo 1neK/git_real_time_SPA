@@ -69,14 +69,14 @@ return response()->json($teams);
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RoleRequest $request)
+    public function store(Request $request)
     {
         // Category::create($request->all());
        $role  = new Role();
        $role->name  = $request->name;
        $role->slug  = str_slug($request->name);
        $role->save();
-       return response(new RoleResource($role),Response::HTTP_CREATED);
+       return response()->json('works');
     }
 
     /**
@@ -108,11 +108,13 @@ return response()->json($teams);
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, $role)
     {
-        $role->update(['name'=>$request->name,
-        'slug'=>str_slug($request->name)]);
-        return response(new RoleResource($role), Response::HTTP_ACCEPTED);
+
+        $role =Role::find($role);
+        $role->name =$request->name;
+       $role->save();
+        return response()->json('updated');
     }
 
     /**
@@ -121,10 +123,11 @@ return response()->json($teams);
      * @param  \App\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($role)
     {
-        $role->delete();
-        return response(null,Response::HTTP_NO_CONTENT);
+      $role =  Role::find($role);
+      $role->delete();
+        return response()->json('deleted');
     }
 
     public function all_users()

@@ -1,10 +1,39 @@
 <template>
 
-    <div class="">
+    <div class="sm8">
 
         <v-dialog v-model="dialog" width="500">
 
             <template v-slot:activator="{ on }">
+
+                <v-layout row wrap>
+
+                    <v-flex sm4 v-for="team in teams" :key="team.id">
+
+                        <v-card>
+                            <v-toolbar color="white" flat>
+                                <v-spacer></v-spacer>
+
+                            </v-toolbar>
+                            <v-card-title primary-title :to="{ name: 'team-single', params: { id:  team.slug } }">
+                                <div>
+                                    <h3 class="headline mb-0">{{ team.name }}</h3>
+                                    <div> task : {{ team.task_number }}</div>
+                                    <div> users : {{ team.user_number }}</div>
+                                </div>
+                            </v-card-title>
+                            <v-card-actions>
+                                <v-btn flat>
+                                    <v-icon color="grey darken-4" @click="editpopup(team)"> edit</v-icon>
+                                </v-btn>
+                                <v-btn flat @click="destroy( team.id )">
+                                    <v-icon color="red"> delete</v-icon>
+                                </v-btn>
+                            </v-card-actions>
+                        </v-card>
+                    </v-flex>
+
+                </v-layout>
 
                 <v-card-text class="text-right" style="height: 100px; position: relative">
 
@@ -13,7 +42,7 @@
                             absolute
                             dark
                             fab
-                            top
+                            bottom
                             right
                             color="pink"
 
@@ -21,30 +50,7 @@
                         <v-icon>add</v-icon>
                     </v-btn>
                 </v-card-text>
-                <v-layout row wrap>
 
-                    <v-flex xs9 sm4 offset-sm1 v-for="team in teams" :key="team.id">
-
-                        <v-card :to="{ name: 'team-single', params: { id:  team.slug } }">
-                            <v-toolbar color="white" flat>
-                                <v-spacer></v-spacer>
-                                     <v-card-actions>
-                                        <v-btn flat >
-                                            <v-icon color="grey darken-4"> edit </v-icon>
-                                        </v-btn>
-                                    </v-card-actions>
-                            </v-toolbar>
-                            <v-card-title primary-title>
-                                <div>
-                                    <h3 class="headline mb-0">{{ team.name }}</h3>
-                                    <div> task : {{ team.task_number }}</div>
-                                    <div> users : {{ team.user_number }}</div>
-                                </div>
-                            </v-card-title>
-                        </v-card>
-                    </v-flex>
-
-                </v-layout>
             </template>
 
             <v-card>
@@ -84,7 +90,7 @@
                         </v-btn>
                         <v-btn type="submit" :disabled="disabled" color="cyan" v-if="editSlugt">Update</v-btn>
 
-                        <v-btn type="submit" :disabled="disabled" color="teal" v-else>Create</v-btn>
+                        <v-btn type="submit" :disabled="disabled" color="teal" v-else>{{form.btn_name}}</v-btn>
                     </v-card-actions>
                 </v-form>
             </v-card>
@@ -98,7 +104,9 @@
             return {
                 dialog: false,
                 form: {
-                    name: null
+                    id: null,
+                    name: null,
+                    btn_name: 'create'
                 },
                 teams: {},
                 roles: {},
@@ -108,48 +116,70 @@
 
         },
         created() {
-            if (!User.admin()) {
-                this.$router.push('/forum')
-            }
-            axios.get('/api/role')
-                .then(res => this.roles = res.data.data)
 
-            axios.get('/api/count-team')
-                .then(res => {
-                    this.teams = res.data;
-                    console.log(res.data);
-                })
+            axios.get('/api/role')
+                .then(res => this.roles = res.data.data);
+
+            this.getData();
+
+
         },
 
         methods: {
             submit() {
-                this.editSlugt ? this.update() : this.create()
+                this.form.id ? this.update() : this.create()
             },
             update() {
-                axios.post(`/api/role/${this.editSlugt}`, this.form)
+                axios.put(`/api/team/${this.form.id}`, this.form)
                     .then(res => {
-                        this.roles.unshift(res.data)
+
                         this.form.name = null
+                        this.dialog = false;
+                        this.getData();
+
                     })
             },
             create() {
-                axios.post('/api/role', this.form)
+                axios.post('/api/team?token=' + localStorage.getItem('token'), this.form)
                     .then(res => {
-                        this.roles.unshift(res.data)
+
                         this.form.name = null
+                        this.dialog = false;
+                        this.getData();
                     })
                     .catch(error => this.errors = error.response.data.errors)
             },
-            destroy(slug, index) {
-                axios.delete(`/api/role/${slug}`)
-                    .then(res => this.roles.splice(index, 1))
+            destroy(slug) {
+                axios.delete(`/api/team/${slug}`)
+                    .then(res => this.getData())
             },
-            edit(index) {
 
-                this.form.name = this.roles[index].name
-                this.editSlugt = this.roles[index].slug
-                this.roles.splice(index, 1)
 
+            editpopup(team) {
+                this.form.name = team.name;
+                this.form.id = team.id;
+                this.form.btn_name = 'update';
+                this.dialog = true
+
+            },
+
+            reset() {
+
+                this.form.name = null;
+                this.form.id = null;
+                this.form.btn_name = 'created';
+
+            },
+
+            getData() {
+
+                axios.get('/api/count-team')
+                    .then(res => {
+                        this.teams = res.data;
+                        console.log(res.data);
+                    });
+
+                this.reset();
             }
         },
         computed: {

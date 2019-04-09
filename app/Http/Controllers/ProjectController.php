@@ -120,10 +120,15 @@ class ProjectController extends Controller
      * @param  \App\Model\Project $question
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, $project)
     {
-        $project->update($request->all());
-        return response('Update', Response::HTTP_ACCEPTED);
+
+        $project =Project::find($project);
+        $project->name =$request->name;
+        $project->save();
+        return response()->json('updated');
+
+
     }
 
     /**
@@ -132,10 +137,12 @@ class ProjectController extends Controller
      * @param  \App\Model\Project $question
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy($project)
     {
+        $project =  Project::find($project);
         $project->delete();
-        return response(null, Response::HTTP_NO_CONTENT);
+        return response()->json('deleted');
+
     }
 }
 

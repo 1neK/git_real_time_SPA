@@ -6,6 +6,33 @@
 
       <template v-slot:activator="{ on }">
 
+          <v-layout row wrap>
+
+              <v-flex xs9 sm4 v-for="project in projects" :key="project.id">
+                  <v-card >
+
+                      <v-card-title :to="{ name: 'project-single', params: { id:  project.slug } }">
+                          <div>
+                              <h3 class="headline mb-0">{{ project.name }}</h3>
+                              <div> task : {{ project.task_number }}</div>
+                          </div>
+                      </v-card-title>
+                      <v-toolbar color="white" flat>
+                          <v-spacer></v-spacer>
+                          <v-card-actions>
+                              <v-btn flat>
+                                  <v-icon color="grey darken-4" @click="editpopup(project)"> edit</v-icon>
+                              </v-btn>
+                              <v-btn flat @click="destroy( project.id )">
+                                  <v-icon color="red"> delete</v-icon>
+                              </v-btn>
+                          </v-card-actions>
+                      </v-toolbar>
+
+                  </v-card>
+              </v-flex>
+          </v-layout>
+
           <v-card-text class="text-right" style="height: 100px; position: relative">
 
             <v-btn
@@ -13,7 +40,7 @@
               absolute
               dark
               fab
-              top
+              bottom
               right
               color="pink"
 
@@ -21,28 +48,7 @@
               <v-icon>add</v-icon>
             </v-btn>
           </v-card-text>
-          <v-layout row wrap>
 
-          <v-flex xs9 sm4 offset-sm1  v-for="project in projects" :key="project.id">
-            <v-card :to="{ name: 'project-single', params: { id:  project.slug } }">
-                <v-toolbar color="white" flat>
-                    <v-spacer></v-spacer>
-                    <v-card-actions>
-                        <v-btn flat >
-                            <v-icon color="grey darken-4"> edit </v-icon>
-                        </v-btn>
-                    </v-card-actions>
-                </v-toolbar>
-              <v-card-title>
-                <div>
-                    <h3 class="headline mb-0">{{ project.name }}</h3>
-                    <div>  task :  {{ project.task_number }} </div>
-                </div>
-              </v-card-title>
-
-           </v-card>
-          </v-flex>
-  </v-layout>
       </template>
 
       <v-card>
@@ -83,7 +89,7 @@
           </v-btn>
            <v-btn type="submit" :disabled="disabled" color="cyan" v-if="editSlugt">Update</v-btn>
 
-          <v-btn type="submit" :disabled="disabled" color="teal" v-else>Create</v-btn>
+          <v-btn type="submit" :disabled="disabled" color="teal" v-else>{{form.btn_name}}</v-btn>
         </v-card-actions>
          </v-form>
       </v-card>
@@ -96,8 +102,10 @@
  data(){
         return{
             dialog:false,
-            form:{
-                name:null
+            form: {
+                id: null,
+                name: null,
+                btn_name: 'create'
             },
             projects:{},
             //roles:{},
@@ -119,12 +127,13 @@
 
     methods:{
         submit(){
-            this.editSlugt  ?  this.update() : this.create()
+            this.form.id  ?  this.update() : this.create()
         },
         update(){
-            axios.post(`/api/project/${this.editSlugt}`,this.form)
+            axios.put(`/api/project/${this.form.id}`,this.form)
             .then(res =>{
-                    this.roles.unshift(res.data)
+
+                this.dialog = false;
                 this.getData();
                 })
         },
@@ -139,7 +148,7 @@
                 })
                 .catch(error => this.errors = error.response.data.errors)
         },
-        destroy(slug, index){
+        destroy(slug){
             axios.delete(`/api/project/${slug}`)
                 .then(res =>   this.getData())
         },
@@ -149,11 +158,25 @@
             this.editSlugt = this.projects[index].slug
             this.projects.splice(index,1)
 
-        }
-        ,
+        },
+        editpopup(project) {
+            this.form.name = project.name;
+            this.form.id = project.id;
+            this.form.btn_name = 'update';
+            this.dialog = true
+
+        },
+
+        reset() {
+
+            this.form.name = null;
+            this.form.id = null;
+            this.form.btn_name = 'created';
+
+        },
         getData(){
-            axios.get('/api/project')
-                .then(res => this.projects = res.data.data)
+            axios.get('/api/project').then(res => this.projects = res.data.data);
+            this.reset();
 
         }
     },
