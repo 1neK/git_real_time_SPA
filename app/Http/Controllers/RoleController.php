@@ -41,8 +41,8 @@ class RoleController extends Controller
         {
              $count =User::where('role_id',$team->id)->count();
              $team->user_number=$count;
-             $task =Task::where('role_id',$team->id)->count();
-             $team->task_number=$task;
+             //$task =Task::where('role_id',$team->id)->count();
+             $team->task_number=0;
 
         }
 

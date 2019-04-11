@@ -18,8 +18,8 @@
                 </td>
                 <td class="text-center">{{ props.item.roles }}</td>
                 <td class="text-center">
-                    <v-icon large danger>edit</v-icon>
-                    <v-icon large danger>delete_forever</v-icon>
+                    <v-btn icon><v-icon large danger>edit</v-icon></v-btn>
+                    <v-btn icon><v-icon large danger>delete_forever</v-icon></v-btn>
                 </td>
 
             </template>

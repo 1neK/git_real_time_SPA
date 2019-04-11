@@ -1,6 +1,6 @@
 <template>
-<div>
-    <div>
+<v-container>
+    <v-container>
         <v-container fluid grid-list-md >
         <v-layout row wrap>
                 <v-flex md12 xs12 md1>
@@ -20,19 +20,19 @@
                             <v-card-text class="px-0">Start Date</v-card-text>
                              <v-menu
                                      v-model="menu1"
-        :close-on-content-click="false"
-        :nudge-right="40"
-        lazy
-        transition="scale-transition"
-        offset-y
-        full-width
-        min-width="290px"
+                                    :close-on-content-click="false"
+                                    :nudge-right="40"
+                                    lazy
+                                    transition="scale-transition"
+                                    offset-y
+                                    full-width
+                                    min-width="290px"
                              >
                                  <template v-slot:activator="{ on }">
-                                     <v-text-field 
-                                     
+                                     <v-text-field
+
                                      v-model="form.start_date"
-                                           
+
                                              label="Picker in menu"
                                              prepend-icon="event"
                                              readonly
@@ -97,30 +97,29 @@
                             outline
                             v-model="form.description"
                             name="input-7-4"
-                            label="Outline textarea"
                             ></v-textarea>
 
-                         
+
                         </v-flex>
 
                         <v-flex md12 text-xs-center>
-                           <v-btn dark @click="add()">Add</v-btn></v-flex> 
+                           <v-btn dark @click="add()">Add</v-btn></v-flex>
 
 
         </v-layout>
     </v-container>
 
-</div>
+    </v-container>
 
-<div>
+<v-container>
     <v-data-table colmd12  :headers="headers" :items="tasks" class="elevation-1">
         <template v-slot:items="props">
             <td>{{ props.item.project }}</td>
             <td class="text-center">{{ props.item.type }}</td>
             <td class="text-center">{{ props.item.user }}</td>
-<td class="text-center">{{ props.item.start_date }}</td>
-<td class="text-center">{{ props.item.due_date }}</td>
-<td class="text-center">{{ props.item.status }}</td>
+            <td class="text-center">{{ props.item.start_date }}</td>
+            <td class="text-center">{{ props.item.due_date }}</td>
+            <td class="text-center">{{ props.item.status }}</td>
 
             <td class="text-center">
 
@@ -130,14 +129,13 @@
 
                 </td>
                 <td class="text-center">
-                    <v-icon large danger>delete_forever</v-icon>
+                    <v-btn icon><v-icon large danger>edit</v-icon></v-btn>
+                   <!-- <v-btn icon><v-icon large danger>delete_forever</v-icon></v-btn>-->
                 </td>
-
-
         </template>
     </v-data-table>
-</div>
-</div>
+</v-container>
+</v-container>
 </template>
 
 <script>
@@ -184,7 +182,7 @@ type:['Blog','Authentification','Edit Slider','Slider'],
             }
         },
         created() {
-       
+
          this.getData();
 
 
@@ -226,7 +224,7 @@ this.form.id=null;
                    this.form. description=null;
 
         },
-            
+
             getData(){
 
    axios.get('/api/task')
@@ -241,7 +239,7 @@ this.form.id=null;
                 return !(this.form.name)
             }
 
-            
+
         }
 
     }

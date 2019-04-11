@@ -6,7 +6,7 @@
                 <v-toolbar app fixed clipped-left>
                    <!-- <v-toolbar-side-icon v-if="loggedIn" class="white--text"  @click.stop="drawer = !drawer"></v-toolbar-side-icon>-->
                     <v-toolbar-title>
-                        <router-link class="white--text" to="/">Forum</router-link>
+                        <router-link class="white--text" to="/"></router-link>
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
                     <app-notification v-if="loggedIn"></app-notification>
