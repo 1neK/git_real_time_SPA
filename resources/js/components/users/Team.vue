@@ -15,9 +15,9 @@
                                 <v-spacer></v-spacer>
 
                             </v-toolbar>
-                            <v-card-title primary-title :to="{ name: 'team-single', params: { id:  team.slug } }">
+                            <v-card-title primary-title >
                                 <div>
-                                    <h3 class="headline mb-0">{{ team.name }}</h3>
+                                 <router-link :to="{ name: 'team-single', params: { id:  team.slug } }" class="headline mb-0" >  <h3 >{{ team.name }}</h3></router-link> 
                                     <div> task : {{ team.task_number }}</div>
                                     <div> users : {{ team.user_number }}</div>
                                 </div>

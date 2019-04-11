@@ -60229,7 +60229,7 @@ var render = function() {
           _vm.errors
             ? _c("v-alert", { attrs: { type: "error", value: true } }, [
                 _vm._v(
-                  "\n                Project name is required.\n            "
+                  "\r\n                Project name is required.\r\n            "
                 )
               ])
             : _vm._e(),
@@ -60636,7 +60636,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", { staticClass: "text-center" }, [
                   _c("span", { staticClass: "text-danger" }, [
-                    _vm._v("activated\n                ")
+                    _vm._v("activated\r\n                ")
                   ])
                 ]),
                 _vm._v(" "),
@@ -62047,7 +62047,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\n                Team name is required.\n            "
+                                "\r\n                Team name is required.\r\n            "
                               )
                             ]
                           )
@@ -62084,7 +62084,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\n            close\n          ")]
+                        [_vm._v("\r\n            close\r\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
@@ -62206,33 +62206,39 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "v-card-title",
-                                {
-                                  attrs: {
-                                    "primary-title": "",
-                                    to: {
-                                      name: "team-single",
-                                      params: { id: team.slug }
-                                    }
-                                  }
-                                },
+                                { attrs: { "primary-title": "" } },
                                 [
-                                  _c("div", [
-                                    _c("h3", { staticClass: "headline mb-0" }, [
-                                      _vm._v(_vm._s(team.name))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", [
-                                      _vm._v(
-                                        " task : " + _vm._s(team.task_number)
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", [
-                                      _vm._v(
-                                        " users : " + _vm._s(team.user_number)
-                                      )
-                                    ])
-                                  ])
+                                  _c(
+                                    "div",
+                                    [
+                                      _c(
+                                        "router-link",
+                                        {
+                                          staticClass: "headline mb-0",
+                                          attrs: {
+                                            to: {
+                                              name: "team-single",
+                                              params: { id: team.slug }
+                                            }
+                                          }
+                                        },
+                                        [_c("h3", [_vm._v(_vm._s(team.name))])]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("div", [
+                                        _vm._v(
+                                          " task : " + _vm._s(team.task_number)
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("div", [
+                                        _vm._v(
+                                          " users : " + _vm._s(team.user_number)
+                                        )
+                                      ])
+                                    ],
+                                    1
+                                  )
                                 ]
                               ),
                               _vm._v(" "),
