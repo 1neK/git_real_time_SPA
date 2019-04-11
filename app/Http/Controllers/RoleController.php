@@ -41,8 +41,8 @@ class RoleController extends Controller
         {
              $count =User::where('role_id',$team->id)->count();
              $team->user_number=$count;
-             $task =Task::where('role_id',$team->id)->count();
-             $team->task_number=$task;
+             //$task =Task::where('role_id',$team->id)->count();
+             $team->task_number=0;
 
         }
 
@@ -130,24 +130,5 @@ return response()->json($teams);
         return response()->json('deleted');
     }
 
-    public function all_users()
 
-    {
-        $users =User::all();
-        foreach ($users as $user)
-        {
-            $role=Role::find($user->role_id);
-            if(!empty($role)){
-
-                $user->roles=$role->name;
-            }else{
-                $user->roles="undifined";
-
-            }
-
-
-        }
-
-        return response()->json($users)  ;
-    }
 }

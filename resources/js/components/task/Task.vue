@@ -104,7 +104,11 @@
                         </v-flex>
 
                         <v-flex md12 text-xs-center>
-                           <v-btn dark @click="add()">Add</v-btn></v-flex> 
+                           <v-btn dark @click="submit()">{{form.btn_name}}</v-btn>
+
+                            <v-btn dark @click="reset()">reset</v-btn>
+
+     </v-flex>
 
 
         </v-layout>
@@ -122,16 +126,16 @@
 <td class="text-center">{{ props.item.due_date }}</td>
 <td class="text-center">{{ props.item.status }}</td>
 
-            <td class="text-center">
 
-                <span class="text-danger">activated
-                </span>
-
-
-                </td>
                 <td class="text-center">
-                    <v-icon large danger>delete_forever</v-icon>
+
+
+                    <v-btn flat @click="edit(props.item)">  <v-icon large color="green">edit</v-icon></v-btn>
+                    <v-btn flat @click="destroy( props.item.id )">
+                        <v-icon color="red"> delete</v-icon>
+                    </v-btn>
                 </td>
+
 
 
         </template>
@@ -150,6 +154,8 @@
                         sortable: false,
                         value: 'project'
                     },
+
+
                     {text: 'Task', value: 'type'},
                     {text: 'Affected to', value: 'user'},
                     {text: 'Start Date ', value: 'start_date'},
@@ -172,7 +178,8 @@ type:['Blog','Authentification','Edit Slider','Slider'],
                     start_date: new Date().toISOString().substr(0, 10),
                     type:null,
                     due_date:  new Date().toISOString().substr(0, 10),
-                    description:null
+                    description:null,
+                    btn_name:'add'
 
 
                 },
@@ -194,6 +201,17 @@ type:['Blog','Authentification','Edit Slider','Slider'],
 
         methods: {
 
+            submit(){
+                this.form.id  ?  this.update() : this.add()
+            },
+            update(){
+                axios.put(`/api/task/${this.form.id}`,this.form)
+                    .then(res =>{
+
+                        this.getData();
+                    })
+            },
+
             add(){
 
                 console.log(this.form);
@@ -203,15 +221,19 @@ type:['Blog','Authentification','Edit Slider','Slider'],
 
             },
 
-            destroy(slug, index) {
+            destroy(slug) {
                 axios.delete(`/api/task/${slug}`)
-                    .then(res => this.projects.splice(index, 1))
+                    .then(res => this.getData())
             },
+
             edit(index) {
 
-                this.form.name = this.tasks[index].name
-                this.editSlugt = this.tasks[index].slug
-                this.tasks.splice(index, 1)
+
+
+                this.form = Object.assign({},index);
+                this.form.btn_name="update";
+
+
 
             },
 
@@ -224,6 +246,7 @@ this.form.id=null;
                     this.form.type=null;
                 this.form.due_date=  new Date().toISOString().substr(0, 10);
                    this.form. description=null;
+                  this.form.btn_name="add";
 
         },
             

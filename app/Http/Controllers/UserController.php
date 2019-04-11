@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use App\Http\Requests\UserRequest;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -25,7 +27,22 @@ class UserController extends Controller
      */
     public function index()
     {
-        return UserResource::collection(App\User::latest()->get());
+        $users =User::all();
+        foreach ($users as $user)
+        {
+            $role=Role::find($user->role_id);
+            if(!empty($role)){
+
+                $user->roles=$role->name;
+            }else{
+                $user->roles="undifined";
+
+            }
+
+
+        }
+
+        return response()->json($users)  ;
     }
 
 
@@ -35,14 +52,19 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
         // Category::create($request->all());
        $user  = new User();
        $user->name  = $request->name;
-       $user->slug  = str_slug($request->name);
+        $user->password = Hash::make($request->password);
+
+       $user->status=$request->status;
+       $user->email=$request->email;
+       $user->role_id=$request->role_id;
+
        $user->save();
-       return response(new UserResource($user),Response::HTTP_CREATED);
+       return response()->json('saved');
     }
 
     /**
@@ -64,11 +86,18 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        $user->update(['name'=>$request->name,
-        'slug'=>str_slug($request->name)]);
-        return response(new UserResource($user), Response::HTTP_ACCEPTED);
+        $user  =  User::find($id);
+        $user->name  = $request->name;
+        if (!empty($request->password)) $user->password = Hash::make($request->password);
+
+        $user->status=$request->status;
+        $user->email=$request->email;
+        $user->role_id=$request->role_id;
+
+        $user->save();
+        return response()->json('saved');
     }
 
     /**
@@ -77,9 +106,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user  =  User::find($id);
         $user->delete();
-        return response(null,Response::HTTP_NO_CONTENT);
+        return response()->json("deleted");
     }
 }

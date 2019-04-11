@@ -20,6 +20,8 @@ class AuthController extends Controller
         $this->middleware('JWT', ['except' => ['login','signup']]);
     }
 
+
+
     /**
      * Get a JWT via given credentials.
      *
@@ -39,7 +41,7 @@ class AuthController extends Controller
         if($validator->fails()) {
             return response()->json(['success'=> false, 'error'=> $validator->messages()], 401);
         }
- $credentials['is_active'] = 1;
+ $credentials['status'] = 'Active';
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }

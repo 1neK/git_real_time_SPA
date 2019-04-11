@@ -3909,6 +3909,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3947,7 +3951,8 @@ __webpack_require__.r(__webpack_exports__);
         start_date: new Date().toISOString().substr(0, 10),
         type: null,
         due_date: new Date().toISOString().substr(0, 10),
-        description: null
+        description: null,
+        btn_name: 'add'
       },
       tasks: [],
       users: [],
@@ -3968,27 +3973,36 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   methods: {
-    add: function add() {
+    submit: function submit() {
+      this.form.id ? this.update() : this.add();
+    },
+    update: function update() {
       var _this2 = this;
+
+      axios.put("/api/task/".concat(this.form.id), this.form).then(function (res) {
+        _this2.getData();
+      });
+    },
+    add: function add() {
+      var _this3 = this;
 
       console.log(this.form);
       axios.post('/api/task?token=' + localStorage.getItem('token'), this.form).then(function (res) {
         console.log(res);
 
-        _this2.getData();
+        _this3.getData();
       });
     },
-    destroy: function destroy(slug, index) {
-      var _this3 = this;
+    destroy: function destroy(slug) {
+      var _this4 = this;
 
       axios.delete("/api/task/".concat(slug)).then(function (res) {
-        return _this3.projects.splice(index, 1);
+        return _this4.getData();
       });
     },
     edit: function edit(index) {
-      this.form.name = this.tasks[index].name;
-      this.editSlugt = this.tasks[index].slug;
-      this.tasks.splice(index, 1);
+      this.form = Object.assign({}, index);
+      this.form.btn_name = "update";
     },
     reset: function reset() {
       this.form.id = null;
@@ -3999,12 +4013,13 @@ __webpack_require__.r(__webpack_exports__);
       this.form.type = null;
       this.form.due_date = new Date().toISOString().substr(0, 10);
       this.form.description = null;
+      this.form.btn_name = "add";
     },
     getData: function getData() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get('/api/task').then(function (res) {
-        return _this4.tasks = res.data;
+        return _this5.tasks = res.data;
       });
       this.reset();
     }
@@ -4405,6 +4420,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4428,10 +4498,18 @@ __webpack_require__.r(__webpack_exports__);
         text: 'action ',
         value: 'action'
       }],
+      status: ['Pending', 'Active', 'Banned'],
+      roles: [],
       teams: [],
       dialog: false,
       form: {
-        name: null
+        id: null,
+        name: null,
+        password: null,
+        role_id: null,
+        email: null,
+        status: null,
+        btn_name: 'add'
       },
       editSlugt: null,
       errors: null
@@ -4440,22 +4518,60 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('/api/user').then(function (res) {
-      return _this.teams = res.data;
+    this.getData();
+    axios.get('/api/count-team').then(function (res) {
+      return _this.roles = res.data;
     });
   },
   methods: {
-    destroy: function destroy(slug, index) {
+    submit: function submit() {
+      this.form.id ? this.update() : this.add();
+    },
+    update: function update() {
       var _this2 = this;
 
+      axios.put("/api/user/".concat(this.form.id), this.form).then(function (res) {
+        _this2.getData();
+
+        _this2.dialog = false;
+      });
+    },
+    add: function add() {
+      var _this3 = this;
+
+      axios.post('/api/user?token=' + localStorage.getItem('token'), this.form).then(function (res) {
+        _this3.getData();
+
+        _this3.dialog = false;
+      });
+    },
+    destroy: function destroy(slug) {
+      var _this4 = this;
+
       axios.delete("/api/user/".concat(slug)).then(function (res) {
-        return _this2.roles.splice(index, 1);
+        return _this4.getData();
       });
     },
     edit: function edit(index) {
-      this.form.name = this.users[index].name;
-      this.editSlugt = this.users[index].slug;
-      this.users.splice(index, 1);
+      this.dialog = true;
+      this.form = Object.assign({}, index);
+      this.form.btn_name = "update";
+    },
+    reset: function reset() {
+      this.form.id = null;
+      this.form.name = null;
+      this.form.password = null;
+      this.form.role_id = null;
+      this.form.status = null;
+      this.form.email = null;
+    },
+    getData: function getData() {
+      var _this5 = this;
+
+      axios.get('/api/user').then(function (res) {
+        return _this5.teams = res.data;
+      });
+      this.reset();
     }
   }
 });
@@ -60269,7 +60385,7 @@ var render = function() {
           _vm.errors
             ? _c("v-alert", { attrs: { type: "error", value: true } }, [
                 _vm._v(
-                  "\r\n                Project name is required.\r\n            "
+                  "\n                Project name is required.\n            "
                 )
               ])
             : _vm._e(),
@@ -60684,7 +60800,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", { staticClass: "text-center" }, [
                   _c("span", { staticClass: "text-danger" }, [
-                    _vm._v("activated\r\n                ")
+                    _vm._v("activated\n                ")
                   ])
                 ]),
                 _vm._v(" "),
@@ -61258,11 +61374,24 @@ var render = function() {
                         attrs: { dark: "" },
                         on: {
                           click: function($event) {
-                            return _vm.add()
+                            return _vm.submit()
                           }
                         }
                       },
-                      [_vm._v("Add")]
+                      [_vm._v(_vm._s(_vm.form.btn_name))]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: { dark: "" },
+                        on: {
+                          click: function($event) {
+                            return _vm.reset()
+                          }
+                        }
+                      },
+                      [_vm._v("reset")]
                     )
                   ],
                   1
@@ -61310,19 +61439,47 @@ var render = function() {
                     _vm._v(_vm._s(props.item.status))
                   ]),
                   _vm._v(" "),
-                  _c("td", { staticClass: "text-center" }, [
-                    _c("span", { staticClass: "text-danger" }, [
-                      _vm._v("activated\r\n                ")
-                    ])
-                  ]),
-                  _vm._v(" "),
                   _c(
                     "td",
                     { staticClass: "text-center" },
                     [
-                      _c("v-icon", { attrs: { large: "", danger: "" } }, [
-                        _vm._v("delete_forever")
-                      ])
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { flat: "" },
+                          on: {
+                            click: function($event) {
+                              return _vm.edit(props.item)
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "v-icon",
+                            { attrs: { large: "", color: "green" } },
+                            [_vm._v("edit")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { flat: "" },
+                          on: {
+                            click: function($event) {
+                              return _vm.destroy(props.item.id)
+                            }
+                          }
+                        },
+                        [
+                          _c("v-icon", { attrs: { color: "red" } }, [
+                            _vm._v(" delete")
+                          ])
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
@@ -61739,19 +61896,11 @@ var render = function() {
                   "td",
                   { staticClass: "text-center" },
                   [
-                    _c("span", { staticClass: "text-danger" }),
-                    _vm._v(" "),
-                    props.item.is_active
-                      ? _c(
-                          "v-chip",
-                          { attrs: { color: "green", "text-color": "white" } },
-                          [_vm._v("activated")]
-                        )
-                      : _c(
-                          "v-chip",
-                          { attrs: { color: "blue", "text-color": "white" } },
-                          [_vm._v("Pending")]
-                        )
+                    _c(
+                      "v-chip",
+                      { attrs: { color: "blue", "text-color": "white" } },
+                      [_vm._v(_vm._s(props.item.status))]
+                    )
                   ],
                   1
                 ),
@@ -61760,17 +61909,46 @@ var render = function() {
                   _vm._v(_vm._s(props.item.roles))
                 ]),
                 _vm._v(" "),
+                _c("td", { staticClass: "text-center" }),
                 _c(
                   "td",
                   { staticClass: "text-center" },
                   [
-                    _c("v-icon", { attrs: { large: "", danger: "" } }, [
-                      _vm._v("edit")
-                    ]),
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: { flat: "" },
+                        on: {
+                          click: function($event) {
+                            return _vm.edit(props.item)
+                          }
+                        }
+                      },
+                      [
+                        _c("v-icon", { attrs: { large: "", color: "green" } }, [
+                          _vm._v("edit")
+                        ])
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
-                    _c("v-icon", { attrs: { large: "", danger: "" } }, [
-                      _vm._v("delete_forever")
-                    ])
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: { flat: "" },
+                        on: {
+                          click: function($event) {
+                            return _vm.destroy(props.item.id)
+                          }
+                        }
+                      },
+                      [
+                        _c("v-icon", { attrs: { color: "red" } }, [
+                          _vm._v(" delete")
+                        ])
+                      ],
+                      1
+                    )
                   ],
                   1
                 )
@@ -61783,7 +61961,7 @@ var render = function() {
       _c(
         "v-dialog",
         {
-          attrs: { width: "500" },
+          attrs: { width: "700" },
           scopedSlots: _vm._u([
             {
               key: "activator",
@@ -61808,6 +61986,11 @@ var render = function() {
                               top: "",
                               right: "",
                               color: "pink"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.reset()
+                              }
                             }
                           },
                           on
@@ -61865,28 +62048,119 @@ var render = function() {
                   _c(
                     "v-card-text",
                     [
-                      _vm.errors
-                        ? _c(
-                            "v-alert",
-                            { attrs: { type: "error", value: true } },
+                      _c(
+                        "v-layout",
+                        { attrs: { row: "", wrap: "" } },
+                        [
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
                             [
-                              _vm._v(
-                                "\n                User name is required.\n            "
-                              )
-                            ]
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "name",
+                                  type: "text",
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.form.name,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "name", $$v)
+                                  },
+                                  expression: "form.name"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  type: "password",
+                                  name: "password",
+                                  label: "password"
+                                },
+                                model: {
+                                  value: _vm.form.password,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "password", $$v)
+                                  },
+                                  expression: "form.password"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  items: _vm.roles,
+                                  "item-text": "name",
+                                  "item-value": "id",
+                                  label: "role"
+                                },
+                                model: {
+                                  value: _vm.form.role_id,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "role_id", $$v)
+                                  },
+                                  expression: "form.role_id"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-select", {
+                                attrs: { items: _vm.status, label: "status" },
+                                model: {
+                                  value: _vm.form.status,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "status", $$v)
+                                  },
+                                  expression: "form.status"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "email",
+                                  type: "email",
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.form.email,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "email", $$v)
+                                  },
+                                  expression: "form.email"
+                                }
+                              })
+                            ],
+                            1
                           )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: { label: "name", type: "text", required: "" },
-                        model: {
-                          value: _vm.form.name,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "name", $$v)
-                          },
-                          expression: "form.name"
-                        }
-                      })
+                        ],
+                        1
+                      )
                     ],
                     1
                   ),
@@ -61908,10 +62182,14 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\n            close\n          ")]
+                        [
+                          _vm._v(
+                            "\n                        close\n                    "
+                          )
+                        ]
                       ),
                       _vm._v(" "),
-                      _vm.editSlugt
+                      _vm.form.id
                         ? _c(
                             "v-btn",
                             {
@@ -62082,7 +62360,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\r\n                Team name is required.\r\n            "
+                                "\n                Team name is required.\n            "
                               )
                             ]
                           )
@@ -62119,7 +62397,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\r\n            close\r\n          ")]
+                        [_vm._v("\n            close\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
