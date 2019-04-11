@@ -3,14 +3,15 @@
     <div>
         <v-container fluid grid-list-md >
         <v-layout row wrap>
-                <v-flex xs3 md1>
+                <v-flex md12 xs12 md1>
                     <h2>Task</h2>
                 </v-flex>
 
-                         <v-flex xs2>
+                         <v-flex md3>
                             <v-card-text class="px-0">Project</v-card-text>
                             <v-select
                             :items="projects"
+                            v-model="form.project_id"
                             item-text="name"
                             item-value="id"
                             label="Standard"
@@ -18,67 +19,59 @@
 
                             <v-card-text class="px-0">Start Date</v-card-text>
                              <v-menu
-                                     ref="menu"
-                                     v-model="menu"
-                                     :close-on-content-click="false"
-                                     :nudge-right="40"
-                                     :return-value.sync="date"
-                                     lazy
-                                     transition="scale-transition"
-                                     offset-y
-                                     full-width
-                                     min-width="290px"
+                                     v-model="menu1"
+        :close-on-content-click="false"
+        :nudge-right="40"
+        lazy
+        transition="scale-transition"
+        offset-y
+        full-width
+        min-width="290px"
                              >
                                  <template v-slot:activator="{ on }">
-                                     <v-text-field
-                                             v-model="date"
+                                     <v-text-field 
+                                     
+                                     v-model="form.start_date"
+                                           
                                              label="Picker in menu"
                                              prepend-icon="event"
                                              readonly
                                              v-on="on"
                                      ></v-text-field>
                                  </template>
-                                 <v-date-picker v-model="date" no-title scrollable>
-                                     <v-spacer></v-spacer>
-                                     <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
-                                     <v-btn flat color="primary" @click="$refs.menu.save(date)">OK</v-btn>
-                                 </v-date-picker>
+                                 <v-date-picker v-model="form.start_date" @input="menu1 = false"></v-date-picker>
                              </v-menu>
 
                             <v-card-text class="px-0">Due Date</v-card-text>
                              <v-menu
-                                     ref="menu"
-                                     v-model="menu"
-                                     :close-on-content-click="false"
-                                     :nudge-right="40"
-                                     :return-value.sync="date"
-                                     lazy
-                                     transition="scale-transition"
-                                     offset-y
-                                     full-width
-                                     min-width="290px"
+                                                      v-model="menu"
+        :close-on-content-click="false"
+        :nudge-right="40"
+        lazy
+        transition="scale-transition"
+        offset-y
+        full-width
+        min-width="290px"
                              >
                                  <template v-slot:activator="{ on }">
                                      <v-text-field
-                                             v-model="date"
+                                            v-model="form.due_date"
                                              label="Picker in menu"
+
                                              prepend-icon="event"
                                              readonly
                                              v-on="on"
                                      ></v-text-field>
                                  </template>
-                                 <v-date-picker v-model="date" no-title scrollable>
-                                     <v-spacer></v-spacer>
-                                     <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
-                                     <v-btn flat color="primary" @click="$refs.menu.save(date)">OK</v-btn>
-                                 </v-date-picker>
+                                  <v-date-picker v-model="form.due_date" @input="menu = false"></v-date-picker>
                              </v-menu>
                         </v-flex>
 
-                        <v-flex xs2>
+                        <v-flex md3>
                             <v-card-text class="px-0">Task Type</v-card-text>
                             <v-select
-                            :items="items"
+                            :items="type"
+                            v-model="form.type"
                             label="Standard"
                             ></v-select>
 
@@ -86,27 +79,32 @@
                             <v-select
                             :items="users"
                             label="Standard"
+                            v-model="form.user_id"
                             item-text="name"
                             item-value="id"
                             ></v-select>
 
                             <v-card-text class="px-0">Link</v-card-text>
-                            <v-select
-                            :items="items"
+                            <v-text-field
+                           v-model="form.link"
                             label="Standard"
-                            ></v-select>
+                            ></v-text-field>
                         </v-flex>
 
-                        <v-flex xs6>
+                        <v-flex md6>
                             <v-card-text class="px-0">Description</v-card-text>
                             <v-textarea
                             outline
+                            v-model="form.description"
                             name="input-7-4"
                             label="Outline textarea"
                             ></v-textarea>
 
-                            <v-btn dark>Add</v-btn>
+                         
                         </v-flex>
+
+                        <v-flex md12 text-xs-center>
+                           <v-btn dark @click="add()">Add</v-btn></v-flex> 
 
 
         </v-layout>
@@ -117,9 +115,13 @@
 <div>
     <v-data-table colmd12  :headers="headers" :items="tasks" class="elevation-1">
         <template v-slot:items="props">
-            <td>{{ props.item.id }}</td>
+            <td>{{ props.item.project }}</td>
             <td class="text-center">{{ props.item.type }}</td>
-            <td class="text-center">{{ props.item.email }}</td>
+            <td class="text-center">{{ props.item.user }}</td>
+<td class="text-center">{{ props.item.start_date }}</td>
+<td class="text-center">{{ props.item.due_date }}</td>
+<td class="text-center">{{ props.item.status }}</td>
+
             <td class="text-center">
 
                 <span class="text-danger">activated
@@ -144,23 +146,35 @@
             return {
                 headers: [
                     {
-                        text: 'id',
+                        text: 'project',
                         sortable: false,
-                        value: 'name'
+                        value: 'project'
                     },
-                    {text: 'type', value: 'type'},
+                    {text: 'Task', value: 'type'},
                     {text: 'Affected to', value: 'user'},
-                    {text: 'Due Date ', value: 'status'},
+                    {text: 'Start Date ', value: 'start_date'},
+                      {text: 'Due Date ', value: 'due_date'},
+                       {text: 'Status ', value: 'status'},
                     {text: 'action ', value: 'action'},
 
                 ],
 
+type:['Blog','Authentification','Edit Slider','Slider'],
 
-
-
+ menu: false,
+ menu1: false,
                 dialog: false,
                 form: {
-                    name: null
+                    id:null,
+                    link: null,
+                    user_id:null,
+                    project_id:null,
+                    start_date: new Date().toISOString().substr(0, 10),
+                    type:null,
+                    due_date:  new Date().toISOString().substr(0, 10),
+                    description:null
+
+
                 },
                 tasks: [],
                 users: [],
@@ -170,11 +184,8 @@
             }
         },
         created() {
-            if (!User.admin()) {
-                this.$router.push('/forum')
-            }
-            axios.get('/api/task')
-                .then(res => this.tasks = res.data);
+       
+         this.getData();
 
 
             axios.get('/api/project').then(res => this.projects = res.data.data);
@@ -182,6 +193,15 @@
         },
 
         methods: {
+
+            add(){
+
+                console.log(this.form);
+                 axios.post('/api/task?token='+localStorage.getItem('token'),this.form).then(res => {console.log(res);this.getData(); });
+
+
+
+            },
 
             destroy(slug, index) {
                 axios.delete(`/api/task/${slug}`)
@@ -193,12 +213,35 @@
                 this.editSlugt = this.tasks[index].slug
                 this.tasks.splice(index, 1)
 
+            },
+
+              reset() {
+this.form.id=null;
+                    this.form.link= null;
+                    this.form.user_id=null;
+                    this.form.project_id=null;
+                    this.form.start_date= new Date().toISOString().substr(0, 10);
+                    this.form.type=null;
+                this.form.due_date=  new Date().toISOString().substr(0, 10);
+                   this.form. description=null;
+
+        },
+            
+            getData(){
+
+   axios.get('/api/task')
+                .then(res => this.tasks = res.data);
+
+                this.reset();
+
             }
         },
         computed: {
             disabled() {
                 return !(this.form.name)
             }
+
+            
         }
 
     }
