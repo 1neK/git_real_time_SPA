@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-container>
         <v-list dense>
             <v-list-tile-content>
                 <v-list-tile-title v-if="User.designer()">Designer</v-list-tile-title>
@@ -79,7 +79,7 @@
             </coordinator>-->
 
 </v-list>
-</div>
+    </v-container>
 </template>
 
 <script>

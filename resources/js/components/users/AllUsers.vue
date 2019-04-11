@@ -16,6 +16,7 @@
                 </td>
                 <td class="text-center">{{ props.item.roles }}</td>
                 <td class="text-center">
+<<<<<<< HEAD
 
                 <td class="text-center">
 
@@ -28,6 +29,10 @@
                         <v-icon color="red"> delete</v-icon>
                     </v-btn>
                 </td>
+=======
+                    <v-btn icon><v-icon large danger>edit</v-icon></v-btn>
+                    <v-btn icon><v-icon large danger>delete_forever</v-icon></v-btn>
+>>>>>>> cfdcf7d91e9581cae6165b01962f8f400bf9067b
                 </td>
 
             </template>
