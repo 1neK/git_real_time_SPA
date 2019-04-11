@@ -39,6 +39,7 @@
 
                     <v-btn
                             v-on="on"
+                            @click="reset()"
                             absolute
                             dark
                             fab

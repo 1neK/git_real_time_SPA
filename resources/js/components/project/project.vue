@@ -37,6 +37,7 @@
 
             <v-btn
              v-on="on"
+             @click="reset()"
               absolute
               dark
               fab
@@ -114,9 +115,7 @@
         }
     },
         created(){
-            if(!User.admin()){
-                this.$router.push('/forum')
-            }
+
 
           this.getData();
 

@@ -3355,6 +3355,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3372,10 +3373,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     var _this = this;
-
-    if (!User.admin()) {
-      this.$router.push('/forum');
-    }
 
     this.getData();
     axios.get('/api/count-task').then(function (res) {
@@ -4782,6 +4779,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -60613,6 +60611,11 @@ var render = function() {
                               bottom: "",
                               right: "",
                               color: "pink"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.reset()
+                              }
                             }
                           },
                           on
@@ -62670,6 +62673,11 @@ var render = function() {
                               bottom: "",
                               right: "",
                               color: "pink"
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.reset()
+                              }
                             }
                           },
                           on
