@@ -4474,11 +4474,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -61922,9 +61917,7 @@ var render = function() {
                   _vm._v(_vm._s(props.item.roles))
                 ]),
                 _vm._v(" "),
-                _c("td", { staticClass: "text-center" }, [
-                  _vm._v("\n<<<<<<< HEAD\n\n                ")
-                ]),
+                _c("td", { staticClass: "text-center" }),
                 _c(
                   "td",
                   { staticClass: "text-center" },
@@ -61966,31 +61959,6 @@ var render = function() {
                     )
                   ],
                   1
-                ),
-                _vm._v("\n=======\n                    "),
-                _c(
-                  "v-btn",
-                  { attrs: { icon: "" } },
-                  [
-                    _c("v-icon", { attrs: { large: "", danger: "" } }, [
-                      _vm._v("edit")
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "v-btn",
-                  { attrs: { icon: "" } },
-                  [
-                    _c("v-icon", { attrs: { large: "", danger: "" } }, [
-                      _vm._v("delete_forever")
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(
-                  "\n>>>>>>> cfdcf7d91e9581cae6165b01962f8f400bf9067b\n                "
                 )
               ]
             }
@@ -62224,7 +62192,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                            close\n                        "
+                            "\n                        close\n                    "
                           )
                         ]
                       ),
@@ -103696,6 +103664,8 @@ function () {
           _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].storeRole('coordinator');
           window.location = '/coordinator';
         }
+
+        window.location = '/';
       }
     }
   }, {

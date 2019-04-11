@@ -38,6 +38,8 @@ if(access_token != ''){
 
     }
 
+    window.location='/';
+
 
 
 }
