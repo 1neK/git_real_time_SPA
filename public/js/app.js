@@ -62200,24 +62200,12 @@ var render = function() {
                       _vm.form.id
                         ? _c(
                             "v-btn",
-                            {
-                              attrs: {
-                                type: "submit",
-                                disabled: _vm.disabled,
-                                color: "cyan"
-                              }
-                            },
+                            { attrs: { type: "submit", color: "cyan" } },
                             [_vm._v("Update")]
                           )
                         : _c(
                             "v-btn",
-                            {
-                              attrs: {
-                                type: "submit",
-                                disabled: _vm.disabled,
-                                color: "teal"
-                              }
-                            },
+                            { attrs: { type: "submit", color: "teal" } },
                             [_vm._v("Create")]
                           )
                     ],

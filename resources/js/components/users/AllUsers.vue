@@ -139,9 +139,9 @@
                         >
                             close
                         </v-btn>
-                        <v-btn type="submit" :disabled="disabled" color="cyan"  v-if="form.id">Update</v-btn>
+                        <v-btn type="submit" color="cyan"  v-if="form.id">Update</v-btn>
 
-                        <v-btn type="submit" :disabled="disabled" color="teal"   v-else>Create</v-btn>
+                        <v-btn type="submit" color="teal"   v-else>Create</v-btn>
                     </v-card-actions>
                 </v-form>
             </v-card>
