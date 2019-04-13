@@ -17,7 +17,7 @@
                     <v-combobox
                     v-model="select1"
                     :items="items1"
-                    label="Project"
+                    label="project"
                 ></v-combobox>
             </v-flex>
             <v-flex xs2>
@@ -25,7 +25,7 @@
                     <v-combobox
                     v-model="select2"
                     :items="items2"
-                    label="Affected To"
+                    label="affected to"
                 ></v-combobox>
             </v-flex>
             <v-flex xs2>
@@ -33,7 +33,7 @@
                     <v-combobox
                     v-model="select3"
                     :items="items3"
-                    label="Month"
+                    label="month"
                     ></v-combobox>
             </v-flex>
             <v-flex xs2>
@@ -41,7 +41,7 @@
                     <v-combobox
                     v-model="select4"
                     :items="items4"
-                    label="Year"
+                    label="year"
                 ></v-combobox>
             </v-flex>
 

@@ -59339,7 +59339,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("v-combobox", {
-                    attrs: { items: _vm.items1, label: "Project" },
+                    attrs: { items: _vm.items1, label: "project" },
                     model: {
                       value: _vm.select1,
                       callback: function($$v) {
@@ -59361,7 +59361,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("v-combobox", {
-                    attrs: { items: _vm.items2, label: "Affected To" },
+                    attrs: { items: _vm.items2, label: "affected to" },
                     model: {
                       value: _vm.select2,
                       callback: function($$v) {
@@ -59381,7 +59381,7 @@ var render = function() {
                   _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Month")]),
                   _vm._v(" "),
                   _c("v-combobox", {
-                    attrs: { items: _vm.items3, label: "Month" },
+                    attrs: { items: _vm.items3, label: "month" },
                     model: {
                       value: _vm.select3,
                       callback: function($$v) {
@@ -59401,7 +59401,7 @@ var render = function() {
                   _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Year")]),
                   _vm._v(" "),
                   _c("v-combobox", {
-                    attrs: { items: _vm.items4, label: "Year" },
+                    attrs: { items: _vm.items4, label: "year" },
                     model: {
                       value: _vm.select4,
                       callback: function($$v) {
@@ -62186,7 +62186,7 @@ var render = function() {
                   _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Name")]),
                   _vm._v(" "),
                   _c("v-combobox", {
-                    attrs: { items: _vm.items1, label: "Name" },
+                    attrs: { items: _vm.items1, label: "name" },
                     model: {
                       value: _vm.select1,
                       callback: function($$v) {
@@ -62206,7 +62206,7 @@ var render = function() {
                   _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Role")]),
                   _vm._v(" "),
                   _c("v-combobox", {
-                    attrs: { items: _vm.items2, label: "Role" },
+                    attrs: { items: _vm.items2, label: "role" },
                     model: {
                       value: _vm.select2,
                       callback: function($$v) {
@@ -62228,7 +62228,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("v-combobox", {
-                    attrs: { items: _vm.items3, label: "Status" },
+                    attrs: { items: _vm.items3, label: "status" },
                     model: {
                       value: _vm.select3,
                       callback: function($$v) {

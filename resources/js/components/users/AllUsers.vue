@@ -17,7 +17,7 @@
                     <v-combobox
                     v-model="select1"
                     :items="items1"
-                    label="Name"
+                    label="name"
                 ></v-combobox>
             </v-flex>
             <v-flex xs3>
@@ -25,7 +25,7 @@
                     <v-combobox
                     v-model="select2"
                     :items="items2"
-                    label="Role"
+                    label="role"
                 ></v-combobox>
             </v-flex>
             <v-flex xs3>
@@ -33,7 +33,7 @@
                     <v-combobox
                     v-model="select3"
                     :items="items3"
-                    label="Status"
+                    label="status"
                     ></v-combobox>
             </v-flex>
         </v-layout>
