@@ -2389,17 +2389,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       /*select1: 'Ins'
       items1: [
        ],*/
+      headers: [{
+        text: 'Project',
+        sortable: false,
+        value: 'project'
+      }, {
+        text: 'Task',
+        value: 'type'
+      }, {
+        text: 'Affected to',
+        value: 'user'
+      }, {
+        text: 'Start Date ',
+        value: 'start_date'
+      }, {
+        text: 'Due Date ',
+        value: 'due_date'
+      }, {
+        text: 'Completed on ',
+        value: 'completed_on'
+      }, {
+        text: 'Comments ',
+        value: 'comments'
+      }, {
+        text: 'Status ',
+        value: 'status'
+      }, {
+        text: 'Links ',
+        value: 'links'
+      }]
     };
   }
 });
@@ -59547,55 +59571,20 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [
+                              _vm._v(_vm._s(props.item.completed_on))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v(_vm._s(props.item.comments))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
                               _vm._v(_vm._s(props.item.status))
                             ]),
                             _vm._v(" "),
-                            _c(
-                              "td",
-                              { staticClass: "text-center" },
-                              [
-                                _c(
-                                  "v-btn",
-                                  {
-                                    attrs: { icon: "" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.edit(props.item)
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "v-icon",
-                                      { attrs: { medium: "", color: "green" } },
-                                      [_vm._v("edit")]
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-btn",
-                                  {
-                                    attrs: { icon: "" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.destroy(props.item.id)
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "v-icon",
-                                      { attrs: { medium: "", color: "red" } },
-                                      [_vm._v(" delete")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v(_vm._s(props.item.links))
+                            ])
                           ]
                         }
                       }

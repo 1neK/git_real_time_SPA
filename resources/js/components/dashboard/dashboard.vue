@@ -92,7 +92,7 @@
                 <v-btn color="grey"> Download Excell </v-btn>
             </v-flex>
 
-            <v-container>
+             <v-container>
                         <v-data-table colmd12  :headers="headers" :items="tasks" class="elevation-1">
                             <template v-slot:items="props">
                                 <td>{{ props.item.project }}</td>
@@ -100,15 +100,10 @@
                                 <td class="text-center">{{ props.item.user }}</td>
                                 <td class="text-center">{{ props.item.start_date }}</td>
                                 <td class="text-center">{{ props.item.due_date }}</td>
+                                <td class="text-center">{{ props.item.completed_on }}</td>
+                                <td class="text-center">{{ props.item.comments }}</td>
                                 <td class="text-center">{{ props.item.status }}</td>
-                                    <td class="text-center">
-                                        <v-btn icon @click="edit(props.item)">
-                                            <v-icon medium color="green">edit</v-icon>
-                                        </v-btn>
-                                        <v-btn icon @click="destroy( props.item.id )">
-                                            <v-icon medium color="red"> delete</v-icon>
-                                        </v-btn>
-                                    </td>
+                                <td class="text-center">{{ props.item.links }}</td>
                             </template>
                         </v-data-table>
                         </v-container>
@@ -127,6 +122,24 @@ export default {
             items1: [
 
             ],*/
+            headers: [
+                    {
+                        text: 'Project',
+                        sortable: false,
+                        value: 'project'
+                    },
+
+
+                    {text: 'Task', value: 'type'},
+                    {text: 'Affected to', value: 'user'},
+                    {text: 'Start Date ', value: 'start_date'},
+                    {text: 'Due Date ', value: 'due_date'},
+                    {text: 'Completed on ', value: 'completed_on'},
+                    {text: 'Comments ', value: 'comments'},
+                    {text: 'Status ', value: 'status'},
+                    {text: 'Links ', value: 'links'},
+
+                ],
         }
     }
 
