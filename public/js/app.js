@@ -3914,6 +3914,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -61417,6 +61460,220 @@ var render = function() {
                       )
                     ],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c("v-flex", { attrs: { md12: "", xs12: "", md1: "" } }, [
+                    _c("h4", [_vm._v("Filter task")])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { md3: "" } },
+                    [
+                      _c("v-card-text", { staticClass: "px-0" }, [
+                        _vm._v("Project")
+                      ]),
+                      _vm._v(" "),
+                      _c("v-select", {
+                        attrs: {
+                          items: _vm.projects,
+                          "item-text": "name",
+                          "item-value": "id",
+                          label: "Standard"
+                        },
+                        model: {
+                          value: _vm.form.project_id,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "project_id", $$v)
+                          },
+                          expression: "form.project_id"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-card-text", { staticClass: "px-0" }, [
+                        _vm._v("Title")
+                      ]),
+                      _vm._v(" "),
+                      _c("v-select", {
+                        attrs: { items: _vm.type, label: "Standard" },
+                        model: {
+                          value: _vm.form.type,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "type", $$v)
+                          },
+                          expression: "form.type"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { md3: "" } },
+                    [
+                      _c("v-card-text", { staticClass: "px-0" }, [
+                        _vm._v("Affected To")
+                      ]),
+                      _vm._v(" "),
+                      _c("v-select", {
+                        attrs: { items: _vm.type, label: "Standard" },
+                        model: {
+                          value: _vm.form.type,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "type", $$v)
+                          },
+                          expression: "form.type"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("v-card-text", { staticClass: "px-0" }, [
+                        _vm._v("Status")
+                      ]),
+                      _vm._v(" "),
+                      _c("v-select", {
+                        attrs: {
+                          items: _vm.users,
+                          label: "Standard",
+                          "item-text": "name",
+                          "item-value": "id"
+                        },
+                        model: {
+                          value: _vm.form.user_id,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "user_id", $$v)
+                          },
+                          expression: "form.user_id"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-flex",
+                    { attrs: { md3: "" } },
+                    [
+                      _c("v-card-text", { staticClass: "px-0" }, [
+                        _vm._v("Sort by")
+                      ]),
+                      _vm._v(" "),
+                      _c("v-select", {
+                        attrs: {
+                          items: _vm.projects,
+                          "item-text": "name",
+                          "item-value": "id",
+                          label: "Standard"
+                        },
+                        model: {
+                          value: _vm.form.project_id,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "project_id", $$v)
+                          },
+                          expression: "form.project_id"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-container",
+                    [
+                      _c("v-data-table", {
+                        staticClass: "elevation-1",
+                        attrs: {
+                          colmd12: "",
+                          headers: _vm.headers,
+                          items: _vm.tasks
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "items",
+                            fn: function(props) {
+                              return [
+                                _c("td", [_vm._v(_vm._s(props.item.project))]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-center" }, [
+                                  _vm._v(_vm._s(props.item.type))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-center" }, [
+                                  _vm._v(_vm._s(props.item.user))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-center" }, [
+                                  _vm._v(_vm._s(props.item.start_date))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-center" }, [
+                                  _vm._v(_vm._s(props.item.due_date))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-center" }, [
+                                  _vm._v(_vm._s(props.item.status))
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticClass: "text-center" },
+                                  [
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: { icon: "" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.edit(props.item)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          {
+                                            attrs: {
+                                              medium: "",
+                                              color: "green"
+                                            }
+                                          },
+                                          [_vm._v("edit")]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: { icon: "" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.destroy(props.item.id)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          {
+                                            attrs: { medium: "", color: "red" }
+                                          },
+                                          [_vm._v(" delete")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]
+                            }
+                          }
+                        ])
+                      })
+                    ],
+                    1
                   )
                 ],
                 1
@@ -61424,94 +61681,6 @@ var render = function() {
             ],
             1
           )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-container",
-        [
-          _c("v-data-table", {
-            staticClass: "elevation-1",
-            attrs: { colmd12: "", headers: _vm.headers, items: _vm.tasks },
-            scopedSlots: _vm._u([
-              {
-                key: "items",
-                fn: function(props) {
-                  return [
-                    _c("td", [_vm._v(_vm._s(props.item.project))]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-center" }, [
-                      _vm._v(_vm._s(props.item.type))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-center" }, [
-                      _vm._v(_vm._s(props.item.user))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-center" }, [
-                      _vm._v(_vm._s(props.item.start_date))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-center" }, [
-                      _vm._v(_vm._s(props.item.due_date))
-                    ]),
-                    _vm._v(" "),
-                    _c("td", { staticClass: "text-center" }, [
-                      _vm._v(_vm._s(props.item.status))
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "td",
-                      { staticClass: "text-center" },
-                      [
-                        _c(
-                          "v-btn",
-                          {
-                            attrs: { icon: "" },
-                            on: {
-                              click: function($event) {
-                                return _vm.edit(props.item)
-                              }
-                            }
-                          },
-                          [
-                            _c(
-                              "v-icon",
-                              { attrs: { medium: "", color: "green" } },
-                              [_vm._v("edit")]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-btn",
-                          {
-                            attrs: { icon: "" },
-                            on: {
-                              click: function($event) {
-                                return _vm.destroy(props.item.id)
-                              }
-                            }
-                          },
-                          [
-                            _c(
-                              "v-icon",
-                              { attrs: { medium: "", color: "red" } },
-                              [_vm._v(" delete")]
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ]
-                }
-              }
-            ])
-          })
         ],
         1
       )
