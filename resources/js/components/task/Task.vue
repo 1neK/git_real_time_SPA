@@ -133,9 +133,11 @@
                         <v-flex md3>
                             <v-card-text class="px-0">Affected To</v-card-text>
                             <v-select
-                            :items="type"
-                            v-model="form.type"
+                            :items="users"
                             label="Standard"
+                            v-model="form.user_id"
+                            item-text="name"
+                            item-value="id"
                             ></v-select>
 
                             <v-card-text class="px-0">Status</v-card-text>

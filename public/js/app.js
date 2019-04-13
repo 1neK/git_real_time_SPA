@@ -2399,7 +2399,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       /*select1: 'Ins'
       items1: [
-        ],*/
+       ],*/
     };
   }
 });
@@ -3766,6 +3766,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -59467,17 +59469,21 @@ var render = function() {
               ),
               _vm._v(" "),
               _c(
-                "div",
+                "v-container",
                 [
                   _c("v-data-table", {
                     staticClass: "elevation-1",
-                    attrs: { colmd12: "", headers: _vm.headers },
+                    attrs: {
+                      colmd12: "",
+                      headers: _vm.headers,
+                      items: _vm.tasks
+                    },
                     scopedSlots: _vm._u([
                       {
                         key: "items",
                         fn: function(props) {
                           return [
-                            _c("td", [_vm._v(_vm._s(props.item.id))]),
+                            _c("td", [_vm._v(_vm._s(props.item.project))]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [
                               _vm._v(_vm._s(props.item.type))
@@ -59492,9 +59498,11 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [
-                              _c("span", { staticClass: "text-danger" }, [
-                                _vm._v("activated\n            ")
-                              ])
+                              _vm._v(_vm._s(props.item.due_date))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v(_vm._s(props.item.status))
                             ]),
                             _vm._v(" "),
                             _c(
@@ -59502,15 +59510,43 @@ var render = function() {
                               { staticClass: "text-center" },
                               [
                                 _c(
-                                  "v-icon",
-                                  { attrs: { large: "", danger: "" } },
-                                  [_vm._v("edit")]
+                                  "v-btn",
+                                  {
+                                    attrs: { icon: "" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.edit(props.item)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "v-icon",
+                                      { attrs: { medium: "", color: "green" } },
+                                      [_vm._v("edit")]
+                                    )
+                                  ],
+                                  1
                                 ),
                                 _vm._v(" "),
                                 _c(
-                                  "v-icon",
-                                  { attrs: { large: "", danger: "" } },
-                                  [_vm._v("delete_forever")]
+                                  "v-btn",
+                                  {
+                                    attrs: { icon: "" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.destroy(props.item.id)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "v-icon",
+                                      { attrs: { medium: "", color: "red" } },
+                                      [_vm._v(" delete")]
+                                    )
+                                  ],
+                                  1
                                 )
                               ],
                               1
@@ -61517,13 +61553,18 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("v-select", {
-                        attrs: { items: _vm.type, label: "Standard" },
+                        attrs: {
+                          items: _vm.users,
+                          label: "Standard",
+                          "item-text": "name",
+                          "item-value": "id"
+                        },
                         model: {
-                          value: _vm.form.type,
+                          value: _vm.form.user_id,
                           callback: function($$v) {
-                            _vm.$set(_vm.form, "type", $$v)
+                            _vm.$set(_vm.form, "user_id", $$v)
                           },
-                          expression: "form.type"
+                          expression: "form.user_id"
                         }
                       }),
                       _vm._v(" "),

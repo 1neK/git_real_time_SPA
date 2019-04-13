@@ -92,26 +92,26 @@
                 <v-btn color="grey"> Download Excell </v-btn>
             </v-flex>
 
-            <div>
-                 <v-data-table colmd12  :headers="headers"  class="elevation-1">
-            <template v-slot:items="props">
-                <td>{{ props.item.id }}</td>
-                <td class="text-center">{{ props.item.type }}</td>
-                <td class="text-center">{{ props.item.user }}</td>
-                <td class="text-center">{{ props.item.start_date }}</td>
-                <td class="text-center">
-                <span class="text-danger">activated
-                </span>
-                </td>
-                <td class="text-center">
-                    <v-icon large danger>edit</v-icon>
-                    <v-icon large danger>delete_forever</v-icon>
-                </td>
-
-
-            </template>
-        </v-data-table>
-            </div>
+            <v-container>
+                        <v-data-table colmd12  :headers="headers" :items="tasks" class="elevation-1">
+                            <template v-slot:items="props">
+                                <td>{{ props.item.project }}</td>
+                                <td class="text-center">{{ props.item.type }}</td>
+                                <td class="text-center">{{ props.item.user }}</td>
+                                <td class="text-center">{{ props.item.start_date }}</td>
+                                <td class="text-center">{{ props.item.due_date }}</td>
+                                <td class="text-center">{{ props.item.status }}</td>
+                                    <td class="text-center">
+                                        <v-btn icon @click="edit(props.item)">
+                                            <v-icon medium color="green">edit</v-icon>
+                                        </v-btn>
+                                        <v-btn icon @click="destroy( props.item.id )">
+                                            <v-icon medium color="red"> delete</v-icon>
+                                        </v-btn>
+                                    </td>
+                            </template>
+                        </v-data-table>
+                        </v-container>
 
 
         </v-layout>
