@@ -2010,6 +2010,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -4774,7 +4776,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -58683,144 +58684,151 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-container",
+    "v-navigation-drawer",
+    { attrs: { permanent: "" } },
     [
       _c(
-        "v-list",
-        { attrs: { dense: "" } },
+        "v-container",
         [
           _c(
-            "v-list-tile-content",
+            "v-list",
+            { attrs: { dense: "" } },
             [
-              _vm.User.designer()
-                ? _c("v-list-tile-title", [_vm._v("Designer")])
-                : _vm._e()
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-list-tile-content",
-            [
-              _vm.User.coordinator()
-                ? _c("v-list-tile-title", [_vm._v("Coordinator")])
-                : _vm._e()
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-list-tile-content",
-            [
-              _vm.User.admin()
-                ? _c("v-list-tile-title", [_vm._v("Admin")])
-                : _vm._e()
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("v-divider"),
-          _vm._v(" "),
-          _c(
-            "v-list-tile",
-            { attrs: { to: "/" } },
-            [
-              _c("v-list-tile-action", [_c("v-icon", [_vm._v("home")])], 1),
-              _vm._v(" "),
               _c(
                 "v-list-tile-content",
-                [_c("v-list-tile-title", [_vm._v("Home")])],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-list-tile",
-            { attrs: { to: "/team" } },
-            [
-              _c(
-                "v-list-tile-action",
-                [_c("v-icon", [_vm._v("supervised_user_circle")])],
+                [
+                  _vm.User.designer()
+                    ? _c("v-list-tile-title", [_vm._v("Designer")])
+                    : _vm._e()
+                ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "v-list-tile-content",
-                [_c("v-list-tile-title", [_vm._v("Teams")])],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-list-tile",
-            { attrs: { to: "/project" } },
-            [
-              _c("v-list-tile-action", [_c("v-icon", [_vm._v("work")])], 1),
-              _vm._v(" "),
-              _c(
-                "v-list-tile-content",
-                [_c("v-list-tile-title", [_vm._v("Projects")])],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-list-tile",
-            { attrs: { to: "/task" } },
-            [
-              _c(
-                "v-list-tile-action",
-                [_c("v-icon", [_vm._v("view_list")])],
+                [
+                  _vm.User.coordinator()
+                    ? _c("v-list-tile-title", [_vm._v("Coordinator")])
+                    : _vm._e()
+                ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "v-list-tile-content",
-                [_c("v-list-tile-title", [_vm._v("Tasks")])],
+                [
+                  _vm.User.admin()
+                    ? _c("v-list-tile-title", [_vm._v("Admin")])
+                    : _vm._e()
+                ],
                 1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-list-tile",
-            { attrs: { to: "/allusers" } },
-            [
+              ),
+              _vm._v(" "),
+              _c("v-divider"),
+              _vm._v(" "),
               _c(
-                "v-list-tile-action",
-                [_c("v-icon", [_vm._v("supervisor_account")])],
+                "v-list-tile",
+                { attrs: { to: "/" } },
+                [
+                  _c("v-list-tile-action", [_c("v-icon", [_vm._v("home")])], 1),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-content",
+                    [_c("v-list-tile-title", [_vm._v("Home")])],
+                    1
+                  )
+                ],
                 1
               ),
               _vm._v(" "),
               _c(
-                "v-list-tile-content",
-                [_c("v-list-tile-title", [_vm._v("Users")])],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-list-tile",
-            { attrs: { to: "/dashboard" } },
-            [
-              _c(
-                "v-list-tile-action",
-                [_c("v-icon", [_vm._v("dashboard")])],
+                "v-list-tile",
+                { attrs: { to: "/team" } },
+                [
+                  _c(
+                    "v-list-tile-action",
+                    [_c("v-icon", [_vm._v("supervised_user_circle")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-content",
+                    [_c("v-list-tile-title", [_vm._v("Teams")])],
+                    1
+                  )
+                ],
                 1
               ),
               _vm._v(" "),
               _c(
-                "v-list-tile-content",
-                [_c("v-list-tile-title", [_vm._v("Dashboard")])],
+                "v-list-tile",
+                { attrs: { to: "/project" } },
+                [
+                  _c("v-list-tile-action", [_c("v-icon", [_vm._v("work")])], 1),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-content",
+                    [_c("v-list-tile-title", [_vm._v("Projects")])],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-tile",
+                { attrs: { to: "/task" } },
+                [
+                  _c(
+                    "v-list-tile-action",
+                    [_c("v-icon", [_vm._v("view_list")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-content",
+                    [_c("v-list-tile-title", [_vm._v("Tasks")])],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-tile",
+                { attrs: { to: "/allusers" } },
+                [
+                  _c(
+                    "v-list-tile-action",
+                    [_c("v-icon", [_vm._v("supervisor_account")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-content",
+                    [_c("v-list-tile-title", [_vm._v("Users")])],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-list-tile",
+                { attrs: { to: "/dashboard" } },
+                [
+                  _c(
+                    "v-list-tile-action",
+                    [_c("v-icon", [_vm._v("dashboard")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-tile-content",
+                    [_c("v-list-tile-title", [_vm._v("Dashboard")])],
+                    1
+                  )
+                ],
                 1
               )
             ],
@@ -60384,7 +60392,7 @@ var render = function() {
           _vm.errors
             ? _c("v-alert", { attrs: { type: "error", value: true } }, [
                 _vm._v(
-                  "\n                Project name is required.\n            "
+                  "\r\n                Project name is required.\r\n            "
                 )
               ])
             : _vm._e(),
@@ -60535,12 +60543,15 @@ var render = function() {
                                     [
                                       _c(
                                         "v-btn",
-                                        { attrs: { flat: "" } },
+                                        { attrs: { icon: "" } },
                                         [
                                           _c(
                                             "v-icon",
                                             {
-                                              attrs: { color: "grey darken-4" },
+                                              attrs: {
+                                                medium: "",
+                                                color: "green"
+                                              },
                                               on: {
                                                 click: function($event) {
                                                   return _vm.editpopup(project)
@@ -60556,7 +60567,7 @@ var render = function() {
                                       _c(
                                         "v-btn",
                                         {
-                                          attrs: { flat: "" },
+                                          attrs: { icon: "" },
                                           on: {
                                             click: function($event) {
                                               return _vm.destroy(project.id)
@@ -60566,7 +60577,12 @@ var render = function() {
                                         [
                                           _c(
                                             "v-icon",
-                                            { attrs: { color: "red" } },
+                                            {
+                                              attrs: {
+                                                medium: "",
+                                                color: "red"
+                                              }
+                                            },
                                             [_vm._v(" delete")]
                                           )
                                         ],
@@ -60672,7 +60688,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\r\n                Project name is required.\r\n            "
+                                "\n                Project name is required.\n            "
                               )
                             ]
                           )
@@ -60709,7 +60725,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\r\n            close\r\n          ")]
+                        [_vm._v("\n            close\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
@@ -60804,7 +60820,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", { staticClass: "text-center" }, [
                   _c("span", { staticClass: "text-danger" }, [
-                    _vm._v("activated\n                ")
+                    _vm._v("activated\r\n                ")
                   ])
                 ]),
                 _vm._v(" "),
@@ -61452,7 +61468,7 @@ var render = function() {
                         _c(
                           "v-btn",
                           {
-                            attrs: { flat: "" },
+                            attrs: { icon: "" },
                             on: {
                               click: function($event) {
                                 return _vm.edit(props.item)
@@ -61462,7 +61478,7 @@ var render = function() {
                           [
                             _c(
                               "v-icon",
-                              { attrs: { large: "", color: "green" } },
+                              { attrs: { medium: "", color: "green" } },
                               [_vm._v("edit")]
                             )
                           ],
@@ -61472,7 +61488,7 @@ var render = function() {
                         _c(
                           "v-btn",
                           {
-                            attrs: { flat: "" },
+                            attrs: { icon: "" },
                             on: {
                               click: function($event) {
                                 return _vm.destroy(props.item.id)
@@ -61480,9 +61496,11 @@ var render = function() {
                             }
                           },
                           [
-                            _c("v-icon", { attrs: { color: "red" } }, [
-                              _vm._v(" delete")
-                            ])
+                            _c(
+                              "v-icon",
+                              { attrs: { medium: "", color: "red" } },
+                              [_vm._v(" delete")]
+                            )
                           ],
                           1
                         )
@@ -61925,7 +61943,7 @@ var render = function() {
                     _c(
                       "v-btn",
                       {
-                        attrs: { flat: "" },
+                        attrs: { icon: "" },
                         on: {
                           click: function($event) {
                             return _vm.edit(props.item)
@@ -61933,9 +61951,11 @@ var render = function() {
                         }
                       },
                       [
-                        _c("v-icon", { attrs: { large: "", color: "green" } }, [
-                          _vm._v("edit")
-                        ])
+                        _c(
+                          "v-icon",
+                          { attrs: { medium: "", color: "green" } },
+                          [_vm._v("edit")]
+                        )
                       ],
                       1
                     ),
@@ -61943,7 +61963,7 @@ var render = function() {
                     _c(
                       "v-btn",
                       {
-                        attrs: { flat: "" },
+                        attrs: { icon: "" },
                         on: {
                           click: function($event) {
                             return _vm.destroy(props.item.id)
@@ -61951,7 +61971,7 @@ var render = function() {
                         }
                       },
                       [
-                        _c("v-icon", { attrs: { color: "red" } }, [
+                        _c("v-icon", { attrs: { medium: "", color: "red" } }, [
                           _vm._v(" delete")
                         ])
                       ],
@@ -62507,13 +62527,6 @@ var render = function() {
                             "v-card",
                             [
                               _c(
-                                "v-toolbar",
-                                { attrs: { color: "white", flat: "" } },
-                                [_c("v-spacer")],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
                                 "v-card-title",
                                 { attrs: { "primary-title": "" } },
                                 [
@@ -62557,43 +62570,60 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c(
-                                "v-card-actions",
+                                "v-toolbar",
+                                { attrs: { color: "white", flat: "" } },
                                 [
+                                  _c("v-spacer"),
+                                  _vm._v(" "),
                                   _c(
-                                    "v-btn",
-                                    { attrs: { flat: "" } },
+                                    "v-card-actions",
                                     [
                                       _c(
-                                        "v-icon",
+                                        "v-btn",
+                                        { attrs: { icon: "" } },
+                                        [
+                                          _c(
+                                            "v-icon",
+                                            {
+                                              attrs: {
+                                                medium: "",
+                                                color: "green"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.editpopup(team)
+                                                }
+                                              }
+                                            },
+                                            [_vm._v(" edit")]
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-btn",
                                         {
-                                          attrs: { color: "grey darken-4" },
+                                          attrs: { icon: "" },
                                           on: {
                                             click: function($event) {
-                                              return _vm.editpopup(team)
+                                              return _vm.destroy(team.id)
                                             }
                                           }
                                         },
-                                        [_vm._v(" edit")]
-                                      )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-btn",
-                                    {
-                                      attrs: { flat: "" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.destroy(team.id)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "v-icon",
-                                        { attrs: { color: "red" } },
-                                        [_vm._v(" delete")]
+                                        [
+                                          _c(
+                                            "v-icon",
+                                            {
+                                              attrs: {
+                                                medium: "",
+                                                color: "red"
+                                              }
+                                            },
+                                            [_vm._v(" delete")]
+                                          )
+                                        ],
+                                        1
                                       )
                                     ],
                                     1

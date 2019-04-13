@@ -20,11 +20,11 @@
                       <v-toolbar color="white" flat>
                           <v-spacer></v-spacer>
                           <v-card-actions>
-                              <v-btn flat>
-                                  <v-icon color="grey darken-4" @click="editpopup(project)"> edit</v-icon>
+                              <v-btn icon>
+                                  <v-icon medium color="green" @click="editpopup(project)"> edit</v-icon>
                               </v-btn>
-                              <v-btn flat @click="destroy( project.id )">
-                                  <v-icon color="red"> delete</v-icon>
+                              <v-btn icon @click="destroy( project.id )">
+                                  <v-icon medium color="red"> delete</v-icon>
                               </v-btn>
                           </v-card-actions>
                       </v-toolbar>

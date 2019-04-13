@@ -1,4 +1,5 @@
 <template>
+<v-navigation-drawer permanent>
     <v-container>
         <v-list dense>
             <v-list-tile-content>
@@ -80,6 +81,7 @@
 
 </v-list>
     </v-container>
+</v-navigation-drawer>
 </template>
 
 <script>

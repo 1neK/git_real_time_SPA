@@ -11,25 +11,24 @@
                     <v-flex sm4 v-for="team in teams" :key="team.id">
 
                         <v-card>
-                            <v-toolbar color="white" flat>
-                                <v-spacer></v-spacer>
-
-                            </v-toolbar>
                             <v-card-title primary-title >
                                 <div>
-                                 <router-link :to="{ name: 'team-single', params: { id:  team.slug } }"  >  <h3 class="headline mb-0">{{ team.name }}</h3></router-link> 
+                                 <router-link :to="{ name: 'team-single', params: { id:  team.slug } }"  >  <h3 class="headline mb-0">{{ team.name }}</h3></router-link>
                                     <div> task : {{ team.task_number }}</div>
                                     <div> users : {{ team.user_number }}</div>
                                 </div>
                             </v-card-title>
+                            <v-toolbar color="white" flat>
+                            <v-spacer></v-spacer>
                             <v-card-actions>
-                                <v-btn flat>
-                                    <v-icon color="grey darken-4" @click="editpopup(team)"> edit</v-icon>
+                                <v-btn icon>
+                                    <v-icon medium color="green" @click="editpopup(team)"> edit</v-icon>
                                 </v-btn>
-                                <v-btn flat @click="destroy( team.id )">
-                                    <v-icon color="red"> delete</v-icon>
+                                <v-btn icon @click="destroy( team.id )">
+                                    <v-icon medium color="red"> delete</v-icon>
                                 </v-btn>
                             </v-card-actions>
+                            </v-toolbar>
                         </v-card>
                     </v-flex>
 

@@ -20,11 +20,11 @@
 
 
 
-                    <v-btn flat @click="edit(props.item)">
-                        <v-icon large color="green">edit</v-icon>
+                    <v-btn icon @click="edit(props.item)">
+                        <v-icon medium color="green">edit</v-icon>
                     </v-btn>
-                    <v-btn flat @click="destroy( props.item.id )">
-                        <v-icon color="red"> delete</v-icon>
+                    <v-btn icon @click="destroy( props.item.id )">
+                        <v-icon medium color="red"> delete</v-icon>
                     </v-btn>
                 </td>
 
