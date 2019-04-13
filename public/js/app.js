@@ -3963,7 +3963,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       headers: [{
-        text: 'project',
+        text: 'Project',
         sortable: false,
         value: 'project'
       }, {
@@ -3979,8 +3979,17 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Due Date ',
         value: 'due_date'
       }, {
+        text: 'Completed on ',
+        value: 'completed_on'
+      }, {
+        text: 'Comments ',
+        value: 'comments'
+      }, {
         text: 'Status ',
         value: 'status'
+      }, {
+        text: 'Links ',
+        value: 'links'
       }, {
         text: 'action ',
         value: 'action'
@@ -4521,27 +4530,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       headers: [{
-        text: 'id',
+        text: 'ID',
         sortable: false,
         value: 'name'
       }, {
-        text: 'name',
+        text: 'Name',
         value: 'name'
       }, {
-        text: 'email',
+        text: 'Email',
         value: 'email'
       }, {
-        text: 'status ',
-        value: 'status'
+        text: 'Created at',
+        value: 'created_at'
       }, {
-        text: 'role ',
+        text: 'Last connexion',
+        value: 'last_connesion'
+      }, {
+        text: 'Role ',
         value: 'role'
       }, {
-        text: 'action ',
+        text: 'Status ',
+        value: 'status'
+      }, {
+        text: 'Action ',
         value: 'action'
       }],
       status: ['Pending', 'Active', 'Banned'],
@@ -59254,7 +59297,9 @@ var render = function() {
                 "v-flex",
                 { attrs: { xs3: "", md10: "" } },
                 [
-                  _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Filter")])
+                  _c("v-card-text", { staticClass: "px-0" }, [
+                    _c("h4", [_vm._v(" Filter ")])
+                  ])
                 ],
                 1
               ),
@@ -61220,7 +61265,7 @@ var render = function() {
                           items: _vm.projects,
                           "item-text": "name",
                           "item-value": "id",
-                          label: "Standard"
+                          label: "project"
                         },
                         model: {
                           value: _vm.form.project_id,
@@ -61258,7 +61303,6 @@ var render = function() {
                                     _vm._g(
                                       {
                                         attrs: {
-                                          label: "Picker in menu",
                                           "prepend-icon": "event",
                                           readonly: ""
                                         },
@@ -61336,7 +61380,6 @@ var render = function() {
                                     _vm._g(
                                       {
                                         attrs: {
-                                          label: "Picker in menu",
                                           "prepend-icon": "event",
                                           readonly: ""
                                         },
@@ -61395,7 +61438,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("v-select", {
-                        attrs: { items: _vm.type, label: "Standard" },
+                        attrs: { items: _vm.type, label: "task type" },
                         model: {
                           value: _vm.form.type,
                           callback: function($$v) {
@@ -61412,7 +61455,7 @@ var render = function() {
                       _c("v-select", {
                         attrs: {
                           items: _vm.users,
-                          label: "Standard",
+                          label: "affected to",
                           "item-text": "name",
                           "item-value": "id"
                         },
@@ -61430,7 +61473,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("v-text-field", {
-                        attrs: { label: "Standard" },
+                        attrs: { label: "link" },
                         model: {
                           value: _vm.form.link,
                           callback: function($$v) {
@@ -61515,7 +61558,7 @@ var render = function() {
                           items: _vm.projects,
                           "item-text": "name",
                           "item-value": "id",
-                          label: "Standard"
+                          label: "project"
                         },
                         model: {
                           value: _vm.form.project_id,
@@ -61531,7 +61574,7 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("v-select", {
-                        attrs: { items: _vm.type, label: "Standard" },
+                        attrs: { items: _vm.type, label: "title" },
                         model: {
                           value: _vm.form.type,
                           callback: function($$v) {
@@ -61555,7 +61598,7 @@ var render = function() {
                       _c("v-select", {
                         attrs: {
                           items: _vm.users,
-                          label: "Standard",
+                          label: "affected to",
                           "item-text": "name",
                           "item-value": "id"
                         },
@@ -61575,7 +61618,7 @@ var render = function() {
                       _c("v-select", {
                         attrs: {
                           items: _vm.users,
-                          label: "Standard",
+                          label: "status",
                           "item-text": "name",
                           "item-value": "id"
                         },
@@ -61604,7 +61647,7 @@ var render = function() {
                           items: _vm.projects,
                           "item-text": "name",
                           "item-value": "id",
-                          label: "Standard"
+                          label: "sort by"
                         },
                         model: {
                           value: _vm.form.project_id,
@@ -61652,7 +61695,19 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c("td", { staticClass: "text-center" }, [
+                                  _vm._v(_vm._s(props.item.completed_on))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-center" }, [
+                                  _vm._v(_vm._s(props.item.comments))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-center" }, [
                                   _vm._v(_vm._s(props.item.status))
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "text-center" }, [
+                                  _vm._v(_vm._s(props.item.links))
                                 ]),
                                 _vm._v(" "),
                                 _c(
@@ -62110,6 +62165,99 @@ var render = function() {
     "div",
     {},
     [
+      _c(
+        "v-container",
+        { attrs: { fluid: "", "grid-list-md": "" } },
+        [
+          _c(
+            "v-layout",
+            { attrs: { row: "", wrap: "" } },
+            [
+              _c("v-flex", { attrs: { xs3: "", md2: "" } }, [
+                _c("h2", [_vm._v("Users")])
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs3: "", md10: "" } },
+                [
+                  _c("v-card-text", { staticClass: "px-0" }, [
+                    _c("h4", [_vm._v(" Filter user ")])
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-flex", { attrs: { xs2: "" } }),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs3: "" } },
+                [
+                  _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Name")]),
+                  _vm._v(" "),
+                  _c("v-combobox", {
+                    attrs: { items: _vm.items1, label: "Name" },
+                    model: {
+                      value: _vm.select1,
+                      callback: function($$v) {
+                        _vm.select1 = $$v
+                      },
+                      expression: "select1"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs3: "" } },
+                [
+                  _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Role")]),
+                  _vm._v(" "),
+                  _c("v-combobox", {
+                    attrs: { items: _vm.items2, label: "Role" },
+                    model: {
+                      value: _vm.select2,
+                      callback: function($$v) {
+                        _vm.select2 = $$v
+                      },
+                      expression: "select2"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs3: "" } },
+                [
+                  _c("v-card-text", { staticClass: "px-0" }, [
+                    _vm._v("Status")
+                  ]),
+                  _vm._v(" "),
+                  _c("v-combobox", {
+                    attrs: { items: _vm.items3, label: "Status" },
+                    model: {
+                      value: _vm.select3,
+                      callback: function($$v) {
+                        _vm.select3 = $$v
+                      },
+                      expression: "select3"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
       _c("v-data-table", {
         staticClass: "elevation-1",
         attrs: { colmd12: "", headers: _vm.headers, items: _vm.teams },
@@ -62128,6 +62276,18 @@ var render = function() {
                   _vm._v(_vm._s(props.item.email))
                 ]),
                 _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _vm._v(_vm._s(props.item.created_at))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _vm._v(_vm._s(props.item.last_connexion))
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _vm._v(_vm._s(props.item.roles))
+                ]),
+                _vm._v(" "),
                 _c(
                   "td",
                   { staticClass: "text-center" },
@@ -62141,11 +62301,6 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c("td", { staticClass: "text-center" }, [
-                  _vm._v(_vm._s(props.item.roles))
-                ]),
-                _vm._v(" "),
-                _c("td", { staticClass: "text-center" }),
                 _c(
                   "td",
                   { staticClass: "text-center" },

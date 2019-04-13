@@ -1,33 +1,61 @@
 <template>
     <div class="">
+        <v-container fluid grid-list-md >
+        <v-layout row wrap>
+                <v-flex xs3 md2>
+                    <h2>Users</h2>
+                </v-flex>
 
+            <v-flex xs3 md10>
+                    <v-card-text class="px-0"> <h4> Filter user </h4> </v-card-text>
+            </v-flex>
+
+            <v-flex xs2></v-flex>
+
+            <v-flex xs3>
+                    <v-card-text class="px-0">Name</v-card-text>
+                    <v-combobox
+                    v-model="select1"
+                    :items="items1"
+                    label="Name"
+                ></v-combobox>
+            </v-flex>
+            <v-flex xs3>
+                    <v-card-text class="px-0">Role</v-card-text>
+                    <v-combobox
+                    v-model="select2"
+                    :items="items2"
+                    label="Role"
+                ></v-combobox>
+            </v-flex>
+            <v-flex xs3>
+                <v-card-text class="px-0">Status</v-card-text>
+                    <v-combobox
+                    v-model="select3"
+                    :items="items3"
+                    label="Status"
+                    ></v-combobox>
+            </v-flex>
+        </v-layout>
+        </v-container>
         <v-data-table colmd12 :headers="headers" :items="teams" class="elevation-1">
             <template v-slot:items="props">
                 <td>{{ props.item.id }}</td>
                 <td class="text-center">{{ props.item.name }}</td>
                 <td class="text-center">{{ props.item.email }}</td>
-                <td class="text-center">
-
-
-
-                    <v-chip color="blue" text-color="white">{{ props.item.status }}</v-chip>
-
-
-                </td>
+                <td class="text-center">{{ props.item.created_at }}</td>
+                <td class="text-center">{{ props.item.last_connexion }}</td>
                 <td class="text-center">{{ props.item.roles }}</td>
                 <td class="text-center">
+                    <v-chip color="blue" text-color="white">{{ props.item.status }}</v-chip>
+                </td>
                 <td class="text-center">
-
-
-
                     <v-btn icon @click="edit(props.item)">
                         <v-icon medium color="green">edit</v-icon>
                     </v-btn>
                     <v-btn icon @click="destroy( props.item.id )">
                         <v-icon medium color="red"> delete</v-icon>
                     </v-btn>
-                </td>
-
                 </td>
 
             </template>
@@ -156,16 +184,17 @@
             return {
                 headers: [
                     {
-                        text: 'id',
+                        text: 'ID',
                         sortable: false,
                         value: 'name'
                     },
-                    {text: 'name', value: 'name'},
-                    {text: 'email', value: 'email'},
-                    {text: 'status ', value: 'status'},
-                    {text: 'role ', value: 'role'},
-
-                    {text: 'action ', value: 'action'},
+                    {text: 'Name', value: 'name'},
+                    {text: 'Email', value: 'email'},
+                    {text: 'Created at', value: 'created_at'},
+                    {text: 'Last connexion', value: 'last_connesion'},
+                    {text: 'Role ', value: 'role'},
+                    {text: 'Status ', value: 'status'},
+                    {text: 'Action ', value: 'action'},
 
                 ],
 

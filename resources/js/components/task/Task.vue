@@ -14,7 +14,7 @@
                                 v-model="form.project_id"
                                 item-text="name"
                                 item-value="id"
-                                label="Standard"
+                                label="project"
                             ></v-select>
 
                             <v-card-text class="px-0">Start Date</v-card-text>
@@ -31,7 +31,6 @@
                                  <template v-slot:activator="{ on }">
                                      <v-text-field
                                         v-model="form.start_date"
-                                        label="Picker in menu"
                                         prepend-icon="event"
                                         readonly
                                         v-on="on"
@@ -54,8 +53,6 @@
                                  <template v-slot:activator="{ on }">
                                      <v-text-field
                                             v-model="form.due_date"
-                                             label="Picker in menu"
-
                                              prepend-icon="event"
                                              readonly
                                              v-on="on"
@@ -70,13 +67,13 @@
                             <v-select
                             :items="type"
                             v-model="form.type"
-                            label="Standard"
+                            label="task type"
                             ></v-select>
 
                             <v-card-text class="px-0">Affected To</v-card-text>
                             <v-select
                             :items="users"
-                            label="Standard"
+                            label="affected to"
                             v-model="form.user_id"
                             item-text="name"
                             item-value="id"
@@ -85,7 +82,7 @@
                             <v-card-text class="px-0">Link</v-card-text>
                             <v-text-field
                            v-model="form.link"
-                            label="Standard"
+                            label="link"
                             ></v-text-field>
                         </v-flex>
 
@@ -119,14 +116,14 @@
                                 v-model="form.project_id"
                                 item-text="name"
                                 item-value="id"
-                                label="Standard"
+                                label="project"
                             ></v-select>
 
                             <v-card-text class="px-0">Title</v-card-text>
                             <v-select
                             :items="type"
                             v-model="form.type"
-                            label="Standard"
+                            label="title"
                             ></v-select>
                         </v-flex>
 
@@ -134,7 +131,7 @@
                             <v-card-text class="px-0">Affected To</v-card-text>
                             <v-select
                             :items="users"
-                            label="Standard"
+                            label="affected to"
                             v-model="form.user_id"
                             item-text="name"
                             item-value="id"
@@ -143,7 +140,7 @@
                             <v-card-text class="px-0">Status</v-card-text>
                             <v-select
                             :items="users"
-                            label="Standard"
+                            label="status"
                             v-model="form.user_id"
                             item-text="name"
                             item-value="id"
@@ -157,7 +154,7 @@
                                 v-model="form.project_id"
                                 item-text="name"
                                 item-value="id"
-                                label="Standard"
+                                label="sort by"
                             ></v-select>
                         </v-flex>
 
@@ -169,15 +166,18 @@
                                 <td class="text-center">{{ props.item.user }}</td>
                                 <td class="text-center">{{ props.item.start_date }}</td>
                                 <td class="text-center">{{ props.item.due_date }}</td>
+                                <td class="text-center">{{ props.item.completed_on }}</td>
+                                <td class="text-center">{{ props.item.comments }}</td>
                                 <td class="text-center">{{ props.item.status }}</td>
-                                    <td class="text-center">
-                                        <v-btn icon @click="edit(props.item)">
-                                            <v-icon medium color="green">edit</v-icon>
-                                        </v-btn>
-                                        <v-btn icon @click="destroy( props.item.id )">
-                                            <v-icon medium color="red"> delete</v-icon>
-                                        </v-btn>
-                                    </td>
+                                <td class="text-center">{{ props.item.links }}</td>
+                                <td class="text-center">
+                                    <v-btn icon @click="edit(props.item)">
+                                        <v-icon medium color="green">edit</v-icon>
+                                    </v-btn>
+                                    <v-btn icon @click="destroy( props.item.id )">
+                                        <v-icon medium color="red"> delete</v-icon>
+                                    </v-btn>
+                                </td>
                             </template>
                         </v-data-table>
                         </v-container>
@@ -197,7 +197,7 @@
             return {
                 headers: [
                     {
-                        text: 'project',
+                        text: 'Project',
                         sortable: false,
                         value: 'project'
                     },
@@ -206,8 +206,11 @@
                     {text: 'Task', value: 'type'},
                     {text: 'Affected to', value: 'user'},
                     {text: 'Start Date ', value: 'start_date'},
-                      {text: 'Due Date ', value: 'due_date'},
-                       {text: 'Status ', value: 'status'},
+                    {text: 'Due Date ', value: 'due_date'},
+                    {text: 'Completed on ', value: 'completed_on'},
+                    {text: 'Comments ', value: 'comments'},
+                    {text: 'Status ', value: 'status'},
+                    {text: 'Links ', value: 'links'},
                     {text: 'action ', value: 'action'},
 
                 ],

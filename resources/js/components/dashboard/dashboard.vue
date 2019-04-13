@@ -7,7 +7,7 @@
                 </v-flex>
 
             <v-flex xs3 md10>
-                    <v-card-text class="px-0">Filter</v-card-text>
+                    <v-card-text class="px-0"> <h4> Filter </h4> </v-card-text>
             </v-flex>
 
             <v-flex xs2></v-flex>
