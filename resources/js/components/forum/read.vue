@@ -2,11 +2,11 @@
 <div v-if="question">
         <edit-question
            v-if="editing"
-          :data = question
+          :data = "question"
         ></edit-question>
 
         <show-question v-else
-            :data = question>
+            :data = "question">
         </show-question>
 
         <v-container>
@@ -65,5 +65,7 @@ export default {
 </script>
 
 <style>
-
+.container {
+  max-width: 960px;
+}
 </style>

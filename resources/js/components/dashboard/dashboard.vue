@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-container>
         <v-container fluid grid-list-md >
         <v-layout row wrap>
                 <v-flex xs3 md2>
@@ -111,7 +111,7 @@
 
         </v-layout>
     </v-container>
-    </div>
+    </v-container>
 </template>
 
 <script>
@@ -147,5 +147,7 @@ export default {
 </script>
 
 <style>
-
+.container {
+  max-width: 960px;
+}
 </style>

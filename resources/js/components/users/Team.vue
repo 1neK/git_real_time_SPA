@@ -1,6 +1,6 @@
 <template>
 
-    <div class="sm8">
+    <v-container>
 
         <v-dialog v-model="dialog" width="500">
 
@@ -95,7 +95,7 @@
                 </v-form>
             </v-card>
         </v-dialog>
-    </div>
+    </v-container>
 </template>
 
 <script>
@@ -192,5 +192,7 @@
 </script>
 
 <style>
-
+.container {
+  max-width: 960px;
+}
 </style>

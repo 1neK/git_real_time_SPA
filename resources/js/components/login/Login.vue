@@ -1,5 +1,6 @@
 
 <template>
+<v-container>
 <v-layout>
     <v-flex xs12 sm6 offset-sm3>
         <v-card class="text-xs-center">
@@ -30,6 +31,7 @@
   </v-card>
     </v-flex>
 </v-layout>
+</v-container>
 </template>
 
 
@@ -68,5 +70,7 @@ export default {
 </script>
 
 <style>
-
+.container {
+  max-width: 960px;
+}
 </style>

@@ -321,5 +321,7 @@ this.form.id=null;
 </script>
 
 <style>
-
+.container {
+  max-width: 960px;
+}
 </style>

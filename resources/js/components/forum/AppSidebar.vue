@@ -1,4 +1,5 @@
 <template>
+<v-container>
     <v-card>
          <v-toolbar color="cyan" dark dense class="mt-2">
           <v-toolbar-title>Categories</v-toolbar-title>
@@ -14,6 +15,7 @@
               </v-list-tile>
          </v-list>
     </v-card>
+</v-container>
 </template>
 
 <script>
@@ -32,5 +34,7 @@ export default {
 </script>
 
 <style>
-
+.container {
+  max-width: 960px;
+}
 </style>

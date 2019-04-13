@@ -1,5 +1,6 @@
 
   <template>
+  <v-container>
       <v-card class="mt-2">
         <v-card-title primary-title>
           <div>
@@ -16,8 +17,8 @@
         </v-card-title>
             <v-card-text>{{question.body}}</v-card-text>
       </v-card>
+  </v-container>
      </template>
-
 <script>
 export default {
     props:['question']
@@ -25,5 +26,7 @@ export default {
 </script>
 
 <style>
-
+.container {
+  max-width: 960px;
+}
 </style>

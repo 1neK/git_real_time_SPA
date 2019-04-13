@@ -4,7 +4,7 @@
         <v-flex xs8>
             <question v-for="question in questions"
             :key="question.path"
-            :question=question
+            :question="question"
             >
 
 
@@ -38,5 +38,7 @@ created(){
 </script>
 
 <style>
-
+.container {
+  max-width: 960px;
+}
 </style>

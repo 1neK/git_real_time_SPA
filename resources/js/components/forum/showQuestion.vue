@@ -1,4 +1,5 @@
 <template>
+<v-container>
     <v-card>
         <v-container fluid>
 
@@ -27,6 +28,7 @@
           </v-card-actions>
         </v-container>
     </v-card>
+</v-container>
 </template>
 
 <script>
@@ -78,5 +80,7 @@ methods:{
 </script>
 
 <style>
-
+.container {
+  max-width: 960px;
+}
 </style>

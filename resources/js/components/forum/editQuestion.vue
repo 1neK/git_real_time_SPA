@@ -1,4 +1,5 @@
 <template>
+<v-container>
     <v-container fluid>
         <v-card>
         <v-form @submit.prevent="update">
@@ -21,6 +22,7 @@
         </v-form>
         </v-card>
     </v-container>
+</v-container>
 </template>
 
 <script>
@@ -51,5 +53,7 @@ methods:{
 </script>
 
 <style>
-
+.container {
+  max-width: 960px;
+}
 </style>
