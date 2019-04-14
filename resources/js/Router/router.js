@@ -23,6 +23,7 @@ import Project from '../components/project/Project'
 import  ProjectSingle from  '../components/project/ProjectSingle'
 import CreateTask from '../components/task/CreateTask'
 import Task from '../components/task/Task'
+import taskSingle from '../components/task/show'
 import CreateCategory from '../components/category/CreateCategory'
 //import CreateTeam from '../components/team/CreateTeam'
 //import ListeTeam from '../components/team/ListeTeam'
@@ -60,6 +61,7 @@ const routes = [
 
     { path: '/createtask', component: CreateTask },
     { path: '/task', component: Task },
+    { path: '/task/:id', component: taskSingle ,name:'task-single'},
 
      { path: '/category', component: CreateCategory },
 

@@ -32,12 +32,6 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return ProjectResource::collection(Project::latest()->get());
-    }
-
-    public function count_task()
-    {
-
         $projects = Project::all();
 
         foreach ($projects as $project) {
@@ -49,6 +43,12 @@ class ProjectController extends Controller
         }
 
         return response()->json($projects);
+    }
+
+    public function count_task()
+    {
+
+
 
     }
 

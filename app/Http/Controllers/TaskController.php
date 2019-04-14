@@ -50,10 +50,10 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $task = new Task();
-        $task->description = $request->description;
+        $task->description = ($request->description) ?? '';
         $task->due_date = $request->due_date;
         $task->user_id = $request->user_id;
-        $task->link = $request->link;
+        $task->link = ($request->link) ?? '';
         $task->project_id = $request->project_id;
         $task->start_date = $request->start_date;
         $task->type = $request->type;

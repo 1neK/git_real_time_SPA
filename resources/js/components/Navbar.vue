@@ -1,5 +1,5 @@
 <template>
-<v-navigation-drawer permanent>
+<v-navigation-drawer permanent  v-if="User.loggedIn()">
     <v-container>
         <v-list dense>
             <v-list-tile-content>
@@ -23,7 +23,7 @@
                 </v-list-tile-content>
             </v-list-tile>
 
-            <v-list-tile to="/team">
+            <v-list-tile to="/team" v-if="User.admin()">
                 <v-list-tile-action>
                     <v-icon>supervised_user_circle</v-icon>
                 </v-list-tile-action>
@@ -32,7 +32,7 @@
                 </v-list-tile-content>
             </v-list-tile>
 
-            <v-list-tile to="/project">
+            <v-list-tile to="/project" v-if="User.admin() || User.coordinator()">
                 <v-list-tile-action>
                     <v-icon>work</v-icon>
                 </v-list-tile-action>
@@ -41,7 +41,7 @@
                 </v-list-tile-content>
             </v-list-tile>
 
-            <v-list-tile to="/task">
+            <v-list-tile to="/task" >
                 <v-list-tile-action>
                     <v-icon>view_list</v-icon>
                 </v-list-tile-action>
@@ -50,7 +50,7 @@
                 </v-list-tile-content>
             </v-list-tile>
 
-            <v-list-tile to="/allusers">
+            <v-list-tile to="/allusers" v-if="User.admin()">
                 <v-list-tile-action>
                     <v-icon>supervisor_account</v-icon>
                 </v-list-tile-action>

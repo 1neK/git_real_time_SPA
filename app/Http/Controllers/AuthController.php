@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Role;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -109,11 +110,15 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
+        $user =auth()->user();
+
+        $user->role =Role::find($user->role_id)->value('name');
+
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-             'user'=> auth()->user()
+             'user'=> $user
         ]);
     }
 }

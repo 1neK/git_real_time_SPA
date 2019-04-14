@@ -21,7 +21,7 @@ export default {
                 .then(res => {
                     this.body = ''
                     EventBus.$emit('newReply',res.data.reply)
-                    window.scrollTo(0,0)
+                    location.reload()
                 })
         }
     }

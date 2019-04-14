@@ -120,8 +120,7 @@
           this.getData();
 
 
-            axios.get('/api/count-task')
-                .then( res => {this.projects = res.data ;console.log(res.data); } )
+
 },
 
     methods:{
@@ -174,7 +173,7 @@
 
         },
         getData(){
-            axios.get('/api/project').then(res => this.projects = res.data.data);
+            axios.get('/api/project').then(res => this.projects = res.data);
             this.reset();
 
         }

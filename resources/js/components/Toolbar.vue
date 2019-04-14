@@ -22,7 +22,7 @@
                             </v-btn>
                         </template>
                         <v-list dense>
-                            <router-link
+                            <v-list-tile
                             v-for="item in items"
                             :key="item.title"
                             :to="item.to"
@@ -30,7 +30,7 @@
                                 <v-list-tile-title>
                                     {{item.title}}
                                 </v-list-tile-title>
-                            </router-link>
+                            </v-list-tile>
                         </v-list>
                         </v-menu>
                     </div>

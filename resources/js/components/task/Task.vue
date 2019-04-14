@@ -105,65 +105,81 @@
 
                         </v-flex>
 
+
+
+
+                        <v-flex xs12 >
+                            <v-expansion-panel popout>
+                                <v-expansion-panel-content>
+                                    <template v-slot:header>
+                                        <div>   <h4>Filter task</h4></div>
+                                    </template>
+                                    <v-layout  row wrap p4>
+
+                                        <v-flex md4>
+                                            <v-card-text class="px-0">Project</v-card-text>
+                                            <v-select
+                                                    :items="projects"
+                                                    v-model="filter.project_id"
+                                                    item-text="name"
+                                                    item-value="id"
+                                                    label="project"
+                                            ></v-select>
+
+                                            <v-card-text class="px-0">Title</v-card-text>
+                                            <v-select
+                                                    :items="type"
+                                                    v-model="filter.type"
+                                                    label="title"
+                                            ></v-select>
+                                        </v-flex>
+
+                                        <v-flex md4>
+                                            <v-card-text class="px-0">Affected To</v-card-text>
+                                            <v-select
+                                                    :items="users"
+                                                    label="affected to"
+                                                    v-model="filter.user_id"
+                                                    item-text="name"
+                                                    item-value="id"
+                                            ></v-select>
+
+                                            <v-card-text class="px-0">Status</v-card-text>
+                                            <v-select
+                                                    :items="users"
+                                                    label="status"
+                                                    v-model="filter.user_id"
+                                                    item-text="name"
+                                                    item-value="id"
+                                            ></v-select>
+                                        </v-flex>
+
+                                        <v-flex md4>
+                                            <v-card-text class="px-0">Sort by</v-card-text>
+                                            <v-select
+                                                    :items="projects"
+                                                    v-model="filter.project_id"
+                                                    item-text="name"
+                                                    item-value="id"
+                                                    label="sort by"
+                                            ></v-select>
+                                        </v-flex>
+
+                                    </v-layout>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                        </v-flex>
+
                         <v-flex md12 xs12 md1>
-                             <h4>Filter task</h4>
+
                          </v-flex>
-
-                         <v-flex md3>
-                            <v-card-text class="px-0">Project</v-card-text>
-                            <v-select
-                                :items="projects"
-                                v-model="form.project_id"
-                                item-text="name"
-                                item-value="id"
-                                label="project"
-                            ></v-select>
-
-                            <v-card-text class="px-0">Title</v-card-text>
-                            <v-select
-                            :items="type"
-                            v-model="form.type"
-                            label="title"
-                            ></v-select>
-                        </v-flex>
-
-                        <v-flex md3>
-                            <v-card-text class="px-0">Affected To</v-card-text>
-                            <v-select
-                            :items="users"
-                            label="affected to"
-                            v-model="form.user_id"
-                            item-text="name"
-                            item-value="id"
-                            ></v-select>
-
-                            <v-card-text class="px-0">Status</v-card-text>
-                            <v-select
-                            :items="users"
-                            label="status"
-                            v-model="form.user_id"
-                            item-text="name"
-                            item-value="id"
-                            ></v-select>
-                        </v-flex>
-
-                        <v-flex md3>
-                            <v-card-text class="px-0">Sort by</v-card-text>
-                            <v-select
-                                :items="projects"
-                                v-model="form.project_id"
-                                item-text="name"
-                                item-value="id"
-                                label="sort by"
-                            ></v-select>
-                        </v-flex>
 
                         <v-container>
                         <v-data-table colmd12  :headers="headers" :items="tasks" class="elevation-1">
                             <template v-slot:items="props">
                                 <td>{{ props.item.project }}</td>
                                 <td class="text-center">{{ props.item.type }}</td>
-                                <td class="text-center">{{ props.item.user }}</td>
+                                <td class="text-center"> {{ props.item.user }}</td>
                                 <td class="text-center">{{ props.item.start_date }}</td>
                                 <td class="text-center">{{ props.item.due_date }}</td>
                                 <td class="text-center">{{ props.item.completed_on }}</td>
@@ -222,13 +238,27 @@ type:['Blog','Authentification','Edit Slider','Slider'],
                 dialog: false,
                 form: {
                     id:null,
-                    link: null,
+                    link: '',
                     user_id:null,
                     project_id:null,
                     start_date: new Date().toISOString().substr(0, 10),
                     type:null,
                     due_date:  new Date().toISOString().substr(0, 10),
-                    description:null,
+                    description:'',
+                    btn_name:'add'
+
+
+                },
+
+                filter: {
+                    id:null,
+                    link: '',
+                    user_id:null,
+                    project_id:null,
+                    start_date: new Date().toISOString().substr(0, 10),
+                    type:null,
+                    due_date:  new Date().toISOString().substr(0, 10),
+                    description:'',
                     btn_name:'add'
 
 
@@ -245,7 +275,7 @@ type:['Blog','Authentification','Edit Slider','Slider'],
          this.getData();
 
 
-            axios.get('/api/project').then(res => this.projects = res.data.data);
+            axios.get('/api/project').then(res => this.projects = res.data);
             axios.get('/api/user').then(res => this.users = res.data)
         },
 
@@ -289,13 +319,13 @@ type:['Blog','Authentification','Edit Slider','Slider'],
 
               reset() {
 this.form.id=null;
-                    this.form.link= null;
+                    this.form.link= '';
                     this.form.user_id=null;
                     this.form.project_id=null;
                     this.form.start_date= new Date().toISOString().substr(0, 10);
                     this.form.type=null;
                 this.form.due_date=  new Date().toISOString().substr(0, 10);
-                   this.form. description=null;
+                   this.form. description='';
                   this.form.btn_name="add";
 
         },
