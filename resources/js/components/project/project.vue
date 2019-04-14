@@ -131,9 +131,18 @@
             axios.put(`/api/project/${this.form.id}`,this.form)
             .then(res =>{
 
+                this.$toasted.show(res.data);
+
+
                 this.dialog = false;
                 this.getData();
-                })
+                }
+
+
+                )
+                .catch(error => {
+                    this.$toasted.show(error);
+                });
         },
         create(){
             axios.post('/api/project?token='+localStorage.getItem('token'),this.form)

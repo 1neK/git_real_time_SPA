@@ -24,6 +24,13 @@ import Exception from './Helpers/Exception'
 window.Exception = Exception
 
 
+// register the plugin on vue
+import Toasted from 'vue-toasted';
+
+Vue.use(Toasted)
+
+
+
 window.EventBus = new Vue();
 
 

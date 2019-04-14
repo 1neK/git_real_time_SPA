@@ -28,6 +28,7 @@
         "pusher-js": "^4.4.0",
         "vue-router": "^3.0.2",
         "vue-simplemde": "^0.5.1",
+        "vue-toasted": "^1.1.26",
         "vuetify": "^1.5.3"
     }
 }

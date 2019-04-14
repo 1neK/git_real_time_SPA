@@ -60,6 +60,8 @@ export default {
             },
             login()
             {
+
+
                 if(this.form.password && this.form.email && this.validEmail(this.form.email))
                 User.login(this.form,this.$router)
 
