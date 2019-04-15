@@ -2,9 +2,6 @@
 <v-navigation-drawer permanent  v-if="User.loggedIn()">
     <v-container>
         <v-list dense>
-            <v-list-tile-content>
-                <v-list-tile-title></v-list-tile-title>
-            </v-list-tile-content>
             <!--<v-list-tile-content>
                 <v-list-tile-title></v-list-tile-title>
             </v-list-tile-content>-->

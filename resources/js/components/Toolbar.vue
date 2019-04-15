@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar fixed>
+    <v-toolbar>
         <div id="app">
             <v-app id="inspire" dark>
                 <v-spacer></v-spacer>
