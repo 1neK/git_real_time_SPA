@@ -188,10 +188,10 @@
                                 <td class="text-center">{{ props.item.links }}</td>
                                 <td class="text-center">
                                     <v-btn icon @click="edit(props.item)">
-                                        <v-icon medium color="green">edit</v-icon>
+                                        <v-icon medium color="black">edit</v-icon>
                                     </v-btn>
                                     <v-btn icon @click="destroy( props.item.id )">
-                                        <v-icon medium color="red"> delete</v-icon>
+                                        <v-icon medium color="black"> delete</v-icon>
                                     </v-btn>
                                 </td>
                             </template>
@@ -353,5 +353,6 @@ this.form.id=null;
 <style>
 .container {
   max-width: 960px;
+
 }
 </style>

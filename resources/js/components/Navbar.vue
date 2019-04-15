@@ -3,16 +3,21 @@
     <v-container>
         <v-list dense>
             <v-list-tile-content>
-                <v-list-tile-title v-if="User.designer()">Designer</v-list-tile-title>
+                <v-list-tile-title></v-list-tile-title>
             </v-list-tile-content>
-            <v-list-tile-content>
-                <v-list-tile-title v-if="User.coordinator()">Coordinator</v-list-tile-title>
-            </v-list-tile-content>
-            <v-list-tile-content>
-                    <v-list-tile-title v-if="User.admin()">Admin</v-list-tile-title>
-            </v-list-tile-content>
-
-            <v-divider></v-divider>
+            <!--<v-list-tile-content>
+                <v-list-tile-title></v-list-tile-title>
+            </v-list-tile-content>-->
+                    <v-list-tile-content>
+                        <v-list-tile-title v-if="User.designer()">Designer</v-list-tile-title>
+                    </v-list-tile-content>
+                    <v-list-tile-content>
+                        <v-list-tile-title v-if="User.coordinator()">Coordinator</v-list-tile-title>
+                    </v-list-tile-content>
+                    <v-list-tile-content>
+                            <v-list-tile-title v-if="User.admin()">Admin</v-list-tile-title>
+                    </v-list-tile-content>
+                    <v-divider></v-divider>
 
             <v-list-tile to="/">
                 <v-list-tile-action>
@@ -105,5 +110,10 @@ export default {
         }
 }
 </script>
+<style>
+
+</style>
+
+
 
 

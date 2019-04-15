@@ -12,7 +12,13 @@
 
             </td>
             <td class="text-center">
-                <v-icon large danger>delete_forever</v-icon>
+                <v-btn icon >
+                    <v-icon black medium danger>delete</v-icon>
+                </v-btn>
+                <v-btn icon >
+                    <v-icon black medium danger>edit</v-icon>
+                </v-btn>
+
             </td>
 
         </template>

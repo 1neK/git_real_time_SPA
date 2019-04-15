@@ -2012,6 +2012,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -2394,7 +2399,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       /*select1: 'Ins'
       items1: [
-        ],*/
+       ],*/
       headers: [{
         text: 'Project',
         sortable: false,
@@ -4185,6 +4190,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -23556,7 +23567,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23575,7 +23586,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23594,7 +23605,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23632,7 +23643,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23651,7 +23662,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23670,7 +23681,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23689,7 +23700,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23708,7 +23719,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23746,7 +23757,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23765,7 +23776,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23784,7 +23795,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23803,7 +23814,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -23822,7 +23833,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -60202,6 +60213,8 @@ var render = function() {
                 "v-list",
                 { attrs: { dense: "" } },
                 [
+                  _c("v-list-tile-content", [_c("v-list-tile-title")], 1),
+                  _vm._v(" "),
                   _c(
                     "v-list-tile-content",
                     [
@@ -60386,7 +60399,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("v-toolbar", [
+  return _c("v-toolbar", { attrs: { fixed: "" } }, [
     _c(
       "div",
       { attrs: { id: "app" } },
@@ -61064,9 +61077,9 @@ var render = function() {
                     [
                       _c("v-list-tile-title", [
                         _vm._v(
-                          "\r\n                           " +
+                          "\n                           " +
                             _vm._s(category.name) +
-                            "\r\n                       "
+                            "\n                       "
                         )
                       ])
                     ],
@@ -61508,9 +61521,9 @@ var render = function() {
                   _c("div", [
                     _c("div", { staticClass: "headline" }, [
                       _vm._v(
-                        "\r\n                    " +
+                        "\n                    " +
                           _vm._s(_vm.data.title) +
-                          "\r\n                "
+                          "\n                "
                       )
                     ]),
                     _vm._v(" "),
@@ -61960,7 +61973,7 @@ var render = function() {
           _vm.errors
             ? _c("v-alert", { attrs: { type: "error", value: true } }, [
                 _vm._v(
-                  "\n                Project name is required.\n            "
+                  "\r\n                Project name is required.\r\n            "
                 )
               ])
             : _vm._e(),
@@ -62117,7 +62130,7 @@ var render = function() {
                                             {
                                               attrs: {
                                                 medium: "",
-                                                color: "green"
+                                                color: "black"
                                               },
                                               on: {
                                                 click: function($event) {
@@ -62147,7 +62160,7 @@ var render = function() {
                                             {
                                               attrs: {
                                                 medium: "",
-                                                color: "red"
+                                                color: "black"
                                               }
                                             },
                                             [_vm._v(" delete")]
@@ -62255,7 +62268,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\r\n                Project name is required.\r\n            "
+                                "\n                Project name is required.\n            "
                               )
                             ]
                           )
@@ -62292,7 +62305,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\r\n            close\r\n          ")]
+                        [_vm._v("\n            close\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
@@ -62387,7 +62400,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", { staticClass: "text-center" }, [
                   _c("span", { staticClass: "text-danger" }, [
-                    _vm._v("activated\n                ")
+                    _vm._v("activated\r\n                ")
                   ])
                 ]),
                 _vm._v(" "),
@@ -63235,7 +63248,7 @@ var render = function() {
                                           {
                                             attrs: {
                                               medium: "",
-                                              color: "green"
+                                              color: "black"
                                             }
                                           },
                                           [_vm._v("edit")]
@@ -63258,7 +63271,10 @@ var render = function() {
                                         _c(
                                           "v-icon",
                                           {
-                                            attrs: { medium: "", color: "red" }
+                                            attrs: {
+                                              medium: "",
+                                              color: "black"
+                                            }
                                           },
                                           [_vm._v(" delete")]
                                         )
@@ -63387,9 +63403,31 @@ var render = function() {
               "td",
               { staticClass: "text-center" },
               [
-                _c("v-icon", { attrs: { large: "", danger: "" } }, [
-                  _vm._v("delete_forever")
-                ])
+                _c(
+                  "v-btn",
+                  { attrs: { icon: "" } },
+                  [
+                    _c(
+                      "v-icon",
+                      { attrs: { black: "", medium: "", danger: "" } },
+                      [_vm._v("delete")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "v-btn",
+                  { attrs: { icon: "" } },
+                  [
+                    _c(
+                      "v-icon",
+                      { attrs: { black: "", medium: "", danger: "" } },
+                      [_vm._v("edit")]
+                    )
+                  ],
+                  1
+                )
               ],
               1
             )
@@ -63716,6 +63754,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-container",
+    { staticClass: "c1" },
     [
       _c(
         "v-container",
@@ -63870,7 +63909,7 @@ var render = function() {
                       [
                         _c(
                           "v-icon",
-                          { attrs: { medium: "", color: "green" } },
+                          { attrs: { medium: "", color: "black" } },
                           [_vm._v("edit")]
                         )
                       ],
@@ -63888,9 +63927,11 @@ var render = function() {
                         }
                       },
                       [
-                        _c("v-icon", { attrs: { medium: "", color: "red" } }, [
-                          _vm._v(" delete")
-                        ])
+                        _c(
+                          "v-icon",
+                          { attrs: { medium: "", color: "black" } },
+                          [_vm._v(" delete")]
+                        )
                       ],
                       1
                     )
@@ -64503,7 +64544,7 @@ var render = function() {
                                             {
                                               attrs: {
                                                 medium: "",
-                                                color: "green"
+                                                color: "black"
                                               },
                                               on: {
                                                 click: function($event) {
@@ -64533,7 +64574,7 @@ var render = function() {
                                             {
                                               attrs: {
                                                 medium: "",
-                                                color: "red"
+                                                color: "black"
                                               }
                                             },
                                             [_vm._v(" delete")]
