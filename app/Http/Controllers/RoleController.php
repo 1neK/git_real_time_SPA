@@ -111,10 +111,16 @@ return response()->json($teams);
     public function update(Request $request, $role)
     {
 
-        $role =Role::find($role);
-        $role->name =$request->name;
-       $role->save();
-        return response()->json('updated');
+        if ($role !=1 && $role !=2 ) {
+
+            $role =Role::find($role);
+            $role->name =$request->name;
+            $role->save();
+            return response()->json('updated');
+        }
+
+        else return "unauthorized";
+
     }
 
     /**
@@ -125,9 +131,16 @@ return response()->json($teams);
      */
     public function destroy($role)
     {
-      $role =  Role::find($role);
-      $role->delete();
-        return response()->json('deleted');
+
+        if ($role !=1 && $role !=2 ) {
+
+            $role =  Role::find($role);
+            $role->delete();
+            return response()->json('deleted');
+        }
+
+        else return "unauthorized";
+
     }
 
 

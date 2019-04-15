@@ -1,11 +1,17 @@
 import Token from "./Token";
 import AppStorage from './AppStorage'
+
+
+
+
 class User{
     login(data,router){ /* router :this.$router */
 
+
+
         axios.post('/api/auth/login',data)
         .then(res =>this.responseAfterLogin(res,router))
-        .catch(error => console.log(error.response))
+        .catch(error => console.log(error.response.data.error) )
     }
 responseAfterLogin(res,router){
 const access_token = res.data.access_token
@@ -16,27 +22,8 @@ if(access_token != ''){
     AppStorage.storeToken(access_token);
     AppStorage.storeUser(user.name);
 
+    AppStorage.storeRole(user.role);
 
-
-   if(user.role_id ==1 ){
-    AppStorage.storeRole('admin');
-    window.location='/admin'
-
-    }
-    if(user.role_id ==2 ){
-        AppStorage.storeRole('designer');
-
-        window.location='/designer'
-
-    }
-    if(user.role_id ==3 ){
-        console.log('coordinator')
-
-        AppStorage.storeRole('coordinator');
-
-        window.location='/coordinator'
-
-    }
 
     window.location='/';
 
@@ -93,13 +80,13 @@ own(id){
 }
 
 admin(){
-   return AppStorage.getRole()=='admin';
+
+        console.log(AppStorage.getRole());
+   return AppStorage.getRole()=='Admin';
+
 }
 coordinator(){
-    return AppStorage.getRole()=='coordinator';
- }
- designer(){
-    return AppStorage.getRole()=='designer';
+    return AppStorage.getRole()=='Coordinator';
  }
 
 

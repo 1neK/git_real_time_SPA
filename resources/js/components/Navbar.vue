@@ -5,14 +5,9 @@
             <!--<v-list-tile-content>
                 <v-list-tile-title></v-list-tile-title>
             </v-list-tile-content>-->
+
                     <v-list-tile-content>
-                        <v-list-tile-title v-if="User.designer()">Designer</v-list-tile-title>
-                    </v-list-tile-content>
-                    <v-list-tile-content>
-                        <v-list-tile-title v-if="User.coordinator()">Coordinator</v-list-tile-title>
-                    </v-list-tile-content>
-                    <v-list-tile-content>
-                            <v-list-tile-title v-if="User.admin()">Admin</v-list-tile-title>
+                            <v-list-tile-title >{{role}} </v-list-tile-title>
                     </v-list-tile-content>
                     <v-divider></v-divider>
 
@@ -96,13 +91,15 @@ export default {
         return {
             drawer: false,
             User : User,
+            role :""
 
         }
 
     },
       created(){
 
-          console.log(User.loggedIn());
+        this.role =localStorage.getItem('role');
+
 
         }
 }

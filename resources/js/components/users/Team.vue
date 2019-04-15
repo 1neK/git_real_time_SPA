@@ -21,10 +21,10 @@
                             <v-toolbar color="white" flat>
                             <v-spacer></v-spacer>
                             <v-card-actions>
-                                <v-btn icon>
-                                    <v-icon medium color="black" @click="editpopup(team)"> edit</v-icon>
+                                <v-btn icon v-if="team.id !=1 && team.id !=2">
+                                    <v-icon  medium color="black" @click="editpopup(team)"> edit</v-icon>
                                 </v-btn>
-                                <v-btn icon @click="destroy( team.id )">
+                                <v-btn icon  v-if="team.id !=1 && team.id !=2" @click="destroy( team.id )">
                                     <v-icon medium color="black"> delete</v-icon>
                                 </v-btn>
                             </v-card-actions>

@@ -180,6 +180,7 @@
                                 <td>{{ props.item.project }}</td>
                                 <td class="text-center">{{ props.item.type }}</td>
                                 <td class="text-center"> {{ props.item.user }}</td>
+                                <td class="text-center"> {{ props.item.createdBy }}</td>
                                 <td class="text-center">{{ props.item.start_date }}</td>
                                 <td class="text-center">{{ props.item.due_date }}</td>
                                 <td class="text-center">{{ props.item.completed_on }}</td>
@@ -221,6 +222,7 @@
 
                     {text: 'Task', value: 'type'},
                     {text: 'Affected to', value: 'user'},
+                    {text: 'Added by', value: 'createdBy'},
                     {text: 'Start Date ', value: 'start_date'},
                     {text: 'Due Date ', value: 'due_date'},
                     {text: 'Completed on ', value: 'completed_on'},
@@ -332,7 +334,7 @@ this.form.id=null;
 
             getData(){
 
-   axios.get('/api/task')
+   axios.get('/api/task?token='+localStorage.getItem('token'))
                 .then(res => this.tasks = res.data);
 
                 this.reset();

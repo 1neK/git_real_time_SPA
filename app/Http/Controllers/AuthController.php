@@ -112,7 +112,9 @@ class AuthController extends Controller
     {
         $user =auth()->user();
 
-        $user->role =Role::find($user->role_id)->value('name');
+        if (!empty($user->role_id)) $user->role =Role::where('id',$user->role_id)->value('name');
+
+
 
         return response()->json([
             'access_token' => $token,

@@ -16,8 +16,8 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->integer('made_by')->unsigned();
             $table->integer('project_id')->unsigned();
-        
             $table->string('type');
             $table->date('start_date');
             $table->date('due_date');
@@ -25,6 +25,7 @@ class CreateTasksTable extends Migration
             $table->text('description');
             $table->enum('status', ['In progress', 'Validated','Incompleted','Completed']);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('made_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->timestamps();
         });

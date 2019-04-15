@@ -7,6 +7,8 @@ use App\Model\Project;
 use App\Task;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class TaskController extends Controller
 {
@@ -17,7 +19,7 @@ class TaskController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('JWT', ['except' => ['index', 'show']]);
+        $this->middleware('JWT');
     }
 
 
@@ -28,12 +30,18 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+
+        $user = JWTAuth::toUser( Input::get('token') );
+        if ($user->role_id == 1 || $user->role_id == 2)  $tasks = Task::all();
+        else $tasks= Task::where('user_id',$user->id)->get();
+
+
 
         foreach ($tasks as $task) {
 
             $task->project = Project::where('id', $task->project_id)->value('name');
             $task->user = User::where('id', $task->user_id)->value('name');
+            $task->createdBy = User::where('id', $task->made_by)->value('name');
         }
 
         return response()->json($tasks);
@@ -49,10 +57,13 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+
+        $user = JWTAuth::toUser($request->token);
         $task = new Task();
         $task->description = ($request->description) ?? '';
         $task->due_date = $request->due_date;
         $task->user_id = $request->user_id;
+        $task->made_by = $user->id;
         $task->link = ($request->link) ?? '';
         $task->project_id = $request->project_id;
         $task->start_date = $request->start_date;
