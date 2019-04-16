@@ -22,6 +22,8 @@ Route::post('markAsRead', 'NotificationController@markAsRead');
 Route::apiResource('/project','ProjectController');
 
 Route::post('/task/{taskcomment}','TaskCommentController@store');
+Route::delete('/task/{taskcomment}','TaskCommentController@destroy');
+Route::patch('/task/{taskcomment}','TaskCommentController@update');
 //Route::get('/task/{taskcomment}','TaskComment@index');
 Route::apiResource('/task','TaskController');
 Route::get('/count-task','RoleController@count_task');
