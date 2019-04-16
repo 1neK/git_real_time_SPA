@@ -68,7 +68,7 @@
 
     methods:{
         create(){
-                axios.post('/api/task',this.form)
+                axios.post('/api/task/{$id}',this.form)
                 .then(res => this.$router.push(res.data.path) )
                 .catch(error => this.errors = error.response.data.errors)
         }

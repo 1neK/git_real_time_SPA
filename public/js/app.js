@@ -4228,7 +4228,7 @@ __webpack_require__.r(__webpack_exports__);
     create: function create() {
       var _this = this;
 
-      axios.post('/api/task', this.form).then(function (res) {
+      axios.post('/api/task/{$id}', this.form).then(function (res) {
         return _this.$router.push(res.data.path);
       }).catch(function (error) {
         return _this.errors = error.response.data.errors;
