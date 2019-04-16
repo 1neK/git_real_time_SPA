@@ -6,7 +6,9 @@ use App\TaskComment;
 use Illuminate\Http\Request;
 use App\Http\Resources\TaskCommentResource;
 use App\Http\Requests\TaskCommentRequest;
+use Illuminate\Support\Facades\Input;
 use Symfony\Component\HttpFoundation\Response;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class TaskCommentController extends Controller
 {
@@ -39,11 +41,19 @@ class TaskCommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TaskCommentRequest $request)
+    public function store(Request $request ,$task)
     {
-        $taskComment =  auth()->user()->taskComment()->create($request->all());
+        $user = JWTAuth::toUser( Input::get('token') );
 
-       return response(new TaskCommentRequest($taskComment),Response::HTTP_CREATED);
+        $task_commment=new TaskComment();
+        $task_commment->task_id=$task;
+        $task_commment->body=$request->body;
+        $task_commment->user_id=$user->id;
+        $task_commment->save();
+
+
+
+       return response()->json("inserted");
     }
 
     /**

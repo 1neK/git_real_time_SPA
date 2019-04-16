@@ -173,11 +173,12 @@
 
                 </v-flex>
 
+
                 <v-container>
                 <v-data-table colmd12  :headers="headers" :items="tasks" class="elevation-1">
                     <template v-slot:items="props">
                         <td>{{ props.item.project }}</td>
-                        <td class="text-center">{{ props.item.type }}</td>
+                        <td class="text-center"> {{ props.item.type }}</td>
                         <td class="text-center"> {{ props.item.user }}</td>
                         <td class="text-center"> {{ props.item.createdBy }}</td>
                         <td class="text-center">{{ props.item.start_date }}</td>
@@ -187,6 +188,12 @@
                         <td class="text-center">{{ props.item.status }}</td>
                         <td class="text-center">{{ props.item.links }}</td>
                         <td class="text-center">
+
+                            <router-link  :to="{ name: 'task-single', params: { id:  props.item.id } }"  >
+                                go to
+                            </router-link>
+
+
                             <v-btn icon @click="edit(props.item)">
                                 <v-icon medium color="black">edit</v-icon>
                             </v-btn>

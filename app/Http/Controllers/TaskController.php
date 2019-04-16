@@ -80,9 +80,25 @@ class TaskController extends Controller
      * @param  \App\Model\Task $task
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project, Task $task)
+    public function show($task)
     {
-        return new TaskResource($task);
+        $task =Task::find($task);
+
+        $task->project = Project::where('id', $task->project_id)->value('name');
+        $task->user = User::where('id', $task->user_id)->value('name');
+        $task->createdBy = User::where('id', $task->made_by)->value('name');
+
+      $task->comments =$task->taskComment;
+
+      foreach ( $task->comments  as $comment)
+      {
+          $comment->user=User::find($comment->user_id)->value('name');
+
+      }
+
+
+        return $task;
+
     }
 
 

@@ -15,17 +15,20 @@
                     </v-toolbar>
                 <v-flex md6>
                     <v-subheader>
-                        <v-card-text class="py-1"><h5>Affected To:</h5></v-card-text>
+                        <v-card-text class="py-1"><h3>Affected To:    <small>{{task.user}}</small> </h3></v-card-text>
                     </v-subheader>
                     <v-subheader>
-                        <v-card-text class="py-1"><h5>Start Date:</h5></v-card-text>
-                        <v-card-text class="py-1"><h5>Due Date:</h5></v-card-text>
+                        <v-card-text class="py-1"><h3>Start Date:   <small>{{task.start_date}}</small></h3></v-card-text>
+                        <v-card-text class="py-1"><h3>Due Date:  <small>{{task.due_date}}</small></h3></v-card-text>
                     </v-subheader>
                     <v-subheader>
-                        <v-card-text class="py-1"><h5>Status:</h5></v-card-text>
+                        <v-card-text class="py-1"><h3>Status: <small>{{task.status}}</small></h3></v-card-text>
                     </v-subheader>
                     <v-subheader>
-                        <v-card-text class="py-1"><h5>Description:</h5></v-card-text>
+                        <v-card-text class="py-1"><h3>Description:</h3>
+
+                            <p>{{task.description}}</p>
+                        </v-card-text>
                     </v-subheader>
 
                 </v-flex>
@@ -33,11 +36,47 @@
 
         <v-card-actions>
             <v-spacer></v-spacer>
-            <h5>Added By: &nbsp;</h5><p> name </p>
+            <h5>Added By: &nbsp;</h5><p> {{task.createdBy}} </p>
         </v-card-actions>
       </v-card>
     </v-flex>
     </v-container>
+      <v-container>
+          <div class="mt-3"  v-for="(data ,index) in task.task_comment">
+              <v-card>
+                  <v-card-title>
+                      <div class="headline">{{data.user}}</div>
+                      <div class="ml-2">said {{data.created_at}}</div>
+                      <v-spacer></v-spacer>
+                  </v-card-title>
+
+                  <v-divider></v-divider>
+
+
+                  <edit-reply
+                          v-if="editing"
+                          :reply=data
+                  ></edit-reply>
+
+
+
+                  <v-card-text v-else v-html="data.body"></v-card-text>
+
+                  <v-divider></v-divider>
+                  <div v-if="!editing">
+                      <v-card-actions v-if="own">
+                          <v-btn icon small @click="edit">
+                              <v-icon color="orange">edit</v-icon>
+                          </v-btn>
+                          <v-btn icon small @click="destroy">
+                              <v-icon color="red" >delete</v-icon>
+                          </v-btn>
+                      </v-card-actions>
+                  </div>
+              </v-card>
+          </div>
+      </v-container>
+
     <v-container>
             <v-form @submit.prevent="create">
                 <span class="red--text" v-if="errors.body">{{errors.body[0]}}</span>
@@ -54,7 +93,9 @@
 </template>
 
 <script>
+    import EditReply from './editReply';
     export default {
+        components:{EditReply},
   data(){
         return {
             form:{
@@ -62,21 +103,51 @@
                 body:null
 
             },
+            editing:false,
+            task:{},
             errors:{}
         }
     },
 
+
+        created() {
+this.init();
+
+        },
     methods:{
         create(){
-                axios.post('/api/task/{$id}',this.form)
-                .then(res => this.$router.push(res.data.path) )
+                axios.post('/api/task/'+this.$route.params.id+'?token='+localStorage.getItem('token'),this.form)
+                .then(res => this.init() )
                 .catch(error => this.errors = error.response.data.errors)
         }
+        ,
+        init(){
+
+            axios.get('/api/task/'+this.$route.params.id)
+                .then(res => this.task = res.data)
+
+        }
+         ,
+        edit(){
+            this.editing=true
+        },
+
+        own(){
+            return User.own(this.data.user_id)
+        },
+
+        destroy(){
+           // EventBus.$emit('deleteReply', this.index)
+        },
+
     },
     computed:{
         disabled(){
             return !(this.form.body)
-        }
+        },
+
+
+
     }
 }
 </script>
