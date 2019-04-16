@@ -4005,9 +4005,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -23858,7 +23855,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -62781,475 +62778,440 @@ var render = function() {
     [
       _c(
         "v-container",
+        { attrs: { fluid: "", "grid-list-md": "" } },
         [
           _c(
-            "v-container",
-            { attrs: { fluid: "", "grid-list-md": "" } },
+            "v-layout",
+            { attrs: { row: "", wrap: "" } },
             [
+              _c("v-flex", { attrs: { md12: "", xs12: "", md1: "" } }, [
+                _c("h2", [_vm._v("Task")])
+              ]),
+              _vm._v(" "),
               _c(
-                "v-layout",
-                { attrs: { row: "", wrap: "" } },
+                "v-flex",
+                { attrs: { md3: "" } },
                 [
-                  _c("v-flex", { attrs: { md12: "", xs12: "", md1: "" } }, [
-                    _c("h2", [_vm._v("Task")])
+                  _c("v-card-text", { staticClass: "px-0" }, [
+                    _vm._v("Project")
+                  ]),
+                  _vm._v(" "),
+                  _c("v-select", {
+                    attrs: {
+                      items: _vm.projects,
+                      "item-text": "name",
+                      "item-value": "id",
+                      label: "project"
+                    },
+                    model: {
+                      value: _vm.form.project_id,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "project_id", $$v)
+                      },
+                      expression: "form.project_id"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-card-text", { staticClass: "px-0" }, [
+                    _vm._v("Start Date")
                   ]),
                   _vm._v(" "),
                   _c(
-                    "v-flex",
-                    { attrs: { md3: "" } },
-                    [
-                      _c("v-card-text", { staticClass: "px-0" }, [
-                        _vm._v("Project")
-                      ]),
-                      _vm._v(" "),
-                      _c("v-select", {
-                        attrs: {
-                          items: _vm.projects,
-                          "item-text": "name",
-                          "item-value": "id",
-                          label: "project"
-                        },
-                        model: {
-                          value: _vm.form.project_id,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "project_id", $$v)
-                          },
-                          expression: "form.project_id"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-card-text", { staticClass: "px-0" }, [
-                        _vm._v("Start Date")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "v-menu",
+                    "v-menu",
+                    {
+                      attrs: {
+                        "close-on-content-click": false,
+                        "nudge-right": 40,
+                        lazy: "",
+                        transition: "scale-transition",
+                        "offset-y": "",
+                        "full-width": "",
+                        "min-width": "290px"
+                      },
+                      scopedSlots: _vm._u([
                         {
-                          attrs: {
-                            "close-on-content-click": false,
-                            "nudge-right": 40,
-                            lazy: "",
-                            transition: "scale-transition",
-                            "offset-y": "",
-                            "full-width": "",
-                            "min-width": "290px"
-                          },
-                          scopedSlots: _vm._u([
-                            {
-                              key: "activator",
-                              fn: function(ref) {
-                                var on = ref.on
-                                return [
-                                  _c(
-                                    "v-text-field",
-                                    _vm._g(
-                                      {
-                                        attrs: {
-                                          "prepend-icon": "event",
-                                          readonly: ""
-                                        },
-                                        model: {
-                                          value: _vm.form.start_date,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.form,
-                                              "start_date",
-                                              $$v
-                                            )
-                                          },
-                                          expression: "form.start_date"
-                                        }
+                          key: "activator",
+                          fn: function(ref) {
+                            var on = ref.on
+                            return [
+                              _c(
+                                "v-text-field",
+                                _vm._g(
+                                  {
+                                    attrs: {
+                                      "prepend-icon": "event",
+                                      readonly: ""
+                                    },
+                                    model: {
+                                      value: _vm.form.start_date,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "start_date", $$v)
                                       },
-                                      on
-                                    )
-                                  )
-                                ]
-                              }
-                            }
-                          ]),
-                          model: {
-                            value: _vm.menu1,
-                            callback: function($$v) {
-                              _vm.menu1 = $$v
-                            },
-                            expression: "menu1"
-                          }
-                        },
-                        [
-                          _vm._v(" "),
-                          _c("v-date-picker", {
-                            on: {
-                              input: function($event) {
-                                _vm.menu1 = false
-                              }
-                            },
-                            model: {
-                              value: _vm.form.start_date,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "start_date", $$v)
-                              },
-                              expression: "form.start_date"
-                            }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("v-card-text", { staticClass: "px-0" }, [
-                        _vm._v("Due Date")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "v-menu",
-                        {
-                          attrs: {
-                            "close-on-content-click": false,
-                            "nudge-right": 40,
-                            lazy: "",
-                            transition: "scale-transition",
-                            "offset-y": "",
-                            "full-width": "",
-                            "min-width": "290px"
-                          },
-                          scopedSlots: _vm._u([
-                            {
-                              key: "activator",
-                              fn: function(ref) {
-                                var on = ref.on
-                                return [
-                                  _c(
-                                    "v-text-field",
-                                    _vm._g(
-                                      {
-                                        attrs: {
-                                          "prepend-icon": "event",
-                                          readonly: ""
-                                        },
-                                        model: {
-                                          value: _vm.form.due_date,
-                                          callback: function($$v) {
-                                            _vm.$set(_vm.form, "due_date", $$v)
-                                          },
-                                          expression: "form.due_date"
-                                        }
-                                      },
-                                      on
-                                    )
-                                  )
-                                ]
-                              }
-                            }
-                          ]),
-                          model: {
-                            value: _vm.menu,
-                            callback: function($$v) {
-                              _vm.menu = $$v
-                            },
-                            expression: "menu"
-                          }
-                        },
-                        [
-                          _vm._v(" "),
-                          _c("v-date-picker", {
-                            on: {
-                              input: function($event) {
-                                _vm.menu = false
-                              }
-                            },
-                            model: {
-                              value: _vm.form.due_date,
-                              callback: function($$v) {
-                                _vm.$set(_vm.form, "due_date", $$v)
-                              },
-                              expression: "form.due_date"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-flex",
-                    { attrs: { md3: "" } },
-                    [
-                      _c("v-card-text", { staticClass: "px-0" }, [
-                        _vm._v("Task Type")
-                      ]),
-                      _vm._v(" "),
-                      _c("v-select", {
-                        attrs: { items: _vm.type, label: "task type" },
-                        model: {
-                          value: _vm.form.type,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "type", $$v)
-                          },
-                          expression: "form.type"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-card-text", { staticClass: "px-0" }, [
-                        _vm._v("Affected To")
-                      ]),
-                      _vm._v(" "),
-                      _c("v-select", {
-                        attrs: {
-                          items: _vm.users,
-                          label: "affected to",
-                          "item-text": "name",
-                          "item-value": "id"
-                        },
-                        model: {
-                          value: _vm.form.user_id,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "user_id", $$v)
-                          },
-                          expression: "form.user_id"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("v-card-text", { staticClass: "px-0" }, [
-                        _vm._v("Link")
-                      ]),
-                      _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: { label: "link" },
-                        model: {
-                          value: _vm.form.link,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "link", $$v)
-                          },
-                          expression: "form.link"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-flex",
-                    { attrs: { md6: "" } },
-                    [
-                      _c("v-card-text", { staticClass: "px-0" }, [
-                        _vm._v("Description")
-                      ]),
-                      _vm._v(" "),
-                      _c("v-textarea", {
-                        attrs: { outline: "", name: "input-7-4" },
-                        model: {
-                          value: _vm.form.description,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "description", $$v)
-                          },
-                          expression: "form.description"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-flex",
-                    { attrs: { md12: "", "text-xs-center": "" } },
-                    [
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { dark: "" },
-                          on: {
-                            click: function($event) {
-                              return _vm.submit()
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(_vm.form.btn_name))]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { dark: "" },
-                          on: {
-                            click: function($event) {
-                              return _vm.reset()
-                            }
-                          }
-                        },
-                        [_vm._v("reset")]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-flex",
-                    { attrs: { xs12: "" } },
-                    [
-                      _c(
-                        "v-expansion-panel",
-                        { attrs: { popout: "" } },
-                        [
-                          _c(
-                            "v-expansion-panel-content",
-                            {
-                              scopedSlots: _vm._u([
-                                {
-                                  key: "header",
-                                  fn: function() {
-                                    return [
-                                      _c("div", [
-                                        _c("h4", [_vm._v("Filter task")])
-                                      ])
-                                    ]
+                                      expression: "form.start_date"
+                                    }
                                   },
-                                  proxy: true
-                                }
-                              ])
-                            },
+                                  on
+                                )
+                              )
+                            ]
+                          }
+                        }
+                      ]),
+                      model: {
+                        value: _vm.menu1,
+                        callback: function($$v) {
+                          _vm.menu1 = $$v
+                        },
+                        expression: "menu1"
+                      }
+                    },
+                    [
+                      _vm._v(" "),
+                      _c("v-date-picker", {
+                        on: {
+                          input: function($event) {
+                            _vm.menu1 = false
+                          }
+                        },
+                        model: {
+                          value: _vm.form.start_date,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "start_date", $$v)
+                          },
+                          expression: "form.start_date"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-card-text", { staticClass: "px-0" }, [
+                    _vm._v("Due Date")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-menu",
+                    {
+                      attrs: {
+                        "close-on-content-click": false,
+                        "nudge-right": 40,
+                        lazy: "",
+                        transition: "scale-transition",
+                        "offset-y": "",
+                        "full-width": "",
+                        "min-width": "290px"
+                      },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "activator",
+                          fn: function(ref) {
+                            var on = ref.on
+                            return [
+                              _c(
+                                "v-text-field",
+                                _vm._g(
+                                  {
+                                    attrs: {
+                                      "prepend-icon": "event",
+                                      readonly: ""
+                                    },
+                                    model: {
+                                      value: _vm.form.due_date,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.form, "due_date", $$v)
+                                      },
+                                      expression: "form.due_date"
+                                    }
+                                  },
+                                  on
+                                )
+                              )
+                            ]
+                          }
+                        }
+                      ]),
+                      model: {
+                        value: _vm.menu,
+                        callback: function($$v) {
+                          _vm.menu = $$v
+                        },
+                        expression: "menu"
+                      }
+                    },
+                    [
+                      _vm._v(" "),
+                      _c("v-date-picker", {
+                        on: {
+                          input: function($event) {
+                            _vm.menu = false
+                          }
+                        },
+                        model: {
+                          value: _vm.form.due_date,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "due_date", $$v)
+                          },
+                          expression: "form.due_date"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { md3: "" } },
+                [
+                  _c("v-card-text", { staticClass: "px-0" }, [
+                    _vm._v("Task Type")
+                  ]),
+                  _vm._v(" "),
+                  _c("v-select", {
+                    attrs: { items: _vm.type, label: "task type" },
+                    model: {
+                      value: _vm.form.type,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "type", $$v)
+                      },
+                      expression: "form.type"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-card-text", { staticClass: "px-0" }, [
+                    _vm._v("Affected To")
+                  ]),
+                  _vm._v(" "),
+                  _c("v-select", {
+                    attrs: {
+                      items: _vm.users,
+                      label: "affected to",
+                      "item-text": "name",
+                      "item-value": "id"
+                    },
+                    model: {
+                      value: _vm.form.user_id,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "user_id", $$v)
+                      },
+                      expression: "form.user_id"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Link")]),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: { label: "link" },
+                    model: {
+                      value: _vm.form.link,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "link", $$v)
+                      },
+                      expression: "form.link"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { md6: "" } },
+                [
+                  _c("v-card-text", { staticClass: "px-0" }, [
+                    _vm._v("Description")
+                  ]),
+                  _vm._v(" "),
+                  _c("v-textarea", {
+                    attrs: { outline: "", name: "input-7-4" },
+                    model: {
+                      value: _vm.form.description,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "description", $$v)
+                      },
+                      expression: "form.description"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { md12: "", "text-xs-center": "" } },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { dark: "" },
+                      on: {
+                        click: function($event) {
+                          return _vm.submit()
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.form.btn_name))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { dark: "" },
+                      on: {
+                        click: function($event) {
+                          return _vm.reset()
+                        }
+                      }
+                    },
+                    [_vm._v("reset")]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xs12: "" } },
+                [
+                  _c(
+                    "v-expansion-panel",
+                    { attrs: { popout: "" } },
+                    [
+                      _c(
+                        "v-expansion-panel-content",
+                        {
+                          scopedSlots: _vm._u([
+                            {
+                              key: "header",
+                              fn: function() {
+                                return [
+                                  _c("div", [_c("h4", [_vm._v("Filter task")])])
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ])
+                        },
+                        [
+                          _vm._v(" "),
+                          _c(
+                            "v-layout",
+                            { attrs: { row: "", wrap: "", p4: "" } },
                             [
+                              _c(
+                                "v-flex",
+                                { attrs: { md4: "" } },
+                                [
+                                  _c("v-card-text", { staticClass: "px-0" }, [
+                                    _vm._v("Project")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("v-select", {
+                                    attrs: {
+                                      items: _vm.projects,
+                                      "item-text": "name",
+                                      "item-value": "id",
+                                      label: "project"
+                                    },
+                                    model: {
+                                      value: _vm.filter.project_id,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.filter, "project_id", $$v)
+                                      },
+                                      expression: "filter.project_id"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("v-card-text", { staticClass: "px-0" }, [
+                                    _vm._v("Title")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("v-select", {
+                                    attrs: { items: _vm.type, label: "title" },
+                                    model: {
+                                      value: _vm.filter.type,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.filter, "type", $$v)
+                                      },
+                                      expression: "filter.type"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
                               _vm._v(" "),
                               _c(
-                                "v-layout",
-                                { attrs: { row: "", wrap: "", p4: "" } },
+                                "v-flex",
+                                { attrs: { md4: "" } },
                                 [
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { md4: "" } },
-                                    [
-                                      _c(
-                                        "v-card-text",
-                                        { staticClass: "px-0" },
-                                        [_vm._v("Project")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("v-select", {
-                                        attrs: {
-                                          items: _vm.projects,
-                                          "item-text": "name",
-                                          "item-value": "id",
-                                          label: "project"
-                                        },
-                                        model: {
-                                          value: _vm.filter.project_id,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.filter,
-                                              "project_id",
-                                              $$v
-                                            )
-                                          },
-                                          expression: "filter.project_id"
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-card-text",
-                                        { staticClass: "px-0" },
-                                        [_vm._v("Title")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("v-select", {
-                                        attrs: {
-                                          items: _vm.type,
-                                          label: "title"
-                                        },
-                                        model: {
-                                          value: _vm.filter.type,
-                                          callback: function($$v) {
-                                            _vm.$set(_vm.filter, "type", $$v)
-                                          },
-                                          expression: "filter.type"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
+                                  _c("v-card-text", { staticClass: "px-0" }, [
+                                    _vm._v("Affected To")
+                                  ]),
                                   _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { md4: "" } },
-                                    [
-                                      _c(
-                                        "v-card-text",
-                                        { staticClass: "px-0" },
-                                        [_vm._v("Affected To")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("v-select", {
-                                        attrs: {
-                                          items: _vm.users,
-                                          label: "affected to",
-                                          "item-text": "name",
-                                          "item-value": "id"
-                                        },
-                                        model: {
-                                          value: _vm.filter.user_id,
-                                          callback: function($$v) {
-                                            _vm.$set(_vm.filter, "user_id", $$v)
-                                          },
-                                          expression: "filter.user_id"
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-card-text",
-                                        { staticClass: "px-0" },
-                                        [_vm._v("Status")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("v-select", {
-                                        attrs: {
-                                          items: _vm.users,
-                                          label: "status",
-                                          "item-text": "name",
-                                          "item-value": "id"
-                                        },
-                                        model: {
-                                          value: _vm.filter.user_id,
-                                          callback: function($$v) {
-                                            _vm.$set(_vm.filter, "user_id", $$v)
-                                          },
-                                          expression: "filter.user_id"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
+                                  _c("v-select", {
+                                    attrs: {
+                                      items: _vm.users,
+                                      label: "affected to",
+                                      "item-text": "name",
+                                      "item-value": "id"
+                                    },
+                                    model: {
+                                      value: _vm.filter.user_id,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.filter, "user_id", $$v)
+                                      },
+                                      expression: "filter.user_id"
+                                    }
+                                  }),
                                   _vm._v(" "),
-                                  _c(
-                                    "v-flex",
-                                    { attrs: { md4: "" } },
-                                    [
-                                      _c(
-                                        "v-card-text",
-                                        { staticClass: "px-0" },
-                                        [_vm._v("Sort by")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("v-select", {
-                                        attrs: {
-                                          items: _vm.projects,
-                                          "item-text": "name",
-                                          "item-value": "id",
-                                          label: "sort by"
-                                        },
-                                        model: {
-                                          value: _vm.filter.project_id,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.filter,
-                                              "project_id",
-                                              $$v
-                                            )
-                                          },
-                                          expression: "filter.project_id"
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  )
+                                  _c("v-card-text", { staticClass: "px-0" }, [
+                                    _vm._v("Status")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("v-select", {
+                                    attrs: {
+                                      items: _vm.users,
+                                      label: "status",
+                                      "item-text": "name",
+                                      "item-value": "id"
+                                    },
+                                    model: {
+                                      value: _vm.filter.user_id,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.filter, "user_id", $$v)
+                                      },
+                                      expression: "filter.user_id"
+                                    }
+                                  })
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-flex",
+                                { attrs: { md4: "" } },
+                                [
+                                  _c("v-card-text", { staticClass: "px-0" }, [
+                                    _vm._v("Sort by")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("v-select", {
+                                    attrs: {
+                                      items: _vm.projects,
+                                      "item-text": "name",
+                                      "item-value": "id",
+                                      label: "sort by"
+                                    },
+                                    model: {
+                                      value: _vm.filter.project_id,
+                                      callback: function($$v) {
+                                        _vm.$set(_vm.filter, "project_id", $$v)
+                                      },
+                                      expression: "filter.project_id"
+                                    }
+                                  })
                                 ],
                                 1
                               )
@@ -63261,127 +63223,117 @@ var render = function() {
                       )
                     ],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c("v-flex", { attrs: { md12: "", xs12: "", md1: "" } }),
-                  _vm._v(" "),
-                  _c(
-                    "v-container",
-                    [
-                      _c("v-data-table", {
-                        staticClass: "elevation-1",
-                        attrs: {
-                          colmd12: "",
-                          headers: _vm.headers,
-                          items: _vm.tasks
-                        },
-                        scopedSlots: _vm._u([
-                          {
-                            key: "items",
-                            fn: function(props) {
-                              return [
-                                _c("td", [_vm._v(_vm._s(props.item.project))]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(_vm._s(props.item.type))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(" " + _vm._s(props.item.user))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(" " + _vm._s(props.item.createdBy))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(_vm._s(props.item.start_date))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(_vm._s(props.item.due_date))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(_vm._s(props.item.completed_on))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(_vm._s(props.item.comments))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(_vm._s(props.item.status))
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticClass: "text-center" }, [
-                                  _vm._v(_vm._s(props.item.links))
-                                ]),
-                                _vm._v(" "),
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-flex", { attrs: { md12: "", xs12: "", md1: "" } }),
+              _vm._v(" "),
+              _c(
+                "v-container",
+                [
+                  _c("v-data-table", {
+                    staticClass: "elevation-1",
+                    attrs: {
+                      colmd12: "",
+                      headers: _vm.headers,
+                      items: _vm.tasks
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "items",
+                        fn: function(props) {
+                          return [
+                            _c("td", [_vm._v(_vm._s(props.item.project))]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v(_vm._s(props.item.type))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v(" " + _vm._s(props.item.user))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v(" " + _vm._s(props.item.createdBy))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v(_vm._s(props.item.start_date))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v(_vm._s(props.item.due_date))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v(_vm._s(props.item.completed_on))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v(_vm._s(props.item.comments))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v(_vm._s(props.item.status))
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticClass: "text-center" }, [
+                              _vm._v(_vm._s(props.item.links))
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "td",
+                              { staticClass: "text-center" },
+                              [
                                 _c(
-                                  "td",
-                                  { staticClass: "text-center" },
+                                  "v-btn",
+                                  {
+                                    attrs: { icon: "" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.edit(props.item)
+                                      }
+                                    }
+                                  },
                                   [
                                     _c(
-                                      "v-btn",
-                                      {
-                                        attrs: { icon: "" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.edit(props.item)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          {
-                                            attrs: {
-                                              medium: "",
-                                              color: "black"
-                                            }
-                                          },
-                                          [_vm._v("edit")]
-                                        )
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
+                                      "v-icon",
+                                      { attrs: { medium: "", color: "black" } },
+                                      [_vm._v("edit")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: { icon: "" },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.destroy(props.item.id)
+                                      }
+                                    }
+                                  },
+                                  [
                                     _c(
-                                      "v-btn",
-                                      {
-                                        attrs: { icon: "" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.destroy(props.item.id)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          {
-                                            attrs: {
-                                              medium: "",
-                                              color: "black"
-                                            }
-                                          },
-                                          [_vm._v(" delete")]
-                                        )
-                                      ],
-                                      1
+                                      "v-icon",
+                                      { attrs: { medium: "", color: "black" } },
+                                      [_vm._v(" delete")]
                                     )
                                   ],
                                   1
                                 )
-                              ]
-                            }
-                          }
-                        ])
-                      })
-                    ],
-                    1
-                  )
+                              ],
+                              1
+                            )
+                          ]
+                        }
+                      }
+                    ])
+                  })
                 ],
                 1
               )

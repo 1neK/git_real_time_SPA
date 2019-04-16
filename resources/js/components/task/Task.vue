@@ -1,46 +1,45 @@
 <template>
-<v-container>
-            <v-container>
-                <v-container fluid grid-list-md >
-                    <v-layout row wrap>
-                         <v-flex md12 xs12 md1>
-                             <h2>Task</h2>
-                         </v-flex>
+    <v-container>
+        <v-container fluid grid-list-md >
+            <v-layout row wrap>
+                <v-flex md12 xs12 md1>
+                    <h2>Task</h2>
+                </v-flex>
 
-                         <v-flex md3>
-                            <v-card-text class="px-0">Project</v-card-text>
-                            <v-select
-                                :items="projects"
-                                v-model="form.project_id"
-                                item-text="name"
-                                item-value="id"
-                                label="project"
-                            ></v-select>
+                <v-flex md3>
+                    <v-card-text class="px-0">Project</v-card-text>
+                    <v-select
+                        :items="projects"
+                        v-model="form.project_id"
+                        item-text="name"
+                        item-value="id"
+                        label="project"
+                    ></v-select>
 
-                            <v-card-text class="px-0">Start Date</v-card-text>
-                             <v-menu
-                                     v-model="menu1"
-                                    :close-on-content-click="false"
-                                    :nudge-right="40"
-                                    lazy
-                                    transition="scale-transition"
-                                    offset-y
-                                    full-width
-                                    min-width="290px"
-                             >
-                                 <template v-slot:activator="{ on }">
-                                     <v-text-field
-                                        v-model="form.start_date"
-                                        prepend-icon="event"
-                                        readonly
-                                        v-on="on"
-                                     ></v-text-field>
-                                 </template>
-                                 <v-date-picker v-model="form.start_date" @input="menu1 = false"></v-date-picker>
-                             </v-menu>
+                    <v-card-text class="px-0">Start Date</v-card-text>
+                        <v-menu
+                            v-model="menu1"
+                            :close-on-content-click="false"
+                            :nudge-right="40"
+                            lazy
+                            transition="scale-transition"
+                            offset-y
+                            full-width
+                            min-width="290px"
+                        >
+                            <template v-slot:activator="{ on }">
+                                <v-text-field
+                                v-model="form.start_date"
+                                prepend-icon="event"
+                                readonly
+                                v-on="on"
+                                ></v-text-field>
+                            </template>
+                            <v-date-picker v-model="form.start_date" @input="menu1 = false"></v-date-picker>
+                        </v-menu>
 
-                            <v-card-text class="px-0">Due Date</v-card-text>
-                             <v-menu
+                        <v-card-text class="px-0">Due Date</v-card-text>
+                            <v-menu
                                 v-model="menu"
                                 :close-on-content-click="false"
                                 :nudge-right="40"
@@ -49,163 +48,161 @@
                                 offset-y
                                 full-width
                                 min-width="290px"
-                             >
-                                 <template v-slot:activator="{ on }">
-                                     <v-text-field
-                                            v-model="form.due_date"
-                                             prepend-icon="event"
-                                             readonly
-                                             v-on="on"
-                                     ></v-text-field>
-                                 </template>
-                                  <v-date-picker v-model="form.due_date" @input="menu = false"></v-date-picker>
-                             </v-menu>
-                        </v-flex>
+                            >
+                                <template v-slot:activator="{ on }">
+                                    <v-text-field
+                                        v-model="form.due_date"
+                                        prepend-icon="event"
+                                        readonly
+                                        v-on="on"
+                                    ></v-text-field>
+                                </template>
+                                <v-date-picker v-model="form.due_date" @input="menu = false"></v-date-picker>
+                            </v-menu>
+                </v-flex>
 
-                        <v-flex md3>
-                            <v-card-text class="px-0">Task Type</v-card-text>
-                            <v-select
-                            :items="type"
-                            v-model="form.type"
-                            label="task type"
-                            ></v-select>
+                <v-flex md3>
+                    <v-card-text class="px-0">Task Type</v-card-text>
+                    <v-select
+                    :items="type"
+                    v-model="form.type"
+                    label="task type"
+                    ></v-select>
 
-                            <v-card-text class="px-0">Affected To</v-card-text>
-                            <v-select
-                            :items="users"
-                            label="affected to"
-                            v-model="form.user_id"
-                            item-text="name"
-                            item-value="id"
-                            ></v-select>
+                    <v-card-text class="px-0">Affected To</v-card-text>
+                    <v-select
+                    :items="users"
+                    label="affected to"
+                    v-model="form.user_id"
+                    item-text="name"
+                    item-value="id"
+                    ></v-select>
 
-                            <v-card-text class="px-0">Link</v-card-text>
-                            <v-text-field
-                           v-model="form.link"
-                            label="link"
-                            ></v-text-field>
-                        </v-flex>
+                    <v-card-text class="px-0">Link</v-card-text>
+                    <v-text-field
+                    v-model="form.link"
+                    label="link"
+                    ></v-text-field>
+                </v-flex>
 
-                        <v-flex md6>
-                            <v-card-text class="px-0">Description</v-card-text>
-                            <v-textarea
-                            outline
-                            v-model="form.description"
-                            name="input-7-4"
-                            ></v-textarea>
-
-
-                        </v-flex>
-
-                        <v-flex md12 text-xs-center>
-
-                           <v-btn dark @click="submit()">{{form.btn_name}}</v-btn>
-
-                            <v-btn dark @click="reset()">reset</v-btn>
-
-                        </v-flex>
+                <v-flex md6>
+                    <v-card-text class="px-0">Description</v-card-text>
+                    <v-textarea
+                    outline
+                    v-model="form.description"
+                    name="input-7-4"
+                    ></v-textarea>
 
 
+                </v-flex>
+
+                <v-flex md12 text-xs-center>
+
+                    <v-btn dark @click="submit()">{{form.btn_name}}</v-btn>
+
+                    <v-btn dark @click="reset()">reset</v-btn>
+
+                </v-flex>
 
 
-                        <v-flex xs12 >
-                            <v-expansion-panel popout>
-                                <v-expansion-panel-content>
-                                    <template v-slot:header>
-                                        <div>   <h4>Filter task</h4></div>
-                                    </template>
-                                    <v-layout  row wrap p4>
 
-                                        <v-flex md4>
-                                            <v-card-text class="px-0">Project</v-card-text>
-                                            <v-select
-                                                    :items="projects"
-                                                    v-model="filter.project_id"
-                                                    item-text="name"
-                                                    item-value="id"
-                                                    label="project"
-                                            ></v-select>
 
-                                            <v-card-text class="px-0">Title</v-card-text>
-                                            <v-select
-                                                    :items="type"
-                                                    v-model="filter.type"
-                                                    label="title"
-                                            ></v-select>
-                                        </v-flex>
-
-                                        <v-flex md4>
-                                            <v-card-text class="px-0">Affected To</v-card-text>
-                                            <v-select
-                                                    :items="users"
-                                                    label="affected to"
-                                                    v-model="filter.user_id"
-                                                    item-text="name"
-                                                    item-value="id"
-                                            ></v-select>
-
-                                            <v-card-text class="px-0">Status</v-card-text>
-                                            <v-select
-                                                    :items="users"
-                                                    label="status"
-                                                    v-model="filter.user_id"
-                                                    item-text="name"
-                                                    item-value="id"
-                                            ></v-select>
-                                        </v-flex>
-
-                                        <v-flex md4>
-                                            <v-card-text class="px-0">Sort by</v-card-text>
-                                            <v-select
-                                                    :items="projects"
-                                                    v-model="filter.project_id"
-                                                    item-text="name"
-                                                    item-value="id"
-                                                    label="sort by"
-                                            ></v-select>
-                                        </v-flex>
-
-                                    </v-layout>
-                                </v-expansion-panel-content>
-                            </v-expansion-panel>
-                        </v-flex>
-
-                        <v-flex md12 xs12 md1>
-
-                         </v-flex>
-
-                        <v-container>
-                        <v-data-table colmd12  :headers="headers" :items="tasks" class="elevation-1">
-                            <template v-slot:items="props">
-                                <td>{{ props.item.project }}</td>
-                                <td class="text-center">{{ props.item.type }}</td>
-                                <td class="text-center"> {{ props.item.user }}</td>
-                                <td class="text-center"> {{ props.item.createdBy }}</td>
-                                <td class="text-center">{{ props.item.start_date }}</td>
-                                <td class="text-center">{{ props.item.due_date }}</td>
-                                <td class="text-center">{{ props.item.completed_on }}</td>
-                                <td class="text-center">{{ props.item.comments }}</td>
-                                <td class="text-center">{{ props.item.status }}</td>
-                                <td class="text-center">{{ props.item.links }}</td>
-                                <td class="text-center">
-                                    <v-btn icon @click="edit(props.item)">
-                                        <v-icon medium color="black">edit</v-icon>
-                                    </v-btn>
-                                    <v-btn icon @click="destroy( props.item.id )">
-                                        <v-icon medium color="black"> delete</v-icon>
-                                    </v-btn>
-                                </td>
+                <v-flex xs12 >
+                    <v-expansion-panel popout>
+                        <v-expansion-panel-content>
+                            <template v-slot:header>
+                                <div>   <h4>Filter task</h4></div>
                             </template>
-                        </v-data-table>
-                        </v-container>
+                            <v-layout  row wrap p4>
 
-                    </v-layout>
+                                <v-flex md4>
+                                    <v-card-text class="px-0">Project</v-card-text>
+                                    <v-select
+                                        :items="projects"
+                                        v-model="filter.project_id"
+                                        item-text="name"
+                                        item-value="id"
+                                        label="project"
+                                    ></v-select>
+
+                                    <v-card-text class="px-0">Title</v-card-text>
+                                    <v-select
+                                        :items="type"
+                                        v-model="filter.type"
+                                        label="title"
+                                    ></v-select>
+                                </v-flex>
+
+                                <v-flex md4>
+                                    <v-card-text class="px-0">Affected To</v-card-text>
+                                    <v-select
+                                        :items="users"
+                                        label="affected to"
+                                        v-model="filter.user_id"
+                                        item-text="name"
+                                        item-value="id"
+                                    ></v-select>
+
+                                    <v-card-text class="px-0">Status</v-card-text>
+                                    <v-select
+                                        :items="users"
+                                        label="status"
+                                        v-model="filter.user_id"
+                                        item-text="name"
+                                        item-value="id"
+                                    ></v-select>
+                                </v-flex>
+
+                                <v-flex md4>
+                                    <v-card-text class="px-0">Sort by</v-card-text>
+                                    <v-select
+                                        :items="projects"
+                                        v-model="filter.project_id"
+                                        item-text="name"
+                                        item-value="id"
+                                        label="sort by"
+                                    ></v-select>
+                                </v-flex>
+
+                            </v-layout>
+                        </v-expansion-panel-content>
+                    </v-expansion-panel>
+                </v-flex>
+
+                <v-flex md12 xs12 md1>
+
+                </v-flex>
+
+                <v-container>
+                <v-data-table colmd12  :headers="headers" :items="tasks" class="elevation-1">
+                    <template v-slot:items="props">
+                        <td>{{ props.item.project }}</td>
+                        <td class="text-center">{{ props.item.type }}</td>
+                        <td class="text-center"> {{ props.item.user }}</td>
+                        <td class="text-center"> {{ props.item.createdBy }}</td>
+                        <td class="text-center">{{ props.item.start_date }}</td>
+                        <td class="text-center">{{ props.item.due_date }}</td>
+                        <td class="text-center">{{ props.item.completed_on }}</td>
+                        <td class="text-center">{{ props.item.comments }}</td>
+                        <td class="text-center">{{ props.item.status }}</td>
+                        <td class="text-center">{{ props.item.links }}</td>
+                        <td class="text-center">
+                            <v-btn icon @click="edit(props.item)">
+                                <v-icon medium color="black">edit</v-icon>
+                            </v-btn>
+                            <v-btn icon @click="destroy( props.item.id )">
+                                <v-icon medium color="black"> delete</v-icon>
+                            </v-btn>
+                        </td>
+                    </template>
+                </v-data-table>
                 </v-container>
 
-            </v-container>
+            </v-layout>
+        </v-container>
 
+    </v-container>
 
-</v-container>
 </template>
 
 <script>
