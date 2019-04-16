@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    public function task_comment(){
+    public function taskComment(){
         return $this->hasMany(TaskComment::class);
     }
 }

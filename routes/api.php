@@ -21,6 +21,8 @@ Route::post('markAsRead', 'NotificationController@markAsRead');
 
 Route::apiResource('/project','ProjectController');
 
+Route::post('/task/{taskcomment}','TaskCommentController@store');
+//Route::get('/task/{taskcomment}','TaskComment@index');
 Route::apiResource('/task','TaskController');
 Route::get('/count-task','RoleController@count_task');
 Route::get('/liste-task','RoleController@affiche_task');
