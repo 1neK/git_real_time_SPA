@@ -39,57 +39,45 @@
     </v-flex>
     </v-container>
     <v-container>
-        <v-flex xs12>
-            <h4>Comments:</h4>
-        </v-flex>
-        <v-container fluid>
-        <v-card>
-        <v-form @submit.prevent="update"></v-form>
-
-            <markdown-editor v-model="form.body"  ></markdown-editor>
-              <!-- <v-btn color="green" type="submit">Create</v-btn> -->
-            <v-card-actions>
-                <v-btn icon small type="submit">
-                    <v-icon color="teal">save</v-icon>
-                </v-btn>
-                <v-btn icon small @click="cancel">
-                    <v-icon color="teal">cancel</v-icon>
-                </v-btn>
-            </v-card-actions>
+            <v-form @submit.prevent="create">
+                <span class="red--text" v-if="errors.body">{{errors.body[0]}}</span>
+                <markdown-editor v-model="form.body"  ></markdown-editor>
+        <v-btn
+        color="green"
+        type="submit"
+         :disabled="disabled"
+         >Create</v-btn>
         </v-form>
-        </v-card>
-    </v-container>
-        <v-flex xs12>
-        </v-flex>
-    </v-container>
+</v-container>
 
   </v-layout>
 </template>
 
 <script>
     export default {
- props:['data'],
-data(){
-    return {
-        form : {
-            title:null,
-            body:null
+  data(){
+        return {
+            form:{
+
+                body:null
+
+            },
+            errors:{}
+        }
+    },
+
+    methods:{
+        create(){
+                axios.post('/api/task',this.form)
+                .then(res => this.$router.push(res.data.path) )
+                .catch(error => this.errors = error.response.data.errors)
+        }
+    },
+    computed:{
+        disabled(){
+            return !(this.form.body)
         }
     }
-},
-mounted(){
-    this.form = this.data
-},
-methods:{
-
-    cancel(){
-        EventBus.$emit('cancelEditing')
-    },
-    update(){
-        axios.patch(`/api/question/${this.form.slug}`,this.form)
-        .then(res => this.cancel())
-    }
-}
 }
 </script>
 

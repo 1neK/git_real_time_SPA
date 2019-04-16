@@ -4215,42 +4215,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['data'],
   data: function data() {
     return {
       form: {
-        title: null,
         body: null
-      }
+      },
+      errors: {}
     };
   },
-  mounted: function mounted() {
-    this.form = this.data;
-  },
   methods: {
-    cancel: function cancel() {
-      EventBus.$emit('cancelEditing');
-    },
-    update: function update() {
+    create: function create() {
       var _this = this;
 
-      axios.patch("/api/question/".concat(this.form.slug), this.form).then(function (res) {
-        return _this.cancel();
+      axios.post('/api/task', this.form).then(function (res) {
+        return _this.$router.push(res.data.path);
+      }).catch(function (error) {
+        return _this.errors = error.response.data.errors;
       });
+    }
+  },
+  computed: {
+    disabled: function disabled() {
+      return !this.form.body;
     }
   }
 });
@@ -63548,74 +63535,47 @@ var render = function() {
       _c(
         "v-container",
         [
-          _c("v-flex", { attrs: { xs12: "" } }, [
-            _c("h4", [_vm._v("Comments:")])
-          ]),
-          _vm._v(" "),
           _c(
-            "v-container",
-            { attrs: { fluid: "" } },
+            "v-form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.create($event)
+                }
+              }
+            },
             [
+              _vm.errors.body
+                ? _c("span", { staticClass: "red--text" }, [
+                    _vm._v(_vm._s(_vm.errors.body[0]))
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("markdown-editor", {
+                model: {
+                  value: _vm.form.body,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "body", $$v)
+                  },
+                  expression: "form.body"
+                }
+              }),
+              _vm._v(" "),
               _c(
-                "v-card",
-                [
-                  _c("v-form", {
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.update($event)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("markdown-editor", {
-                    model: {
-                      value: _vm.form.body,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "body", $$v)
-                      },
-                      expression: "form.body"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "v-card-actions",
-                    [
-                      _c(
-                        "v-btn",
-                        { attrs: { icon: "", small: "", type: "submit" } },
-                        [
-                          _c("v-icon", { attrs: { color: "teal" } }, [
-                            _vm._v("save")
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-btn",
-                        {
-                          attrs: { icon: "", small: "" },
-                          on: { click: _vm.cancel }
-                        },
-                        [
-                          _c("v-icon", { attrs: { color: "teal" } }, [
-                            _vm._v("cancel")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
+                "v-btn",
+                {
+                  attrs: {
+                    color: "green",
+                    type: "submit",
+                    disabled: _vm.disabled
+                  }
+                },
+                [_vm._v("Create")]
               )
             ],
             1
-          ),
-          _vm._v(" "),
-          _c("v-flex", { attrs: { xs12: "" } })
+          )
         ],
         1
       )
