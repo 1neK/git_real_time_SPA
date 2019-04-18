@@ -4302,6 +4302,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -4312,7 +4342,7 @@ __webpack_require__.r(__webpack_exports__);
       form: {
         body: null
       },
-      editing: false,
+      editing: [],
       task: {},
       errors: {}
     };
@@ -4334,16 +4364,32 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get('/api/task/' + this.$route.params.id).then(function (res) {
-        return _this2.task = res.data;
+        _this2.task = res.data;
+
+        for (var i = 0; i < _this2.task.task_comment.length; i++) {
+          _this2.task.task_comment[i].editing = false;
+        }
       });
     },
-    edit: function edit() {
-      this.editing = true;
+    edit: function edit(index) {
+      this.editing[index] = true;
     },
     own: function own() {
       return User.own(this.data.user_id);
     },
     destroy: function destroy() {// EventBus.$emit('deleteReply', this.index)
+    },
+    cancel: function cancel(index) {
+      this.editing[index] = false;
+    },
+    update: function update() {
+      var _this3 = this;
+
+      axios.patch("/api/question/".concat(this.reply.question_slug, "/reply/").concat(this.reply.id), {
+        body: this.reply.reply
+      }).then(function (res) {
+        return _this3.cancel();
+      });
     }
   },
   computed: {
@@ -23988,7 +24034,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n    max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -63608,7 +63654,9 @@ var render = function() {
                             [
                               _c("v-card-text", { staticClass: "py-1" }, [
                                 _c("h3", [
-                                  _vm._v("Affected To:    "),
+                                  _vm._v(
+                                    "Affected To:\n                                    "
+                                  ),
                                   _c("small", [_vm._v(_vm._s(_vm.task.user))])
                                 ])
                               ])
@@ -63621,7 +63669,9 @@ var render = function() {
                             [
                               _c("v-card-text", { staticClass: "py-1" }, [
                                 _c("h3", [
-                                  _vm._v("Start Date:   "),
+                                  _vm._v(
+                                    "Start Date:\n                                    "
+                                  ),
                                   _c("small", [
                                     _vm._v(_vm._s(_vm.task.start_date))
                                   ])
@@ -63630,7 +63680,9 @@ var render = function() {
                               _vm._v(" "),
                               _c("v-card-text", { staticClass: "py-1" }, [
                                 _c("h3", [
-                                  _vm._v("Due Date:  "),
+                                  _vm._v(
+                                    "Due Date:\n                                    "
+                                  ),
                                   _c("small", [
                                     _vm._v(_vm._s(_vm.task.due_date))
                                   ])
@@ -63645,7 +63697,9 @@ var render = function() {
                             [
                               _c("v-card-text", { staticClass: "py-1" }, [
                                 _c("h3", [
-                                  _vm._v("Status: "),
+                                  _vm._v(
+                                    "Status:\n                                    "
+                                  ),
                                   _c("small", [_vm._v(_vm._s(_vm.task.status))])
                                 ])
                               ])
@@ -63677,6 +63731,7 @@ var render = function() {
                       _c("v-spacer"),
                       _vm._v(" "),
                       _c("h5", [_vm._v("Added By:  ")]),
+                      _vm._v(" "),
                       _c("p", [_vm._v(" " + _vm._s(_vm.task.createdBy) + " ")])
                     ],
                     1
@@ -63719,15 +63774,69 @@ var render = function() {
                   _vm._v(" "),
                   _c("v-divider"),
                   _vm._v(" "),
-                  _vm.editing
-                    ? _c("edit-reply", { attrs: { reply: data } })
+                  _vm.editing[index]
+                    ? _c("div", [
+                        _c(
+                          "div",
+                          [
+                            _c("markdown-editor", {
+                              model: {
+                                value: data.body,
+                                callback: function($$v) {
+                                  _vm.$set(data, "body", $$v)
+                                },
+                                expression: "data.body"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "v-card-actions",
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: { icon: "", small: "" },
+                                    on: { click: _vm.update }
+                                  },
+                                  [
+                                    _c(
+                                      "v-icon",
+                                      { attrs: { color: "green" } },
+                                      [_vm._v("save")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: { icon: "", small: "" },
+                                    on: { click: _vm.cancel }
+                                  },
+                                  [
+                                    _c(
+                                      "v-icon",
+                                      { attrs: { color: "black" } },
+                                      [_vm._v("cancel")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ])
                     : _c("v-card-text", {
                         domProps: { innerHTML: _vm._s(data.body) }
                       }),
                   _vm._v(" "),
                   _c("v-divider"),
                   _vm._v(" "),
-                  !_vm.editing
+                  !_vm.editing[index]
                     ? _c(
                         "div",
                         [
@@ -63739,7 +63848,11 @@ var render = function() {
                                     "v-btn",
                                     {
                                       attrs: { icon: "", small: "" },
-                                      on: { click: _vm.edit }
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.edit(index)
+                                        }
+                                      }
                                     },
                                     [
                                       _c(
@@ -63755,7 +63868,11 @@ var render = function() {
                                     "v-btn",
                                     {
                                       attrs: { icon: "", small: "" },
-                                      on: { click: _vm.destroy }
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.destroy(index)
+                                        }
+                                      }
                                     },
                                     [
                                       _c(
@@ -63823,7 +63940,7 @@ var render = function() {
                     disabled: _vm.disabled
                   }
                 },
-                [_vm._v("Create")]
+                [_vm._v("Create\n            ")]
               )
             ],
             1
