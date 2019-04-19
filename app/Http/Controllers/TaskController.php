@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Model\Category;
 
 class TaskController extends Controller
 {
@@ -39,6 +40,7 @@ class TaskController extends Controller
 
         foreach ($tasks as $task) {
 
+            $task->category = Category::where('id', $task->category_id)->value('name');
             $task->project = Project::where('id', $task->project_id)->value('name');
             $task->user = User::where('id', $task->user_id)->value('name');
             $task->createdBy = User::where('id', $task->made_by)->value('name');
@@ -67,7 +69,7 @@ class TaskController extends Controller
         $task->link = ($request->link) ?? '';
         $task->project_id = $request->project_id;
         $task->start_date = $request->start_date;
-        $task->type = $request->type;
+        $task->category_id = $request->category_id;
         $task->status = "In progress";
         $task->save();
 
@@ -84,6 +86,7 @@ class TaskController extends Controller
     {
         $task =Task::find($task);
 
+        $task->category = Category::where('id', $task->category_id)->value('name');
         $task->project = Project::where('id', $task->project_id)->value('name');
         $task->user = User::where('id', $task->user_id)->value('name');
         $task->createdBy = User::where('id', $task->made_by)->value('name');
@@ -118,7 +121,7 @@ class TaskController extends Controller
         $task->link = $request->link;
         $task->project_id = $request->project_id;
         $task->start_date = $request->start_date;
-        $task->type = $request->type;
+        $task->category_id = $request->category_id;
 
         $task->save();
 

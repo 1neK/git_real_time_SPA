@@ -2392,7 +2392,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       /*select1: 'Ins'
       items1: [
-        ],*/
+       ],*/
       headers: [{
         text: 'Project',
         sortable: false,
@@ -4012,6 +4012,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4021,7 +4023,7 @@ __webpack_require__.r(__webpack_exports__);
         value: 'project'
       }, {
         text: 'Task',
-        value: 'type'
+        value: 'category'
       }, {
         text: 'Affected to',
         value: 'user'
@@ -4060,7 +4062,7 @@ __webpack_require__.r(__webpack_exports__);
         user_id: null,
         project_id: null,
         start_date: new Date().toISOString().substr(0, 10),
-        type: null,
+        category_id: null,
         due_date: new Date().toISOString().substr(0, 10),
         description: '',
         btn_name: 'add'
@@ -4071,11 +4073,12 @@ __webpack_require__.r(__webpack_exports__);
         user_id: null,
         project_id: null,
         start_date: new Date().toISOString().substr(0, 10),
-        type: null,
+        category_id: null,
         due_date: new Date().toISOString().substr(0, 10),
         description: '',
         btn_name: 'add'
       },
+      categories: [],
       tasks: [],
       users: [],
       projects: [],
@@ -4087,6 +4090,9 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.getData();
+    axios.get('/api/category').then(function (res) {
+      return _this.categories = res.data;
+    });
     axios.get('/api/project').then(function (res) {
       return _this.projects = res.data;
     });
@@ -4132,7 +4138,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form.user_id = null;
       this.form.project_id = null;
       this.form.start_date = new Date().toISOString().substr(0, 10);
-      this.form.type = null;
+      this.form.category_id = null;
       this.form.due_date = new Date().toISOString().substr(0, 10);
       this.form.description = '';
       this.form.btn_name = "add";
@@ -23787,7 +23793,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23806,7 +23812,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23825,7 +23831,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23863,7 +23869,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23882,7 +23888,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23901,7 +23907,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23920,7 +23926,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23939,7 +23945,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23977,7 +23983,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23996,7 +24002,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -24015,7 +24021,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -24053,7 +24059,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -61320,9 +61326,9 @@ var render = function() {
                     [
                       _c("v-list-tile-title", [
                         _vm._v(
-                          "\r\n                           " +
+                          "\n                           " +
                             _vm._s(category.name) +
-                            "\r\n                       "
+                            "\n                       "
                         )
                       ])
                     ],
@@ -61764,9 +61770,9 @@ var render = function() {
                   _c("div", [
                     _c("div", { staticClass: "headline" }, [
                       _vm._v(
-                        "\r\n                    " +
+                        "\n                    " +
                           _vm._s(_vm.data.title) +
-                          "\r\n                "
+                          "\n                "
                       )
                     ]),
                     _vm._v(" "),
@@ -62216,7 +62222,7 @@ var render = function() {
           _vm.errors
             ? _c("v-alert", { attrs: { type: "error", value: true } }, [
                 _vm._v(
-                  "\n                Project name is required.\n            "
+                  "\r\n                Project name is required.\r\n            "
                 )
               ])
             : _vm._e(),
@@ -62511,7 +62517,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\r\n                Project name is required.\r\n            "
+                                "\n                Project name is required.\n            "
                               )
                             ]
                           )
@@ -62548,7 +62554,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\r\n            close\r\n          ")]
+                        [_vm._v("\n            close\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
@@ -62643,7 +62649,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", { staticClass: "text-center" }, [
                   _c("span", { staticClass: "text-danger" }, [
-                    _vm._v("activated\n                ")
+                    _vm._v("activated\r\n                ")
                   ])
                 ]),
                 _vm._v(" "),
@@ -63130,13 +63136,18 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("v-select", {
-                    attrs: { items: _vm.type, label: "task type" },
+                    attrs: {
+                      items: _vm.categories,
+                      "item-text": "name",
+                      "item-value": "id",
+                      label: "task type"
+                    },
                     model: {
-                      value: _vm.form.type,
+                      value: _vm.form.category_id,
                       callback: function($$v) {
-                        _vm.$set(_vm.form, "type", $$v)
+                        _vm.$set(_vm.form, "category_id", $$v)
                       },
-                      expression: "form.type"
+                      expression: "form.category_id"
                     }
                   }),
                   _vm._v(" "),
@@ -63408,7 +63419,7 @@ var render = function() {
                             _c("td", [_vm._v(_vm._s(props.item.project))]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [
-                              _vm._v(" " + _vm._s(props.item.type))
+                              _vm._v(" " + _vm._s(props.item.category_id))
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [

@@ -56,8 +56,11 @@ class CategoryController extends Controller
      * @param  \App\Model\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($slug)
     {
+        /*$project=  Category::where('slug',$slug)->first();
+        $tasks =Task::where('category_id',$category->id)->get();
+        $category->tasks = $tasks;*/
         return new CategoryResource($category);
     }
 

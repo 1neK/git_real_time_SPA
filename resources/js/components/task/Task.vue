@@ -64,8 +64,10 @@
                 <v-flex md3>
                     <v-card-text class="px-0">Task Type</v-card-text>
                     <v-select
-                    :items="type"
-                    v-model="form.type"
+                        :items="categories"
+                        v-model="form.category_id"
+                        item-text="name"
+                        item-value="id"
                     label="task type"
                     ></v-select>
 
@@ -178,7 +180,7 @@
                 <v-data-table colmd12  :headers="headers" :items="tasks" class="elevation-1">
                     <template v-slot:items="props">
                         <td>{{ props.item.project }}</td>
-                        <td class="text-center"> {{ props.item.type }}</td>
+                        <td class="text-center"> {{ props.item.category_id }}</td>
                         <td class="text-center"> {{ props.item.user }}</td>
                         <td class="text-center"> {{ props.item.createdBy }}</td>
                         <td class="text-center">{{ props.item.start_date }}</td>
@@ -224,7 +226,7 @@
                     },
 
 
-                    {text: 'Task', value: 'type'},
+                    {text: 'Task', value: 'category'},
                     {text: 'Affected to', value: 'user'},
                     {text: 'Added by', value: 'createdBy'},
                     {text: 'Start Date ', value: 'start_date'},
@@ -248,7 +250,7 @@ type:['Blog','Authentification','Edit Slider','Slider'],
                     user_id:null,
                     project_id:null,
                     start_date: new Date().toISOString().substr(0, 10),
-                    type:null,
+                    category_id:null,
                     due_date:  new Date().toISOString().substr(0, 10),
                     description:'',
                     btn_name:'add'
@@ -262,13 +264,14 @@ type:['Blog','Authentification','Edit Slider','Slider'],
                     user_id:null,
                     project_id:null,
                     start_date: new Date().toISOString().substr(0, 10),
-                    type:null,
+                    category_id:null,
                     due_date:  new Date().toISOString().substr(0, 10),
                     description:'',
                     btn_name:'add'
 
 
                 },
+                categories: [],
                 tasks: [],
                 users: [],
                 projects: [],
@@ -280,7 +283,7 @@ type:['Blog','Authentification','Edit Slider','Slider'],
 
          this.getData();
 
-
+            axios.get('/api/category').then(res => this.categories = res.data);
             axios.get('/api/project').then(res => this.projects = res.data);
             axios.get('/api/user').then(res => this.users = res.data)
         },
@@ -329,7 +332,7 @@ this.form.id=null;
                     this.form.user_id=null;
                     this.form.project_id=null;
                     this.form.start_date= new Date().toISOString().substr(0, 10);
-                    this.form.type=null;
+                    this.form.category_id=null;
                 this.form.due_date=  new Date().toISOString().substr(0, 10);
                    this.form. description='';
                   this.form.btn_name="add";
