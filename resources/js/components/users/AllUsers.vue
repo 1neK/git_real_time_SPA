@@ -28,7 +28,7 @@
                     :items="users"
                     label="role"
                     v-model="filter.role_id"
-                    item-text="name"
+                    item-text="role_id"
                     item-value="id"
                     ></v-select>
             </v-flex>
@@ -38,7 +38,7 @@
                     :items="users"
                     label="status"
                     v-model="filter.status"
-                    item-text="name"
+                    item-text="status"
                     item-value="id"
                     ></v-select>
             </v-flex>
@@ -243,7 +243,7 @@
 
             axios.get('/api/count-team')
                 .then(res => this.roles = res.data);
-            axios.get('/api/user').then(res => this.users = res.data.data);
+            axios.get('/api/user').then(res => this.users = res.data);
 
         },
         methods: {

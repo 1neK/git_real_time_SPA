@@ -4950,7 +4950,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return _this.roles = res.data;
     });
     axios.get('/api/user').then(function (res) {
-      return _this.users = res.data.data;
+      return _this.users = res.data;
     });
   },
   methods: {
@@ -64451,7 +64451,7 @@ var render = function() {
                     attrs: {
                       items: _vm.users,
                       label: "role",
-                      "item-text": "name",
+                      "item-text": "role_id",
                       "item-value": "id"
                     },
                     model: {
@@ -64478,7 +64478,7 @@ var render = function() {
                     attrs: {
                       items: _vm.users,
                       label: "status",
-                      "item-text": "name",
+                      "item-text": "status",
                       "item-value": "id"
                     },
                     model: {
