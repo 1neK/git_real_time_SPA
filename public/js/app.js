@@ -64449,17 +64449,17 @@ var render = function() {
                   _vm._v(" "),
                   _c("v-select", {
                     attrs: {
-                      items: _vm.users,
+                      items: _vm.roles,
                       label: "role",
-                      "item-text": "role_id",
+                      "item-text": "name",
                       "item-value": "id"
                     },
                     model: {
-                      value: _vm.filter.role_id,
+                      value: _vm.filter.roles,
                       callback: function($$v) {
-                        _vm.$set(_vm.filter, "role_id", $$v)
+                        _vm.$set(_vm.filter, "roles", $$v)
                       },
-                      expression: "filter.role_id"
+                      expression: "filter.roles"
                     }
                   })
                 ],
@@ -64478,8 +64478,7 @@ var render = function() {
                     attrs: {
                       items: _vm.users,
                       label: "status",
-                      "item-text": "status",
-                      "item-value": "id"
+                      "item-text": "status"
                     },
                     model: {
                       value: _vm.filter.status,

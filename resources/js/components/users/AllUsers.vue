@@ -25,10 +25,10 @@
             <v-flex xs3>
                     <v-card-text class="px-0">Role</v-card-text>
                     <v-select
-                    :items="users"
+                    :items="roles"
                     label="role"
-                    v-model="filter.role_id"
-                    item-text="role_id"
+                    v-model="filter.roles"
+                    item-text="name"
                     item-value="id"
                     ></v-select>
             </v-flex>
@@ -39,7 +39,7 @@
                     label="status"
                     v-model="filter.status"
                     item-text="status"
-                    item-value="id"
+
                     ></v-select>
             </v-flex>
         </v-layout>
