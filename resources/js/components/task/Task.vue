@@ -283,7 +283,7 @@ type:['Blog','Authentification','Edit Slider','Slider'],
 
          this.getData();
 
-            axios.get('/api/category').then(res => this.categories = res.data);
+            axios.get('/api/category').then(res => this.categories = res.data.data);
             axios.get('/api/project').then(res => this.projects = res.data);
             axios.get('/api/user').then(res => this.users = res.data)
         },

@@ -4091,7 +4091,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.getData();
     axios.get('/api/category').then(function (res) {
-      return _this.categories = res.data;
+      return _this.categories = res.data.data;
     });
     axios.get('/api/project').then(function (res) {
       return _this.projects = res.data;
