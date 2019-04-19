@@ -115,13 +115,8 @@
         }
     },
         created(){
-
-
           this.getData();
-
-
-
-},
+        },
 
     methods:{
         submit(){

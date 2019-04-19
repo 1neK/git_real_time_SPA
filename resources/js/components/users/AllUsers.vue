@@ -2,7 +2,7 @@
     <v-container class="c1">
         <v-container fluid grid-list-md >
         <v-layout row wrap>
-                <v-flex xs3 md2>
+                <v-flex xs3 md2 v-slot:header>
                     <h2>Users</h2>
                 </v-flex>
 
@@ -14,27 +14,33 @@
 
             <v-flex xs3>
                     <v-card-text class="px-0">Name</v-card-text>
-                    <v-combobox
-                    v-model="select1"
-                    :items="items1"
+                    <v-select
+                    :items="users"
                     label="name"
-                ></v-combobox>
+                    v-model="filter.name"
+                    item-text="name"
+                    item-value="id"
+                    ></v-select>
             </v-flex>
             <v-flex xs3>
                     <v-card-text class="px-0">Role</v-card-text>
-                    <v-combobox
-                    v-model="select2"
-                    :items="items2"
+                    <v-select
+                    :items="users"
                     label="role"
-                ></v-combobox>
+                    v-model="filter.role_id"
+                    item-text="name"
+                    item-value="id"
+                    ></v-select>
             </v-flex>
             <v-flex xs3>
                 <v-card-text class="px-0">Status</v-card-text>
-                    <v-combobox
-                    v-model="select3"
-                    :items="items3"
+                    <v-select
+                    :items="users"
                     label="status"
-                    ></v-combobox>
+                    v-model="filter.status"
+                    item-text="name"
+                    item-value="id"
+                    ></v-select>
             </v-flex>
         </v-layout>
         </v-container>
@@ -110,13 +116,9 @@
                             <v-flex md6>
                                 <v-text-field
                                         v-model="form.password"
-
-
                                         type="password"
                                         name="password"
                                         label="password"
-
-
                                 ></v-text-field>
 
                             </v-flex>
@@ -182,6 +184,12 @@
     export default {
         data() {
             return {
+                form: {
+                id: null,
+                name: null,
+                btn_name: 'create'
+            },
+            users:{},
                 headers: [
                     {
                         text: 'ID',
@@ -191,7 +199,7 @@
                     {text: 'Name', value: 'name'},
                     {text: 'Email', value: 'email'},
                     {text: 'Created at', value: 'created_at'},
-                    {text: 'Last connexion', value: 'last_connesion'},
+                    {text: 'Last connexion', value: 'last_connexion'},
                     {text: 'Role ', value: 'role'},
                     {text: 'Status ', value: 'status'},
                     {text: 'Action ', value: 'action'},
@@ -201,9 +209,7 @@
 
                 status:['Pending','Active','Banned'],
 
-                roles :[],
-                teams: [],
-                dialog: false,
+
                 form: {
                     id: null,
                     name: null,
@@ -213,6 +219,20 @@
                     status: null,
                     btn_name:'add'
                 },
+                filter: {
+                    id: null,
+                    name: null,
+                    password:null,
+                    role_id: null,
+                    email: null,
+                    status: null,
+                    btn_name:'add'
+
+
+                },
+                roles :[],
+                teams: [],
+                dialog: false,
                 editSlugt: null,
                 errors: null
             }
@@ -223,6 +243,7 @@
 
             axios.get('/api/count-team')
                 .then(res => this.roles = res.data);
+            axios.get('/api/user').then(res => this.users = res.data.data);
 
         },
         methods: {

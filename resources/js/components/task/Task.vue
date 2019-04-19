@@ -239,7 +239,7 @@
 
                 ],
 
-type:['Blog','Authentification','Edit Slider','Slider'],
+
 
  menu: false,
  menu1: false,
@@ -327,15 +327,15 @@ type:['Blog','Authentification','Edit Slider','Slider'],
             },
 
               reset() {
-this.form.id=null;
+                    this.form.id=null;
                     this.form.link= '';
                     this.form.user_id=null;
                     this.form.project_id=null;
                     this.form.start_date= new Date().toISOString().substr(0, 10);
                     this.form.category_id=null;
-                this.form.due_date=  new Date().toISOString().substr(0, 10);
-                   this.form. description='';
-                  this.form.btn_name="add";
+                    this.form.due_date=  new Date().toISOString().substr(0, 10);
+                    this.form. description='';
+                    this.form.btn_name="add";
 
         },
 
@@ -343,9 +343,7 @@ this.form.id=null;
 
    axios.get('/api/task?token='+localStorage.getItem('token'))
                 .then(res => this.tasks = res.data);
-
                 this.reset();
-
             }
         },
         computed: {

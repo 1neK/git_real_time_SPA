@@ -4052,7 +4052,6 @@ __webpack_require__.r(__webpack_exports__);
         text: 'action ',
         value: 'action'
       }],
-      type: ['Blog', 'Authentification', 'Edit Slider', 'Slider'],
       menu: false,
       menu1: false,
       dialog: false,
@@ -4703,6 +4702,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
 //
 //
 //
@@ -4885,7 +4888,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {
+    var _ref;
+
+    return _ref = {
+      form: {
+        id: null,
+        name: null,
+        btn_name: 'create'
+      },
+      users: {},
       headers: [{
         text: 'ID',
         sortable: false,
@@ -4901,7 +4912,7 @@ __webpack_require__.r(__webpack_exports__);
         value: 'created_at'
       }, {
         text: 'Last connexion',
-        value: 'last_connesion'
+        value: 'last_connexion'
       }, {
         text: 'Role ',
         value: 'role'
@@ -4912,22 +4923,24 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Action ',
         value: 'action'
       }],
-      status: ['Pending', 'Active', 'Banned'],
-      roles: [],
-      teams: [],
-      dialog: false,
-      form: {
-        id: null,
-        name: null,
-        password: null,
-        role_id: null,
-        email: null,
-        status: null,
-        btn_name: 'add'
-      },
-      editSlugt: null,
-      errors: null
-    };
+      status: ['Pending', 'Active', 'Banned']
+    }, _defineProperty(_ref, "form", {
+      id: null,
+      name: null,
+      password: null,
+      role_id: null,
+      email: null,
+      status: null,
+      btn_name: 'add'
+    }), _defineProperty(_ref, "filter", {
+      id: null,
+      name: null,
+      password: null,
+      role_id: null,
+      email: null,
+      status: null,
+      btn_name: 'add'
+    }), _defineProperty(_ref, "roles", []), _defineProperty(_ref, "teams", []), _defineProperty(_ref, "dialog", false), _defineProperty(_ref, "editSlugt", null), _defineProperty(_ref, "errors", null), _ref;
   },
   created: function created() {
     var _this = this;
@@ -4935,6 +4948,9 @@ __webpack_require__.r(__webpack_exports__);
     this.getData();
     axios.get('/api/count-team').then(function (res) {
       return _this.roles = res.data;
+    });
+    axios.get('/api/user').then(function (res) {
+      return _this.users = res.data.data;
     });
   },
   methods: {
@@ -64374,9 +64390,18 @@ var render = function() {
             "v-layout",
             { attrs: { row: "", wrap: "" } },
             [
-              _c("v-flex", { attrs: { xs3: "", md2: "" } }, [
-                _c("h2", [_vm._v("Users")])
-              ]),
+              _c("v-flex", {
+                attrs: { xs3: "", md2: "" },
+                scopedSlots: _vm._u([
+                  {
+                    key: "header",
+                    fn: function() {
+                      return [_c("h2", [_vm._v("Users")])]
+                    },
+                    proxy: true
+                  }
+                ])
+              }),
               _vm._v(" "),
               _c(
                 "v-flex",
@@ -64397,14 +64422,19 @@ var render = function() {
                 [
                   _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Name")]),
                   _vm._v(" "),
-                  _c("v-combobox", {
-                    attrs: { items: _vm.items1, label: "name" },
+                  _c("v-select", {
+                    attrs: {
+                      items: _vm.users,
+                      label: "name",
+                      "item-text": "name",
+                      "item-value": "id"
+                    },
                     model: {
-                      value: _vm.select1,
+                      value: _vm.filter.name,
                       callback: function($$v) {
-                        _vm.select1 = $$v
+                        _vm.$set(_vm.filter, "name", $$v)
                       },
-                      expression: "select1"
+                      expression: "filter.name"
                     }
                   })
                 ],
@@ -64417,14 +64447,19 @@ var render = function() {
                 [
                   _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Role")]),
                   _vm._v(" "),
-                  _c("v-combobox", {
-                    attrs: { items: _vm.items2, label: "role" },
+                  _c("v-select", {
+                    attrs: {
+                      items: _vm.users,
+                      label: "role",
+                      "item-text": "name",
+                      "item-value": "id"
+                    },
                     model: {
-                      value: _vm.select2,
+                      value: _vm.filter.role_id,
                       callback: function($$v) {
-                        _vm.select2 = $$v
+                        _vm.$set(_vm.filter, "role_id", $$v)
                       },
-                      expression: "select2"
+                      expression: "filter.role_id"
                     }
                   })
                 ],
@@ -64439,14 +64474,19 @@ var render = function() {
                     _vm._v("Status")
                   ]),
                   _vm._v(" "),
-                  _c("v-combobox", {
-                    attrs: { items: _vm.items3, label: "status" },
+                  _c("v-select", {
+                    attrs: {
+                      items: _vm.users,
+                      label: "status",
+                      "item-text": "name",
+                      "item-value": "id"
+                    },
                     model: {
-                      value: _vm.select3,
+                      value: _vm.filter.status,
                       callback: function($$v) {
-                        _vm.select3 = $$v
+                        _vm.$set(_vm.filter, "status", $$v)
                       },
-                      expression: "select3"
+                      expression: "filter.status"
                     }
                   })
                 ],
