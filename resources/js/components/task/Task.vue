@@ -137,9 +137,9 @@
                                     ></v-select>
                                 </v-flex>
 
-                                <v-flex xs3>
-                                    <v-card-text>Affected To</v-card-text>
-                                    <v-select
+                                <v-flex xs3 >
+                                    <v-card-text v-if="myRole=='Admin' || myRole=='Coordinator'">Affected To</v-card-text>
+                                    <v-select v-if="myRole=='Admin' || myRole=='Coordinator'"
                                         :items="users"
                                         label="affected to"
                                         v-model="search.user_id"
@@ -186,21 +186,25 @@
                 <v-container>
                 <v-data-table colmd12  :headers="headers" :items="tasks" class="elevation-1">
                     <template v-slot:items="props">
-                        <td>{{ props.item.project }}</td>
+                        <td> <router-link  :to="{ name: 'task-single', params: { id:  props.item.id } }"  >{{ props.item.project }}</router-link></td>
                         <td class="text-center"> {{ props.item.category_id }}</td>
                         <td class="text-center"> {{ props.item.user }}</td>
                         <td class="text-center"> {{ props.item.createdBy }}</td>
                         <td class="text-center">{{ props.item.start_date }}</td>
                         <td class="text-center">{{ props.item.due_date }}</td>
-                        <td class="text-center">{{ props.item.completed_on }}</td>
+                        <td class="text-center">{{ props.item.date_completed }}</td>
                         <td class="text-center">{{ props.item.comments }}</td>
                         <td class="text-center">{{ props.item.status }}</td>
-                        <td class="text-center">{{ props.item.links }}</td>
                         <td class="text-center">
 
-                            <router-link  :to="{ name: 'task-single', params: { id:  props.item.id } }"  >
-                                go to
-                            </router-link>
+                            <a v-if="props.item.link"   :href="  props.item.link ">  <v-icon medium color="green">link</v-icon></a>
+                            <a v-if="props.item.final_link" :href="props.item.final_link ">  <v-icon medium color="blue">link</v-icon></a>
+
+
+                        </td>
+                        <td class="text-center" v-if="myRole=='Admin' || myRole=='Coordinator'">
+
+
 
 
                             <v-btn icon @click="edit(props.item)">
@@ -209,7 +213,47 @@
                             <v-btn icon @click="destroy( props.item.id )">
                                 <v-icon medium color="black"> delete</v-icon>
                             </v-btn>
+                            <v-btn  v-if="props.item.status =='Completed'" @click="accept(props.item.id)" color="blue">accept</v-btn>
+                            <v-btn  v-if="props.item.status =='Completed'" @click="reject(props.item.id)" color="red">reject</v-btn>
                         </td>
+
+                        <td v-else>
+
+                            <v-btn  v-if="props.item.status =='Incompleted'" @click="start(props.item.id)" color="blue">start</v-btn>
+
+
+                            <template v-if="props.item.status =='In progress'">
+                                <v-layout row justify-center>
+                                    <v-dialog v-model="dialog" persistent max-width="300px">
+                                        <template v-slot:activator="{ on }">
+                                            <v-btn color="success" dark v-on="on">mark as complited</v-btn>
+                                        </template>
+                                        <v-card>
+                                            <v-card-title>
+                                                <span class="headline">completed</span>
+                                            </v-card-title>
+                                            <v-card-text>
+                                                <v-container grid-list-md>
+                                                    <v-layout wrap>
+                                                        <v-flex xs12 >
+                                                            <v-text-field v-model="final_link" label="link" ></v-text-field>
+                                                        </v-flex>
+
+                                                    </v-layout>
+                                                </v-container>
+
+                                            </v-card-text>
+                                            <v-card-actions>
+                                                <v-spacer></v-spacer>
+                                                <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
+                                                <v-btn color="blue darken-1" flat @click="completed(props.item.id)" >Save</v-btn>
+                                            </v-card-actions>
+                                        </v-card>
+                                    </v-dialog>
+                                </v-layout>
+                            </template>
+                        </td>
+
                     </template>
                 </v-data-table>
                 </v-container>
@@ -225,17 +269,14 @@
     export default {
         data() {
             return {
+
+                final_link:'',
+                dialog:false,
                 headers: [
-                    {
-                        text: 'Project',
-                        sortable: false,
-                        value: 'project'
-                    },
-
-
+                    { text: 'Project', value: 'project'},
                     {text: 'Task', value: 'category'},
                     {text: 'Affected to', value: 'user'},
-                    {text: 'Added by', value: 'createdBy'},
+                    {text: 'Added by', value: 'created_by'},
                     {text: 'Start Date ', value: 'start_date'},
                     {text: 'Due Date ', value: 'due_date'},
                     {text: 'Completed on ', value: 'completed_on'},
@@ -250,6 +291,7 @@
 
  menu: false,
  menu1: false,
+                myRole:'',
                 dialog: false,
                 form: {
                     id:null,
@@ -265,7 +307,7 @@
 
                 },
 
-                search: { user_id:null,  project_id:null, category_id:null},
+                search: { user_id:null,  project_id:null, category_id:null,token:''},
                 categories: [],
                 tasks: [],
                 users: [],
@@ -276,6 +318,8 @@
             }
         },
         created() {
+
+            this.myRole =localStorage.getItem('role');
 
          this.getData();
 
@@ -301,6 +345,8 @@
 
                 console.log(this.search);
 
+                this.search.token=localStorage.getItem('token');
+
                 axios.get('/api/task',{
                     params:this.search
                 })
@@ -320,7 +366,7 @@
             },
 
             destroy(slug) {
-                axios.delete(`/api/task/${slug}`)
+                axios.delete(`/api/task/${slug}?token=`+localStorage.getItem('token'))
                     .then(res => this.getData())
             },
 
@@ -352,6 +398,40 @@
                     this.search.project_id=null;
 
         },
+
+            start(id){
+                axios.post('/api/tasks/start?token='+localStorage.getItem('token'),{id:id})
+                    .then(res =>{console.log(res);
+
+                        this.getData();
+                    });
+            },
+            completed(id){
+
+                axios.post('/api/tasks/completed?token='+localStorage.getItem('token'),{id:id,link:this.final_link})
+                    .then(res => {
+
+                        this.getData();
+                        this.dialog = false;
+                    });
+            },
+
+   accept(id){
+                axios.post('/api/tasks/accept?token='+localStorage.getItem('token'),{id:id})
+                    .then(res =>{console.log(res);
+
+                        this.getData();
+                    });
+            },
+            reject(id){
+
+                axios.post('/api/tasks/reject?token='+localStorage.getItem('token'),{id:id,link:this.final_link})
+                    .then(res => {
+
+                        this.getData();
+                        this.dialog = false;
+                    });
+            },
 
             getData(){
 

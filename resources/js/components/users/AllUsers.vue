@@ -10,24 +10,16 @@
                     <v-card-text class="px-0"> <h4> Filter user </h4> </v-card-text>
             </v-flex>
 
-            <v-flex xs2></v-flex>
-
             <v-flex xs3>
                     <v-card-text class="px-0">Name</v-card-text>
-                    <v-select
-                    :items="users"
-                    label="name"
-                    v-model="filter.name"
-                    item-text="name"
-                    item-value="id"
-                    ></v-select>
+                <v-text-field label="Name" v-model="search.name"></v-text-field>
             </v-flex>
             <v-flex xs3>
                     <v-card-text class="px-0">Role</v-card-text>
                     <v-select
                     :items="roles"
                     label="role"
-                    v-model="filter.roles"
+                    v-model="search.role_id"
                     item-text="name"
                     item-value="id"
                     ></v-select>
@@ -37,11 +29,17 @@
                     <v-select
                     :items="users"
                     label="status"
-                    v-model="filter.status"
+                    v-model="search.status"
                     item-text="status"
 
                     ></v-select>
             </v-flex>
+            <v-flex xs3>
+                <v-btn @click="filter()"  >filter</v-btn>
+                <v-btn @click="getData()"  >reset</v-btn>
+
+            </v-flex>
+
         </v-layout>
         </v-container>
         <v-data-table colmd12 :headers="headers" :items="teams" class="elevation-1">
@@ -210,26 +208,8 @@
                 status:['Pending','Active','Banned'],
 
 
-                form: {
-                    id: null,
-                    name: null,
-                    password:null,
-                    role_id: null,
-                    email: null,
-                    status: null,
-                    btn_name:'add'
-                },
-                filter: {
-                    id: null,
-                    name: null,
-                    password:null,
-                    role_id: null,
-                    email: null,
-                    status: null,
-                    btn_name:'add'
+                search: {  name: null, role_id: null, status: null},
 
-
-                },
                 roles :[],
                 teams: [],
                 dialog: false,
@@ -289,22 +269,31 @@
 
             reset() {
                 this.form.id = null;
-                this.form.name = null;
+
                 this.form.password =null;
                 this.form.role_id = null;
                 this.form.status = null;
                 this.form.email = null;
 
+                this.search.role_id = null;
+                this.search.status = null;
+                this.search.name = null;
 
             },
 
             getData() {
 
 
-                axios.get('/api/user')
-                    .then(res => this.teams = res.data)
+                axios.get('/api/user').then(res => this.teams = res.data)
 
                 this.reset();
+
+            },
+
+            filter(){
+                axios.get('/api/user',{params:this.search})
+                    .then(res => this.teams = res.data)
+
 
             }
 

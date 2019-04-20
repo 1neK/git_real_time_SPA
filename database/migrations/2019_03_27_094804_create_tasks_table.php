@@ -21,9 +21,11 @@ class CreateTasksTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->date('start_date');
             $table->date('due_date');
-            $table->text('link');
+            $table->text('link')->nullable();
+            $table->text('final_link')->nullable();
+            $table->timestamp('date_completed')->nullable();
             $table->text('description');
-            $table->enum('status', ['In progress', 'Validated','Incompleted','Completed']);
+            $table->enum('status', ['Incompleted','In progress', 'Validated','Completed'])->default('Incompleted');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('made_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');

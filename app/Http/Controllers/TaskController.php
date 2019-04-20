@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Resources\TaskResource;
 use App\Model\Project;
 use App\Task;
+use App\TaskComment;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Model\Category;
@@ -32,8 +35,7 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         $user = JWTAuth::toUser( Input::get('token') );
-        if (!empty($request))
-        {
+
 
          $data =Task::whereNotNull('id');
          foreach ($request->all() as $item => $value)
@@ -42,6 +44,9 @@ class TaskController extends Controller
 
          }
 
+        if ($user->role_id != 1 && $user->role_id != 2)  $data->where('user_id',$user->id);
+
+
          $tasks=$data->get();
             foreach ($tasks as $task) {
 
@@ -49,16 +54,15 @@ class TaskController extends Controller
                 $task->project = Project::where('id', $task->project_id)->value('name');
                 $task->user = User::where('id', $task->user_id)->value('name');
                 $task->createdBy = User::where('id', $task->made_by)->value('name');
+                $task->comments=TaskComment::where('task_id',$task->id)->count();
             }
 
 
             return response()->json($tasks);
-        }
 
 
 
-        if ($user->role_id == 1 || $user->role_id == 2)  $tasks = Task::all();
-        else $tasks= Task::where('user_id',$user->id)->get();
+
 
 
 
@@ -87,7 +91,7 @@ class TaskController extends Controller
         $task->project_id = $request->project_id;
         $task->start_date = $request->start_date;
         $task->category_id = $request->category_id;
-        $task->status = "In progress";
+        $task->status = "Incompleted";
         $task->save();
 
         return response()->json("saved");
@@ -153,8 +157,66 @@ class TaskController extends Controller
      */
     public function destroy($task)
     {
-        $role =  Task::find($task);
+
+        return $task;
+;        $role =  Task::where('id',$task)->first();
+        dd($role);
         $role->delete();
         return response()->json('deleted');
     }
+
+
+    public function allyears()
+    {
+
+        $years=Task::select(DB::raw('EXTRACT(year from start_date) as year'))->groupBy('year')->pluck('year')->toArray();
+
+        return $years;
+
+    }
+
+    public function start(Request $request)
+    {
+        $task=Task::find($request->id);
+       $task->status='In progress';
+
+       $task->save();
+
+            return response()->json("saved");
+    }
+
+
+    public function completed(Request $request)
+    {
+        $task=Task::find($request->id);
+        $task->status='Completed';
+        $task->final_link=$request->link;
+
+        $task->save();
+
+        return response()->json("saved");
+    }
+    public function accept(Request $request)
+    {
+        $task=Task::find($request->id);
+        $task->status='Validated';
+        $task->date_completed=now();
+
+
+        $task->save();
+
+        return response()->json("saved");
+    }
+    public function reject(Request $request)
+    {
+        $task=Task::find($request->id);
+        $task->status='In progress';
+        $task->final_link=null;
+
+        $task->save();
+
+        return response()->json("saved");
+    }
+
+
 }

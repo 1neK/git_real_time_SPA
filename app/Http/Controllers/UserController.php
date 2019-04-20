@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Role;
-use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
-use App\Http\Requests\UserRequest;
+use App\Role;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -25,9 +24,20 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users =User::all();
+
+
+           $data=User::whereNotNull('id');
+            if ($request->name ) $data->where('name','like','%'.$request->name.'%');
+          if ($request->role_id ) $data->where('role_id' ,$request->role_id);
+            if ($request->status ) $data->where('status',  $request->status );
+
+            $users=$data->get();
+
+
+
+
         foreach ($users as $user)
         {
             $role=Role::find($user->role_id);
@@ -54,10 +64,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // Category::create($request->all());
        $user  = new User();
        $user->name  = $request->name;
-        $user->password = Hash::make($request->password);
+        $user->password = $request->password;
 
        $user->status=$request->status;
        $user->email=$request->email;
@@ -90,7 +99,7 @@ class UserController extends Controller
     {
         $user  =  User::find($id);
         $user->name  = $request->name;
-        if (!empty($request->password)) $user->password = Hash::make($request->password);
+        if (!empty($request->password)) $user->password =$request->password;
 
         $user->status=$request->status;
         $user->email=$request->email;
