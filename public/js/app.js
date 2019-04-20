@@ -2392,7 +2392,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       /*select1: 'Ins'
       items1: [
-       ],*/
+        ],*/
       headers: [{
         text: 'Project',
         sortable: false,
@@ -4014,6 +4014,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4066,20 +4075,15 @@ __webpack_require__.r(__webpack_exports__);
         description: '',
         btn_name: 'add'
       },
-      filter: {
-        id: null,
-        link: '',
+      search: {
         user_id: null,
         project_id: null,
-        start_date: new Date().toISOString().substr(0, 10),
-        category_id: null,
-        due_date: new Date().toISOString().substr(0, 10),
-        description: '',
-        btn_name: 'add'
+        category_id: null
       },
       categories: [],
       tasks: [],
       users: [],
+      status: ['In progress', 'Validated', 'Incompleted', 'Completed'],
       projects: [],
       editSlugt: null,
       errors: null
@@ -4110,21 +4114,31 @@ __webpack_require__.r(__webpack_exports__);
         _this2.getData();
       });
     },
-    add: function add() {
+    filter: function filter() {
       var _this3 = this;
+
+      console.log(this.search);
+      axios.get('/api/task', {
+        params: this.search
+      }).then(function (res) {
+        return _this3.tasks = res.data;
+      });
+    },
+    add: function add() {
+      var _this4 = this;
 
       console.log(this.form);
       axios.post('/api/task?token=' + localStorage.getItem('token'), this.form).then(function (res) {
         console.log(res);
 
-        _this3.getData();
+        _this4.getData();
       });
     },
     destroy: function destroy(slug) {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.delete("/api/task/".concat(slug)).then(function (res) {
-        return _this4.getData();
+        return _this5.getData();
       });
     },
     edit: function edit(index) {
@@ -4141,12 +4155,16 @@ __webpack_require__.r(__webpack_exports__);
       this.form.due_date = new Date().toISOString().substr(0, 10);
       this.form.description = '';
       this.form.btn_name = "add";
+      this.search.category_id = null;
+      this.search.user_id = null;
+      this.search.status = null;
+      this.search.project_id = null;
     },
     getData: function getData() {
-      var _this5 = this;
+      var _this6 = this;
 
       axios.get('/api/task?token=' + localStorage.getItem('token')).then(function (res) {
-        return _this5.tasks = res.data;
+        return _this6.tasks = res.data;
       });
       this.reset();
     }
@@ -23809,7 +23827,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -23828,7 +23846,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -23847,7 +23865,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -23885,7 +23903,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -23904,7 +23922,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -23923,7 +23941,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -23942,7 +23960,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -23961,7 +23979,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -23999,7 +24017,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -24018,7 +24036,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -24075,7 +24093,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -61342,9 +61360,9 @@ var render = function() {
                     [
                       _c("v-list-tile-title", [
                         _vm._v(
-                          "\n                           " +
+                          "\r\n                           " +
                             _vm._s(category.name) +
-                            "\n                       "
+                            "\r\n                       "
                         )
                       ])
                     ],
@@ -61786,9 +61804,9 @@ var render = function() {
                   _c("div", [
                     _c("div", { staticClass: "headline" }, [
                       _vm._v(
-                        "\n                    " +
+                        "\r\n                    " +
                           _vm._s(_vm.data.title) +
-                          "\n                "
+                          "\r\n                "
                       )
                     ]),
                     _vm._v(" "),
@@ -62533,7 +62551,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\n                Project name is required.\n            "
+                                "\r\n                Project name is required.\r\n            "
                               )
                             ]
                           )
@@ -62570,7 +62588,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\n            close\n          ")]
+                        [_vm._v("\r\n            close\r\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
@@ -63303,11 +63321,11 @@ var render = function() {
                                       label: "project"
                                     },
                                     model: {
-                                      value: _vm.filter.project_id,
+                                      value: _vm.search.project_id,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.filter, "project_id", $$v)
+                                        _vm.$set(_vm.search, "project_id", $$v)
                                       },
-                                      expression: "filter.project_id"
+                                      expression: "search.project_id"
                                     }
                                   }),
                                   _vm._v(" "),
@@ -63316,13 +63334,18 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("v-select", {
-                                    attrs: { items: _vm.type, label: "title" },
+                                    attrs: {
+                                      items: _vm.categories,
+                                      "item-text": "name",
+                                      "item-value": "id",
+                                      label: "title"
+                                    },
                                     model: {
-                                      value: _vm.filter.type,
+                                      value: _vm.search.category_id,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.filter, "type", $$v)
+                                        _vm.$set(_vm.search, "category_id", $$v)
                                       },
-                                      expression: "filter.type"
+                                      expression: "search.category_id"
                                     }
                                   })
                                 ],
@@ -63345,11 +63368,11 @@ var render = function() {
                                       "item-value": "id"
                                     },
                                     model: {
-                                      value: _vm.filter.user_id,
+                                      value: _vm.search.user_id,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.filter, "user_id", $$v)
+                                        _vm.$set(_vm.search, "user_id", $$v)
                                       },
-                                      expression: "filter.user_id"
+                                      expression: "search.user_id"
                                     }
                                   }),
                                   _vm._v(" "),
@@ -63359,17 +63382,15 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("v-select", {
                                     attrs: {
-                                      items: _vm.users,
-                                      label: "status",
-                                      "item-text": "name",
-                                      "item-value": "id"
+                                      items: _vm.status,
+                                      label: "status"
                                     },
                                     model: {
-                                      value: _vm.filter.user_id,
+                                      value: _vm.search.status,
                                       callback: function($$v) {
-                                        _vm.$set(_vm.filter, "user_id", $$v)
+                                        _vm.$set(_vm.search, "status", $$v)
                                       },
-                                      expression: "filter.user_id"
+                                      expression: "search.status"
                                     }
                                   })
                                 ],
@@ -63380,25 +63401,45 @@ var render = function() {
                                 "v-flex",
                                 { attrs: { md4: "" } },
                                 [
-                                  _c("v-card-text", { staticClass: "px-0" }, [
-                                    _vm._v("Sort by")
-                                  ]),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { md6: "" } },
+                                    [
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { dark: "" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.filter()
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("filter")]
+                                      )
+                                    ],
+                                    1
+                                  ),
                                   _vm._v(" "),
-                                  _c("v-select", {
-                                    attrs: {
-                                      items: _vm.projects,
-                                      "item-text": "name",
-                                      "item-value": "id",
-                                      label: "sort by"
-                                    },
-                                    model: {
-                                      value: _vm.filter.project_id,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.filter, "project_id", $$v)
-                                      },
-                                      expression: "filter.project_id"
-                                    }
-                                  })
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { md6: "" } },
+                                    [
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: { dark: "" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.getData()
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("reset")]
+                                      )
+                                    ],
+                                    1
+                                  )
                                 ],
                                 1
                               )
@@ -64983,7 +65024,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\n                Team name is required.\n            "
+                                "\r\n                Team name is required.\r\n            "
                               )
                             ]
                           )
@@ -65020,7 +65061,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\n            close\n          ")]
+                        [_vm._v("\r\n            close\r\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt

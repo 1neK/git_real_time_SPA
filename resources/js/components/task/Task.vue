@@ -121,7 +121,7 @@
                                     <v-card-text class="px-0">Project</v-card-text>
                                     <v-select
                                         :items="projects"
-                                        v-model="filter.project_id"
+                                        v-model="search.project_id"
                                         item-text="name"
                                         item-value="id"
                                         label="project"
@@ -129,8 +129,10 @@
 
                                     <v-card-text class="px-0">Title</v-card-text>
                                     <v-select
-                                        :items="type"
-                                        v-model="filter.type"
+                                        :items="categories"
+                                        v-model="search.category_id"
+                                        item-text="name"
+                                        item-value="id"
                                         label="title"
                                     ></v-select>
                                 </v-flex>
@@ -140,30 +142,37 @@
                                     <v-select
                                         :items="users"
                                         label="affected to"
-                                        v-model="filter.user_id"
+                                        v-model="search.user_id"
                                         item-text="name"
                                         item-value="id"
                                     ></v-select>
 
                                     <v-card-text class="px-0">Status</v-card-text>
                                     <v-select
-                                        :items="users"
+                                        :items="status"
                                         label="status"
-                                        v-model="filter.user_id"
-                                        item-text="name"
-                                        item-value="id"
+                                        v-model="search.status"
+
                                     ></v-select>
                                 </v-flex>
 
                                 <v-flex md4>
-                                    <v-card-text class="px-0">Sort by</v-card-text>
-                                    <v-select
-                                        :items="projects"
-                                        v-model="filter.project_id"
-                                        item-text="name"
-                                        item-value="id"
-                                        label="sort by"
-                                    ></v-select>
+
+                                    <v-flex md6>
+
+                                        <v-btn dark @click="filter()">filter</v-btn>
+
+
+
+                                    </v-flex>
+                                      <v-flex md6>
+
+                                          <v-btn dark @click="getData()">reset</v-btn>
+
+
+
+                                    </v-flex>
+
                                 </v-flex>
 
                             </v-layout>
@@ -258,22 +267,11 @@
 
                 },
 
-                filter: {
-                    id:null,
-                    link: '',
-                    user_id:null,
-                    project_id:null,
-                    start_date: new Date().toISOString().substr(0, 10),
-                    category_id:null,
-                    due_date:  new Date().toISOString().substr(0, 10),
-                    description:'',
-                    btn_name:'add'
-
-
-                },
+                search: { user_id:null,  project_id:null, category_id:null},
                 categories: [],
                 tasks: [],
                 users: [],
+                status:['In progress','Validated','Incompleted','Completed'],
                 projects: [],
                 editSlugt: null,
                 errors: null
@@ -299,6 +297,19 @@
 
                         this.getData();
                     })
+            },
+
+            filter(){
+
+                console.log(this.search);
+
+                axios.get('/api/task',{
+                    params:this.search
+                })
+                    .then(res => this.tasks = res.data);
+
+
+
             },
 
             add(){
@@ -336,6 +347,11 @@
                     this.form.due_date=  new Date().toISOString().substr(0, 10);
                     this.form. description='';
                     this.form.btn_name="add";
+
+                    this.search.category_id=null;
+                    this.search.user_id=null;
+                    this.search.status=null;
+                    this.search.project_id=null;
 
         },
 

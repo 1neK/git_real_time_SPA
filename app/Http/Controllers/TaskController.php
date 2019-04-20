@@ -29,22 +29,39 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-
         $user = JWTAuth::toUser( Input::get('token') );
+        if (!empty($request))
+        {
+
+         $data =Task::whereNotNull('id');
+         foreach ($request->all() as $item => $value)
+         {
+             if (!empty($value) && $item!='token') $data->where($item,$value);
+
+         }
+
+         $tasks=$data->get();
+            foreach ($tasks as $task) {
+
+                $task->category = Category::where('id', $task->category_id)->value('name');
+                $task->project = Project::where('id', $task->project_id)->value('name');
+                $task->user = User::where('id', $task->user_id)->value('name');
+                $task->createdBy = User::where('id', $task->made_by)->value('name');
+            }
+
+
+            return response()->json($tasks);
+        }
+
+
+
         if ($user->role_id == 1 || $user->role_id == 2)  $tasks = Task::all();
         else $tasks= Task::where('user_id',$user->id)->get();
 
 
 
-        foreach ($tasks as $task) {
-
-            $task->category = Category::where('id', $task->category_id)->value('name');
-            $task->project = Project::where('id', $task->project_id)->value('name');
-            $task->user = User::where('id', $task->user_id)->value('name');
-            $task->createdBy = User::where('id', $task->made_by)->value('name');
-        }
 
         return response()->json($tasks);
 
