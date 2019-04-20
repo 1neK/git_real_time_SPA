@@ -116,9 +116,9 @@
                                 <div>   <h4>Filter task</h4></div>
                             </template>
                             <v-layout  row wrap p4>
-
-                                <v-flex md4>
-                                    <v-card-text class="px-0">Project</v-card-text>
+                                <v-flex xs1></v-flex>
+                                <v-flex xs3>
+                                    <v-card-text>Project</v-card-text>
                                     <v-select
                                         :items="projects"
                                         v-model="search.project_id"
@@ -127,7 +127,7 @@
                                         label="project"
                                     ></v-select>
 
-                                    <v-card-text class="px-0">Title</v-card-text>
+                                    <v-card-text>Title</v-card-text>
                                     <v-select
                                         :items="categories"
                                         v-model="search.category_id"
@@ -137,8 +137,8 @@
                                     ></v-select>
                                 </v-flex>
 
-                                <v-flex md4>
-                                    <v-card-text class="px-0">Affected To</v-card-text>
+                                <v-flex xs3>
+                                    <v-card-text>Affected To</v-card-text>
                                     <v-select
                                         :items="users"
                                         label="affected to"
@@ -147,7 +147,7 @@
                                         item-value="id"
                                     ></v-select>
 
-                                    <v-card-text class="px-0">Status</v-card-text>
+                                    <v-card-text>Status</v-card-text>
                                     <v-select
                                         :items="status"
                                         label="status"
@@ -168,8 +168,6 @@
                                       <v-flex md6>
 
                                           <v-btn dark @click="getData()">reset</v-btn>
-
-
 
                                     </v-flex>
 

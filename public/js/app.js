@@ -4021,8 +4021,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -23827,7 +23825,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23865,7 +23863,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23903,7 +23901,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23922,7 +23920,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23941,7 +23939,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23960,7 +23958,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -23979,7 +23977,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -24017,7 +24015,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -24036,7 +24034,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -61360,9 +61358,9 @@ var render = function() {
                     [
                       _c("v-list-tile-title", [
                         _vm._v(
-                          "\r\n                           " +
+                          "\n                           " +
                             _vm._s(category.name) +
-                            "\r\n                       "
+                            "\n                       "
                         )
                       ])
                     ],
@@ -61804,9 +61802,9 @@ var render = function() {
                   _c("div", [
                     _c("div", { staticClass: "headline" }, [
                       _vm._v(
-                        "\r\n                    " +
+                        "\n                    " +
                           _vm._s(_vm.data.title) +
-                          "\r\n                "
+                          "\n                "
                       )
                     ]),
                     _vm._v(" "),
@@ -62551,7 +62549,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\r\n                Project name is required.\r\n            "
+                                "\n                Project name is required.\n            "
                               )
                             ]
                           )
@@ -62588,7 +62586,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\r\n            close\r\n          ")]
+                        [_vm._v("\n            close\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
@@ -63305,13 +63303,13 @@ var render = function() {
                             "v-layout",
                             { attrs: { row: "", wrap: "", p4: "" } },
                             [
+                              _c("v-flex", { attrs: { xs1: "" } }),
+                              _vm._v(" "),
                               _c(
                                 "v-flex",
-                                { attrs: { md4: "" } },
+                                { attrs: { xs3: "" } },
                                 [
-                                  _c("v-card-text", { staticClass: "px-0" }, [
-                                    _vm._v("Project")
-                                  ]),
+                                  _c("v-card-text", [_vm._v("Project")]),
                                   _vm._v(" "),
                                   _c("v-select", {
                                     attrs: {
@@ -63329,9 +63327,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(" "),
-                                  _c("v-card-text", { staticClass: "px-0" }, [
-                                    _vm._v("Title")
-                                  ]),
+                                  _c("v-card-text", [_vm._v("Title")]),
                                   _vm._v(" "),
                                   _c("v-select", {
                                     attrs: {
@@ -63354,11 +63350,9 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "v-flex",
-                                { attrs: { md4: "" } },
+                                { attrs: { xs3: "" } },
                                 [
-                                  _c("v-card-text", { staticClass: "px-0" }, [
-                                    _vm._v("Affected To")
-                                  ]),
+                                  _c("v-card-text", [_vm._v("Affected To")]),
                                   _vm._v(" "),
                                   _c("v-select", {
                                     attrs: {
@@ -63376,9 +63370,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(" "),
-                                  _c("v-card-text", { staticClass: "px-0" }, [
-                                    _vm._v("Status")
-                                  ]),
+                                  _c("v-card-text", [_vm._v("Status")]),
                                   _vm._v(" "),
                                   _c("v-select", {
                                     attrs: {
@@ -65024,7 +65016,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\r\n                Team name is required.\r\n            "
+                                "\n                Team name is required.\n            "
                               )
                             ]
                           )
@@ -65061,7 +65053,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\r\n            close\r\n          ")]
+                        [_vm._v("\n            close\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
