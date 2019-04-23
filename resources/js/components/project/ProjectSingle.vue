@@ -63,9 +63,9 @@
 
 
                 <v-container>
-                <v-data-table colmd12  :headers="headers" :items="tasks" class="elevation-1">
+                <v-data-table colmd12  :headers="headers" :items="project.tasks" class="elevation-1">
                     <template v-slot:items="props">
-                        <td> <router-link  :to="{ name: 'task-single', params: { id:  props.item.id } }"  > {{ props.item.category }} </router-link></td>
+                        <td> <router-link  :to="{ name: 'task-single', params: { id:  props.item.id } }"  > {{ props.item.category_id }} </router-link></td>
                         <td class="text-center"> {{ props.item.user }}</td>
                         <td class="text-center">{{ props.item.start_date }}</td>
                         <td class="text-center">{{ props.item.due_date }}</td>
@@ -140,14 +140,10 @@
         },
         created() {
 
-            this.myRole =localStorage.getItem('role');
+         this.myRole =localStorage.getItem('role');
 
          this.getData();
-            axios.get('/api/project/' + this.$route.params.id)
-                .then(res => this.project = res.data)
-            axios.get('/api/category').then(res => this.categories = res.data.data);
-            axios.get('/api/project').then(res => this.projects = res.data);
-            axios.get('/api/user').then(res => this.users = res.data)
+
         },
 
         methods: {
@@ -241,9 +237,10 @@
 
             getData(){
 
-   axios.get('/api/task?token='+localStorage.getItem('token'))
-                .then(res => this.tasks = res.data);
-                this.reset();
+                axios.get('/api/project/' + this.$route.params.id)
+                .then(res => this.project = res.data)
+                axios.get('/api/category').then(res => this.categories = res.data.data);
+                axios.get('/api/user').then(res => this.users = res.data)
             }
         },
         computed: {

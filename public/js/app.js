@@ -3751,60 +3751,46 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }), _defineProperty(_ref, "categories", []), _defineProperty(_ref, "tasks", []), _defineProperty(_ref, "users", []), _defineProperty(_ref, "status", ['In progress', 'Validated', 'Incompleted', 'Completed']), _defineProperty(_ref, "projects", []), _defineProperty(_ref, "editSlugt", null), _defineProperty(_ref, "errors", null), _ref;
   },
   created: function created() {
-    var _this = this;
-
     this.myRole = localStorage.getItem('role');
     this.getData();
-    axios.get('/api/project/' + this.$route.params.id).then(function (res) {
-      return _this.project = res.data;
-    });
-    axios.get('/api/category').then(function (res) {
-      return _this.categories = res.data.data;
-    });
-    axios.get('/api/project').then(function (res) {
-      return _this.projects = res.data;
-    });
-    axios.get('/api/user').then(function (res) {
-      return _this.users = res.data;
-    });
   },
   methods: {
     submit: function submit() {
       this.form.id ? this.update() : this.add();
     },
     update: function update() {
-      var _this2 = this;
+      var _this = this;
 
       axios.put("/api/task/".concat(this.form.id), this.form).then(function (res) {
-        _this2.getData();
+        _this.getData();
       });
     },
     filter: function filter() {
-      var _this3 = this;
+      var _this2 = this;
 
       console.log(this.search);
       this.search.token = localStorage.getItem('token');
       axios.get('/api/task', {
         params: this.search
       }).then(function (res) {
-        return _this3.tasks = res.data;
+        return _this2.tasks = res.data;
       });
     },
     add: function add() {
-      var _this4 = this;
+      var _this3 = this;
 
       console.log(this.form);
       axios.post('/api/task?token=' + localStorage.getItem('token'), this.form).then(function (res) {
         console.log(res);
 
-        _this4.getData();
+        _this3.getData();
       });
     },
     destroy: function destroy(slug) {
-      var _this5 = this;
+      var _this4 = this;
 
       axios.delete("/api/task/".concat(slug, "?token=") + localStorage.getItem('token')).then(function (res) {
-        return _this5.getData();
+        return _this4.getData();
       });
     },
     edit: function edit(index) {
@@ -3827,35 +3813,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.search.project_id = null;
     },
     start: function start(id) {
-      var _this6 = this;
+      var _this5 = this;
 
       axios.post('/api/tasks/start?token=' + localStorage.getItem('token'), {
         id: id
       }).then(function (res) {
         console.log(res);
 
-        _this6.getData();
+        _this5.getData();
       });
     },
     completed: function completed(id) {
-      var _this7 = this;
+      var _this6 = this;
 
       axios.post('/api/tasks/completed?token=' + localStorage.getItem('token'), {
         id: id,
         link: this.final_link
       }).then(function (res) {
-        _this7.getData();
+        _this6.getData();
 
-        _this7.dialog = false;
+        _this6.dialog = false;
       });
     },
     getData: function getData() {
-      var _this8 = this;
+      var _this7 = this;
 
-      axios.get('/api/task?token=' + localStorage.getItem('token')).then(function (res) {
-        return _this8.tasks = res.data;
+      axios.get('/api/project/' + this.$route.params.id).then(function (res) {
+        return _this7.project = res.data;
       });
-      this.reset();
+      axios.get('/api/category').then(function (res) {
+        return _this7.categories = res.data.data;
+      });
+      axios.get('/api/user').then(function (res) {
+        return _this7.users = res.data;
+      });
     }
   },
   computed: {
@@ -4431,7 +4422,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       user_id: null,
       project_id: null,
       start_date: new Date().toISOString().substr(0, 10),
-      category_id: null,
+      category: null,
       due_date: new Date().toISOString().substr(0, 10),
       description: '',
       btn_name: 'add'
@@ -24474,7 +24465,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -63356,7 +63347,7 @@ var render = function() {
                     attrs: {
                       colmd12: "",
                       headers: _vm.headers,
-                      items: _vm.tasks
+                      items: _vm.project.tasks
                     },
                     scopedSlots: _vm._u([
                       {
@@ -63378,7 +63369,7 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      " " + _vm._s(props.item.category) + " "
+                                      " " + _vm._s(props.item.category_id) + " "
                                     )
                                   ]
                                 )
@@ -64265,7 +64256,7 @@ var render = function() {
                             ),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [
-                              _vm._v(" " + _vm._s(props.item.category_id))
+                              _vm._v(" " + _vm._s(props.item.category))
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [

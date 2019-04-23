@@ -112,13 +112,13 @@ class TaskController extends Controller
         $task->user = User::where('id', $task->user_id)->value('name');
         $task->createdBy = User::where('id', $task->made_by)->value('name');
 
-      $task->comments =$task->taskComment;
+        $task->comments =$task->taskComment;
 
-      foreach ( $task->comments  as $comment)
-      {
-          $comment->user=User::find($comment->user_id)->value('name');
+        foreach ( $task->comments  as $comment)
+        {
+            $comment->user=User::find($comment->user_id)->value('name');
 
-      }
+        }
 
 
         return $task;

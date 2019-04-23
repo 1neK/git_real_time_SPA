@@ -187,7 +187,7 @@
                 <v-data-table colmd12  :headers="headers" :items="tasks" class="elevation-1">
                     <template v-slot:items="props">
                         <td> <router-link  :to="{ name: 'task-single', params: { id:  props.item.id } }"  >{{ props.item.project }}</router-link></td>
-                        <td class="text-center"> {{ props.item.category_id }}</td>
+                        <td class="text-center"> {{ props.item.category }}</td>
                         <td class="text-center"> {{ props.item.user }}</td>
                         <td class="text-center"> {{ props.item.createdBy }}</td>
                         <td class="text-center">{{ props.item.start_date }}</td>
@@ -299,7 +299,7 @@
                     user_id:null,
                     project_id:null,
                     start_date: new Date().toISOString().substr(0, 10),
-                    category_id:null,
+                    category:null,
                     due_date:  new Date().toISOString().substr(0, 10),
                     description:'',
                     btn_name:'add'
