@@ -3,33 +3,33 @@
         <v-container fluid grid-list-md >
             <v-layout row wrap>
                 <v-flex md12 xs12 md1>
-                    <h1 class="text-center">{{project.name}}</h1>
+                    <h3 class="title font-weight-bold" id="proj">{{project.name}}</h3>
                 </v-flex>
                 <v-flex xs12 >
                     <v-expansion-panel popout>
                         <v-expansion-panel-content>
                             <template v-slot:header>
-                                <div>   <h4>Filter task</h4></div>
+                                <div class="font-weight-bold" id="pro">   <h4>Filter task</h4></div>
                             </template>
                             <v-layout  row wrap p4>
                                 <v-flex xs1></v-flex>
                                 <v-flex xs3>
 
-                                    <v-card-text>Title</v-card-text>
+                                    <v-card-text class="font-weight-bold" id="pro">Title</v-card-text>
                                     <v-select
                                         :items="categories"
                                         v-model="search.category_id"
                                         item-text="name"
                                         item-value="id"
-                                        label="title"
+                                        placeholder="Title"
                                     ></v-select>
                                 </v-flex>
 
                                 <v-flex xs3 >
-                                    <v-card-text>Status</v-card-text>
+                                    <v-card-text class="font-weight-bold" id="pro">Status</v-card-text>
                                     <v-select
                                         :items="status"
-                                        label="status"
+                                        placeholder="Status"
                                         v-model="search.status"
 
                                     ></v-select>
@@ -40,8 +40,6 @@
                                     <v-flex md6>
 
                                         <v-btn dark @click="filter()">filter</v-btn>
-
-
 
                                     </v-flex>
                                       <v-flex md6>
@@ -64,19 +62,19 @@
 
                 <v-container>
                 <v-data-table colmd12  :headers="headers" :items="project.tasks" class="elevation-1">
-                    <template v-slot:items="props">
+                    <template v-slot:items="props" >
                         <td> <router-link  :to="{ name: 'task-single', params: { id:  props.item.id } }"  > {{ props.item.category_id }} </router-link></td>
                         <td class="text-center"> {{ props.item.user }}</td>
                         <td class="text-center">{{ props.item.start_date }}</td>
                         <td class="text-center">{{ props.item.due_date }}</td>
                         <td class="text-center">{{ props.item.comments }}</td>
-                        <td class="text-center">{{ props.item.status }}</td>
+                        <td class="text-center"><v-chip :color="color" text-color="white" class="buttonT">{{ props.item.status }} </v-chip> </td>
                         <td class="text-center" v-if="myRole=='Admin' || myRole=='Coordinator'">
                             <v-btn icon @click="edit(props.item)">
-                                <v-icon medium color="black">edit</v-icon>
+                                <v-icon medium color="orange">create</v-icon>
                             </v-btn>
                             <v-btn icon @click="destroy( props.item.id )">
-                                <v-icon medium color="black"> delete</v-icon>
+                                <v-icon medium color="#F5181F"> delete_forever</v-icon>
                             </v-btn>
                         </td>
 
@@ -249,6 +247,8 @@
             }
 
 
+
+
         }
 
     }
@@ -258,5 +258,11 @@
 .container {
   max-width: 960px;
 
+}
+#proj{
+    color: #43425D;
+}
+#pro{
+    color: #A3A6B4;
 }
 </style>

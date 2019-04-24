@@ -1,5 +1,5 @@
 <template>
-    <v-container class="c1">
+    <v-container>
         <v-container fluid grid-list-md >
         <v-layout row wrap>
                 <v-flex xs3 md2 v-slot:header>

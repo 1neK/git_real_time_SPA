@@ -1,4 +1,11 @@
 <template>
+<v-container>
+        <!--<v-flex v-for="team in teams" :key="team.id">
+            <h3 class="title font-weight-bold" >{{team.name}}</h3>
+        </v-flex>-->
+
+        <v-flex xs12></v-flex>
+        <v-flex xs12></v-flex>
 
     <v-data-table colmd12  :headers="headers" :items="team.users" class="elevation-1">
         <template v-slot:items="props">
@@ -6,23 +13,21 @@
             <td class="text-center">{{ props.item.name }}</td>
             <td class="text-center">{{ props.item.email }}</td>
             <td class="text-center">
-                <span class="text-danger">activated
-                </span>
-
-
+                <v-chip color="#5FD179" text-color="white" class="buttonT">{{ props.item.status }}</v-chip>
             </td>
             <td class="text-center">
                 <v-btn icon >
-                    <v-icon black medium danger>delete</v-icon>
+                    <v-icon color="#F5181F" medium danger>delete_forever</v-icon>
                 </v-btn>
-                <v-btn icon >
+               <!-- <v-btn icon >
                     <v-icon black medium danger>edit</v-icon>
-                </v-btn>
+                </v-btn>-->
 
             </td>
 
         </template>
     </v-data-table>
+</v-container>
 
 </template>
 
@@ -43,8 +48,10 @@
 
                 ],
 
+                status:['Pending','Active','Banned'],
+                team: {},
+                dialog: false,
 
-                team: {},dialog: false
             }
 
 
@@ -62,5 +69,15 @@
 </script>
 
 <style>
-
+.buttonT{
+  padding: 2px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 12px;
+}
 </style>

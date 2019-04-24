@@ -8,7 +8,7 @@ import Parallex from '../components/parallex'
 import Login from '../components/login/Login'
 import Signup from '../components/login/Signup'
 import Logout from '../components/login/Logout'
-import Forum from '../components/forum/Forum'
+//import Forum from '../components/forum/Forum'
 import Read from '../components/forum/Read'
 import Create from '../components/forum/create'
 import Admin from '../components/users/Admin'
@@ -18,10 +18,10 @@ import Team from '../components/users/Team'
 import AddUsers from '../components/users/AddUsers'
 import AllUsers from '../components/users/AllUsers'
 import CreateUser from '../components/users/CreateUser'
-import CreateProject from '../components/project/CreateProject'
+//import CreateProject from '../components/project/CreateProject'
 import Project from '../components/project/Project'
 import  ProjectSingle from  '../components/project/ProjectSingle'
-import CreateTask from '../components/task/CreateTask'
+//import CreateTask from '../components/task/CreateTask'
 import Task from '../components/task/Task'
 import taskSingle from '../components/task/show'
 import CreateCategory from '../components/category/CreateCategory'
@@ -55,11 +55,11 @@ const routes = [
     { path: '/allusers', component: AllUsers },
     { path: '/createuser', component: CreateUser },
 
-    { path: '/createproject', component: CreateProject },
+    //{ path: '/createproject', component: CreateProject },
     { path: '/project', component: Project },
     { path: '/project/:id', component: ProjectSingle ,name:'project-single' },
 
-    { path: '/createtask', component: CreateTask },
+    //{ path: '/createtask', component: CreateTask },
     { path: '/task', component: Task },
     { path: '/task/:id', component: taskSingle ,name:'task-single'},
 
@@ -75,28 +75,25 @@ const routes = [
      { path: '/dashboard', component: dashboard },
 
      { path: '/ask', component: Create },
-     { path: '/admin', component: Admin ,name:'admin'
-     ,
-
+     { path: '/admin', component: Admin ,name:'admin',
      meta: {
         middleware: adminMiddleware,
        }
     },
-     { path: '/coordinator', component: Coordinator,name:'coordinator',
 
+     { path: '/coordinator', component: Coordinator,name:'coordinator',
      meta: {
         middleware: logged,
        }
     },
+
      { path: '/designer', component: Designer ,name :'designer',
      meta: {
         middleware: logged,
        }
 
     },
-     { path: '/forum', component: Forum ,name:'forum'
-
-    },
+    // { path: '/forum', component: Forum ,name:'forum'},
      { path: '/question/:slug', component: Read ,name:'read'},
 
 

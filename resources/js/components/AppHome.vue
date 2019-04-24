@@ -8,7 +8,7 @@
             <navbar></navbar>
         </v-flex>
         <v-flex xs10>
-            <router-view></router-view>
+            <router-view class="rou"></router-view>
         </v-flex>
     </v-layout>
     </v-container>
@@ -29,5 +29,8 @@ export default {
 </script>
 
 <style>
-
+.rou{
+height: 100%;
+width: 100%;
+}
 </style>

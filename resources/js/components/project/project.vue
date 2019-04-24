@@ -1,7 +1,9 @@
 <template>
 
 <v-container>
-
+    <h3 class="title font-weight-bold">Projects</h3>
+    <v-flex xs12></v-flex>
+    <v-flex xs12></v-flex>
     <v-dialog  v-model="dialog"  width="500"  >
 
       <template v-slot:activator="{ on }">
@@ -11,23 +13,31 @@
               <v-flex xs9 sm4 v-for="project in projects" :key="project.id">
                   <v-card >
 
-                      <v-card-title>
-                          <div>
-                           <router-link  :to="{ name: 'project-single', params: { id:  project.slug } }"  >    <h3 class="headline mb-0">{{ project.name }}</h3></router-link>
-                              <div> task : {{ project.task_number }}</div>
-                          </div>
-                      </v-card-title>
                       <v-toolbar color="white" flat>
+                          <router-link  :to="{ name: 'project-single', params: { id:  project.slug } }"  >    <h3 class="title font-weight-bold">{{ project.name }}</h3></router-link>
                           <v-spacer></v-spacer>
                           <v-card-actions>
                               <v-btn icon>
-                                  <v-icon medium color="black" @click="editpopup(project)"> edit</v-icon>
+                                  <v-icon medium color="#A4AFB7" @click="editpopup(project)"> edit</v-icon>
                               </v-btn>
                               <v-btn icon @click="destroy( project.id )">
-                                  <v-icon medium color="black"> delete</v-icon>
+                                  <v-icon medium color="#A4AFB7">remove_circle</v-icon>
                               </v-btn>
                           </v-card-actions>
                       </v-toolbar>
+
+                      <v-card-title>
+                          <div>
+
+                              <div> Tasks : {{ project.task_number }}</div>
+                              <div> Tasks in progress : </div>
+                              <div> Pending Tasks : </div>
+                              <div> Completed Tasks : </div>
+                              <v-divider></v-divider>
+                          </div>
+
+                      </v-card-title>
+
 
                   </v-card>
               </v-flex>
@@ -43,10 +53,10 @@
               fab
               bottom
               right
-              color="pink"
+              color="red lighten-4"
 
             >
-              <v-icon>add</v-icon>
+              <v-icon large>add</v-icon>
             </v-btn>
           </v-card-text>
 
@@ -58,7 +68,7 @@
           class="headline grey lighten-2"
           primary-title
         >
-          <v-icon x-large>work</v-icon>
+          <v-icon x-large color="black">work</v-icon>
         </v-card-title>
 
         <v-card-text>
@@ -70,7 +80,8 @@
 
 
             <v-text-field
-            label="Project Name"
+            placeholder="Project Name"
+            autofocus
             v-model="form.name"
             required ></v-text-field>
 
@@ -88,9 +99,9 @@
           >
             close
           </v-btn>
-           <v-btn type="submit" :disabled="disabled" color="cyan" v-if="editSlugt">Update</v-btn>
+           <v-btn type="submit" :disabled="disabled" color="#43425D" v-if="editSlugt">Update</v-btn>
 
-          <v-btn type="submit" :disabled="disabled" color="teal" v-else>{{form.btn_name}}</v-btn>
+          <v-btn type="submit" :disabled="disabled" color="#43425D" v-else>{{form.btn_name}}</v-btn>
         </v-card-actions>
          </v-form>
       </v-card>

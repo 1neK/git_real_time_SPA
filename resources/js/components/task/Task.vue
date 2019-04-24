@@ -1,22 +1,19 @@
 <template>
     <v-container>
+            <h3 class="title font-weight-bold">Task</h3>
         <v-container fluid grid-list-md >
             <v-layout row wrap>
-                <v-flex md12 xs12 md1>
-                    <h2>Task</h2>
-                </v-flex>
-
                 <v-flex md3>
-                    <v-card-text class="px-0">Project</v-card-text>
+                    <v-card-text class="px-0 font-weight-bold" id="pro">Project</v-card-text>
                     <v-select
                         :items="projects"
                         v-model="form.project_id"
                         item-text="name"
                         item-value="id"
-                        label="project"
+                        placeholder="Project"
                     ></v-select>
 
-                    <v-card-text class="px-0">Start Date</v-card-text>
+                    <v-card-text class="px-0 font-weight-bold" id="pro">Start Date</v-card-text>
                         <v-menu
                             v-model="menu1"
                             :close-on-content-click="false"
@@ -38,7 +35,7 @@
                             <v-date-picker v-model="form.start_date" @input="menu1 = false"></v-date-picker>
                         </v-menu>
 
-                        <v-card-text class="px-0">Due Date</v-card-text>
+                        <v-card-text class="px-0 font-weight-bold" id="pro">Due Date</v-card-text>
                             <v-menu
                                 v-model="menu"
                                 :close-on-content-click="false"
@@ -62,37 +59,38 @@
                 </v-flex>
 
                 <v-flex md3>
-                    <v-card-text class="px-0">Task Type</v-card-text>
+                    <v-card-text class="px-0 font-weight-bold" id="pro">Task Type</v-card-text>
                     <v-select
                         :items="categories"
                         v-model="form.category_id"
                         item-text="name"
                         item-value="id"
-                    label="task type"
+                        placeholder="Task Type"
                     ></v-select>
 
-                    <v-card-text class="px-0">Affected To</v-card-text>
+                    <v-card-text class="px-0 font-weight-bold" id="pro">Affected To</v-card-text>
                     <v-select
                     :items="users"
-                    label="affected to"
+                    placeholder="Affected To"
                     v-model="form.user_id"
                     item-text="name"
                     item-value="id"
                     ></v-select>
 
-                    <v-card-text class="px-0">Link</v-card-text>
+                    <v-card-text class="px-0 font-weight-bold" id="pro">Link</v-card-text>
                     <v-text-field
                     v-model="form.link"
-                    label="link"
+                    placeholder="Link"
                     ></v-text-field>
                 </v-flex>
 
                 <v-flex md6>
-                    <v-card-text class="px-0">Description</v-card-text>
+                    <v-card-text class="px-0 font-weight-bold" id="pro">Description</v-card-text>
                     <v-textarea
                     outline
                     v-model="form.description"
                     name="input-7-4"
+
                     ></v-textarea>
 
 
@@ -113,44 +111,44 @@
                     <v-expansion-panel popout>
                         <v-expansion-panel-content>
                             <template v-slot:header>
-                                <div>   <h4>Filter task</h4></div>
+                                <div class="font-weight-bold" id="pro">   <h4>Filter task</h4></div>
                             </template>
                             <v-layout  row wrap p4>
                                 <v-flex xs1></v-flex>
                                 <v-flex xs3>
-                                    <v-card-text>Project</v-card-text>
+                                    <v-card-text class="font-weight-regular" id="pro">Project</v-card-text>
                                     <v-select
                                         :items="projects"
                                         v-model="search.project_id"
                                         item-text="name"
                                         item-value="id"
-                                        label="project"
+                                        placeholder="Project"
                                     ></v-select>
 
-                                    <v-card-text>Title</v-card-text>
+                                    <v-card-text class="font-weight-regular" id="pro">Title</v-card-text>
                                     <v-select
                                         :items="categories"
                                         v-model="search.category_id"
                                         item-text="name"
                                         item-value="id"
-                                        label="title"
+                                        placeholder="Title"
                                     ></v-select>
                                 </v-flex>
 
                                 <v-flex xs3 >
-                                    <v-card-text v-if="myRole=='Admin' || myRole=='Coordinator'">Affected To</v-card-text>
+                                    <v-card-text v-if="myRole=='Admin' || myRole=='Coordinator'" class="font-weight-regular" id="pro">Affected To</v-card-text>
                                     <v-select v-if="myRole=='Admin' || myRole=='Coordinator'"
                                         :items="users"
-                                        label="affected to"
+                                        placeholder="Affected To"
                                         v-model="search.user_id"
                                         item-text="name"
                                         item-value="id"
                                     ></v-select>
 
-                                    <v-card-text>Status</v-card-text>
+                                    <v-card-text class="font-weight-regular" id="pro">Status</v-card-text>
                                     <v-select
                                         :items="status"
-                                        label="status"
+                                        placeholder="Status"
                                         v-model="search.status"
 
                                     ></v-select>

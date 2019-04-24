@@ -1,16 +1,16 @@
 <template>
     <v-toolbar>
         <div id="app">
-            <v-app id="inspire" dark>
+            <v-app id="inspire" flat>
                 <v-spacer></v-spacer>
-                <v-toolbar app fixed clipped-left>
+                <v-toolbar app fixed clipped-left color="white">
                    <!-- <v-toolbar-side-icon v-if="loggedIn" class="white--text"  @click.stop="drawer = !drawer"></v-toolbar-side-icon>-->
                     <v-toolbar-title>
                         <router-link class="white--text" to="/"></router-link>
                     </v-toolbar-title>
                     <v-spacer></v-spacer>
                     <app-notification v-if="loggedIn"></app-notification>
-                    <div class="hidden-sm-and-down" >
+                    <div class="hidden-sm-and-down">
                         <v-menu offset-y>
                         <template v-slot:activator="{ on }">
                             <v-btn
@@ -18,7 +18,7 @@
                             dark
                             v-on="on"
                             >
-                                <v-icon>menu</v-icon>
+                                <v-icon color="#43425D">menu</v-icon>
                             </v-btn>
                         </template>
                         <v-list dense>
@@ -51,14 +51,10 @@ export default {
             loggedIn : User.loggedIn(),
             items:[
 
-                   { 'title':'Forum',to:'/forum',show:true },
-                   { 'title':'Ask Question',to:'/ask',show:User.loggedIn() },
                    { 'title':'Category',to:'/category',show:User.admin() },
                    { 'title':'Login',to:'/login',show:!User.loggedIn() },
                    { 'title':'Logout',to:'/logout',show:User.loggedIn() },
-                   /*{ 'title':'Designer',to:'/logout',show:User.designer() },
-                   { 'title':'Admin',to:'/logout',show:User.admin() },
-                   { 'title':'Coordinator',to:'/logout',show:User.coordinator() }*/
+
             ]
 
         }

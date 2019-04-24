@@ -1,80 +1,84 @@
 <template>
 <v-navigation-drawer permanent  v-if="User.loggedIn()">
-    <v-container>
-        <v-list dense>
+    <v-container class="clnav1">
+        <v-list dense >
             <!--<v-list-tile-content>
                 <v-list-tile-title></v-list-tile-title>
             </v-list-tile-content>-->
 
                     <v-list-tile-content>
-                            <v-list-tile-title >{{role}} </v-list-tile-title>
+                        <div class="center1" font-weight-bold>
+                            <h1> <v-list-tile-title >{{role}} </v-list-tile-title> </h1>
+                        </div>
+
                     </v-list-tile-content>
                     <v-divider></v-divider>
 
             <v-list-tile to="/">
                 <v-list-tile-action>
-                    <v-icon>home</v-icon>
+                    <v-icon color="deep-purple lighten-4">home</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                    <v-list-tile-title>Home</v-list-tile-title>
+                    <div class="center1">
+                        <v-list-tile-title>Home</v-list-tile-title>
+                    </div>
                 </v-list-tile-content>
             </v-list-tile>
 
             <v-list-tile to="/team" v-if="User.admin()">
                 <v-list-tile-action>
-                    <v-icon>supervised_user_circle</v-icon>
+                    <v-icon color="deep-purple lighten-4">supervised_user_circle</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                    <v-list-tile-title>Teams</v-list-tile-title>
+                    <div class="center1">
+                        <v-list-tile-title>Teams</v-list-tile-title>
+                    </div>
                 </v-list-tile-content>
             </v-list-tile>
 
             <v-list-tile to="/project" v-if="User.admin() || User.coordinator()">
                 <v-list-tile-action>
-                    <v-icon>work</v-icon>
+                    <v-icon color="deep-purple lighten-4">work</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                    <v-list-tile-title>Projects</v-list-tile-title>
+                    <div class="center1">
+                        <v-list-tile-title>Projects</v-list-tile-title>
+                    </div>
                 </v-list-tile-content>
             </v-list-tile>
 
             <v-list-tile to="/task" >
                 <v-list-tile-action>
-                    <v-icon>view_list</v-icon>
+                    <v-icon color="deep-purple lighten-4">view_list</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                    <v-list-tile-title>Tasks</v-list-tile-title>
+                    <div class="center1">
+                        <v-list-tile-title>Tasks</v-list-tile-title>
+                    </div>
                 </v-list-tile-content>
             </v-list-tile>
 
             <v-list-tile to="/allusers" v-if="User.admin()">
                 <v-list-tile-action>
-                    <v-icon>supervisor_account</v-icon>
+                    <v-icon color="deep-purple lighten-4">supervisor_account</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                    <v-list-tile-title>Users</v-list-tile-title>
+                    <div class="center1">
+                        <v-list-tile-title>Users</v-list-tile-title>
+                    </div>
                 </v-list-tile-content>
             </v-list-tile>
 
             <v-list-tile to="/dashboard">
                 <v-list-tile-action>
-                    <v-icon>dashboard</v-icon>
+                    <v-icon color="deep-purple lighten-4">dashboard</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                    <v-list-tile-title>Dashboard</v-list-tile-title>
+                    <div class="center1">
+                        <v-list-tile-title>Dashboard</v-list-tile-title>
+                    </div>
                 </v-list-tile-content>
             </v-list-tile>
-
-
-            <!--<admin v-if="User.admin()">
-
-            </admin>
-            <designer v-if="User.designer()">
-
-            </designer>
-            <coordinator v-if="User.coordinator()">
-
-            </coordinator>-->
 
 </v-list>
     </v-container>
@@ -105,6 +109,26 @@ export default {
 }
 </script>
 <style>
+.clnav1{
+  background-color: #43425D; /* violet */
+  border: #43425D;
+  color: white;
+  height: 100%;
+  width: 300px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  font-size: 12px;
+  border-radius: 2px;
+}
+
+.center1{
+    color:white;
+}
+
+
 
 </style>
 

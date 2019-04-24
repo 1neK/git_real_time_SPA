@@ -2,6 +2,10 @@
 
     <v-container>
 
+        <h3 class="title font-weight-bold">Teams</h3>
+        <v-flex xs12></v-flex>
+        <v-flex xs12></v-flex>
+
         <v-dialog v-model="dialog" width="500">
 
             <template v-slot:activator="{ on }">
@@ -10,25 +14,27 @@
 
                     <v-flex sm4 v-for="team in teams" :key="team.id">
 
-                        <v-card>
-                            <v-card-title primary-title >
-                                <div>
-                                 <router-link :to="{ name: 'team-single', params: { id:  team.slug } }"  >  <h3 class="headline mb-0">{{ team.name }}</h3></router-link>
-                                    <div> task : {{ team.task_number }}</div>
-                                    <div> users : {{ team.user_number }}</div>
-                                </div>
-                            </v-card-title>
+                        <v-card class="carteam">
                             <v-toolbar color="white" flat>
+                            <v-html><a><router-link :to="{ name: 'team-single', params: { id:  team.slug } }"  >  <h3 class="title font-weight-bold">{{ team.name }}</h3></router-link></a></v-html>
                             <v-spacer></v-spacer>
                             <v-card-actions>
                                 <v-btn icon v-if="team.id !=1 && team.id !=2">
-                                    <v-icon  medium color="black" @click="editpopup(team)"> edit</v-icon>
+                                    <v-icon  medium color="#A4AFB7" @click="editpopup(team)"> create</v-icon>
                                 </v-btn>
                                 <v-btn icon  v-if="team.id !=1 && team.id !=2" @click="destroy( team.id )">
-                                    <v-icon medium color="black"> delete</v-icon>
+                                    <v-icon medium color="#A4AFB7"> remove_circle</v-icon>
                                 </v-btn>
                             </v-card-actions>
                             </v-toolbar>
+                            <v-card-title primary-title >
+                                <div class="font-weight-regular">
+
+                                    <div> Tasks : {{ team.task_number }}</div>
+                                    <div> Total users : {{ team.user_number }}</div>
+                                </div>
+                            </v-card-title>
+
                         </v-card>
                     </v-flex>
 
@@ -44,10 +50,11 @@
                             fab
                             bottom
                             right
-                            color="pink"
+                            icon
+                            color="red lighten-4"
 
                     >
-                        <v-icon>add</v-icon>
+                        <v-icon large>add</v-icon>
                     </v-btn>
                 </v-card-text>
 
@@ -59,7 +66,7 @@
                             class="headline grey lighten-2"
                             primary-title
                     >
-                        <v-icon x-large>supervised_user_circle</v-icon>
+                        <v-icon x-large color="black">supervised_user_circle</v-icon>
                     </v-card-title>
 
                     <v-card-text>
@@ -70,7 +77,8 @@
 
 
                         <v-text-field
-                                label="Team Name"
+                                placeholder="Team Name"
+                                autofocus
                                 v-model="form.name"
                                 required></v-text-field>
 
@@ -88,9 +96,9 @@
                         >
                             close
                         </v-btn>
-                        <v-btn type="submit" :disabled="disabled" color="cyan" v-if="editSlugt">Update</v-btn>
+                        <v-btn type="submit" :disabled="disabled" color="#43425D" v-if="editSlugt">Update</v-btn>
 
-                        <v-btn type="submit" :disabled="disabled" color="teal" v-else>{{form.btn_name}}</v-btn>
+                        <v-btn type="submit" :disabled="disabled" color="#43425D" v-else>{{form.btn_name}}</v-btn>
                     </v-card-actions>
                 </v-form>
             </v-card>
@@ -195,4 +203,17 @@
 .container {
   max-width: 960px;
 }
+.carteam{
+    border-radius: 8px;
+}
+a:link{
+    color:#4D4F5C;
+    text-decoration: none;
+}
+
+a:visited{
+    color:#4D4F5C;
+    text-decoration: none;
+}
+
 </style>
