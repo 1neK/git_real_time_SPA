@@ -12,8 +12,8 @@
                                 <div class="font-weight-bold" id="pro">   <h4>Filter task</h4></div>
                             </template>
                             <v-layout  row wrap p4>
-                                <v-flex xs1></v-flex>
-                                <v-flex xs3>
+                                <v-flex md1></v-flex>
+                                <v-flex md3>
 
                                     <v-card-text class="font-weight-bold" id="pro">Title</v-card-text>
                                     <v-select
@@ -22,27 +22,28 @@
                                         item-text="name"
                                         item-value="id"
                                         placeholder="Title"
+                                        class="px-1"
                                     ></v-select>
                                 </v-flex>
 
-                                <v-flex xs3 >
+                                <v-flex md3 >
                                     <v-card-text class="font-weight-bold" id="pro">Status</v-card-text>
                                     <v-select
                                         :items="status"
                                         placeholder="Status"
                                         v-model="search.status"
-
+                                        class="px-1"
                                     ></v-select>
                                 </v-flex>
 
-                                <v-flex md4>
+                                <v-flex md3>
 
-                                    <v-flex md6>
+                                    <v-flex md3>
 
                                         <v-btn dark @click="filter()">filter</v-btn>
 
                                     </v-flex>
-                                      <v-flex md6>
+                                    <v-flex md3>
 
                                           <v-btn dark @click="getData()">reset</v-btn>
 

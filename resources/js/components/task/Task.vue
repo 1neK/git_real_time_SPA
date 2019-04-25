@@ -1,6 +1,6 @@
 <template>
     <v-container>
-            <h3 class="title font-weight-bold">Task</h3>
+            <h3 class="title font-weight-bold">Tasks</h3>
         <v-container fluid grid-list-md >
             <v-layout row wrap>
                 <v-flex md3>
@@ -115,7 +115,7 @@
                             </template>
                             <v-layout  row wrap p4>
                                 <v-flex xs1></v-flex>
-                                <v-flex xs3>
+                                <v-flex md3>
                                     <v-card-text class="font-weight-regular" id="pro">Project</v-card-text>
                                     <v-select
                                         :items="projects"
@@ -123,6 +123,7 @@
                                         item-text="name"
                                         item-value="id"
                                         placeholder="Project"
+                                        class="px-1"
                                     ></v-select>
 
                                     <v-card-text class="font-weight-regular" id="pro">Title</v-card-text>
@@ -132,10 +133,11 @@
                                         item-text="name"
                                         item-value="id"
                                         placeholder="Title"
+                                        class="px-1"
                                     ></v-select>
                                 </v-flex>
 
-                                <v-flex xs3 >
+                                <v-flex md3 >
                                     <v-card-text v-if="myRole=='Admin' || myRole=='Coordinator'" class="font-weight-regular" id="pro">Affected To</v-card-text>
                                     <v-select v-if="myRole=='Admin' || myRole=='Coordinator'"
                                         :items="users"
@@ -143,6 +145,7 @@
                                         v-model="search.user_id"
                                         item-text="name"
                                         item-value="id"
+                                        class="px-1"
                                     ></v-select>
 
                                     <v-card-text class="font-weight-regular" id="pro">Status</v-card-text>
@@ -150,7 +153,7 @@
                                         :items="status"
                                         placeholder="Status"
                                         v-model="search.status"
-
+                                        class="px-1"
                                     ></v-select>
                                 </v-flex>
 
@@ -201,18 +204,16 @@
 
                         </td>
                         <td class="text-center" v-if="myRole=='Admin' || myRole=='Coordinator'">
-
-
-
-
-                            <v-btn icon @click="edit(props.item)">
-                                <v-icon medium color="black">edit</v-icon>
-                            </v-btn>
-                            <v-btn icon @click="destroy( props.item.id )">
-                                <v-icon medium color="black"> delete</v-icon>
-                            </v-btn>
-                            <v-btn  v-if="props.item.status =='Completed'" @click="accept(props.item.id)" color="blue">accept</v-btn>
-                            <v-btn  v-if="props.item.status =='Completed'" @click="reject(props.item.id)" color="red">reject</v-btn>
+                            <v-flex xs8>
+                                <v-btn icon @click="edit(props.item)">
+                                    <v-icon medium color="orange">edit</v-icon>
+                                </v-btn>
+                                <v-btn icon @click="destroy( props.item.id )">
+                                    <v-icon medium color="#F5181F"> delete_forever</v-icon>
+                                </v-btn>
+                                <v-btn  v-if="props.item.status =='Completed'" @click="accept(props.item.id)" color="blue">accept</v-btn>
+                                <v-btn  v-if="props.item.status =='Completed'" @click="reject(props.item.id)" color="red">reject</v-btn>
+                            </v-flex>
                         </td>
 
                         <td v-else>

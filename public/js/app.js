@@ -2083,6 +2083,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2093,7 +2095,7 @@ __webpack_require__.r(__webpack_exports__);
       drawer: false,
       loggedIn: User.loggedIn(),
       items: [{
-        'title': 'Category',
+        'title': 'Task Types',
         to: '/category',
         show: User.admin()
       }, {
@@ -2125,6 +2127,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -2266,6 +2269,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -3284,6 +3290,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3383,6 +3405,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -4143,6 +4166,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
@@ -4394,6 +4418,25 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _editReply__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./editReply */ "./resources/js/components/task/editReply.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5069,6 +5112,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5391,6 +5437,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -24022,7 +24082,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.clnav1{\n  background-color: #43425D; /* violet */\n  border: #43425D;\n  color: white;\n  height: 100%;\n  width: 300px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 4px 2px;\n  font-size: 12px;\n  border-radius: 2px;\n}\n.center1{\n    color:white;\n}\n\n\n\n", ""]);
+exports.push([module.i, "\n.clnav1{\n  background-color: #43425D; /* violet */\n  border: #43425D;\n  color: white;\n  height: 100%;\n  width: 300px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  font-size: 12px;\n  border-radius: 2px;\n}\n.center1{\n    color:white;\n    font-weight:500;\n    font-size:13px;\n    display:flex;\n}\n.primary--text{\n    opacity:0.5;\n    color:white;\n}\n\n", ""]);
 
 // exports
 
@@ -24060,7 +24120,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n    max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\n    max-width: 960px;\n}\n.btdown{\n    border: none;\n    color: white;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n    margin: 4px 2px;\n    cursor: pointer;\n    padding: 10px 24px;\n    border-radius: 12px;\n}\n#pro1{\n    color:black;\n}\n\n", ""]);
 
 // exports
 
@@ -24193,7 +24253,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n.btp{\n    left:0px;\n}\n", ""]);
 
 // exports
 
@@ -24250,7 +24310,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n    max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\n      max-width: 960px;\n}\n.btn2{\nborder: none;\ncolor: white;\npadding: 7px 40px;\ntext-align: center;\ntext-decoration: none;\ndisplay: inline-block;\nfont-size: 16px;\nmargin: 4px 2px;\ncursor: pointer;\nfont-size: 12px;\nborder-radius: 2px;\nleft:50%;\n}\n", ""]);
 
 // exports
 
@@ -24288,7 +24348,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n\n", ""]);
 
 // exports
 
@@ -60990,98 +61050,108 @@ var render = function() {
           "v-app",
           { attrs: { id: "inspire", flat: "" } },
           [
-            _c("v-spacer"),
+            _c("v-flex", { attrs: { md8: "" } }),
             _vm._v(" "),
             _c(
-              "v-toolbar",
-              {
-                attrs: {
-                  app: "",
-                  fixed: "",
-                  "clipped-left": "",
-                  color: "white"
-                }
-              },
+              "v-flex",
+              { attrs: { md4: "" } },
               [
                 _c(
-                  "v-toolbar-title",
-                  [
-                    _c("router-link", {
-                      staticClass: "white--text",
-                      attrs: { to: "/" }
-                    })
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("v-spacer"),
-                _vm._v(" "),
-                _vm.loggedIn ? _c("app-notification") : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "hidden-sm-and-down" },
+                  "v-toolbar",
+                  {
+                    attrs: {
+                      app: "",
+                      fixed: "",
+                      "clipped-left": "",
+                      color: "white"
+                    }
+                  },
                   [
                     _c(
-                      "v-menu",
-                      {
-                        attrs: { "offset-y": "" },
-                        scopedSlots: _vm._u([
-                          {
-                            key: "activator",
-                            fn: function(ref) {
-                              var on = ref.on
-                              return [
-                                _c(
-                                  "v-btn",
-                                  _vm._g(
-                                    {
-                                      attrs: {
-                                        slot: "activator",
-                                        icon: "",
-                                        dark: ""
-                                      },
-                                      slot: "activator"
-                                    },
-                                    on
-                                  ),
-                                  [
-                                    _c(
-                                      "v-icon",
-                                      { attrs: { color: "#43425D" } },
-                                      [_vm._v("menu")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ]
-                            }
-                          }
-                        ])
-                      },
+                      "v-toolbar-title",
                       [
-                        _vm._v(" "),
+                        _c("router-link", {
+                          staticClass: "white--text",
+                          attrs: { to: "/" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("v-spacer"),
+                    _vm._v(" "),
+                    _vm.loggedIn ? _c("app-notification") : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "hidden-sm-and-down" },
+                      [
                         _c(
-                          "v-list",
-                          { attrs: { dense: "" } },
-                          _vm._l(_vm.items, function(item) {
-                            return item.show
-                              ? _c(
-                                  "v-list-tile",
-                                  { key: item.title, attrs: { to: item.to } },
-                                  [
-                                    _c("v-list-tile-title", [
-                                      _vm._v(
-                                        "\n                                " +
-                                          _vm._s(item.title) +
-                                          "\n                            "
-                                      )
-                                    ])
-                                  ],
-                                  1
-                                )
-                              : _vm._e()
-                          }),
+                          "v-menu",
+                          {
+                            attrs: { "offset-y": "" },
+                            scopedSlots: _vm._u([
+                              {
+                                key: "activator",
+                                fn: function(ref) {
+                                  var on = ref.on
+                                  return [
+                                    _c(
+                                      "v-btn",
+                                      _vm._g(
+                                        {
+                                          attrs: {
+                                            slot: "activator",
+                                            icon: "",
+                                            dark: ""
+                                          },
+                                          slot: "activator"
+                                        },
+                                        on
+                                      ),
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { color: "#43425D" } },
+                                          [_vm._v("menu")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ]
+                                }
+                              }
+                            ])
+                          },
+                          [
+                            _vm._v(" "),
+                            _c(
+                              "v-list",
+                              { attrs: { dense: "" } },
+                              _vm._l(_vm.items, function(item) {
+                                return item.show
+                                  ? _c(
+                                      "v-list-tile",
+                                      {
+                                        key: item.title,
+                                        attrs: { to: item.to }
+                                      },
+                                      [
+                                        _c("v-list-tile-title", [
+                                          _vm._v(
+                                            "\n                                " +
+                                              _vm._s(item.title) +
+                                              "\n                            "
+                                          )
+                                        ])
+                                      ],
+                                      1
+                                    )
+                                  : _vm._e()
+                              }),
+                              1
+                            )
+                          ],
                           1
                         )
                       ],
@@ -61144,7 +61214,7 @@ var render = function() {
         },
         [
           _c("v-text-field", {
-            attrs: { label: "Category Name", required: "" },
+            attrs: { placeholder: "Task Type", required: "", autofocus: "" },
             model: {
               value: _vm.form.name,
               callback: function($$v) {
@@ -61161,7 +61231,7 @@ var render = function() {
                   attrs: {
                     type: "submit",
                     disabled: _vm.disabled,
-                    color: "cyan"
+                    color: "#188EF5"
                   }
                 },
                 [_vm._v("Update")]
@@ -61172,7 +61242,7 @@ var render = function() {
                   attrs: {
                     type: "submit",
                     disabled: _vm.disabled,
-                    color: "teal"
+                    color: "#5FD179"
                   }
                 },
                 [_vm._v("Create")]
@@ -61195,7 +61265,7 @@ var render = function() {
                   _c(
                     "v-toolbar",
                     { attrs: { color: "grey darken-1", dark: "", dense: "" } },
-                    [_c("v-toolbar-title", [_vm._v("Categories")])],
+                    [_c("v-toolbar-title", [_vm._v("Task Types")])],
                     1
                   ),
                   _vm._v(" "),
@@ -61239,8 +61309,8 @@ var render = function() {
                                     [
                                       _c(
                                         "v-icon",
-                                        { attrs: { color: "grey darken-4" } },
-                                        [_vm._v("edit")]
+                                        { attrs: { color: "orange" } },
+                                        [_vm._v("create")]
                                       )
                                     ],
                                     1
@@ -61266,8 +61336,8 @@ var render = function() {
                                     [
                                       _c(
                                         "v-icon",
-                                        { attrs: { color: "grey darken-4" } },
-                                        [_vm._v("delete")]
+                                        { attrs: { color: "#F5181F" } },
+                                        [_vm._v("delete_forever")]
                                       )
                                     ],
                                     1
@@ -61332,35 +61402,47 @@ var render = function() {
             "v-layout",
             { attrs: { row: "", wrap: "" } },
             [
-              _c("v-flex", { attrs: { xs3: "", md2: "" } }, [
-                _c("h2", [_vm._v("Dashboard")])
+              _c("v-flex", { attrs: { md2: "" } }, [
+                _c("h2", { staticClass: "title font-weight-bold" }, [
+                  _vm._v("Dashboard")
+                ])
               ]),
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { xs3: "", md10: "" } },
+                { attrs: { md1: "" } },
                 [
-                  _c("v-card-text", { staticClass: "px-0" }, [
-                    _c("h4", [_vm._v(" Filter ")])
-                  ])
+                  _c(
+                    "v-card-text",
+                    {
+                      staticClass: "px-0 font-weight-bold",
+                      attrs: { id: "pro" }
+                    },
+                    [_c("h4", [_vm._v(" Filter ")])]
+                  )
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { xs2: "" } },
+                { attrs: { md2: "" } },
                 [
-                  _c("v-card-text", { staticClass: "px-0" }, [
-                    _vm._v("Project")
-                  ]),
+                  _c(
+                    "v-card-text",
+                    {
+                      staticClass: "px-0 font-weight-bold",
+                      attrs: { id: "pro" }
+                    },
+                    [_vm._v("Project")]
+                  ),
                   _vm._v(" "),
                   _c("v-select", {
                     attrs: {
                       items: _vm.projects,
                       "item-text": "name",
                       "item-value": "id",
-                      label: "project"
+                      placeholder: "Project"
                     },
                     model: {
                       value: _vm.search.project_id,
@@ -61377,18 +61459,23 @@ var render = function() {
               _vm.myRole == "Admin" || _vm.myRole == "Coordinator"
                 ? _c(
                     "v-flex",
-                    { attrs: { xs2: "" } },
+                    { attrs: { md2: "" } },
                     [
-                      _c("v-card-text", { staticClass: "px-0" }, [
-                        _vm._v("Affected To")
-                      ]),
+                      _c(
+                        "v-card-text",
+                        {
+                          staticClass: "px-0 font-weight-bold",
+                          attrs: { id: "pro" }
+                        },
+                        [_vm._v("Affected To")]
+                      ),
                       _vm._v(" "),
                       _c("v-select", {
                         attrs: {
                           items: _vm.users,
                           "item-text": "name",
                           "item-value": "id",
-                          label: "affected to"
+                          placeholder: "Affected To"
                         },
                         model: {
                           value: _vm.search.user_id,
@@ -61405,16 +61492,23 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { xs2: "" } },
+                { attrs: { md2: "" } },
                 [
-                  _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Month")]),
+                  _c(
+                    "v-card-text",
+                    {
+                      staticClass: "px-0 font-weight-bold",
+                      attrs: { id: "pro" }
+                    },
+                    [_vm._v("Month")]
+                  ),
                   _vm._v(" "),
                   _c("v-select", {
                     attrs: {
                       items: _vm.months,
                       "item-text": "value",
                       "item-value": "id",
-                      label: "month"
+                      placeholder: "Month"
                     },
                     model: {
                       value: _vm.search.month,
@@ -61430,12 +61524,19 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { xs2: "" } },
+                { attrs: { md2: "" } },
                 [
-                  _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Year")]),
+                  _c(
+                    "v-card-text",
+                    {
+                      staticClass: "px-0 font-weight-bold",
+                      attrs: { id: "pro" }
+                    },
+                    [_vm._v("Year")]
+                  ),
                   _vm._v(" "),
                   _c("v-combobox", {
-                    attrs: { items: _vm.years, label: "year" },
+                    attrs: { items: _vm.years, placeholder: "Year" },
                     model: {
                       value: _vm.search.year,
                       callback: function($$v) {
@@ -61448,14 +61549,23 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
+              _c("v-flex", { attrs: { md3: "" } }),
+              _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { xs2: "" } },
+                { attrs: { md2: "" } },
                 [
-                  _c("v-card-text", { staticClass: "px-0" }, [_vm._v("staus")]),
+                  _c(
+                    "v-card-text",
+                    {
+                      staticClass: "px-0 font-weight-bold",
+                      attrs: { id: "pro" }
+                    },
+                    [_vm._v("Status")]
+                  ),
                   _vm._v(" "),
                   _c("v-select", {
-                    attrs: { items: _vm.status, label: "staus" },
+                    attrs: { items: _vm.status, placeholder: "Status" },
                     model: {
                       value: _vm.search.status,
                       callback: function($$v) {
@@ -61468,9 +61578,13 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
+              _c("v-flex", { attrs: { md7: "" } }),
+              _vm._v(" "),
+              _c("v-flex", { attrs: { xs1: "" } }),
+              _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { xs3: "" } },
+                { attrs: { md6: "" } },
                 [
                   _c(
                     "v-btn",
@@ -61508,7 +61622,7 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { xs3: "" } },
+                { attrs: { md3: "" } },
                 [
                   _c("v-hover", {
                     scopedSlots: _vm._u([
@@ -61521,7 +61635,7 @@ var render = function() {
                             {
                               staticClass: "mx-auto",
                               class: "elevation-" + (hover ? 12 : 2),
-                              attrs: { width: "344" }
+                              attrs: { width: "300" }
                             },
                             [
                               _c(
@@ -61529,7 +61643,7 @@ var render = function() {
                                 [
                                   _c(
                                     "div",
-                                    { attrs: { xs6: "" } },
+                                    { attrs: { md6: "" } },
                                     [
                                       _c(
                                         "v-flex",
@@ -61537,9 +61651,11 @@ var render = function() {
                                           _c(
                                             "v-flex",
                                             [
-                                              _c("v-icon", [
-                                                _vm._v("check_circle")
-                                              ]),
+                                              _c(
+                                                "v-icon",
+                                                { attrs: { color: "#188EF5" } },
+                                                [_vm._v("check_circle")]
+                                              ),
                                               _vm._v(
                                                 "  " +
                                                   _vm._s(_vm.stats.validated) +
@@ -61564,9 +61680,11 @@ var render = function() {
                                           _c(
                                             "v-flex",
                                             [
-                                              _c("v-icon", [
-                                                _vm._v("check_circle")
-                                              ]),
+                                              _c(
+                                                "v-icon",
+                                                { attrs: { color: "#35851E" } },
+                                                [_vm._v("check_circle")]
+                                              ),
                                               _vm._v(
                                                 " " +
                                                   _vm._s(_vm.stats.validated) +
@@ -61590,18 +61708,27 @@ var render = function() {
                                   _vm._v(" "),
                                   _c(
                                     "v-flex",
-                                    { attrs: { xs6: "" } },
+                                    { attrs: { md6: "" } },
                                     [
                                       _c(
                                         "v-flex",
                                         [
-                                          _c("v-icon", [
-                                            _vm._v("check_circle")
-                                          ]),
-                                          _vm._v(
-                                            " " +
-                                              _vm._s(_vm.stats.validated) +
-                                              " %\n                                "
+                                          _c(
+                                            "v-card-text",
+                                            {
+                                              staticClass:
+                                                "py-1 font-weight-bold"
+                                            },
+                                            [
+                                              _c("h1", [
+                                                _vm._v(" % "),
+                                                _c("small", [
+                                                  _vm._v(
+                                                    _vm._s(_vm.stats.validated)
+                                                  )
+                                                ])
+                                              ])
+                                            ]
                                           )
                                         ],
                                         1
@@ -61637,11 +61764,13 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { xs2: "" } },
+                { attrs: { md2: "" } },
                 [
-                  _c("v-btn", { attrs: { color: "grey" } }, [
-                    _vm._v(" Download Excell")
-                  ])
+                  _c(
+                    "v-btn",
+                    { staticClass: "btdown", attrs: { color: "#43425D" } },
+                    [_vm._v(" Download Excell")]
+                  )
                 ],
                 1
               ),
@@ -62531,7 +62660,7 @@ var render = function() {
                     _vm._l(_vm.projects, function(project) {
                       return _c(
                         "v-flex",
-                        { key: project.id, attrs: { xs9: "", sm4: "" } },
+                        { key: project.id, attrs: { xs12: "", sm4: "" } },
                         [
                           _c(
                             "v-card",
@@ -62541,74 +62670,165 @@ var render = function() {
                                 { attrs: { color: "white", flat: "" } },
                                 [
                                   _c(
-                                    "router-link",
-                                    {
-                                      attrs: {
-                                        to: {
-                                          name: "project-single",
-                                          params: { id: project.slug }
-                                        }
-                                      }
-                                    },
+                                    "v-flex",
+                                    { attrs: { xs7: "" } },
                                     [
                                       _c(
-                                        "h3",
+                                        "router-link",
                                         {
-                                          staticClass: "title font-weight-bold"
-                                        },
-                                        [_vm._v(_vm._s(project.name))]
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("v-spacer"),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-card-actions",
-                                    [
-                                      _c(
-                                        "v-btn",
-                                        { attrs: { icon: "" } },
-                                        [
-                                          _c(
-                                            "v-icon",
-                                            {
-                                              attrs: {
-                                                medium: "",
-                                                color: "#A4AFB7"
-                                              },
-                                              on: {
-                                                click: function($event) {
-                                                  return _vm.editpopup(project)
-                                                }
-                                              }
-                                            },
-                                            [_vm._v(" edit")]
-                                          )
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: { icon: "" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.destroy(project.id)
+                                          attrs: {
+                                            to: {
+                                              name: "project-single",
+                                              params: { id: project.slug }
                                             }
                                           }
                                         },
                                         [
                                           _c(
-                                            "v-icon",
+                                            "h3",
                                             {
-                                              attrs: {
-                                                medium: "",
-                                                color: "#A4AFB7"
-                                              }
+                                              staticClass:
+                                                "title font-weight-bold"
                                             },
-                                            [_vm._v("remove_circle")]
+                                            [_vm._v(_vm._s(project.name))]
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs2: "" } },
+                                    [
+                                      _c(
+                                        "v-card-actions",
+                                        [
+                                          _c(
+                                            "v-tooltip",
+                                            {
+                                              attrs: { bottom: "" },
+                                              scopedSlots: _vm._u(
+                                                [
+                                                  {
+                                                    key: "activator",
+                                                    fn: function(ref) {
+                                                      var on = ref.on
+                                                      return [
+                                                        _c(
+                                                          "v-btn",
+                                                          _vm._g(
+                                                            {
+                                                              staticClass:
+                                                                "btp",
+                                                              attrs: {
+                                                                icon: ""
+                                                              }
+                                                            },
+                                                            on
+                                                          ),
+                                                          [
+                                                            _c(
+                                                              "v-icon",
+                                                              {
+                                                                attrs: {
+                                                                  medium: "",
+                                                                  color:
+                                                                    "#A4AFB7"
+                                                                },
+                                                                on: {
+                                                                  click: function(
+                                                                    $event
+                                                                  ) {
+                                                                    return _vm.editpopup(
+                                                                      project
+                                                                    )
+                                                                  }
+                                                                }
+                                                              },
+                                                              [_vm._v(" edit")]
+                                                            )
+                                                          ],
+                                                          1
+                                                        )
+                                                      ]
+                                                    }
+                                                  }
+                                                ],
+                                                null,
+                                                true
+                                              )
+                                            },
+                                            [
+                                              _vm._v(" "),
+                                              _c("span", [_vm._v("edit")])
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-tooltip",
+                                            {
+                                              attrs: { bottom: "" },
+                                              scopedSlots: _vm._u(
+                                                [
+                                                  {
+                                                    key: "activator",
+                                                    fn: function(ref) {
+                                                      var on = ref.on
+                                                      return [
+                                                        _c(
+                                                          "v-btn",
+                                                          _vm._g(
+                                                            {
+                                                              staticClass:
+                                                                "btp",
+                                                              attrs: {
+                                                                icon: ""
+                                                              },
+                                                              on: {
+                                                                click: function(
+                                                                  $event
+                                                                ) {
+                                                                  return _vm.destroy(
+                                                                    project.id
+                                                                  )
+                                                                }
+                                                              }
+                                                            },
+                                                            on
+                                                          ),
+                                                          [
+                                                            _c(
+                                                              "v-icon",
+                                                              {
+                                                                attrs: {
+                                                                  medium: "",
+                                                                  color:
+                                                                    "#A4AFB7"
+                                                                }
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  "remove_circle"
+                                                                )
+                                                              ]
+                                                            )
+                                                          ],
+                                                          1
+                                                        )
+                                                      ]
+                                                    }
+                                                  }
+                                                ],
+                                                null,
+                                                true
+                                              )
+                                            },
+                                            [
+                                              _vm._v(" "),
+                                              _c("span", [_vm._v("remove")])
+                                            ]
                                           )
                                         ],
                                         1
@@ -62907,11 +63127,11 @@ var render = function() {
                             "v-layout",
                             { attrs: { row: "", wrap: "", p4: "" } },
                             [
-                              _c("v-flex", { attrs: { xs1: "" } }),
+                              _c("v-flex", { attrs: { md1: "" } }),
                               _vm._v(" "),
                               _c(
                                 "v-flex",
-                                { attrs: { xs3: "" } },
+                                { attrs: { md3: "" } },
                                 [
                                   _c(
                                     "v-card-text",
@@ -62923,6 +63143,7 @@ var render = function() {
                                   ),
                                   _vm._v(" "),
                                   _c("v-select", {
+                                    staticClass: "px-1",
                                     attrs: {
                                       items: _vm.categories,
                                       "item-text": "name",
@@ -62943,7 +63164,7 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "v-flex",
-                                { attrs: { xs3: "" } },
+                                { attrs: { md3: "" } },
                                 [
                                   _c(
                                     "v-card-text",
@@ -62955,6 +63176,7 @@ var render = function() {
                                   ),
                                   _vm._v(" "),
                                   _c("v-select", {
+                                    staticClass: "px-1",
                                     attrs: {
                                       items: _vm.status,
                                       placeholder: "Status"
@@ -62973,11 +63195,11 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "v-flex",
-                                { attrs: { md4: "" } },
+                                { attrs: { md3: "" } },
                                 [
                                   _c(
                                     "v-flex",
-                                    { attrs: { md6: "" } },
+                                    { attrs: { md3: "" } },
                                     [
                                       _c(
                                         "v-btn",
@@ -62997,7 +63219,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c(
                                     "v-flex",
-                                    { attrs: { md6: "" } },
+                                    { attrs: { md3: "" } },
                                     [
                                       _c(
                                         "v-btn",
@@ -63447,7 +63669,7 @@ var render = function() {
   return _c(
     "v-container",
     [
-      _c("h3", { staticClass: "title font-weight-bold" }, [_vm._v("Task")]),
+      _c("h3", { staticClass: "title font-weight-bold" }, [_vm._v("Tasks")]),
       _vm._v(" "),
       _c(
         "v-container",
@@ -63822,7 +64044,7 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "v-flex",
-                                { attrs: { xs3: "" } },
+                                { attrs: { md3: "" } },
                                 [
                                   _c(
                                     "v-card-text",
@@ -63834,6 +64056,7 @@ var render = function() {
                                   ),
                                   _vm._v(" "),
                                   _c("v-select", {
+                                    staticClass: "px-1",
                                     attrs: {
                                       items: _vm.projects,
                                       "item-text": "name",
@@ -63859,6 +64082,7 @@ var render = function() {
                                   ),
                                   _vm._v(" "),
                                   _c("v-select", {
+                                    staticClass: "px-1",
                                     attrs: {
                                       items: _vm.categories,
                                       "item-text": "name",
@@ -63879,7 +64103,7 @@ var render = function() {
                               _vm._v(" "),
                               _c(
                                 "v-flex",
-                                { attrs: { xs3: "" } },
+                                { attrs: { md3: "" } },
                                 [
                                   _vm.myRole == "Admin" ||
                                   _vm.myRole == "Coordinator"
@@ -63896,6 +64120,7 @@ var render = function() {
                                   _vm.myRole == "Admin" ||
                                   _vm.myRole == "Coordinator"
                                     ? _c("v-select", {
+                                        staticClass: "px-1",
                                         attrs: {
                                           items: _vm.users,
                                           placeholder: "Affected To",
@@ -63922,6 +64147,7 @@ var render = function() {
                                   ),
                                   _vm._v(" "),
                                   _c("v-select", {
+                                    staticClass: "px-1",
                                     attrs: {
                                       items: _vm.status,
                                       placeholder: "Status"
@@ -64107,84 +64333,97 @@ var render = function() {
                                   { staticClass: "text-center" },
                                   [
                                     _c(
-                                      "v-btn",
-                                      {
-                                        attrs: { icon: "" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.edit(props.item)
-                                          }
-                                        }
-                                      },
+                                      "v-flex",
+                                      { attrs: { xs8: "" } },
                                       [
                                         _c(
-                                          "v-icon",
-                                          {
-                                            attrs: {
-                                              medium: "",
-                                              color: "black"
-                                            }
-                                          },
-                                          [_vm._v("edit")]
-                                        )
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: { icon: "" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.destroy(props.item.id)
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          {
-                                            attrs: {
-                                              medium: "",
-                                              color: "black"
-                                            }
-                                          },
-                                          [_vm._v(" delete")]
-                                        )
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    props.item.status == "Completed"
-                                      ? _c(
                                           "v-btn",
                                           {
-                                            attrs: { color: "blue" },
+                                            attrs: { icon: "" },
                                             on: {
                                               click: function($event) {
-                                                return _vm.accept(props.item.id)
+                                                return _vm.edit(props.item)
                                               }
                                             }
                                           },
-                                          [_vm._v("accept")]
-                                        )
-                                      : _vm._e(),
-                                    _vm._v(" "),
-                                    props.item.status == "Completed"
-                                      ? _c(
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              {
+                                                attrs: {
+                                                  medium: "",
+                                                  color: "orange"
+                                                }
+                                              },
+                                              [_vm._v("edit")]
+                                            )
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
                                           "v-btn",
                                           {
-                                            attrs: { color: "red" },
+                                            attrs: { icon: "" },
                                             on: {
                                               click: function($event) {
-                                                return _vm.reject(props.item.id)
+                                                return _vm.destroy(
+                                                  props.item.id
+                                                )
                                               }
                                             }
                                           },
-                                          [_vm._v("reject")]
-                                        )
-                                      : _vm._e()
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              {
+                                                attrs: {
+                                                  medium: "",
+                                                  color: "#F5181F"
+                                                }
+                                              },
+                                              [_vm._v(" delete_forever")]
+                                            )
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        props.item.status == "Completed"
+                                          ? _c(
+                                              "v-btn",
+                                              {
+                                                attrs: { color: "blue" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.accept(
+                                                      props.item.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("accept")]
+                                            )
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        props.item.status == "Completed"
+                                          ? _c(
+                                              "v-btn",
+                                              {
+                                                attrs: { color: "red" },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.reject(
+                                                      props.item.id
+                                                    )
+                                                  }
+                                                }
+                                              },
+                                              [_vm._v("reject")]
+                                            )
+                                          : _vm._e()
+                                      ],
+                                      1
+                                    )
                                   ],
                                   1
                                 )
@@ -64508,7 +64747,11 @@ var render = function() {
       _c(
         "v-container",
         [
-          _c("v-flex", { attrs: { xs12: "" } }, [_c("h4", [_vm._v("Task")])]),
+          _c("h3", { staticClass: "title font-weight-bold" }, [_vm._v("Task")]),
+          _vm._v(" "),
+          _c("v-flex", { attrs: { xs12: "" } }),
+          _vm._v(" "),
+          _c("v-flex", { attrs: { xs12: "" } }),
           _vm._v(" "),
           _c(
             "v-flex",
@@ -64521,20 +64764,65 @@ var render = function() {
                     "v-container",
                     [
                       _c(
-                        "v-toolbar",
-                        { attrs: { flat: "", color: "white" } },
+                        "v-card-text",
+                        { staticClass: "py-1 font-weight-bold" },
                         [
-                          _c("v-spacer"),
+                          _c(
+                            "v-toolbar",
+                            { attrs: { flat: "", color: "white" } },
+                            [
+                              _c("v-spacer"),
+                              _vm._v(" "),
+                              _c(
+                                "v-tooltip",
+                                {
+                                  attrs: { bottom: "" },
+                                  scopedSlots: _vm._u([
+                                    {
+                                      key: "activator",
+                                      fn: function(ref) {
+                                        var on = ref.on
+                                        return [
+                                          _c(
+                                            "v-btn",
+                                            _vm._g({ attrs: { icon: "" } }, on),
+                                            [
+                                              _c(
+                                                "v-icon",
+                                                {
+                                                  attrs: {
+                                                    medium: "",
+                                                    color: "orange"
+                                                  }
+                                                },
+                                                [_vm._v("edit")]
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ]
+                                      }
+                                    }
+                                  ])
+                                },
+                                [_vm._v(" "), _c("span", [_vm._v("edit")])]
+                              )
+                            ],
+                            1
+                          ),
                           _vm._v(" "),
                           _c(
-                            "v-btn",
-                            { attrs: { icon: "" } },
+                            "v-flex",
+                            { attrs: { md12: "" } },
                             [
-                              _c(
-                                "v-icon",
-                                { attrs: { medium: "", color: "orange" } },
-                                [_vm._v("edit")]
-                              )
+                              _c("v-subheader", [
+                                _c("h3", [
+                                  _vm._v(
+                                    "Affected To:\n                                            "
+                                  ),
+                                  _c("small", [_vm._v(_vm._s(_vm.task.user))])
+                                ])
+                              ])
                             ],
                             1
                           )
@@ -64544,41 +64832,27 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "v-flex",
-                        { attrs: { md6: "" } },
+                        { attrs: { md12: "" } },
                         [
                           _c(
-                            "v-subheader",
+                            "v-card-text",
+                            { staticClass: "py-1 font-weight-bold" },
                             [
-                              _c("v-card-text", { staticClass: "py-1" }, [
+                              _c("v-subheader", [
                                 _c("h3", [
                                   _vm._v(
-                                    "Affected To:\n                                    "
-                                  ),
-                                  _c("small", [_vm._v(_vm._s(_vm.task.user))])
-                                ])
-                              ])
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-subheader",
-                            [
-                              _c("v-card-text", { staticClass: "py-1" }, [
-                                _c("h3", [
-                                  _vm._v(
-                                    "Start Date:\n                                    "
+                                    "Start Date:\n                                        "
                                   ),
                                   _c("small", [
                                     _vm._v(_vm._s(_vm.task.start_date))
                                   ])
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("v-card-text", { staticClass: "py-1" }, [
+                                ]),
+                                _vm._v(
+                                  "          \n                                    "
+                                ),
                                 _c("h3", [
                                   _vm._v(
-                                    "Due Date:\n                                    "
+                                    "Due Date:\n                                        "
                                   ),
                                   _c("small", [
                                     _vm._v(_vm._s(_vm.task.due_date))
@@ -64587,30 +64861,51 @@ var render = function() {
                               ])
                             ],
                             1
-                          ),
-                          _vm._v(" "),
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-text",
+                        { staticClass: "py-1 font-weight-bold" },
+                        [
                           _c(
-                            "v-subheader",
+                            "v-flex",
+                            { attrs: { md12: "" } },
                             [
-                              _c("v-card-text", { staticClass: "py-1" }, [
+                              _c("v-subheader", [
                                 _c("h3", [
                                   _vm._v(
-                                    "Status:\n                                    "
+                                    "Status:\n                                                "
                                   ),
                                   _c("small", [_vm._v(_vm._s(_vm.task.status))])
                                 ])
                               ])
                             ],
                             1
-                          ),
-                          _vm._v(" "),
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-card-text",
+                        { staticClass: "py-3 font-weight-bold" },
+                        [
                           _c(
-                            "v-subheader",
+                            "v-flex",
+                            { attrs: { md12: "" } },
                             [
-                              _c("v-card-text", { staticClass: "py-1" }, [
-                                _c("h3", [_vm._v("Description:")]),
-                                _vm._v(" "),
-                                _c("p", [_vm._v(_vm._s(_vm.task.description))])
+                              _c("v-subheader", [
+                                _c("h3", [
+                                  _vm._v("Description: "),
+                                  _c("small", [
+                                    _c("p", [
+                                      _vm._v(_vm._s(_vm.task.description))
+                                    ])
+                                  ])
+                                ])
                               ])
                             ],
                             1
@@ -64627,9 +64922,14 @@ var render = function() {
                     [
                       _c("v-spacer"),
                       _vm._v(" "),
-                      _c("h5", [_vm._v("Added By:  ")]),
-                      _vm._v(" "),
-                      _c("p", [_vm._v(" " + _vm._s(_vm.task.createdBy) + " ")])
+                      _c("div", { staticClass: " font-weight-bold" }, [
+                        _c("h5", [
+                          _vm._v("Added By: "),
+                          _c("p", [
+                            _vm._v(" " + _vm._s(_vm.task.createdBy) + " ")
+                          ])
+                        ])
+                      ])
                     ],
                     1
                   )
@@ -64645,117 +64945,68 @@ var render = function() {
       _vm._v(" "),
       _c(
         "v-container",
-        _vm._l(_vm.task.task_comment, function(data, index) {
-          return _c(
-            "div",
-            { staticClass: "mt-3" },
-            [
-              _c(
-                "v-card",
-                [
-                  _c(
-                    "v-card-title",
-                    [
-                      _c("div", { staticClass: "headline" }, [
-                        _vm._v(_vm._s(data.user))
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "ml-2" }, [
-                        _vm._v("said " + _vm._s(data.created_at))
-                      ]),
-                      _vm._v(" "),
-                      _c("v-spacer")
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c("v-divider"),
-                  _vm._v(" "),
-                  _vm.editing[index]
-                    ? _c("div", [
-                        _c(
-                          "div",
-                          [
-                            _c("markdown-editor", {
-                              model: {
-                                value: data.body,
-                                callback: function($$v) {
-                                  _vm.$set(data, "body", $$v)
-                                },
-                                expression: "data.body"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "v-card-actions",
-                              [
-                                _c(
-                                  "v-btn",
-                                  {
-                                    attrs: { icon: "", small: "" },
-                                    on: { click: _vm.update }
+        [
+          _c("h3", { staticClass: "font-weight-bold" }, [_vm._v("Comments: ")]),
+          _vm._v(" "),
+          _c("v-flex", { attrs: { xs12: "" } }),
+          _vm._v(" "),
+          _c("v-flex", { attrs: { xs12: "" } }),
+          _vm._v(" "),
+          _vm._l(_vm.task.task_comment, function(data, index) {
+            return _c(
+              "div",
+              { staticClass: "mt-3" },
+              [
+                _c(
+                  "v-card",
+                  [
+                    _c(
+                      "v-card-title",
+                      [
+                        _c("div", { staticClass: "headline" }, [
+                          _vm._v(_vm._s(data.user))
+                        ]),
+                        _vm._v("    \n                    "),
+                        _c("div", { staticClass: "ml-2" }, [
+                          _vm._v("said " + _vm._s(data.created_at))
+                        ]),
+                        _vm._v(" "),
+                        _c("v-spacer")
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("v-divider"),
+                    _vm._v(" "),
+                    _vm.editing[index]
+                      ? _c("div", [
+                          _c(
+                            "div",
+                            [
+                              _c("markdown-editor", {
+                                model: {
+                                  value: data.body,
+                                  callback: function($$v) {
+                                    _vm.$set(data, "body", $$v)
                                   },
-                                  [
-                                    _c(
-                                      "v-icon",
-                                      { attrs: { color: "green" } },
-                                      [_vm._v("save")]
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-btn",
-                                  {
-                                    attrs: { icon: "", small: "" },
-                                    on: { click: _vm.cancel }
-                                  },
-                                  [
-                                    _c(
-                                      "v-icon",
-                                      { attrs: { color: "black" } },
-                                      [_vm._v("cancel")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ])
-                    : _c("v-card-text", {
-                        domProps: { innerHTML: _vm._s(data.body) }
-                      }),
-                  _vm._v(" "),
-                  _c("v-divider"),
-                  _vm._v(" "),
-                  !_vm.editing[index]
-                    ? _c(
-                        "div",
-                        [
-                          _vm.own
-                            ? _c(
+                                  expression: "data.body"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
                                 "v-card-actions",
                                 [
                                   _c(
                                     "v-btn",
                                     {
                                       attrs: { icon: "", small: "" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.edit(index)
-                                        }
-                                      }
+                                      on: { click: _vm.update }
                                     },
                                     [
                                       _c(
                                         "v-icon",
-                                        { attrs: { color: "orange" } },
-                                        [_vm._v("edit")]
+                                        { attrs: { color: "#5FD179" } },
+                                        [_vm._v("save")]
                                       )
                                     ],
                                     1
@@ -64765,17 +65016,13 @@ var render = function() {
                                     "v-btn",
                                     {
                                       attrs: { icon: "", small: "" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.destroy(index)
-                                        }
-                                      }
+                                      on: { click: _vm.cancel }
                                     },
                                     [
                                       _c(
                                         "v-icon",
-                                        { attrs: { color: "red" } },
-                                        [_vm._v("delete")]
+                                        { attrs: { color: "#F5181F" } },
+                                        [_vm._v("cancel")]
                                       )
                                     ],
                                     1
@@ -64783,19 +65030,82 @@ var render = function() {
                                 ],
                                 1
                               )
-                            : _vm._e()
-                        ],
-                        1
-                      )
-                    : _vm._e()
-                ],
-                1
-              )
-            ],
-            1
-          )
-        }),
-        0
+                            ],
+                            1
+                          )
+                        ])
+                      : _c("v-card-text", {
+                          domProps: { innerHTML: _vm._s(data.body) }
+                        }),
+                    _vm._v(" "),
+                    _c("v-divider"),
+                    _vm._v(" "),
+                    !_vm.editing[index]
+                      ? _c(
+                          "div",
+                          [
+                            _vm.own
+                              ? _c(
+                                  "v-card-actions",
+                                  [
+                                    _c("v-spacer"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: { icon: "", small: "" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.edit(index)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { color: "orange" } },
+                                          [_vm._v("edit")]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: { icon: "", small: "" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.destroy(index)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { color: "#F5181F" } },
+                                          [_vm._v("delete_forever")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              : _vm._e()
+                          ],
+                          1
+                        )
+                      : _vm._e()
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          })
+        ],
+        2
       ),
       _vm._v(" "),
       _c(
@@ -64831,13 +65141,14 @@ var render = function() {
               _c(
                 "v-btn",
                 {
+                  staticClass: "btn2",
                   attrs: {
-                    color: "green",
+                    color: "#3B86FF",
                     type: "submit",
                     disabled: _vm.disabled
                   }
                 },
-                [_vm._v("Create\n            ")]
+                [_vm._v("SEND\n            ")]
               )
             ],
             1
@@ -64902,10 +65213,7 @@ var render = function() {
                   [
                     _c(
                       "v-chip",
-                      {
-                        staticClass: "buttonT",
-                        attrs: { color: "#5FD179", "text-color": "white" }
-                      },
+                      { attrs: { color: "#5FD179", "text-color": "white" } },
                       [_vm._v(_vm._s(props.item.status))]
                     )
                   ],
@@ -65260,6 +65568,12 @@ var render = function() {
   return _c(
     "v-container",
     [
+      _c("h3", { staticClass: "title font-weight-bold" }, [_vm._v("Users")]),
+      _vm._v(" "),
+      _c("v-flex", { attrs: { xs12: "" } }),
+      _vm._v(" "),
+      _c("v-flex", { attrs: { xs12: "" } }),
+      _vm._v(" "),
       _c(
         "v-container",
         { attrs: { fluid: "", "grid-list-md": "" } },
@@ -65268,35 +65582,38 @@ var render = function() {
             "v-layout",
             { attrs: { row: "", wrap: "" } },
             [
-              _c("v-flex", {
-                attrs: { xs3: "", md2: "" },
-                scopedSlots: _vm._u([
-                  {
-                    key: "header",
-                    fn: function() {
-                      return [_c("h2", [_vm._v("Users")])]
-                    },
-                    proxy: true
-                  }
-                ])
-              }),
+              _c("v-flex", { attrs: { xs2: "" } }),
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { xs3: "", md10: "" } },
+                { attrs: { xs10: "" } },
                 [
-                  _c("v-card-text", { staticClass: "px-0" }, [
-                    _c("h4", [_vm._v(" Filter user ")])
-                  ])
+                  _c(
+                    "v-card-text",
+                    {
+                      staticClass: "px-0 font-weight-bold",
+                      attrs: { id: "pro" }
+                    },
+                    [_c("h4", [_vm._v(" Filter user ")])]
+                  )
                 ],
                 1
               ),
+              _vm._v(" "),
+              _c("v-flex", { attrs: { xs2: "" } }),
               _vm._v(" "),
               _c(
                 "v-flex",
                 { attrs: { xs3: "" } },
                 [
-                  _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Name")]),
+                  _c(
+                    "v-card-text",
+                    {
+                      staticClass: "px-0 font-weight-bold",
+                      attrs: { id: "pro" }
+                    },
+                    [_vm._v("Name")]
+                  ),
                   _vm._v(" "),
                   _c("v-text-field", {
                     attrs: { label: "Name" },
@@ -65316,12 +65633,19 @@ var render = function() {
                 "v-flex",
                 { attrs: { xs3: "" } },
                 [
-                  _c("v-card-text", { staticClass: "px-0" }, [_vm._v("Role")]),
+                  _c(
+                    "v-card-text",
+                    {
+                      staticClass: "px-0 font-weight-bold",
+                      attrs: { id: "pro" }
+                    },
+                    [_vm._v("Role")]
+                  ),
                   _vm._v(" "),
                   _c("v-select", {
                     attrs: {
                       items: _vm.roles,
-                      label: "role",
+                      placeholder: "Role",
                       "item-text": "name",
                       "item-value": "id"
                     },
@@ -65341,14 +65665,19 @@ var render = function() {
                 "v-flex",
                 { attrs: { xs3: "" } },
                 [
-                  _c("v-card-text", { staticClass: "px-0" }, [
-                    _vm._v("Status")
-                  ]),
+                  _c(
+                    "v-card-text",
+                    {
+                      staticClass: "px-0 font-weight-bold",
+                      attrs: { id: "pro" }
+                    },
+                    [_vm._v("Status")]
+                  ),
                   _vm._v(" "),
                   _c("v-select", {
                     attrs: {
                       items: _vm.users,
-                      label: "status",
+                      placeholder: "Status",
                       "item-text": "status"
                     },
                     model: {
@@ -65363,9 +65692,11 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
+              _c("v-flex", { attrs: { xs4: "" } }),
+              _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { xs3: "" } },
+                { attrs: { xs8: "" } },
                 [
                   _c(
                     "v-btn",
@@ -65448,40 +65779,47 @@ var render = function() {
                   { staticClass: "text-center" },
                   [
                     _c(
-                      "v-btn",
-                      {
-                        attrs: { icon: "" },
-                        on: {
-                          click: function($event) {
-                            return _vm.edit(props.item)
-                          }
-                        }
-                      },
+                      "v-flex",
+                      { attrs: { xs12: "" } },
                       [
                         _c(
-                          "v-icon",
-                          { attrs: { medium: "", color: "black" } },
-                          [_vm._v("edit")]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "v-btn",
-                      {
-                        attrs: { icon: "" },
-                        on: {
-                          click: function($event) {
-                            return _vm.destroy(props.item.id)
-                          }
-                        }
-                      },
-                      [
+                          "v-btn",
+                          {
+                            attrs: { icon: "" },
+                            on: {
+                              click: function($event) {
+                                return _vm.edit(props.item)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "v-icon",
+                              { attrs: { medium: "", color: "orange" } },
+                              [_vm._v("create")]
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
                         _c(
-                          "v-icon",
-                          { attrs: { medium: "", color: "black" } },
-                          [_vm._v(" delete")]
+                          "v-btn",
+                          {
+                            attrs: { icon: "" },
+                            on: {
+                              click: function($event) {
+                                return _vm.destroy(props.item.id)
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "v-icon",
+                              { attrs: { medium: "", color: "#F5181F" } },
+                              [_vm._v(" delete_forever")]
+                            )
+                          ],
+                          1
                         )
                       ],
                       1
@@ -65721,7 +66059,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                        close\n                    "
+                            "\n                            close\n                        "
                           )
                         ]
                       ),
@@ -66035,7 +66373,7 @@ var render = function() {
                     _vm._l(_vm.teams, function(team) {
                       return _c(
                         "v-flex",
-                        { key: team.id, attrs: { sm4: "" } },
+                        { key: team.id, attrs: { xs12: "", sm4: "" } },
                         [
                           _c(
                             "v-card",
@@ -66045,92 +66383,186 @@ var render = function() {
                                 "v-toolbar",
                                 { attrs: { color: "white", flat: "" } },
                                 [
-                                  _c("v-html", [
-                                    _c(
-                                      "a",
-                                      [
+                                  _c(
+                                    "v-flex",
+                                    { attrs: { xs7: "" } },
+                                    [
+                                      _c("v-html", [
                                         _c(
-                                          "router-link",
-                                          {
-                                            attrs: {
-                                              to: {
-                                                name: "team-single",
-                                                params: { id: team.slug }
-                                              }
-                                            }
-                                          },
+                                          "a",
                                           [
                                             _c(
-                                              "h3",
+                                              "router-link",
                                               {
-                                                staticClass:
-                                                  "title font-weight-bold"
+                                                attrs: {
+                                                  to: {
+                                                    name: "team-single",
+                                                    params: { id: team.slug }
+                                                  }
+                                                }
                                               },
-                                              [_vm._v(_vm._s(team.name))]
+                                              [
+                                                _c(
+                                                  "h3",
+                                                  {
+                                                    staticClass:
+                                                      "title font-weight-bold"
+                                                  },
+                                                  [_vm._v(_vm._s(team.name))]
+                                                )
+                                              ]
                                             )
-                                          ]
+                                          ],
+                                          1
                                         )
-                                      ],
-                                      1
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("v-spacer"),
+                                      ])
+                                    ],
+                                    1
+                                  ),
                                   _vm._v(" "),
                                   _c(
-                                    "v-card-actions",
+                                    "v-flex",
+                                    { attrs: { xs2: "" } },
                                     [
-                                      team.id != 1 && team.id != 2
-                                        ? _c(
-                                            "v-btn",
-                                            { attrs: { icon: "" } },
-                                            [
-                                              _c(
-                                                "v-icon",
-                                                {
-                                                  attrs: {
-                                                    medium: "",
-                                                    color: "#A4AFB7"
-                                                  },
-                                                  on: {
-                                                    click: function($event) {
-                                                      return _vm.editpopup(team)
+                                      _c(
+                                        "v-card-actions",
+                                        [
+                                          _c(
+                                            "v-tooltip",
+                                            {
+                                              attrs: { bottom: "" },
+                                              scopedSlots: _vm._u(
+                                                [
+                                                  {
+                                                    key: "activator",
+                                                    fn: function(ref) {
+                                                      var on = ref.on
+                                                      return [
+                                                        team.id != 1 &&
+                                                        team.id != 2
+                                                          ? _c(
+                                                              "v-btn",
+                                                              _vm._g(
+                                                                {
+                                                                  attrs: {
+                                                                    icon: ""
+                                                                  }
+                                                                },
+                                                                on
+                                                              ),
+                                                              [
+                                                                _c(
+                                                                  "v-icon",
+                                                                  {
+                                                                    attrs: {
+                                                                      medium:
+                                                                        "",
+                                                                      color:
+                                                                        "#A4AFB7"
+                                                                    },
+                                                                    on: {
+                                                                      click: function(
+                                                                        $event
+                                                                      ) {
+                                                                        return _vm.editpopup(
+                                                                          team
+                                                                        )
+                                                                      }
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      " create"
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ],
+                                                              1
+                                                            )
+                                                          : _vm._e()
+                                                      ]
                                                     }
                                                   }
-                                                },
-                                                [_vm._v(" create")]
+                                                ],
+                                                null,
+                                                true
                                               )
-                                            ],
-                                            1
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      team.id != 1 && team.id != 2
-                                        ? _c(
-                                            "v-btn",
-                                            {
-                                              attrs: { icon: "" },
-                                              on: {
-                                                click: function($event) {
-                                                  return _vm.destroy(team.id)
-                                                }
-                                              }
                                             },
                                             [
-                                              _c(
-                                                "v-icon",
-                                                {
-                                                  attrs: {
-                                                    medium: "",
-                                                    color: "#A4AFB7"
+                                              _vm._v(" "),
+                                              _c("span", [_vm._v("edit")])
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "v-tooltip",
+                                            {
+                                              attrs: { bottom: "" },
+                                              scopedSlots: _vm._u(
+                                                [
+                                                  {
+                                                    key: "activator",
+                                                    fn: function(ref) {
+                                                      var on = ref.on
+                                                      return [
+                                                        team.id != 1 &&
+                                                        team.id != 2
+                                                          ? _c(
+                                                              "v-btn",
+                                                              _vm._g(
+                                                                {
+                                                                  attrs: {
+                                                                    icon: ""
+                                                                  },
+                                                                  on: {
+                                                                    click: function(
+                                                                      $event
+                                                                    ) {
+                                                                      return _vm.destroy(
+                                                                        team.id
+                                                                      )
+                                                                    }
+                                                                  }
+                                                                },
+                                                                on
+                                                              ),
+                                                              [
+                                                                _c(
+                                                                  "v-icon",
+                                                                  {
+                                                                    attrs: {
+                                                                      medium:
+                                                                        "",
+                                                                      color:
+                                                                        "#A4AFB7"
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    _vm._v(
+                                                                      " remove_circle"
+                                                                    )
+                                                                  ]
+                                                                )
+                                                              ],
+                                                              1
+                                                            )
+                                                          : _vm._e()
+                                                      ]
+                                                    }
                                                   }
-                                                },
-                                                [_vm._v(" remove_circle")]
+                                                ],
+                                                null,
+                                                true
                                               )
-                                            ],
-                                            1
+                                            },
+                                            [
+                                              _vm._v(" "),
+                                              _c("span", [_vm._v("remove")])
+                                            ]
                                           )
-                                        : _vm._e()
+                                        ],
+                                        1
+                                      )
                                     ],
                                     1
                                   )

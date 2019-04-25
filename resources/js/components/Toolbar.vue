@@ -2,7 +2,8 @@
     <v-toolbar>
         <div id="app">
             <v-app id="inspire" flat>
-                <v-spacer></v-spacer>
+                <v-flex md8></v-flex>
+                <v-flex md4>
                 <v-toolbar app fixed clipped-left color="white">
                    <!-- <v-toolbar-side-icon v-if="loggedIn" class="white--text"  @click.stop="drawer = !drawer"></v-toolbar-side-icon>-->
                     <v-toolbar-title>
@@ -36,6 +37,7 @@
                     </div>
 
                 </v-toolbar>
+                </v-flex>
             </v-app>
         </div>
     </v-toolbar>
@@ -51,7 +53,7 @@ export default {
             loggedIn : User.loggedIn(),
             items:[
 
-                   { 'title':'Category',to:'/category',show:User.admin() },
+                   { 'title':'Task Types',to:'/category',show:User.admin() },
                    { 'title':'Login',to:'/login',show:!User.loggedIn() },
                    { 'title':'Logout',to:'/logout',show:User.loggedIn() },
 

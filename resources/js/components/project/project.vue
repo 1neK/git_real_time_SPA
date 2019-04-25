@@ -10,20 +10,36 @@
 
           <v-layout row wrap>
 
-              <v-flex xs9 sm4 v-for="project in projects" :key="project.id">
+              <v-flex xs12 sm4 v-for="project in projects" :key="project.id">
                   <v-card >
 
                       <v-toolbar color="white" flat>
-                          <router-link  :to="{ name: 'project-single', params: { id:  project.slug } }"  >    <h3 class="title font-weight-bold">{{ project.name }}</h3></router-link>
-                          <v-spacer></v-spacer>
-                          <v-card-actions>
-                              <v-btn icon>
-                                  <v-icon medium color="#A4AFB7" @click="editpopup(project)"> edit</v-icon>
-                              </v-btn>
-                              <v-btn icon @click="destroy( project.id )">
-                                  <v-icon medium color="#A4AFB7">remove_circle</v-icon>
-                              </v-btn>
-                          </v-card-actions>
+
+                                <v-flex xs7>
+                                    <router-link  :to="{ name: 'project-single', params: { id:  project.slug } }"  >    <h3 class="title font-weight-bold">{{ project.name }}</h3></router-link>
+                                </v-flex>
+
+                                <v-flex xs2>
+                                    <v-card-actions>
+                                        <v-tooltip bottom>
+                                            <template v-slot:activator="{ on }">
+                                              <v-btn icon v-on="on" class="btp">
+                                                  <v-icon medium color="#A4AFB7" @click="editpopup(project)"> edit</v-icon>
+                                              </v-btn>
+                                            </template>
+                                            <span>edit</span>
+                                        </v-tooltip>
+                                        <v-tooltip bottom>
+                                            <template v-slot:activator="{ on }">
+                                              <v-btn icon @click="destroy( project.id )" v-on="on" class="btp">
+                                                  <v-icon medium color="#A4AFB7">remove_circle</v-icon>
+                                              </v-btn>
+                                            </template>
+                                              <span>remove</span>
+                                        </v-tooltip>
+                                    </v-card-actions>
+                                </v-flex>
+
                       </v-toolbar>
 
                       <v-card-title>
@@ -205,5 +221,8 @@
 <style>
 .container {
   max-width: 960px;
+}
+.btp{
+    left:0px;
 }
 </style>

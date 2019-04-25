@@ -13,7 +13,7 @@
             <td class="text-center">{{ props.item.name }}</td>
             <td class="text-center">{{ props.item.email }}</td>
             <td class="text-center">
-                <v-chip color="#5FD179" text-color="white" class="buttonT">{{ props.item.status }}</v-chip>
+                <v-chip color="#5FD179" text-color="white">{{ props.item.status }}</v-chip>
             </td>
             <td class="text-center">
                 <v-btn icon >

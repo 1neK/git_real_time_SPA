@@ -12,20 +12,34 @@
 
                 <v-layout row wrap>
 
-                    <v-flex sm4 v-for="team in teams" :key="team.id">
+                    <v-flex xs12 sm4 v-for="team in teams" :key="team.id">
 
                         <v-card class="carteam">
                             <v-toolbar color="white" flat>
-                            <v-html><a><router-link :to="{ name: 'team-single', params: { id:  team.slug } }"  >  <h3 class="title font-weight-bold">{{ team.name }}</h3></router-link></a></v-html>
-                            <v-spacer></v-spacer>
-                            <v-card-actions>
-                                <v-btn icon v-if="team.id !=1 && team.id !=2">
-                                    <v-icon  medium color="#A4AFB7" @click="editpopup(team)"> create</v-icon>
-                                </v-btn>
-                                <v-btn icon  v-if="team.id !=1 && team.id !=2" @click="destroy( team.id )">
-                                    <v-icon medium color="#A4AFB7"> remove_circle</v-icon>
-                                </v-btn>
-                            </v-card-actions>
+                                <v-flex xs7>
+                                    <v-html><a><router-link :to="{ name: 'team-single', params: { id:  team.slug } }"  >  <h3 class="title font-weight-bold">{{ team.name }}</h3></router-link></a></v-html>
+                                </v-flex>
+
+                                <v-flex xs2>
+                                    <v-card-actions>
+                                        <v-tooltip bottom>
+                                          <template v-slot:activator="{ on }">
+                                                <v-btn icon v-if="team.id !=1 && team.id !=2" v-on="on">
+                                                    <v-icon  medium color="#A4AFB7" @click="editpopup(team)"> create</v-icon>
+                                                </v-btn>
+                                          </template>
+                                          <span>edit</span>
+                                        </v-tooltip>
+                                        <v-tooltip bottom>
+                                          <template v-slot:activator="{ on }">
+                                                <v-btn icon  v-if="team.id !=1 && team.id !=2" @click="destroy( team.id )" v-on="on">
+                                                    <v-icon medium color="#A4AFB7"> remove_circle</v-icon>
+                                                </v-btn>
+                                          </template>
+                                          <span>remove</span>
+                                        </v-tooltip>
+                                    </v-card-actions>
+                                </v-flex>
                             </v-toolbar>
                             <v-card-title primary-title >
                                 <div class="font-weight-regular">

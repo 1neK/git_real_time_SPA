@@ -9,14 +9,15 @@
         <v-form @submit.prevent="submit">
 
             <v-text-field
-            label="Category Name"
+            placeholder="Task Type"
             v-model="form.name"
             required
+            autofocus
           ></v-text-field>
 
-          <v-btn type="submit" :disabled="disabled" color="cyan" v-if="editSlug">Update</v-btn>
+          <v-btn type="submit" :disabled="disabled" color="#188EF5" v-if="editSlug">Update</v-btn>
 
-          <v-btn type="submit" :disabled="disabled" color="teal" v-else>Create</v-btn>
+          <v-btn type="submit" :disabled="disabled" color="#5FD179" v-else>Create</v-btn>
 
         </v-form>
 
@@ -24,7 +25,7 @@
         <v-flex xs12 sm8 offset-sm2>
         <v-card class="text-xs-center">
              <v-toolbar color="grey darken-1" dark dense>
-          <v-toolbar-title>Categories</v-toolbar-title>
+          <v-toolbar-title>Task Types</v-toolbar-title>
         </v-toolbar>
 
         <v-list >
@@ -39,14 +40,14 @@
 
                 <v-list-tile-action>
                     <v-btn icon small @click="edit(index)">
-                        <v-icon color="grey darken-4">edit</v-icon>
+                        <v-icon color="orange">create</v-icon>
                     </v-btn>
                 </v-list-tile-action>
 
 
                 <v-list-tile-action icon small @click="destroy(category.slug,index)">
                     <v-btn icon small>
-                        <v-icon color="grey darken-4">delete</v-icon>
+                        <v-icon color="#F5181F">delete_forever</v-icon>
                     </v-btn>
                 </v-list-tile-action>
             </v-list-tile>

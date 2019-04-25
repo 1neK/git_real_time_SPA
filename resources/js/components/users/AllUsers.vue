@@ -1,43 +1,44 @@
 <template>
     <v-container>
+        <h3 class="title font-weight-bold">Users</h3>
+        <v-flex xs12></v-flex>
+        <v-flex xs12></v-flex>
         <v-container fluid grid-list-md >
         <v-layout row wrap>
-                <v-flex xs3 md2 v-slot:header>
-                    <h2>Users</h2>
-                </v-flex>
-
-            <v-flex xs3 md10>
-                    <v-card-text class="px-0"> <h4> Filter user </h4> </v-card-text>
+            <v-flex xs2></v-flex>
+            <v-flex xs10>
+                <v-card-text  class="px-0 font-weight-bold" id="pro"> <h4> Filter user </h4> </v-card-text>
             </v-flex>
-
+            <v-flex xs2></v-flex>
             <v-flex xs3>
-                    <v-card-text class="px-0">Name</v-card-text>
+                <v-card-text class="px-0 font-weight-bold" id="pro">Name</v-card-text>
                 <v-text-field label="Name" v-model="search.name"></v-text-field>
             </v-flex>
             <v-flex xs3>
-                    <v-card-text class="px-0">Role</v-card-text>
+                    <v-card-text class="px-0 font-weight-bold" id="pro">Role</v-card-text>
                     <v-select
                     :items="roles"
-                    label="role"
+                    placeholder="Role"
                     v-model="search.role_id"
                     item-text="name"
                     item-value="id"
                     ></v-select>
             </v-flex>
+
             <v-flex xs3>
-                <v-card-text class="px-0">Status</v-card-text>
+                <v-card-text class="px-0 font-weight-bold" id="pro">Status</v-card-text>
                     <v-select
                     :items="users"
-                    label="status"
+                    placeholder="Status"
                     v-model="search.status"
                     item-text="status"
 
                     ></v-select>
             </v-flex>
-            <v-flex xs3>
+<v-flex xs4></v-flex>
+            <v-flex xs8>
                 <v-btn @click="filter()"  >filter</v-btn>
                 <v-btn @click="getData()"  >reset</v-btn>
-
             </v-flex>
 
         </v-layout>
@@ -54,12 +55,14 @@
                     <v-chip color="blue" text-color="white">{{ props.item.status }}</v-chip>
                 </td>
                 <td class="text-center">
-                    <v-btn icon @click="edit(props.item)">
-                        <v-icon medium color="black">edit</v-icon>
-                    </v-btn>
-                    <v-btn icon @click="destroy( props.item.id )">
-                        <v-icon medium color="black"> delete</v-icon>
-                    </v-btn>
+                    <v-flex xs12>
+                        <v-btn icon @click="edit(props.item)">
+                            <v-icon medium color="orange">create</v-icon>
+                        </v-btn>
+                        <v-btn icon @click="destroy( props.item.id )">
+                            <v-icon medium color="#F5181F"> delete_forever</v-icon>
+                        </v-btn>
+                    </v-flex>
                 </td>
 
             </template>
@@ -306,6 +309,5 @@
 .container {
   max-width: 960px;
 }
-
 
 </style>

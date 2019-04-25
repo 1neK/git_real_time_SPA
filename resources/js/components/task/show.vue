@@ -1,68 +1,85 @@
 <template>
     <v-layout row wrap>
         <v-container>
-            <v-flex xs12>
-                <h4>Task</h4>
-            </v-flex>
+            <h3 class="title font-weight-bold">Task</h3>
+            <v-flex xs12></v-flex>
+            <v-flex xs12></v-flex>
             <v-flex xs12>
                 <v-card>
                     <v-container>
-                        <v-toolbar flat color="white">
-                            <v-spacer></v-spacer>
-                            <v-btn icon>
-                                <v-icon medium color="orange">edit</v-icon>
-                            </v-btn>
-                        </v-toolbar>
-                        <v-flex md6>
-                            <v-subheader>
-                                <v-card-text class="py-1">
-                                    <h3>Affected To:
-                                        <small>{{task.user}}</small>
-                                    </h3>
-                                </v-card-text>
-                            </v-subheader>
-                            <v-subheader>
-                                <v-card-text class="py-1">
-                                    <h3>Start Date:
-                                        <small>{{task.start_date}}</small>
-                                    </h3>
-                                </v-card-text>
-                                <v-card-text class="py-1">
-                                    <h3>Due Date:
-                                        <small>{{task.due_date}}</small>
-                                    </h3>
-                                </v-card-text>
-                            </v-subheader>
-                            <v-subheader>
-                                <v-card-text class="py-1">
-                                    <h3>Status:
-                                        <small>{{task.status}}</small>
-                                    </h3>
-                                </v-card-text>
-                            </v-subheader>
-                            <v-subheader>
-                                <v-card-text class="py-1"><h3>Description:</h3>
 
-                                    <p>{{task.description}}</p>
-                                </v-card-text>
-                            </v-subheader>
 
-                        </v-flex>
+                                <v-card-text class="py-1 font-weight-bold">
+                                    <v-toolbar flat color="white">
+                                        <v-spacer></v-spacer>
+                                        <v-tooltip bottom>
+                                            <template v-slot:activator="{ on }">
+                                                <v-btn icon v-on="on">
+                                                    <v-icon medium color="orange">edit</v-icon>
+                                                </v-btn>
+                                            </template>
+                                            <span>edit</span>
+                                        </v-tooltip>
+                                    </v-toolbar>
+                                    <v-flex md12>
+                                        <v-subheader>
+                                            <h3>Affected To:
+                                                <small>{{task.user}}</small>
+                                            </h3>
+                                        </v-subheader>
+                                    </v-flex>
+                                </v-card-text>
+                                <v-flex md12>
+                                <v-card-text class="py-1 font-weight-bold">
+                                    <v-subheader>
+                                        <h3>Start Date:
+                                            <small>{{task.start_date}}</small>
+                                        </h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <h3>Due Date:
+                                            <small>{{task.due_date}}</small>
+                                        </h3>
+                                    </v-subheader>
+                                </v-card-text>
+                                </v-flex>
+
+                                    <v-card-text class="py-1 font-weight-bold">
+                                        <v-flex md12>
+                                            <v-subheader>
+                                                <h3>Status:
+                                                    <small>{{task.status}}</small>
+                                                </h3>
+                                            </v-subheader>
+                                        </v-flex>
+                                    </v-card-text>
+
+
+                                    <v-card-text class="py-3 font-weight-bold">
+                                        <v-flex md12>
+                                            <v-subheader>
+                                                <h3>Description: <small><p>{{task.description}}</p></small></h3>
+                                            </v-subheader>
+                                        </v-flex>
+                                    </v-card-text>
+
                     </v-container>
 
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <h5>Added By: &nbsp;</h5>
-                        <p> {{task.createdBy}} </p>
+                        <div class=" font-weight-bold">
+                            <h5>Added By: <p> {{task.createdBy}} </p></h5>
+                        </div>
                     </v-card-actions>
                 </v-card>
             </v-flex>
         </v-container>
         <v-container>
+            <h3 class="font-weight-bold">Comments: </h3>
+            <v-flex xs12></v-flex>
+            <v-flex xs12></v-flex>
             <div class="mt-3" v-for="(data ,index) in task.task_comment">
                 <v-card>
                     <v-card-title>
-                        <div class="headline">{{data.user}}</div>
+                        <div class="headline">{{data.user}}</div> &nbsp;&nbsp;&nbsp;
                         <div class="ml-2">said {{data.created_at}}</div>
                         <v-spacer></v-spacer>
                     </v-card-title>
@@ -78,10 +95,10 @@
                             <markdown-editor v-model="data.body"></markdown-editor>
                             <v-card-actions>
                                 <v-btn icon small @click="update">
-                                    <v-icon color="green">save</v-icon>
+                                    <v-icon color="#5FD179">save</v-icon>
                                 </v-btn>
                                 <v-btn icon small @click="cancel">
-                                    <v-icon color="black" >cancel</v-icon>
+                                    <v-icon color="#F5181F" >cancel</v-icon>
                                 </v-btn>
                             </v-card-actions>
                         </div>
@@ -94,11 +111,12 @@
                     <v-divider></v-divider>
                     <div v-if="!editing[index]">
                         <v-card-actions v-if="own">
+                            <v-spacer></v-spacer>
                             <v-btn icon small @click="edit(index)">
                                 <v-icon color="orange">edit</v-icon>
                             </v-btn>
                             <v-btn icon small @click="destroy(index)">
-                                <v-icon color="red">delete</v-icon>
+                                <v-icon color="#F5181F">delete_forever</v-icon>
                             </v-btn>
                         </v-card-actions>
                     </div>
@@ -111,10 +129,11 @@
                 <span class="red--text" v-if="errors.body">{{errors.body[0]}}</span>
                 <markdown-editor v-model="form.body"></markdown-editor>
                 <v-btn
-                        color="green"
+                        color="#3B86FF"
+                        class="btn2"
                         type="submit"
                         :disabled="disabled"
-                >Create
+                >SEND
                 </v-btn>
             </v-form>
         </v-container>
@@ -208,5 +227,20 @@
     .container {
         max-width: 960px;
 
+    }
+
+    .btn2{
+  border: none;
+  color: white;
+  padding: 7px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 12px;
+  border-radius: 2px;
+  left:50%;
     }
 </style>

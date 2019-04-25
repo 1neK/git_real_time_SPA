@@ -1,7 +1,7 @@
 <template>
 <v-navigation-drawer permanent  v-if="User.loggedIn()">
     <v-container class="clnav1">
-        <v-list dense >
+        <v-list dense>
             <!--<v-list-tile-content>
                 <v-list-tile-title></v-list-tile-title>
             </v-list-tile-content>-->
@@ -119,16 +119,21 @@ export default {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
   font-size: 12px;
   border-radius: 2px;
 }
 
 .center1{
     color:white;
+    font-weight:500;
+    font-size:13px;
+    display:flex;
 }
 
-
+.primary--text{
+    opacity:0.5;
+    color:white;
+}
 
 </style>
 
