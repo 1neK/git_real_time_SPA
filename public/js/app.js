@@ -1787,6 +1787,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -2040,6 +2042,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppNotification__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AppNotification */ "./resources/js/components/AppNotification.vue");
+//
+//
 //
 //
 //
@@ -24101,7 +24105,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -24253,7 +24257,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n.btp{\n    left:0px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\n.btp{\r\n    left:0px;\n}\r\n", ""]);
 
 // exports
 
@@ -24348,7 +24352,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -24367,7 +24371,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n.carteam{\n    border-radius: 8px;\n}\na:link{\n    color:#4D4F5C;\n    text-decoration: none;\n}\na:visited{\n    color:#4D4F5C;\n    text-decoration: none;\n}\n\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\n.carteam{\r\n    border-radius: 8px;\n}\na:link{\r\n    color:#4D4F5C;\r\n    text-decoration: none;\n}\na:visited{\r\n    color:#4D4F5C;\r\n    text-decoration: none;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -61048,7 +61052,7 @@ var render = function() {
       [
         _c(
           "v-app",
-          { attrs: { id: "inspire", flat: "" } },
+          { attrs: { id: "inspire" } },
           [
             _c("v-flex", { attrs: { md8: "" } }),
             _vm._v(" "),
@@ -61063,7 +61067,8 @@ var render = function() {
                       app: "",
                       fixed: "",
                       "clipped-left": "",
-                      color: "white"
+                      dark: "",
+                      color: "#3B3B53"
                     }
                   },
                   [
@@ -61080,83 +61085,114 @@ var render = function() {
                     _vm._v(" "),
                     _c("v-spacer"),
                     _vm._v(" "),
+                    !_vm.loggedIn
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass:
+                              "font-weight-light subheading white--text",
+                            attrs: { to: "/login" }
+                          },
+                          [_vm._v("Login")]
+                        )
+                      : _vm._e(),
+                    _vm._v("     \n                "),
+                    !_vm.loggedIn
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass:
+                              "font-weight-light subheading white--text",
+                            attrs: { to: "/signup" }
+                          },
+                          [_vm._v("Sign Up")]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
                     _vm.loggedIn ? _c("app-notification") : _vm._e(),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "hidden-sm-and-down" },
-                      [
-                        _c(
-                          "v-menu",
-                          {
-                            attrs: { "offset-y": "" },
-                            scopedSlots: _vm._u([
-                              {
-                                key: "activator",
-                                fn: function(ref) {
-                                  var on = ref.on
-                                  return [
-                                    _c(
-                                      "v-btn",
-                                      _vm._g(
-                                        {
-                                          attrs: {
-                                            slot: "activator",
-                                            icon: "",
-                                            dark: ""
-                                          },
-                                          slot: "activator"
-                                        },
-                                        on
-                                      ),
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "#43425D" } },
-                                          [_vm._v("menu")]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ]
-                                }
-                              }
-                            ])
-                          },
+                    _vm.loggedIn
+                      ? _c(
+                          "div",
+                          { staticClass: "hidden-sm-and-down" },
                           [
-                            _vm._v(" "),
                             _c(
-                              "v-list",
-                              { attrs: { dense: "" } },
-                              _vm._l(_vm.items, function(item) {
-                                return item.show
-                                  ? _c(
-                                      "v-list-tile",
-                                      {
-                                        key: item.title,
-                                        attrs: { to: item.to }
-                                      },
-                                      [
-                                        _c("v-list-tile-title", [
-                                          _vm._v(
-                                            "\n                                " +
-                                              _vm._s(item.title) +
-                                              "\n                            "
+                              "v-menu",
+                              {
+                                attrs: { "offset-y": "" },
+                                scopedSlots: _vm._u(
+                                  [
+                                    {
+                                      key: "activator",
+                                      fn: function(ref) {
+                                        var on = ref.on
+                                        return [
+                                          _c(
+                                            "v-btn",
+                                            _vm._g(
+                                              {
+                                                attrs: {
+                                                  slot: "activator",
+                                                  icon: "",
+                                                  dark: ""
+                                                },
+                                                slot: "activator"
+                                              },
+                                              on
+                                            ),
+                                            [
+                                              _c(
+                                                "v-icon",
+                                                { attrs: { color: "white" } },
+                                                [_vm._v("menu")]
+                                              )
+                                            ],
+                                            1
                                           )
-                                        ])
-                                      ],
-                                      1
-                                    )
-                                  : _vm._e()
-                              }),
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  null,
+                                  false,
+                                  2317029477
+                                )
+                              },
+                              [
+                                _vm._v(" "),
+                                _c(
+                                  "v-list",
+                                  { attrs: { dense: "" } },
+                                  _vm._l(_vm.items, function(item) {
+                                    return item.show
+                                      ? _c(
+                                          "v-list-tile",
+                                          {
+                                            key: item.title,
+                                            attrs: { to: item.to }
+                                          },
+                                          [
+                                            _c("v-list-tile-title", [
+                                              _vm._v(
+                                                "\n                                " +
+                                                  _vm._s(item.title) +
+                                                  "\n                            "
+                                              )
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e()
+                                  }),
+                                  1
+                                )
+                              ],
                               1
                             )
                           ],
                           1
                         )
-                      ],
-                      1
-                    )
+                      : _vm._e()
                   ],
                   1
                 )
@@ -62964,7 +63000,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\n                Project name is required.\n            "
+                                "\r\n                Project name is required.\r\n            "
                               )
                             ]
                           )
@@ -63005,7 +63041,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\n            close\n          ")]
+                        [_vm._v("\r\n            close\r\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
