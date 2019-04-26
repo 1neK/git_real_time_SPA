@@ -65,10 +65,10 @@
                             bottom
                             right
                             icon
-                            color="red lighten-4"
+                            color="pink"
 
                     >
-                        <v-icon large>add</v-icon>
+                        <v-icon>add</v-icon>
                     </v-btn>
                 </v-card-text>
 

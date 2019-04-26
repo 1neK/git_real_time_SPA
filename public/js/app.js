@@ -4564,7 +4564,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -24257,7 +24256,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\n.btp{\r\n    left:0px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n.btp{\n    left:0px;\n}\n", ""]);
 
 // exports
 
@@ -24371,7 +24370,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\n.carteam{\r\n    border-radius: 8px;\n}\na:link{\r\n    color:#4D4F5C;\r\n    text-decoration: none;\n}\na:visited{\r\n    color:#4D4F5C;\r\n    text-decoration: none;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n.carteam{\n    border-radius: 8px;\n}\na:link{\n    color:#4D4F5C;\n    text-decoration: none;\n}\na:visited{\n    color:#4D4F5C;\n    text-decoration: none;\n}\n\n", ""]);
 
 // exports
 
@@ -62927,7 +62926,7 @@ var render = function() {
                               fab: "",
                               bottom: "",
                               right: "",
-                              color: "red lighten-4"
+                              color: "pink"
                             },
                             on: {
                               click: function($event) {
@@ -62937,11 +62936,7 @@ var render = function() {
                           },
                           on
                         ),
-                        [
-                          _c("v-icon", { attrs: { large: "" } }, [
-                            _vm._v("add")
-                          ])
-                        ],
+                        [_c("v-icon", [_vm._v("add")])],
                         1
                       )
                     ],
@@ -63000,7 +62995,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\r\n                Project name is required.\r\n            "
+                                "\n                Project name is required.\n            "
                               )
                             ]
                           )
@@ -63041,7 +63036,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\r\n            close\r\n          ")]
+                        [_vm._v("\n            close\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
@@ -64801,7 +64796,7 @@ var render = function() {
                     [
                       _c(
                         "v-card-text",
-                        { staticClass: "py-1 font-weight-bold" },
+                        { staticClass: " font-weight-bold" },
                         [
                           _c(
                             "v-toolbar",
@@ -64872,7 +64867,7 @@ var render = function() {
                         [
                           _c(
                             "v-card-text",
-                            { staticClass: "py-1 font-weight-bold" },
+                            { staticClass: " font-weight-bold" },
                             [
                               _c("v-subheader", [
                                 _c("h3", [
@@ -64904,7 +64899,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "v-card-text",
-                        { staticClass: "py-1 font-weight-bold" },
+                        { staticClass: " font-weight-bold" },
                         [
                           _c(
                             "v-flex",
@@ -64927,7 +64922,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "v-card-text",
-                        { staticClass: "py-3 font-weight-bold" },
+                        { staticClass: " font-weight-bold" },
                         [
                           _c(
                             "v-flex",
@@ -66658,7 +66653,7 @@ var render = function() {
                               bottom: "",
                               right: "",
                               icon: "",
-                              color: "red lighten-4"
+                              color: "pink"
                             },
                             on: {
                               click: function($event) {
@@ -66668,11 +66663,7 @@ var render = function() {
                           },
                           on
                         ),
-                        [
-                          _c("v-icon", { attrs: { large: "" } }, [
-                            _vm._v("add")
-                          ])
-                        ],
+                        [_c("v-icon", [_vm._v("add")])],
                         1
                       )
                     ],

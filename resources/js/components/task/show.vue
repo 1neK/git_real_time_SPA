@@ -8,8 +8,7 @@
                 <v-card>
                     <v-container>
 
-
-                                <v-card-text class="py-1 font-weight-bold">
+                                <v-card-text class=" font-weight-bold">
                                     <v-toolbar flat color="white">
                                         <v-spacer></v-spacer>
                                         <v-tooltip bottom>
@@ -30,7 +29,7 @@
                                     </v-flex>
                                 </v-card-text>
                                 <v-flex md12>
-                                <v-card-text class="py-1 font-weight-bold">
+                                <v-card-text class=" font-weight-bold">
                                     <v-subheader>
                                         <h3>Start Date:
                                             <small>{{task.start_date}}</small>
@@ -42,7 +41,7 @@
                                 </v-card-text>
                                 </v-flex>
 
-                                    <v-card-text class="py-1 font-weight-bold">
+                                    <v-card-text class=" font-weight-bold">
                                         <v-flex md12>
                                             <v-subheader>
                                                 <h3>Status:
@@ -53,7 +52,7 @@
                                     </v-card-text>
 
 
-                                    <v-card-text class="py-3 font-weight-bold">
+                                    <v-card-text class=" font-weight-bold">
                                         <v-flex md12>
                                             <v-subheader>
                                                 <h3>Description: <small><p>{{task.description}}</p></small></h3>
