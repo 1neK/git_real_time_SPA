@@ -11,7 +11,7 @@ Route::apiResource('/team', 'RoleController');
 Route::get('/count-team', 'RoleController@count_team');
 Route::get('/liste-team', 'RoleController@affiche');
 
-Route::apiResource('/question/{question}/reply', 'ReplyController');
+Route::apiResource('/question/{question}/reply', 'ReplyController');        
 
 Route::post('/like/{reply}', 'LikeController@likeIt');
 Route::delete('/like/{reply}', 'LikeController@unLikeIt');

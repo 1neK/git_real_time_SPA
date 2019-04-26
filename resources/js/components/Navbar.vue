@@ -114,7 +114,7 @@ export default {
   border: #43425D;
   color: white;
   height: 100%;
-  width: 300px;
+  width: 100%;
   text-align: center;
   text-decoration: none;
   display: inline-block;

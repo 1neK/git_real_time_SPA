@@ -24085,7 +24085,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.clnav1{\n  background-color: #43425D; /* violet */\n  border: #43425D;\n  color: white;\n  height: 100%;\n  width: 300px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  font-size: 12px;\n  border-radius: 2px;\n}\n.center1{\n    color:white;\n    font-weight:500;\n    font-size:13px;\n    display:flex;\n}\n.primary--text{\n    opacity:0.5;\n    color:white;\n}\n\n", ""]);
+exports.push([module.i, "\n.clnav1{\n  background-color: #43425D; /* violet */\n  border: #43425D;\n  color: white;\n  height: 100%;\n  width: 100%;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  font-size: 12px;\n  border-radius: 2px;\n}\n.center1{\n    color:white;\n    font-weight:500;\n    font-size:13px;\n    display:flex;\n}\n.primary--text{\n    opacity:0.5;\n    color:white;\n}\n\n", ""]);
 
 // exports
 
@@ -107557,10 +107557,45 @@ function () {
 /*!*******************************************!*\
   !*** ./resources/js/Helpers/Exception.js ***!
   \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _User__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./User */ "./resources/js/Helpers/User.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 
+
+var Exception =
+/*#__PURE__*/
+function () {
+  function Exception() {
+    _classCallCheck(this, Exception);
+  }
+
+  _createClass(Exception, [{
+    key: "handle",
+    value: function handle(error) {
+      this.isExpired(error.response.data.error);
+    }
+  }, {
+    key: "isExpired",
+    value: function isExpired(error) {
+      if (error == 'Token is invalid') {
+        _User__WEBPACK_IMPORTED_MODULE_0__["default"].logout();
+      }
+    }
+  }]);
+
+  return Exception;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Exception = new Exception());
 
 /***/ }),
 
@@ -107702,7 +107737,7 @@ function () {
     key: "logout",
     value: function logout() {
       _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].clear();
-      window.location = '/forum';
+      window.location = '/login';
     }
   }, {
     key: "name",
@@ -108061,7 +108096,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(marked__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _Helpers_User__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Helpers/User */ "./resources/js/Helpers/User.js");
 /* harmony import */ var _Helpers_Exception__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Helpers/Exception */ "./resources/js/Helpers/Exception.js");
-/* harmony import */ var _Helpers_Exception__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_Helpers_Exception__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-toasted */ "./node_modules/vue-toasted/dist/vue-toasted.min.js");
 /* harmony import */ var vue_toasted__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(vue_toasted__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _Router_router_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Router/router.js */ "./resources/js/Router/router.js");
@@ -108083,7 +108117,7 @@ window.md = marked__WEBPACK_IMPORTED_MODULE_3___default.a;
 
 window.User = _Helpers_User__WEBPACK_IMPORTED_MODULE_4__["default"];
 
-window.Exception = _Helpers_Exception__WEBPACK_IMPORTED_MODULE_5___default.a; // register the plugin on vue
+window.Exception = _Helpers_Exception__WEBPACK_IMPORTED_MODULE_5__["default"]; // register the plugin on vue
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_toasted__WEBPACK_IMPORTED_MODULE_6___default.a);
