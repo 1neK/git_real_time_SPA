@@ -11,4 +11,8 @@ class Role extends Model
     {
         return 'slug';
     }
+
+    public function task(){
+        return $this->hasMany(Task::class);
+    }
 }

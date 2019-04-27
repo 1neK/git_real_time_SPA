@@ -28,9 +28,9 @@ class UserController extends Controller
     {
 
 
-           $data=User::whereNotNull('id');
+            $data=User::whereNotNull('id');
             if ($request->name ) $data->where('name','like','%'.$request->name.'%');
-          if ($request->role_id ) $data->where('role_id' ,$request->role_id);
+            if ($request->role_id ) $data->where('role_id' ,$request->role_id);
             if ($request->status ) $data->where('status',  $request->status );
 
             $users=$data->get();

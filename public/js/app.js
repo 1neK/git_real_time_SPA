@@ -2011,9 +2011,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 
@@ -24256,7 +24253,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n.btp{\n    left:0px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n.btp{\n    left:0px;\n}\n.carteam1{\n    border-radius: 12px;\n}\n", ""]);
 
 // exports
 
@@ -62699,6 +62696,7 @@ var render = function() {
                         [
                           _c(
                             "v-card",
+                            { staticClass: "carteam1" },
                             [
                               _c(
                                 "v-toolbar",

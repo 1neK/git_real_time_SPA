@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Role;
 
 class Task extends Model
 {
@@ -17,5 +18,9 @@ class Task extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function role(){
+        return $this->belongsTo(Role::class);
     }
 }

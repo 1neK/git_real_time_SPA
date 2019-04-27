@@ -37,8 +37,7 @@ class ProjectController extends Controller
         foreach ($projects as $project) {
             $count = Task::where('project_id', $project->id)->count();
             $project->task_number = $count;
-            /*$task =Task::where('project_id',$project->id)->count();
-            $project->task_number=$task;*/
+
 
         }
 
