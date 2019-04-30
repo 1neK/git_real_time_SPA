@@ -2427,7 +2427,7 @@ __webpack_require__.r(__webpack_exports__);
         value: 'project'
       }, {
         text: 'Task',
-        value: 'type'
+        value: 'category'
       }, {
         text: 'Affected to',
         value: 'user'
@@ -2439,7 +2439,7 @@ __webpack_require__.r(__webpack_exports__);
         value: 'due_date'
       }, {
         text: 'Completed on ',
-        value: 'completed_on'
+        value: 'date_completed'
       }, {
         text: 'Comments ',
         value: 'comments'
@@ -2448,10 +2448,11 @@ __webpack_require__.r(__webpack_exports__);
         value: 'status'
       }, {
         text: 'Links ',
-        value: 'links'
+        value: 'final_link'
       }],
       users: [],
       projects: [],
+      categories: [],
       tasks: [],
       status: ['In progress', 'Validated', 'Incompleted', 'Completed'],
       search: {
@@ -3497,7 +3498,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
@@ -3902,9 +3902,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
 //
 //
 //
@@ -4932,12 +4929,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -24348,7 +24339,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -61825,7 +61816,7 @@ var render = function() {
                             _c("td", [_vm._v(_vm._s(props.item.project))]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [
-                              _vm._v(_vm._s(props.item.type))
+                              _vm._v(_vm._s(props.item.category))
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [
@@ -61841,7 +61832,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [
-                              _vm._v(_vm._s(props.item.completed_on))
+                              _vm._v(_vm._s(props.item.date_completed))
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [
@@ -61853,7 +61844,7 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("td", { staticClass: "text-center" }, [
-                              _vm._v(_vm._s(props.item.links))
+                              _vm._v(_vm._s(props.item.final_link))
                             ])
                           ]
                         }
@@ -63376,56 +63367,32 @@ var render = function() {
                             _vm.myRole == "Admin" || _vm.myRole == "Coordinator"
                               ? _c(
                                   "td",
-                                  { staticClass: "text-center" },
+                                  { staticClass: "justify-center layout px-0" },
                                   [
                                     _c(
-                                      "v-btn",
+                                      "v-icon",
                                       {
-                                        attrs: { icon: "" },
+                                        attrs: { medium: "", color: "orange" },
                                         on: {
                                           click: function($event) {
                                             return _vm.edit(props.item)
                                           }
                                         }
                                       },
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          {
-                                            attrs: {
-                                              medium: "",
-                                              color: "orange"
-                                            }
-                                          },
-                                          [_vm._v("create")]
-                                        )
-                                      ],
-                                      1
+                                      [_vm._v("create")]
                                     ),
                                     _vm._v(" "),
                                     _c(
-                                      "v-btn",
+                                      "v-icon",
                                       {
-                                        attrs: { icon: "" },
+                                        attrs: { medium: "", color: "#F5181F" },
                                         on: {
                                           click: function($event) {
                                             return _vm.destroy(props.item.id)
                                           }
                                         }
                                       },
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          {
-                                            attrs: {
-                                              medium: "",
-                                              color: "#F5181F"
-                                            }
-                                          },
-                                          [_vm._v(" delete_forever")]
-                                        )
-                                      ],
-                                      1
+                                      [_vm._v(" delete_forever")]
                                     )
                                   ],
                                   1
@@ -64376,100 +64343,64 @@ var render = function() {
                             _vm.myRole == "Admin" || _vm.myRole == "Coordinator"
                               ? _c(
                                   "td",
-                                  { staticClass: "text-center" },
+                                  { staticClass: "justify-center layout px-0" },
                                   [
                                     _c(
-                                      "v-flex",
-                                      { attrs: { xs8: "" } },
-                                      [
-                                        _c(
+                                      "v-icon",
+                                      {
+                                        staticClass: "mr-2",
+                                        attrs: { medium: "", color: "orange" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.edit(props.item)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("edit")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-icon",
+                                      {
+                                        attrs: { medium: "", color: "#F5181F" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.destroy(props.item.id)
+                                          }
+                                        }
+                                      },
+                                      [_vm._v(" delete_forever")]
+                                    ),
+                                    _vm._v(" "),
+                                    props.item.status == "Completed"
+                                      ? _c(
                                           "v-btn",
                                           {
-                                            attrs: { icon: "" },
+                                            attrs: { color: "blue" },
                                             on: {
                                               click: function($event) {
-                                                return _vm.edit(props.item)
+                                                return _vm.accept(props.item.id)
                                               }
                                             }
                                           },
-                                          [
-                                            _c(
-                                              "v-icon",
-                                              {
-                                                attrs: {
-                                                  medium: "",
-                                                  color: "orange"
-                                                }
-                                              },
-                                              [_vm._v("edit")]
-                                            )
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
+                                          [_vm._v("accept")]
+                                        )
+                                      : _vm._e(),
+                                    _vm._v(" "),
+                                    props.item.status == "Completed"
+                                      ? _c(
                                           "v-btn",
                                           {
-                                            attrs: { icon: "" },
+                                            attrs: { color: "red" },
                                             on: {
                                               click: function($event) {
-                                                return _vm.destroy(
-                                                  props.item.id
-                                                )
+                                                return _vm.reject(props.item.id)
                                               }
                                             }
                                           },
-                                          [
-                                            _c(
-                                              "v-icon",
-                                              {
-                                                attrs: {
-                                                  medium: "",
-                                                  color: "#F5181F"
-                                                }
-                                              },
-                                              [_vm._v(" delete_forever")]
-                                            )
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        props.item.status == "Completed"
-                                          ? _c(
-                                              "v-btn",
-                                              {
-                                                attrs: { color: "blue" },
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.accept(
-                                                      props.item.id
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [_vm._v("accept")]
-                                            )
-                                          : _vm._e(),
-                                        _vm._v(" "),
-                                        props.item.status == "Completed"
-                                          ? _c(
-                                              "v-btn",
-                                              {
-                                                attrs: { color: "red" },
-                                                on: {
-                                                  click: function($event) {
-                                                    return _vm.reject(
-                                                      props.item.id
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [_vm._v("reject")]
-                                            )
-                                          : _vm._e()
-                                      ],
-                                      1
-                                    )
+                                          [_vm._v("reject")]
+                                        )
+                                      : _vm._e()
                                   ],
                                   1
                                 )
@@ -65822,53 +65753,33 @@ var render = function() {
                 _vm._v(" "),
                 _c(
                   "td",
-                  { staticClass: "text-center" },
+                  { staticClass: "justify-center layout px-0" },
                   [
                     _c(
-                      "v-flex",
-                      { attrs: { xs12: "" } },
-                      [
-                        _c(
-                          "v-btn",
-                          {
-                            attrs: { icon: "" },
-                            on: {
-                              click: function($event) {
-                                return _vm.edit(props.item)
-                              }
-                            }
-                          },
-                          [
-                            _c(
-                              "v-icon",
-                              { attrs: { medium: "", color: "orange" } },
-                              [_vm._v("create")]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-btn",
-                          {
-                            attrs: { icon: "" },
-                            on: {
-                              click: function($event) {
-                                return _vm.destroy(props.item.id)
-                              }
-                            }
-                          },
-                          [
-                            _c(
-                              "v-icon",
-                              { attrs: { medium: "", color: "#F5181F" } },
-                              [_vm._v(" delete_forever")]
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
+                      "v-icon",
+                      {
+                        staticClass: "mr-2",
+                        attrs: { small: "", color: "orange" },
+                        on: {
+                          click: function($event) {
+                            return _vm.edit(props.item)
+                          }
+                        }
+                      },
+                      [_vm._v("create")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-icon",
+                      {
+                        attrs: { small: "", color: "#F5181F" },
+                        on: {
+                          click: function($event) {
+                            return _vm.destroy(props.item.id)
+                          }
+                        }
+                      },
+                      [_vm._v(" delete_forever")]
                     )
                   ],
                   1

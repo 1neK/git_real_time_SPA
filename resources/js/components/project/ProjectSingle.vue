@@ -70,13 +70,12 @@
                         <td class="text-center">{{ props.item.due_date }}</td>
                         <td class="text-center">{{ props.item.comments }}</td>
                         <td class="text-center"><v-chip :color="color" text-color="white" class="buttonT">{{ props.item.status }} </v-chip> </td>
-                        <td class="text-center" v-if="myRole=='Admin' || myRole=='Coordinator'">
-                            <v-btn icon @click="edit(props.item)">
-                                <v-icon medium color="orange">create</v-icon>
-                            </v-btn>
-                            <v-btn icon @click="destroy( props.item.id )">
-                                <v-icon medium color="#F5181F"> delete_forever</v-icon>
-                            </v-btn>
+                        <td class="justify-center layout px-0" v-if="myRole=='Admin' || myRole=='Coordinator'">
+
+                                <v-icon medium color="orange" @click="edit(props.item)">create</v-icon>
+
+                                <v-icon medium color="#F5181F" @click="destroy( props.item.id )"> delete_forever</v-icon>
+
                         </td>
 
                     </template>

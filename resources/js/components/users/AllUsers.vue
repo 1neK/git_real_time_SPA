@@ -54,15 +54,9 @@
                 <td class="text-center">
                     <v-chip color="blue" text-color="white">{{ props.item.status }}</v-chip>
                 </td>
-                <td class="text-center">
-                    <v-flex xs12>
-                        <v-btn icon @click="edit(props.item)">
-                            <v-icon medium color="orange">create</v-icon>
-                        </v-btn>
-                        <v-btn icon @click="destroy( props.item.id )">
-                            <v-icon medium color="#F5181F"> delete_forever</v-icon>
-                        </v-btn>
-                    </v-flex>
+                <td class="justify-center layout px-0">
+                            <v-icon small class="mr-2" color="orange" @click="edit(props.item)">create</v-icon>
+                            <v-icon small color="#F5181F" @click="destroy( props.item.id )"> delete_forever</v-icon>
                 </td>
 
             </template>
@@ -309,5 +303,6 @@
 .container {
   max-width: 960px;
 }
+
 
 </style>

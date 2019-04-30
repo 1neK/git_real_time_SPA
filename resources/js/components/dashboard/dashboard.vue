@@ -125,14 +125,14 @@
                     <v-data-table colmd12 :headers="headers" :items="tasks" class="elevation-1">
                         <template v-slot:items="props">
                             <td>{{ props.item.project }}</td>
-                            <td class="text-center">{{ props.item.type }}</td>
+                            <td class="text-center">{{ props.item.category }}</td>
                             <td class="text-center">{{ props.item.user }}</td>
                             <td class="text-center">{{ props.item.start_date }}</td>
                             <td class="text-center">{{ props.item.due_date }}</td>
-                            <td class="text-center">{{ props.item.completed_on }}</td>
+                            <td class="text-center">{{ props.item.date_completed }}</td>
                             <td class="text-center">{{ props.item.comments }}</td>
                             <td class="text-center">{{ props.item.status }}</td>
-                            <td class="text-center">{{ props.item.links }}</td>
+                            <td class="text-center">{{ props.item.final_link }}</td>
                         </template>
                     </v-data-table>
                 </v-container>
@@ -159,20 +159,20 @@
                     },
 
 
-                    {text: 'Task', value: 'type'},
+                    {text: 'Task', value: 'category'},
                     {text: 'Affected to', value: 'user'},
                     {text: 'Start Date ', value: 'start_date'},
                     {text: 'Due Date ', value: 'due_date'},
-                    {text: 'Completed on ', value: 'completed_on'},
+                    {text: 'Completed on ', value: 'date_completed'},
                     {text: 'Comments ', value: 'comments'},
                     {text: 'Status ', value: 'status'},
-                    {text: 'Links ', value: 'links'},
+                    {text: 'Links ', value: 'final_link'},
 
                 ],
 
                 users: [],
                 projects:[],
-
+                categories:[],
                 tasks:[],
                 status:['In progress','Validated','Incompleted','Completed'],
 
