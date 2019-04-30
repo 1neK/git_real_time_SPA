@@ -62619,31 +62619,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "v-parallax",
-    {
-      attrs: {
-        height: "700",
-        src: "https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
-      }
-    },
-    [
-      _c(
-        "v-layout",
-        { attrs: { "align-center": "", column: "", "justify-center": "" } },
+  return _vm.User.loggedIn()
+    ? _c(
+        "v-parallax",
+        {
+          attrs: {
+            height: "700",
+            src: "https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
+          }
+        },
         [
-          _c("h1", { staticClass: "display-4 font-weight-thin mb-3" }, [
-            _vm._v("Real SPA")
-          ]),
-          _vm._v(" "),
-          _c("h4", { staticClass: "headline" }, [
-            _vm._v("Real Time Single Page Forum")
-          ])
-        ]
+          _c(
+            "v-layout",
+            { attrs: { "align-center": "", column: "", "justify-center": "" } },
+            [
+              _c("h1", { staticClass: "display-4 font-weight-thin mb-3" }, [
+                _vm._v("Real SPA")
+              ]),
+              _vm._v(" "),
+              _c("h4", { staticClass: "headline" }, [
+                _vm._v("Real Time Single Page Forum")
+              ])
+            ]
+          )
+        ],
+        1
       )
-    ],
-    1
-  )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -62885,12 +62887,27 @@ var render = function() {
                                     ]),
                                     _vm._v(" "),
                                     _c("div", [
-                                      _vm._v(" Tasks in progress : ")
+                                      _vm._v(
+                                        " Tasks in progress : " +
+                                          _vm._s(project.progress_task) +
+                                          " "
+                                      )
                                     ]),
                                     _vm._v(" "),
-                                    _c("div", [_vm._v(" Pending Tasks : ")]),
+                                    _c("div", [
+                                      _vm._v(
+                                        " Pending Tasks : " +
+                                          _vm._s(project.pending_task)
+                                      )
+                                    ]),
                                     _vm._v(" "),
-                                    _c("div", [_vm._v(" Completed Tasks : ")]),
+                                    _c("div", [
+                                      _vm._v(
+                                        " Completed Tasks : " +
+                                          _vm._s(project.completed_task) +
+                                          " "
+                                      )
+                                    ]),
                                     _vm._v(" "),
                                     _c("v-divider")
                                   ],

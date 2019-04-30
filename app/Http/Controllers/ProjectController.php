@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Model\Task as AppTask;
 
 class ProjectController extends Controller
 {
@@ -39,6 +40,17 @@ class ProjectController extends Controller
             $project->task_number = $count;
 
 
+            $progress_task=Task::where('project_id',$project->id)->where('status','In progress')->count();
+            $project->progress_task=$progress_task;
+
+            $completed_task=Task::where('project_id',$project->id)->where('status','Completed')->count();
+            $project->completed_task=$completed_task;
+
+            $pending_task=Task::where('project_id',$project->id)->where('status','Incompleted')->count();
+            $project->pending_task=$pending_task;
+
+
+
         }
 
         return response()->json($projects);
@@ -46,7 +58,6 @@ class ProjectController extends Controller
 
     public function count_task()
     {
-
 
 
     }

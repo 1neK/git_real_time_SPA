@@ -1,7 +1,7 @@
 <template>
   <v-parallax
     height="700"
-    src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg">
+    src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg" v-if="User.loggedIn()">
     <v-layout
         align-center
         column

@@ -46,9 +46,9 @@
                           <div>
 
                               <div> Tasks : {{ project.task_number }}</div>
-                              <div> Tasks in progress : </div>
-                              <div> Pending Tasks : </div>
-                              <div> Completed Tasks : </div>
+                              <div> Tasks in progress : {{project.progress_task}} </div>
+                              <div> Pending Tasks : {{project.pending_task}}</div>
+                              <div> Completed Tasks : {{project.completed_task}} </div>
                               <v-divider></v-divider>
                           </div>
 
