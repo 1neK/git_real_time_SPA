@@ -118,7 +118,17 @@
                 <v-flex xs6></v-flex>
                 <v-flex xs10></v-flex>
                 <v-flex md2>
-                    <v-btn color="#43425D" class="btdown"> Download Excell</v-btn>
+                 
+                    <download-excel
+	class   = "btn btn-default"
+	:data   = "tasks"
+	:fields = "json_fields"
+	worksheet = "My Worksheet"
+	name    = "filename.xls">
+
+   <v-btn color="#43425D" class="btdown"> Download Excell</v-btn>
+
+</download-excel>
                 </v-flex>
 
                 <v-container>
@@ -196,6 +206,26 @@
                     {id:'10' ,value: 'October'},
                     {id:'11' ,value: 'November'},
                     {id:'12' ,value: 'December'}],
+
+                    json_fields: {
+            'project': 'project',
+            'Task': 'category',
+            'Affected to': 'user',
+            'start date':'start_date',
+            'due date':'due_date',
+            'status':'status'
+            
+            },
+      
+      
+        json_meta: [
+            [
+                {
+                    'key': 'charset',
+                    'value': 'utf-8'
+                }
+            ]
+        ],
 
             }
 

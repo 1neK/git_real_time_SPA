@@ -12,6 +12,10 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 Vue.use(Vuetify)
 
+import JsonExcel from 'vue-json-excel'
+Vue.component('downloadExcel', JsonExcel)
+
+
 import VueSimplemde from 'vue-simplemde'
 Vue.use(VueSimplemde)
 import md from 'marked'

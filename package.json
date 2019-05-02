@@ -26,6 +26,7 @@
     "dependencies": {
         "laravel-echo": "^1.5.3",
         "pusher-js": "^4.4.0",
+        "vue-json-excel": "^0.2.98",
         "vue-router": "^3.0.2",
         "vue-simplemde": "^0.5.1",
         "vue-toasted": "^1.1.26",
