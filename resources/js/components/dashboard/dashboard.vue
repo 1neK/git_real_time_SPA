@@ -118,7 +118,7 @@
                 <v-flex xs6></v-flex>
                 <v-flex xs10></v-flex>
                 <v-flex md2>
-                 
+
                     <download-excel
 	class   = "btn btn-default"
 	:data   = "tasks"
@@ -157,10 +157,6 @@
     export default {
         data() {
             return {
-                /*select1: 'Ins'
-                items1: [
-
-                ],*/
                 headers: [
                     {
                         text: 'Project',
@@ -213,11 +209,13 @@
             'Affected to': 'user',
             'start date':'start_date',
             'due date':'due_date',
-            'status':'status'
-            
+            'status':'status',
+            'Completed on ': 'date_completed',
+            'Links ': 'final_link'
+
             },
-      
-      
+
+
         json_meta: [
             [
                 {

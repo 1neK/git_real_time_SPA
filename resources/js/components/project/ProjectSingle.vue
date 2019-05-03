@@ -69,7 +69,7 @@
                         <td class="text-center">{{ props.item.start_date }}</td>
                         <td class="text-center">{{ props.item.due_date }}</td>
                         <td class="text-center">{{ props.item.comments }}</td>
-                        <td class="text-center"><v-chip :color="color" text-color="white" class="buttonT">{{ props.item.status }} </v-chip> </td>
+                        <td class="text-center"><v-chip :color="color" text-color="black" >{{ props.item.status }} </v-chip> </td>
                         <td class="justify-center layout px-0" v-if="myRole=='Admin' || myRole=='Coordinator'">
 
                                 <v-icon medium color="orange" @click="edit(props.item)">create</v-icon>

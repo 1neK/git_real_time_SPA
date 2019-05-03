@@ -2428,9 +2428,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      /*select1: 'Ins'
-      items1: [
-       ],*/
       headers: [{
         text: 'Project',
         sortable: false,
@@ -2519,7 +2516,9 @@ __webpack_require__.r(__webpack_exports__);
         'Affected to': 'user',
         'start date': 'start_date',
         'due date': 'due_date',
-        'status': 'status'
+        'status': 'status',
+        'Completed on ': 'date_completed',
+        'Links ': 'final_link'
       },
       json_meta: [[{
         'key': 'charset',
@@ -24076,7 +24075,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.rou{\r\nheight: 100%;\r\nwidth: 100%;\n}\r\n", ""]);
+exports.push([module.i, "\n.rou{\nheight: 100%;\nwidth: 100%;\n}\n", ""]);
 
 // exports
 
@@ -24095,7 +24094,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.clnav1{\r\n  background-color: #43425D; /* violet */\r\n  border: #43425D;\r\n  color: white;\r\n  height: 100%;\r\n  width: 100%;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 16px;\r\n  font-size: 12px;\r\n  border-radius: 2px;\n}\n.center1{\r\n    color:white;\r\n    font-weight:500;\r\n    font-size:13px;\r\n    display:flex;\n}\n.primary--text{\r\n    opacity:0.5;\r\n    color:white;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.clnav1{\n  background-color: #43425D; /* violet */\n  border: #43425D;\n  color: white;\n  height: 100%;\n  width: 100%;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  font-size: 12px;\n  border-radius: 2px;\n}\n.center1{\n    color:white;\n    font-weight:500;\n    font-size:13px;\n    display:flex;\n}\n.primary--text{\n    opacity:0.5;\n    color:white;\n}\n\n", ""]);
 
 // exports
 
@@ -24152,7 +24151,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -24190,7 +24189,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -24209,7 +24208,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -24228,7 +24227,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#card1{\r\n    padding: 50px 50px;\n}\n.container {\r\n  max-width: 960px;\n}\n.center {\r\n  margin: auto;\r\n    color:#43425D;\n}\n.button1 {\r\n  background-color: #43425D; /* Green */\r\n  border: none;\r\n  color: white;\r\n  padding: 7px 40px;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 16px;\r\n  margin: 4px 2px;\r\n  cursor: pointer;\r\n  font-size: 12px;\r\n  border-radius: 2px;\n}\n.button2 {\r\n  background-color: none; /* Green */\r\n  border: 2px solid #43425D;\r\n  color: #43425D;\r\n  padding: 7px 40px;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 16px;\r\n  margin: 4px 2px;\r\n  cursor: pointer;\r\n  font-size: 12px;\r\n  border-radius: 2px;\n}\r\n", ""]);
+exports.push([module.i, "\n#card1{\n    padding: 50px 50px;\n}\n.container {\n  max-width: 960px;\n}\n.center {\n  margin: auto;\n    color:#43425D;\n}\n.button1 {\n  background-color: #43425D; /* Green */\n  border: none;\n  color: white;\n  padding: 7px 40px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 4px 2px;\n  cursor: pointer;\n  font-size: 12px;\n  border-radius: 2px;\n}\n.button2 {\n  background-color: none; /* Green */\n  border: 2px solid #43425D;\n  color: #43425D;\n  padding: 7px 40px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 4px 2px;\n  cursor: pointer;\n  font-size: 12px;\n  border-radius: 2px;\n}\n", ""]);
 
 // exports
 
@@ -24247,7 +24246,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#card1{\r\n    padding: 50px 40px;\n}\n.container {\r\n  max-width: 960px;\n}\n.center {\r\n    margin: auto;\r\n    color:#43425D;\n}\r\n", ""]);
+exports.push([module.i, "\n#card1{\n    padding: 50px 40px;\n}\n.container {\n  max-width: 960px;\n}\n.center {\n    margin: auto;\n    color:#43425D;\n}\n", ""]);
 
 // exports
 
@@ -24266,7 +24265,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\n.btp{\r\n    left:0px;\n}\n.carteam1{\r\n    border-radius: 12px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n.btp{\n    left:0px;\n}\n.carteam1{\n    border-radius: 12px;\n}\n", ""]);
 
 // exports
 
@@ -24285,7 +24284,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\n#proj{\r\n    color: #43425D;\n}\n#pro{\r\n    color: #A3A6B4;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n#proj{\n    color: #43425D;\n}\n#pro{\n    color: #A3A6B4;\n}\n", ""]);
 
 // exports
 
@@ -24304,7 +24303,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
 
 // exports
 
@@ -24342,7 +24341,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.buttonT{\r\n  padding: 2px 10px;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  margin: 4px 2px;\r\n  cursor: pointer;\r\n  font-size: 12px;\r\n  border-radius: 12px;\n}\r\n", ""]);
+exports.push([module.i, "\n.buttonT{\n  padding: 2px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 20px;\n  margin: 4px 2px;\n  cursor: pointer;\n  font-size: 12px;\n  border-radius: 12px;\n}\n", ""]);
 
 // exports
 
@@ -24361,7 +24360,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -24380,7 +24379,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\n.carteam{\r\n    border-radius: 8px;\n}\na:link{\r\n    color:#4D4F5C;\r\n    text-decoration: none;\n}\na:visited{\r\n    color:#4D4F5C;\r\n    text-decoration: none;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n.carteam{\n    border-radius: 8px;\n}\na:link{\n    color:#4D4F5C;\n    text-decoration: none;\n}\na:visited{\n    color:#4D4F5C;\n    text-decoration: none;\n}\n\n", ""]);
 
 // exports
 
@@ -62825,9 +62824,9 @@ var render = function() {
                   _c("div", [
                     _c("div", { staticClass: "headline" }, [
                       _vm._v(
-                        "\r\n                    " +
+                        "\n                    " +
                           _vm._s(_vm.data.title) +
-                          "\r\n                "
+                          "\n                "
                       )
                     ]),
                     _vm._v(" "),
@@ -63034,7 +63033,7 @@ var render = function() {
                             },
                             [_vm._v("Login")]
                           ),
-                          _vm._v("  \r\n              "),
+                          _vm._v("  \n              "),
                           _c("router-link", { attrs: { to: "/signup" } }, [
                             _c("button", { staticClass: "button2" }, [
                               _vm._v("Sign Up")
@@ -63217,7 +63216,7 @@ var render = function() {
                             },
                             [_vm._v("Sign Up")]
                           ),
-                          _vm._v("  \r\n              "),
+                          _vm._v("  \n              "),
                           _c("router-link", { attrs: { to: "/login" } }, [
                             _c("button", { staticClass: "button2" }, [
                               _vm._v("Login")
@@ -63655,7 +63654,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\r\n                Project name is required.\r\n            "
+                                "\n                Project name is required.\n            "
                               )
                             ]
                           )
@@ -63696,7 +63695,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\r\n            close\r\n          ")]
+                        [_vm._v("\n            close\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
@@ -64006,10 +64005,9 @@ var render = function() {
                                 _c(
                                   "v-chip",
                                   {
-                                    staticClass: "buttonT",
                                     attrs: {
                                       color: _vm.color,
-                                      "text-color": "white"
+                                      "text-color": "black"
                                     }
                                   },
                                   [_vm._v(_vm._s(props.item.status) + " ")]
@@ -65003,7 +65001,7 @@ var render = function() {
                                       "v-icon",
                                       {
                                         staticClass: "mr-2",
-                                        attrs: { medium: "", color: "orange" },
+                                        attrs: { small: "", color: "orange" },
                                         on: {
                                           click: function($event) {
                                             return _vm.edit(props.item)
@@ -65016,7 +65014,7 @@ var render = function() {
                                     _c(
                                       "v-icon",
                                       {
-                                        attrs: { medium: "", color: "#F5181F" },
+                                        attrs: { small: "", color: "#F5181F" },
                                         on: {
                                           click: function($event) {
                                             return _vm.destroy(props.item.id)
@@ -66834,7 +66832,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\r\n                Team name is required.\r\n            "
+                                "\n                Team name is required.\n            "
                               )
                             ]
                           )
@@ -66871,7 +66869,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\r\n            close\r\n          ")]
+                        [_vm._v("\n            close\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
@@ -108670,7 +108668,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuetify */ "./node_modules/vuetify/dist/vuetify.js");
 /* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuetify__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vue_json_excel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-json-excel */ "./node_modules/vue-json-excel/JsonExcel.vue");
+/* harmony import */ var vue_json_excel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-json-excel */ "./node_modules/vue-json-excel/JsonExcel.vue");
 /* harmony import */ var vue_simplemde__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-simplemde */ "./node_modules/vue-simplemde/dist/vue-simplemde.min.js");
 /* harmony import */ var vue_simplemde__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_simplemde__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! marked */ "./node_modules/marked/lib/marked.js");
@@ -108692,7 +108690,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuetify__WEBPACK_IMPORTED_MODULE_1___default.a);
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('downloadExcel', vue_json_excel__WEBPACK_IMPORTED_MODULE_2__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('downloadExcel', vue_json_excel__WEBPACK_IMPORTED_MODULE_9__["default"]);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_simplemde__WEBPACK_IMPORTED_MODULE_3___default.a);
 

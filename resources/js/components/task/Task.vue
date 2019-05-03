@@ -205,9 +205,9 @@
                         </td>
                         <td class="justify-center layout px-0" v-if="myRole=='Admin' || myRole=='Coordinator'">
 
-                                    <v-icon medium class="mr-2" color="orange" @click="edit(props.item)">edit</v-icon>
+                                    <v-icon small class="mr-2" color="orange" @click="edit(props.item)">edit</v-icon>
 
-                                    <v-icon medium color="#F5181F" @click="destroy( props.item.id )"> delete_forever</v-icon>
+                                    <v-icon small color="#F5181F" @click="destroy( props.item.id )"> delete_forever</v-icon>
 
                                 <v-btn  v-if="props.item.status =='Completed'" @click="accept(props.item.id)" color="blue">accept</v-btn>
                                 <v-btn  v-if="props.item.status =='Completed'" @click="reject(props.item.id)" color="red">reject</v-btn>
