@@ -119,16 +119,16 @@
                 <v-flex xs10></v-flex>
                 <v-flex md2>
 
-                    <download-excel
-	class   = "btn btn-default"
-	:data   = "tasks"
-	:fields = "json_fields"
-	worksheet = "My Worksheet"
-	name    = "filename.xls">
+                <download-excel
+	            class   = "btn btn-default"
+	            :data   = "tasks"
+	            :fields = "json_fields"
+	            worksheet = "My Worksheet"
+	            name    = "filename.xls">
 
-   <v-btn color="#43425D" class="btdown"> Download Excell</v-btn>
+                    <v-btn color="#43425D" class="btdown" > Download Excell</v-btn>
 
-</download-excel>
+                </download-excel>
                 </v-flex>
 
                 <v-container>
@@ -278,7 +278,7 @@
     }
     .btdown{
         border: none;
-        color: white;
+        color: #fff !important;
         text-align: center;
         text-decoration: none;
         display: inline-block;

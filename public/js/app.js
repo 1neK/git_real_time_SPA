@@ -24132,7 +24132,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n    max-width: 960px;\n}\n.btdown{\n    border: none;\n    color: white;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n    margin: 4px 2px;\n    cursor: pointer;\n    padding: 10px 24px;\n    border-radius: 12px;\n}\n#pro1{\n    color:black;\n}\n\n", ""]);
+exports.push([module.i, "\n.container {\n    max-width: 960px;\n}\n.btdown{\n    border: none;\n    color: #fff !important;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n    margin: 4px 2px;\n    cursor: pointer;\n    padding: 10px 24px;\n    border-radius: 12px;\n}\n#pro1{\n    color:black;\n}\n\n", ""]);
 
 // exports
 
