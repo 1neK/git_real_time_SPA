@@ -4185,7 +4185,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
@@ -65144,7 +65143,7 @@ var render = function() {
                                                             staticClass:
                                                               "headline"
                                                           },
-                                                          [_vm._v("completed")]
+                                                          [_vm._v("Completed")]
                                                         )
                                                       ]),
                                                       _vm._v(" "),
@@ -108668,7 +108667,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuetify */ "./node_modules/vuetify/dist/vuetify.js");
 /* harmony import */ var vuetify__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuetify__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vue_json_excel__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-json-excel */ "./node_modules/vue-json-excel/JsonExcel.vue");
+/* harmony import */ var vue_json_excel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-json-excel */ "./node_modules/vue-json-excel/JsonExcel.vue");
 /* harmony import */ var vue_simplemde__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-simplemde */ "./node_modules/vue-simplemde/dist/vue-simplemde.min.js");
 /* harmony import */ var vue_simplemde__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_simplemde__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var marked__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! marked */ "./node_modules/marked/lib/marked.js");
@@ -108690,7 +108689,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuetify__WEBPACK_IMPORTED_MODULE_1___default.a);
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('downloadExcel', vue_json_excel__WEBPACK_IMPORTED_MODULE_9__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('downloadExcel', vue_json_excel__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_simplemde__WEBPACK_IMPORTED_MODULE_3___default.a);
 

@@ -226,7 +226,7 @@
                                         </template>
                                         <v-card>
                                             <v-card-title>
-                                                <span class="headline">completed</span>
+                                                <span class="headline">Completed</span>
                                             </v-card-title>
                                             <v-card-text>
                                                 <v-container grid-list-md>
@@ -234,7 +234,6 @@
                                                         <v-flex xs12 >
                                                             <v-text-field v-model="final_link" label="link" ></v-text-field>
                                                         </v-flex>
-
                                                     </v-layout>
                                                 </v-container>
 

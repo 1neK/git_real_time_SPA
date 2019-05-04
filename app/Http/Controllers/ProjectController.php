@@ -43,7 +43,7 @@ class ProjectController extends Controller
             $progress_task=Task::where('project_id',$project->id)->where('status','In progress')->count();
             $project->progress_task=$progress_task;
 
-            $completed_task=Task::where('project_id',$project->id)->where('status','Completed')->count();
+            $completed_task=Task::where('project_id',$project->id)->where('status','Validated')->count();
             $project->completed_task=$completed_task;
 
             $pending_task=Task::where('project_id',$project->id)->where('status','Incompleted')->count();
