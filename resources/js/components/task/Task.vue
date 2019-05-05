@@ -361,7 +361,7 @@
             },
 
             destroy(slug) {
-                axios.delete(`/api/task/${slug}?token=`+localStorage.getItem('token'))
+                axios.delete('/api/task/'+slug)
                     .then(res => this.getData())
             },
 

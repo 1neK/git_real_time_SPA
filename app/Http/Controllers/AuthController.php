@@ -1,10 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Notifications\TelegramNotification;
 use App\Role;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Notification;
 use Symfony\Component\HttpFoundation\Request;
 use App\Http\Requests\SignupRequest;
 use Illuminate\Support\Facades\Validator;
@@ -111,6 +113,10 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         $user =auth()->user();
+
+
+        Notification::send( new User(),new TelegramNotification( ['text' => $user->name.' logged in ']));
+
 
         if (!empty($user->role_id)) $user->role =Role::where('id',$user->role_id)->value('name');
 

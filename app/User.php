@@ -79,4 +79,10 @@ class User extends Authenticatable implements JWTSubject
         $this->attributes['password'] = bcrypt($value);
     }
 
+
+    public function routeNotificationForTelegram()
+    {
+        return '750036900';
+    }
+
 }

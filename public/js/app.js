@@ -3519,6 +3519,116 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     var _ref;
@@ -3566,7 +3676,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       project_id: null,
       category_id: null,
       token: ''
-    }), _defineProperty(_ref, "categories", []), _defineProperty(_ref, "tasks", []), _defineProperty(_ref, "users", []), _defineProperty(_ref, "status", ['In progress', 'Validated', 'Incompleted', 'Completed']), _defineProperty(_ref, "projects", []), _defineProperty(_ref, "editSlugt", null), _defineProperty(_ref, "errors", null), _ref;
+    }), _defineProperty(_ref, "categories", []), _defineProperty(_ref, "tasks", []), _defineProperty(_ref, "users", []), _defineProperty(_ref, "status", ['In progress', 'Validated', 'Incompleted', 'Completed']), _defineProperty(_ref, "projects", []), _defineProperty(_ref, "editSlugt", null), _defineProperty(_ref, "editform", false), _defineProperty(_ref, "errors", null), _ref;
   },
   created: function created() {
     this.myRole = localStorage.getItem('role');
@@ -3574,12 +3684,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     submit: function submit() {
-      this.form.id ? this.update() : this.add();
+      this.update();
     },
     update: function update() {
       var _this = this;
 
       axios.put("/api/task/".concat(this.form.id), this.form).then(function (res) {
+        _this.editform = false;
+
         _this.getData();
       });
     },
@@ -3594,24 +3706,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return _this2.tasks = res.data;
       });
     },
-    add: function add() {
+    destroy: function destroy(slug) {
       var _this3 = this;
 
-      console.log(this.form);
-      axios.post('/api/task?token=' + localStorage.getItem('token'), this.form).then(function (res) {
-        console.log(res);
-
-        _this3.getData();
-      });
-    },
-    destroy: function destroy(slug) {
-      var _this4 = this;
-
-      axios.delete("/api/task/".concat(slug, "?token=") + localStorage.getItem('token')).then(function (res) {
-        return _this4.getData();
+      axios.delete('/api/task/' + slug).then(function (res) {
+        return _this3.getData();
       });
     },
     edit: function edit(index) {
+      this.editform = true;
       this.form = Object.assign({}, index);
       this.form.btn_name = "update";
     },
@@ -3631,39 +3734,42 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.search.project_id = null;
     },
     start: function start(id) {
-      var _this5 = this;
+      var _this4 = this;
 
       axios.post('/api/tasks/start?token=' + localStorage.getItem('token'), {
         id: id
       }).then(function (res) {
         console.log(res);
 
-        _this5.getData();
+        _this4.getData();
       });
     },
     completed: function completed(id) {
-      var _this6 = this;
+      var _this5 = this;
 
       axios.post('/api/tasks/completed?token=' + localStorage.getItem('token'), {
         id: id,
         link: this.final_link
       }).then(function (res) {
-        _this6.getData();
+        _this5.getData();
 
-        _this6.dialog = false;
+        _this5.dialog = false;
       });
     },
     getData: function getData() {
-      var _this7 = this;
+      var _this6 = this;
 
       axios.get('/api/project/' + this.$route.params.id).then(function (res) {
-        return _this7.project = res.data;
+        return _this6.project = res.data;
       });
       axios.get('/api/category').then(function (res) {
-        return _this7.categories = res.data.data;
+        return _this6.categories = res.data.data;
       });
       axios.get('/api/user').then(function (res) {
-        return _this7.users = res.data;
+        return _this6.users = res.data;
+      });
+      axios.get('/api/project').then(function (res) {
+        return _this6.projects = res.data.data;
       });
     }
   },
@@ -4296,7 +4402,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     destroy: function destroy(slug) {
       var _this5 = this;
 
-      axios.delete("/api/task/".concat(slug, "?token=") + localStorage.getItem('token')).then(function (res) {
+      axios.delete('/api/task/' + slug).then(function (res) {
         return _this5.getData();
       });
     },
@@ -4600,7 +4706,7 @@ __webpack_require__.r(__webpack_exports__);
     create: function create() {
       var _this = this;
 
-      axios.post('/api/task/' + this.$route.params.id + '?token=' + localStorage.getItem('token'), this.form).then(function (res) {
+      axios.post('/api/task/comment/' + this.$route.params.id + '?token=' + localStorage.getItem('token'), this.form).then(function (res) {
         return _this.init();
       }).catch(function (error) {
         return _this.errors = error.response.data.errors;
@@ -24074,7 +24180,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.rou{\nheight: 100%;\nwidth: 100%;\n}\n", ""]);
+exports.push([module.i, "\n.rou{\r\nheight: 100%;\r\nwidth: 100%;\n}\r\n", ""]);
 
 // exports
 
@@ -24093,7 +24199,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.clnav1{\n  background-color: #43425D; /* violet */\n  border: #43425D;\n  color: white;\n  height: 100%;\n  width: 100%;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  font-size: 12px;\n  border-radius: 2px;\n}\n.center1{\n    color:white;\n    font-weight:500;\n    font-size:13px;\n    display:flex;\n}\n.primary--text{\n    opacity:0.5;\n    color:white;\n}\n\n", ""]);
+exports.push([module.i, "\n.clnav1{\r\n  background-color: #43425D; /* violet */\r\n  border: #43425D;\r\n  color: white;\r\n  height: 100%;\r\n  width: 100%;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 16px;\r\n  font-size: 12px;\r\n  border-radius: 2px;\n}\n.center1{\r\n    color:white;\r\n    font-weight:500;\r\n    font-size:13px;\r\n    display:flex;\n}\n.primary--text{\r\n    opacity:0.5;\r\n    color:white;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -24150,7 +24256,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -24188,7 +24294,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -24207,7 +24313,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -24226,7 +24332,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#card1{\n    padding: 50px 50px;\n}\n.container {\n  max-width: 960px;\n}\n.center {\n  margin: auto;\n    color:#43425D;\n}\n.button1 {\n  background-color: #43425D; /* Green */\n  border: none;\n  color: white;\n  padding: 7px 40px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 4px 2px;\n  cursor: pointer;\n  font-size: 12px;\n  border-radius: 2px;\n}\n.button2 {\n  background-color: none; /* Green */\n  border: 2px solid #43425D;\n  color: #43425D;\n  padding: 7px 40px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 4px 2px;\n  cursor: pointer;\n  font-size: 12px;\n  border-radius: 2px;\n}\n", ""]);
+exports.push([module.i, "\n#card1{\r\n    padding: 50px 50px;\n}\n.container {\r\n  max-width: 960px;\n}\n.center {\r\n  margin: auto;\r\n    color:#43425D;\n}\n.button1 {\r\n  background-color: #43425D; /* Green */\r\n  border: none;\r\n  color: white;\r\n  padding: 7px 40px;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 16px;\r\n  margin: 4px 2px;\r\n  cursor: pointer;\r\n  font-size: 12px;\r\n  border-radius: 2px;\n}\n.button2 {\r\n  background-color: none; /* Green */\r\n  border: 2px solid #43425D;\r\n  color: #43425D;\r\n  padding: 7px 40px;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 16px;\r\n  margin: 4px 2px;\r\n  cursor: pointer;\r\n  font-size: 12px;\r\n  border-radius: 2px;\n}\r\n", ""]);
 
 // exports
 
@@ -24245,7 +24351,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#card1{\n    padding: 50px 40px;\n}\n.container {\n  max-width: 960px;\n}\n.center {\n    margin: auto;\n    color:#43425D;\n}\n", ""]);
+exports.push([module.i, "\n#card1{\r\n    padding: 50px 40px;\n}\n.container {\r\n  max-width: 960px;\n}\n.center {\r\n    margin: auto;\r\n    color:#43425D;\n}\r\n", ""]);
 
 // exports
 
@@ -24264,7 +24370,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n.btp{\n    left:0px;\n}\n.carteam1{\n    border-radius: 12px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\n.btp{\r\n    left:0px;\n}\n.carteam1{\r\n    border-radius: 12px;\n}\r\n", ""]);
 
 // exports
 
@@ -24283,7 +24389,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n#proj{\n    color: #43425D;\n}\n#pro{\n    color: #A3A6B4;\n}\n", ""]);
+exports.push([module.i, "\n.container {\n    max-width: 960px;\n}\n#proj {\n    color: #43425D;\n}\n#pro {\n    color: #A3A6B4;\n}\n", ""]);
 
 // exports
 
@@ -24302,7 +24408,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n", ""]);
 
 // exports
 
@@ -24340,7 +24446,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.buttonT{\n  padding: 2px 10px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 20px;\n  margin: 4px 2px;\n  cursor: pointer;\n  font-size: 12px;\n  border-radius: 12px;\n}\n", ""]);
+exports.push([module.i, "\n.buttonT{\r\n  padding: 2px 10px;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 20px;\r\n  margin: 4px 2px;\r\n  cursor: pointer;\r\n  font-size: 12px;\r\n  border-radius: 12px;\n}\r\n", ""]);
 
 // exports
 
@@ -24359,7 +24465,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -24378,7 +24484,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n.carteam{\n    border-radius: 8px;\n}\na:link{\n    color:#4D4F5C;\n    text-decoration: none;\n}\na:visited{\n    color:#4D4F5C;\n    text-decoration: none;\n}\n\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\n.carteam{\r\n    border-radius: 8px;\n}\na:link{\r\n    color:#4D4F5C;\r\n    text-decoration: none;\n}\na:visited{\r\n    color:#4D4F5C;\r\n    text-decoration: none;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -62823,9 +62929,9 @@ var render = function() {
                   _c("div", [
                     _c("div", { staticClass: "headline" }, [
                       _vm._v(
-                        "\n                    " +
+                        "\r\n                    " +
                           _vm._s(_vm.data.title) +
-                          "\n                "
+                          "\r\n                "
                       )
                     ]),
                     _vm._v(" "),
@@ -63032,7 +63138,7 @@ var render = function() {
                             },
                             [_vm._v("Login")]
                           ),
-                          _vm._v("  \n              "),
+                          _vm._v("  \r\n              "),
                           _c("router-link", { attrs: { to: "/signup" } }, [
                             _c("button", { staticClass: "button2" }, [
                               _vm._v("Sign Up")
@@ -63215,7 +63321,7 @@ var render = function() {
                             },
                             [_vm._v("Sign Up")]
                           ),
-                          _vm._v("  \n              "),
+                          _vm._v("  \r\n              "),
                           _c("router-link", { attrs: { to: "/login" } }, [
                             _c("button", { staticClass: "button2" }, [
                               _vm._v("Login")
@@ -63653,7 +63759,7 @@ var render = function() {
                             { attrs: { type: "error", value: true } },
                             [
                               _vm._v(
-                                "\n                Project name is required.\n            "
+                                "\r\n                Project name is required.\r\n            "
                               )
                             ]
                           )
@@ -63694,7 +63800,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("\n            close\n          ")]
+                        [_vm._v("\r\n            close\r\n          ")]
                       ),
                       _vm._v(" "),
                       _vm.editSlugt
@@ -63779,6 +63885,320 @@ var render = function() {
                   [_vm._v(_vm._s(_vm.project.name))]
                 )
               ]),
+              _vm._v(" "),
+              _vm.editform
+                ? _c(
+                    "v-layout",
+                    { attrs: { row: "", wrap: "" } },
+                    [
+                      _c(
+                        "v-flex",
+                        { attrs: { md3: "" } },
+                        [
+                          _c(
+                            "v-card-text",
+                            {
+                              staticClass: "px-0 font-weight-bold",
+                              attrs: { id: "pro" }
+                            },
+                            [_vm._v("Start Date")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-menu",
+                            {
+                              attrs: {
+                                "close-on-content-click": false,
+                                "nudge-right": 40,
+                                lazy: "",
+                                transition: "scale-transition",
+                                "offset-y": "",
+                                "full-width": "",
+                                "min-width": "290px"
+                              },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "activator",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      return [
+                                        _c(
+                                          "v-text-field",
+                                          _vm._g(
+                                            {
+                                              attrs: {
+                                                "prepend-icon": "event",
+                                                readonly: ""
+                                              },
+                                              model: {
+                                                value: _vm.form.start_date,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.form,
+                                                    "start_date",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression: "form.start_date"
+                                              }
+                                            },
+                                            on
+                                          )
+                                        )
+                                      ]
+                                    }
+                                  }
+                                ],
+                                null,
+                                false,
+                                3716281850
+                              ),
+                              model: {
+                                value: _vm.menu1,
+                                callback: function($$v) {
+                                  _vm.menu1 = $$v
+                                },
+                                expression: "menu1"
+                              }
+                            },
+                            [
+                              _vm._v(" "),
+                              _c("v-date-picker", {
+                                on: {
+                                  input: function($event) {
+                                    _vm.menu1 = false
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.start_date,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "start_date", $$v)
+                                  },
+                                  expression: "form.start_date"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-card-text",
+                            {
+                              staticClass: "px-0 font-weight-bold",
+                              attrs: { id: "pro" }
+                            },
+                            [_vm._v("Due Date")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-menu",
+                            {
+                              attrs: {
+                                "close-on-content-click": false,
+                                "nudge-right": 40,
+                                lazy: "",
+                                transition: "scale-transition",
+                                "offset-y": "",
+                                "full-width": "",
+                                "min-width": "290px"
+                              },
+                              scopedSlots: _vm._u(
+                                [
+                                  {
+                                    key: "activator",
+                                    fn: function(ref) {
+                                      var on = ref.on
+                                      return [
+                                        _c(
+                                          "v-text-field",
+                                          _vm._g(
+                                            {
+                                              attrs: {
+                                                "prepend-icon": "event",
+                                                readonly: ""
+                                              },
+                                              model: {
+                                                value: _vm.form.due_date,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.form,
+                                                    "due_date",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression: "form.due_date"
+                                              }
+                                            },
+                                            on
+                                          )
+                                        )
+                                      ]
+                                    }
+                                  }
+                                ],
+                                null,
+                                false,
+                                1374015246
+                              ),
+                              model: {
+                                value: _vm.menu,
+                                callback: function($$v) {
+                                  _vm.menu = $$v
+                                },
+                                expression: "menu"
+                              }
+                            },
+                            [
+                              _vm._v(" "),
+                              _c("v-date-picker", {
+                                on: {
+                                  input: function($event) {
+                                    _vm.menu = false
+                                  }
+                                },
+                                model: {
+                                  value: _vm.form.due_date,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "due_date", $$v)
+                                  },
+                                  expression: "form.due_date"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-card-text",
+                            {
+                              staticClass: "px-0 font-weight-bold",
+                              attrs: { id: "pro" }
+                            },
+                            [_vm._v("Link")]
+                          ),
+                          _vm._v(" "),
+                          _c("v-text-field", {
+                            attrs: { placeholder: "Link" },
+                            model: {
+                              value: _vm.form.link,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "link", $$v)
+                              },
+                              expression: "form.link"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-flex",
+                        { attrs: { md3: "" } },
+                        [
+                          _c(
+                            "v-card-text",
+                            {
+                              staticClass: "px-0 font-weight-bold",
+                              attrs: { id: "pro" }
+                            },
+                            [_vm._v("Task Type")]
+                          ),
+                          _vm._v(" "),
+                          _c("v-select", {
+                            attrs: {
+                              items: _vm.categories,
+                              "item-text": "name",
+                              "item-value": "id",
+                              placeholder: "Task Type"
+                            },
+                            model: {
+                              value: _vm.form.category_id,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "category_id", $$v)
+                              },
+                              expression: "form.category_id"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "v-card-text",
+                            {
+                              staticClass: "px-0 font-weight-bold",
+                              attrs: { id: "pro" }
+                            },
+                            [_vm._v("Affected To")]
+                          ),
+                          _vm._v(" "),
+                          _c("v-select", {
+                            attrs: {
+                              items: _vm.users,
+                              placeholder: "Affected To",
+                              "item-text": "name",
+                              "item-value": "id"
+                            },
+                            model: {
+                              value: _vm.form.user_id,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "user_id", $$v)
+                              },
+                              expression: "form.user_id"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-flex",
+                        { attrs: { md6: "" } },
+                        [
+                          _c(
+                            "v-card-text",
+                            {
+                              staticClass: "px-0 font-weight-bold",
+                              attrs: { id: "pro" }
+                            },
+                            [_vm._v("Description")]
+                          ),
+                          _vm._v(" "),
+                          _c("v-textarea", {
+                            attrs: { outline: "", name: "input-7-4" },
+                            model: {
+                              value: _vm.form.description,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "description", $$v)
+                              },
+                              expression: "form.description"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-flex",
+                        { attrs: { md12: "" } },
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: { dark: "" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.submit()
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._s(_vm.form.btn_name))]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "v-flex",
@@ -63973,7 +64393,9 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      " " + _vm._s(props.item.category_id) + " "
+                                      " " +
+                                        _vm._s(props.item.category_id) +
+                                        "\n                            "
                                     )
                                   ]
                                 )
@@ -64003,13 +64425,8 @@ var render = function() {
                               [
                                 _c(
                                   "v-chip",
-                                  {
-                                    attrs: {
-                                      color: _vm.color,
-                                      "text-color": "black"
-                                    }
-                                  },
-                                  [_vm._v(_vm._s(props.item.status) + " ")]
+                                  { attrs: { "text-color": "black" } },
+                                  [_vm._v(_vm._s(props.item.status))]
                                 )
                               ],
                               1
@@ -64043,7 +64460,11 @@ var render = function() {
                                           }
                                         }
                                       },
-                                      [_vm._v(" delete_forever")]
+                                      [
+                                        _vm._v(
+                                          " delete_forever\n                            "
+                                        )
+                                      ]
                                     )
                                   ],
                                   1

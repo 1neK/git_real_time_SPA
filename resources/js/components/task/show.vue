@@ -167,7 +167,7 @@
         },
         methods: {
             create() {
-                axios.post('/api/task/' + this.$route.params.id + '?token=' + localStorage.getItem('token'), this.form)
+                axios.post('/api/task/comment/' + this.$route.params.id + '?token=' + localStorage.getItem('token'), this.form)
                     .then(res => this.init())
                     .catch(error => this.errors = error.response.data.errors)
             }

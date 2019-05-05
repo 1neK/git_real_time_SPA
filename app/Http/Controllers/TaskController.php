@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\TaskResource;
+use App\Model\Category;
 use App\Model\Project;
+use App\Notifications\TelegramNotification;
 use App\Task;
 use App\TaskComment;
 use App\User;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Notification;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use App\Model\Category;
 
 class TaskController extends Controller
 {
@@ -94,6 +94,15 @@ class TaskController extends Controller
         $task->status = "Incompleted";
         $task->save();
 
+
+        $from = User::where('id', $task->made_by)->value('name');
+        $to = User::where('id', $task->user_id)->value('name');
+
+
+
+        Notification::send( new User(),new TelegramNotification( ['text' => '@'.$from.' create new task for @'.$to]));
+
+
         return response()->json("saved");
     }
 
@@ -136,10 +145,10 @@ class TaskController extends Controller
     public function update( Request $request, $task)
     {
         $task =  Task::find($task);
-        $task->description = $request->description;
+        $task->description = ($request->description) ?? '';
         $task->due_date = $request->due_date;
         $task->user_id = $request->user_id;
-        $task->link = $request->link;
+        $task->link = ($request->link) ?? '';
         $task->project_id = $request->project_id;
         $task->start_date = $request->start_date;
         $task->category_id = $request->category_id;
@@ -155,12 +164,10 @@ class TaskController extends Controller
      * @param  \App\Model\Task $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy($task)
+    public function destroy($id)
     {
+      $role =  Task::where('id',$id)->first();
 
-        return $task;
-;        $role =  Task::where('id',$task)->first();
-        dd($role);
         $role->delete();
         return response()->json('deleted');
     }
@@ -180,6 +187,15 @@ class TaskController extends Controller
         $task=Task::find($request->id);
        $task->status='In progress';
 
+        $from = User::where('id', $task->made_by)->value('name');
+        $to = User::where('id', $task->user_id)->value('name');
+
+
+
+        Notification::send( new User(),new TelegramNotification( ['text' => '@'.$to.' started the task  @'.$task->id]));
+
+
+
        $task->save();
 
             return response()->json("saved");
@@ -192,6 +208,14 @@ class TaskController extends Controller
         $task->status='Completed';
         $task->final_link=$request->link;
 
+
+        $from = User::where('id', $task->made_by)->value('name');
+        $to = User::where('id', $task->user_id)->value('name');
+
+
+
+        Notification::send( new User(),new TelegramNotification( ['text' => '@'.$to.' completed the task  @'.$task->id]));
+
         $task->save();
 
         return response()->json("saved");
@@ -203,6 +227,14 @@ class TaskController extends Controller
         $task->date_completed=now();
 
 
+        $from = User::where('id', $task->made_by)->value('name');
+        $to = User::where('id', $task->user_id)->value('name');
+
+
+
+        Notification::send( new User(),new TelegramNotification( ['text' => '@'.$from.' accpted the task  @'.$task->id]));
+
+
         $task->save();
 
         return response()->json("saved");
@@ -212,6 +244,14 @@ class TaskController extends Controller
         $task=Task::find($request->id);
         $task->status='In progress';
         $task->final_link=null;
+
+
+        $from = User::where('id', $task->made_by)->value('name');
+        $to = User::where('id', $task->user_id)->value('name');
+
+
+
+        Notification::send( new User(),new TelegramNotification( ['text' => '@'.$from.' rejected the task  @'.$task->id]));
 
         $task->save();
 

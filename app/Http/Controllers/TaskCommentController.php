@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\TelegramNotification;
 use App\TaskComment;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\TaskCommentResource;
 use App\Http\Requests\TaskCommentRequest;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Notification;
 use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -50,6 +53,14 @@ class TaskCommentController extends Controller
         $task_commment->body=$request->body;
         $task_commment->user_id=$user->id;
         $task_commment->save();
+
+
+
+        $to = User::where('id',  $task_commment->user_id)->value('name');
+
+
+
+        Notification::send( new User(),new TelegramNotification( ['text' => '@'.$to.' commented on task  @'.$task_commment->task_id.' :'.$task_commment->body]));
 
 
 

@@ -21,9 +21,9 @@ Route::post('markAsRead', 'NotificationController@markAsRead');
 
 Route::apiResource('/project', 'ProjectController');
 
-Route::post('/task/{taskcomment}', 'TaskCommentController@store');
-Route::delete('/task/{taskcomment}', 'TaskCommentController@destroy');
-Route::patch('/task/{taskcomment}', 'TaskCommentController@update');
+Route::post('/task/comment/{taskcomment}', 'TaskCommentController@store');
+Route::delete('/task/comment/{taskcomment}', 'TaskCommentController@destroy');
+Route::patch('/task/comment/{taskcomment}', 'TaskCommentController@update');
 Route::get('/task/allyears', 'TaskController@allyears');
 Route::apiResource('/task', 'TaskController');
 Route::post('/tasks/start', 'TaskController@start');
