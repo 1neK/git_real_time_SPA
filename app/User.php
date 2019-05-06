@@ -82,7 +82,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function routeNotificationForTelegram()
     {
-        return '750036900';
+        return '600098361';
     }
 
 }

@@ -118,6 +118,8 @@ export default {
   font-size: 16px;
   font-size: 12px;
   border-radius: 2px;
+  padding-top: 20px;
+  padding-bottom: 100%;
 }
 
 .center1{
