@@ -148,7 +148,19 @@
                                 required
                         ></v-text-field>
 
+
+
                         </v-flex>
+
+
+                            <v-flex md6>
+                                <v-text-field
+                                        label="telegram id"
+                                        v-model="form.telegram_id"
+                                        type="text"
+                                        required
+                                ></v-text-field>
+                            </v-flex>
                         </v-layout>
 
                     </v-card-text>
@@ -268,13 +280,16 @@
                 this.form.id = null;
 
                 this.form.password =null;
+                this.form.name =null;
                 this.form.role_id = null;
                 this.form.status = null;
                 this.form.email = null;
+                this.form.telegram_id = null;
 
                 this.search.role_id = null;
                 this.search.status = null;
                 this.search.name = null;
+                this.search.telegram_id = null;
 
             },
 

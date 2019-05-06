@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TaskCommentResource;
+use App\Model\Task;
 use App\Notifications\TelegramNotification;
 use App\TaskComment;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Resources\TaskCommentResource;
-use App\Http\Requests\TaskCommentRequest;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Notification;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +23,7 @@ class TaskCommentController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('JWT', ['except' => ['index','show']]);
+        $this->middleware('JWT', ['except' => ['index', 'show']]);
     }
 
     /**
@@ -37,40 +37,46 @@ class TaskCommentController extends Controller
     }
 
 
-
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request ,$task)
+    public function store(Request $request, $task_id)
     {
-        $user = JWTAuth::toUser( Input::get('token') );
+        $user = JWTAuth::toUser(Input::get('token'));
 
-        $task_commment=new TaskComment();
-        $task_commment->task_id=$task;
-        $task_commment->body=$request->body;
-        $task_commment->user_id=$user->id;
+        $task_commment = new TaskComment();
+        $task_commment->task_id = $task_id;
+        $task_commment->body = $request->body;
+        $task_commment->user_id = $user->id;
         $task_commment->save();
 
 
+        $task = Task::find($task_id);
 
-        $to = User::where('id',  $task_commment->user_id)->value('name');
-
-
-
-        Notification::send( new User(),new TelegramNotification( ['text' => '@'.$to.' commented on task  @'.$task_commment->task_id.' :'.$task_commment->body]));
+        $to = User::where('id', $task->user_id)->first();
 
 
+        $admins = User::whereIn('role_id', [1, 2])->get();
 
-       return response()->json("inserted");
+        foreach ($admins as $admin) {
+
+            if ($admin->id != $user->id) Notification::send($admin, new TelegramNotification(['text' => '@' . $user->name . ' commented on task  @' . $task_commment->task_id . ' :' . $task_commment->body]));
+        }
+
+
+        if ($to->id != $user->id) Notification::send($to, new TelegramNotification(['text' => '@' . $user->name . ' commented on task  @' . $task_commment->task_id . ' :' . $task_commment->body]));
+
+
+        return response()->json("inserted");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\TaskComment  $taskComment
+     * @param \App\TaskComment $taskComment
      * @return \Illuminate\Http\Response
      */
     public function show(TaskComment $taskComment)
@@ -82,8 +88,8 @@ class TaskCommentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TaskComment  $taskComment
+     * @param \Illuminate\Http\Request $request
+     * @param \App\TaskComment $taskComment
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, TaskComment $taskComment)
@@ -95,12 +101,12 @@ class TaskCommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\TaskComment  $taskComment
+     * @param \App\TaskComment $taskComment
      * @return \Illuminate\Http\Response
      */
     public function destroy(TaskComment $taskComment)
     {
         $taskComment->delete();
-        return response(null,Response::HTTP_NO_CONTENT);
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

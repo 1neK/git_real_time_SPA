@@ -5232,6 +5232,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -5328,12 +5340,15 @@ __webpack_require__.r(__webpack_exports__);
     reset: function reset() {
       this.form.id = null;
       this.form.password = null;
+      this.form.name = null;
       this.form.role_id = null;
       this.form.status = null;
       this.form.email = null;
+      this.form.telegram_id = null;
       this.search.role_id = null;
       this.search.status = null;
       this.search.name = null;
+      this.search.telegram_id = null;
     },
     getData: function getData() {
       var _this5 = this;
@@ -67057,6 +67072,28 @@ var render = function() {
                                     _vm.$set(_vm.form, "email", $$v)
                                   },
                                   expression: "form.email"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-flex",
+                            { attrs: { md6: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "telegram id",
+                                  type: "text",
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.form.telegram_id,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "telegram_id", $$v)
+                                  },
+                                  expression: "form.telegram_id"
                                 }
                               })
                             ],
