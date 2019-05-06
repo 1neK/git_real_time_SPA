@@ -82,7 +82,9 @@ class User extends Authenticatable implements JWTSubject
 
     public function routeNotificationForTelegram()
     {
+
         return $this->telegram_id;
+
     }
 
 }
