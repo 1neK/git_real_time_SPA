@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\CommentEvent;
 use App\Http\Resources\TaskCommentResource;
 use App\Model\Task;
 use App\Notifications\TelegramNotification;
@@ -70,7 +71,9 @@ class TaskCommentController extends Controller
         if ($to->id != $user->id) Notification::send($to, new TelegramNotification(['text' => '@' . $user->name . ' commented on task  @' . $task_commment->task_id . ' :' . $task_commment->body]));
 
 
-        return response()->json("inserted");
+        //$data= event(new CommentEvent($user->name,$task_commment->body));
+
+        return response()->json("saved");
     }
 
     /**
@@ -92,10 +95,14 @@ class TaskCommentController extends Controller
      * @param \App\TaskComment $taskComment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TaskComment $taskComment)
+    public function update(Request $request , $taskComment)
     {
-        $taskComment->update($request->all());
-        return response('Update', Response::HTTP_ACCEPTED);
+        $comment =TaskComment::find($taskComment);
+        $comment->body=$request->body;
+        $comment->save();
+
+
+        return $comment;
     }
 
     /**
@@ -104,9 +111,9 @@ class TaskCommentController extends Controller
      * @param \App\TaskComment $taskComment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TaskComment $taskComment)
+    public function destroy($taskComment)
     {
-        $taskComment->delete();
+        TaskComment::find($taskComment)->delete();
         return response(null, Response::HTTP_NO_CONTENT);
     }
 }

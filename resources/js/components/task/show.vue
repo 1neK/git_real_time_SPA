@@ -8,59 +8,122 @@
                 <v-card>
                     <v-container>
 
-                                <v-card-text class=" font-weight-bold">
-                                    <v-toolbar flat color="white">
-                                        <v-spacer></v-spacer>
-                                        <v-tooltip bottom>
+                        <v-card-text class=" font-weight-bold">
+                            <v-toolbar flat color="white">
+                                <v-spacer></v-spacer>
+                                <v-tooltip bottom>
+                                    <template v-slot:activator="{ on }">
+                                        <v-btn icon v-on="on">
+                                            <v-icon medium color="orange" @click="edittask()">edit</v-icon>
+                                        </v-btn>
+                                    </template>
+                                    <span>edit</span>
+                                </v-tooltip>
+                            </v-toolbar>
+                            <v-flex md12>
+                                <v-subheader>
+                                    <h3>Affected To:
+                                        <small v-if="!mark">{{task.user}}</small>
+                                        <v-select v-else
+                                                :items="users"
+                                                placeholder="Affected To"
+                                                v-model="form.user_id"
+                                                item-text="name"
+                                                item-value="id"
+                                        ></v-select>
+                                    </h3>
+                                </v-subheader>
+                            </v-flex>
+                        </v-card-text>
+                        <v-flex md12>
+                            <v-card-text class=" font-weight-bold">
+                                <v-subheader>
+                                    <h3>Start Date:
+                                        <small v-if="!mark">{{task.start_date}}</small>
+                                        <v-menu v-else
+                                                v-model="menu1"
+                                                :close-on-content-click="false"
+                                                :nudge-right="40"
+                                                lazy
+                                                transition="scale-transition"
+                                                offset-y
+                                                full-width
+                                                min-width="290px"
+                                        >
                                             <template v-slot:activator="{ on }">
-                                                <v-btn icon v-on="on">
-                                                    <v-icon medium color="orange">edit</v-icon>
-                                                </v-btn>
+                                                <v-text-field
+                                                        v-model="form.start_date"
+                                                        prepend-icon="event"
+                                                        readonly
+                                                        v-on="on"
+                                                ></v-text-field>
                                             </template>
-                                            <span>edit</span>
-                                        </v-tooltip>
-                                    </v-toolbar>
-                                    <v-flex md12>
-                                        <v-subheader>
-                                            <h3>Affected To:
-                                                <small>{{task.user}}</small>
-                                            </h3>
-                                        </v-subheader>
-                                    </v-flex>
-                                </v-card-text>
-                                <v-flex md12>
-                                <v-card-text class=" font-weight-bold">
-                                    <v-subheader>
-                                        <h3>Start Date:
-                                            <small>{{task.start_date}}</small>
-                                        </h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <h3>Due Date:
-                                            <small>{{task.due_date}}</small>
-                                        </h3>
-                                    </v-subheader>
-                                </v-card-text>
-                                </v-flex>
+                                            <v-date-picker v-model="form.start_date" @input="menu1 = false"></v-date-picker>
+                                        </v-menu>
+                                    </h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <h3>Due Date:
+                                        <small v-if="!mark">{{task.due_date}}</small>
+                                        <v-menu v-else
+                                                v-model="menu"
+                                                :close-on-content-click="false"
+                                                :nudge-right="40"
+                                                lazy
+                                                transition="scale-transition"
+                                                offset-y
+                                                full-width
+                                                min-width="290px"
+                                        >
+                                            <template v-slot:activator="{ on }">
+                                                <v-text-field
+                                                        v-model="form.due_date"
+                                                        prepend-icon="event"
+                                                        readonly
+                                                        v-on="on"
+                                                ></v-text-field>
+                                            </template>
+                                            <v-date-picker v-model="form.due_date" @input="menu = false"></v-date-picker>
+                                        </v-menu>
 
-                                    <v-card-text class=" font-weight-bold">
-                                        <v-flex md12>
-                                            <v-subheader>
-                                                <h3>Status:
-                                                    <small>{{task.status}}</small>
-                                                </h3>
-                                            </v-subheader>
-                                        </v-flex>
-                                    </v-card-text>
+                                    </h3>
+                                </v-subheader>
+                            </v-card-text>
+                        </v-flex>
+
+                        <v-card-text class=" font-weight-bold">
+                            <v-flex md12>
+                                <v-subheader>
+                                    <h3>Status:
+                                        <small>{{task.status}}</small>
+                                    </h3>
+                                </v-subheader>
+                            </v-flex>
+                        </v-card-text>
 
 
-                                    <v-card-text class=" font-weight-bold">
-                                        <v-flex md12>
-                                            <v-subheader>
-                                                <h3>Description: <small><p>{{task.description}}</p></small></h3>
-                                            </v-subheader>
-                                        </v-flex>
-                                    </v-card-text>
+
+
+                        <v-card-text class=" font-weight-bold">
+                            <v-flex md12>
+                                <v-subheader>
+                                    <h3>Description:
+                                        <small  v-if="!mark"><p > {{task.description}}</p></small>
+
+                                        <v-textarea v-else
+                                                outline
+                                                v-model="form.description"
+                                                name="input-7-4"
+
+                                        ></v-textarea>
+                                    </h3>
+                                </v-subheader>
+                            </v-flex>
+                        </v-card-text>
 
                     </v-container>
+
+
+<v-btn v-if="mark" @click="update()">save</v-btn>
+                    <v-btn v-if="mark" @click="mark=false">cancel</v-btn>
 
                     <v-card-actions>
                         <v-spacer></v-spacer>
@@ -86,18 +149,15 @@
                     <v-divider></v-divider>
 
 
-                    <div
-                            v-if="editing[index]"
-                            >
-
+                    <div  v-if="editing[index]" >
                         <div>
-                            <markdown-editor v-model="data.body"></markdown-editor>
+                            <markdown-editor ref="markdown"v-model="editForm.body"></markdown-editor>
                             <v-card-actions>
-                                <v-btn icon small @click="update">
+                                <v-btn icon small @click="updatecomment(index)">
                                     <v-icon color="#5FD179">save</v-icon>
                                 </v-btn>
-                                <v-btn icon small @click="cancel">
-                                    <v-icon color="#F5181F" >cancel</v-icon>
+                                <v-btn icon small @click="editing[index] = false">
+                                    <v-icon color="#F5181F">cancel</v-icon>
                                 </v-btn>
                             </v-card-actions>
                         </div>
@@ -114,7 +174,7 @@
                             <v-btn icon small @click="edit(index)">
                                 <v-icon color="orange">edit</v-icon>
                             </v-btn>
-                            <v-btn icon small @click="destroy(index)">
+                            <v-btn icon small @click="destroy(data.id)">
                                 <v-icon color="#F5181F">delete_forever</v-icon>
                             </v-btn>
                         </v-card-actions>
@@ -153,7 +213,10 @@
 
                 },
                 editing: [],
+                editForm:[],
+                users :[],
                 task: {},
+                mark:false,
                 errors: {}
             }
         },
@@ -163,29 +226,36 @@
             this.init();
 
 
-
         },
         methods: {
             create() {
-                axios.post('/api/task/comment/' + this.$route.params.id + '?token=' + localStorage.getItem('token'), this.form)
-                    .then(res => this.init())
+                axios.post('/api/task/comment/' + this.$route.params.id , this.form)
+                    .then(res => {
+                        this.init();
+                        this.form.body = '';
+
+
+                    })
                     .catch(error => this.errors = error.response.data.errors)
             }
             ,
+
+            update(){
+                axios.put(`/api/task/${this.form.id}`,this.form)
+                    .then(res =>{
+
+                        this.init();
+                        this.mark=false;
+                    })
+            },
+
             init() {
 
                 axios.get('/api/task/' + this.$route.params.id)
                     .then(res => {
-                        this.task = res.data;
+                        this.task = res.data;})
 
-                        for (let i = 0; i < this.task.task_comment.length; i++) {
-
-                            this.task.task_comment[i].editing = false;
-
-                        }
-
-
-                    })
+                axios.get('/api/user').then(res => this.users = res.data)
 
 
             }
@@ -193,22 +263,40 @@
             edit(index) {
 
                 this.editing[index] = true;
+                this.editForm = Object.assign({},this.task.task_comment[index]);
+
+            },
+
+
+            edittask(){
+
+                this.mark=true;
+
+
+                this.form = Object.assign({},this.task);
+
+
+
             },
 
             own() {
                 return User.own(this.data.user_id)
             },
 
-            destroy() {
-                // EventBus.$emit('deleteReply', this.index)
+            destroy(index) {
+
+
+                axios.delete('/api/task/comment/' + index, this.form)
+                    .then(res => this.init())
+                    .catch(error => this.errors = error.response.data.errors)
             },
 
-            cancel(index){
+            cancel(index) {
                 this.editing[index] = false;
             },
-            update(){
-                axios.patch(`/api/question/${this.reply.question_slug}/reply/${this.reply.id}`, {body:this.reply.reply})
-                    .then(res => this.cancel())
+            updatecomment(index) {
+                axios.patch('/api/task/comment/'+this.editForm.id, this.editForm)
+                    .then(res =>  {this.cancel(index) ;this.init()})
             }
 
         },
@@ -218,7 +306,18 @@
             },
 
 
-        }
+        },
+
+        mounted() {
+
+            Echo.channel('comment-channel')
+                .listen('.CommentEvent', (message) => {
+                    console.log(message);
+                });
+
+        },
+
+
     }
 </script>
 
@@ -228,18 +327,19 @@
 
     }
 
-    .btn2{
-  border: none;
-  color: white;
-  padding: 7px 40px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  font-size: 12px;
-  border-radius: 2px;
-  left:50%;
+    .btn2 {
+        border: none;
+        color: white;
+        padding: 7px 40px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-size: 12px;
+        border-radius: 2px;
+        left: 50%;
     }
+
 </style>

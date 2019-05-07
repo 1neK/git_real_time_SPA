@@ -338,7 +338,7 @@
 
             filter(){
 
-                console.log(this.search);
+
 
                 this.search.token=localStorage.getItem('token');
 

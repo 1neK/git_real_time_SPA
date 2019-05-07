@@ -26,8 +26,12 @@ import AppFooter from './Appfooter'
 import navbar from './Navbar'
 import Login from './login/Login'
 export default {
- components:{toolbar,navbar,AppFooter,Login}
+ components:{toolbar,navbar,AppFooter,Login},
+
+
+
 }
+
 </script>
 
 <style>

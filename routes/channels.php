@@ -19,3 +19,8 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 Broadcast::channel('likeChannel', function () {
     return true;
 });
+
+
+Broadcast::channel('comment-channel', function () {
+    return true;
+});

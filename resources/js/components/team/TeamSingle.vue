@@ -17,7 +17,7 @@
             </td>
             <td class="text-center">
                 <v-btn icon >
-                    <v-icon color="#F5181F" medium danger>delete_forever</v-icon>
+                    <v-icon color="#F5181F" medium danger @click="destroy(props.item.id)">delete_forever</v-icon>
                 </v-btn>
                <!-- <v-btn icon >
                     <v-icon black medium danger>edit</v-icon>
@@ -57,13 +57,29 @@
 
         },
         created() {
-            console.dir(this.$route.params.id)
 
-            axios.get('/api/team/' + this.$route.params.id)
-                .then(res => this.team = res.data)
+            this.init();
+
+
         },
 
-        methods: {},
+
+
+        methods: {
+
+            destroy(slug) {
+                axios.delete(`/api/user/${slug}`)
+                    .then(res => this.init())
+            },
+
+            init(){
+                axios.get('/api/team/' + this.$route.params.id)
+                    .then(res => this.team = res.data);
+
+            }
+
+
+        },
         computed: {}
     }
 </script>

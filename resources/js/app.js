@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -10,29 +9,29 @@ require('./bootstrap');
 window.Vue = require('vue');
 import Vue from 'vue'
 import Vuetify from 'vuetify'
+import JsonExcel from 'vue-json-excel'
+import VueSimplemde from 'vue-simplemde'
+import md from 'marked'
+import User from './Helpers/User'
+import Exception from './Helpers/Exception'
+// register the plugin on vue
+import Toasted from 'vue-toasted';
+import router from './Router/router.js'
+
 Vue.use(Vuetify)
 
-import JsonExcel from 'vue-json-excel'
 Vue.component('downloadExcel', JsonExcel)
 
 
-import VueSimplemde from 'vue-simplemde'
 Vue.use(VueSimplemde)
-import md from 'marked'
-window.md=md
+window.md = md
 
-import User from './Helpers/User'
-window.User =User
+window.User = User
 
-import Exception from './Helpers/Exception'
 window.Exception = Exception
 
 
-// register the plugin on vue
-import Toasted from 'vue-toasted';
-
 Vue.use(Toasted)
-
 
 
 window.EventBus = new Vue();
@@ -50,7 +49,6 @@ window.EventBus = new Vue();
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('AppHome', require('./components/AppHome.vue').default);
-import router from './Router/router.js'
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
