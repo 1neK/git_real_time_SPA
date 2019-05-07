@@ -21,7 +21,7 @@ class UserResource extends JsonResource
             'id'        => $this->id,
             'role_id'   => $this->role_id,
             'is_active' => $this->is_active,
-            'picture'   => $this->picture,
+            //'picture'   => $this->picture,
             'created_at'=> $this->created_at->diffForHumans()
 
         ];

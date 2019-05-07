@@ -14,7 +14,7 @@ class AddTelegramIdToUser extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-          $table->string('telegram_id');
+          $table->string('telegram_id')->nullable();
         });
     }
 

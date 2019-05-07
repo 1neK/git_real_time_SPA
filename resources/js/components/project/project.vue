@@ -95,11 +95,11 @@
 
 
 
-            <v-text-field
+          <v-html>  <v-text-field
             placeholder="Project Name"
             autofocus
             v-model="form.name"
-            required ></v-text-field>
+            required ></v-text-field></v-html>
 
 
         </v-card-text>

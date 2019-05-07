@@ -90,11 +90,11 @@
                         </v-alert>
 
 
-                        <v-text-field
+                       <v-htm><v-text-field
                                 placeholder="Team Name"
                                 autofocus
                                 v-model="form.name"
-                                required></v-text-field>
+                                required></v-text-field></v-htm>
 
 
                     </v-card-text>

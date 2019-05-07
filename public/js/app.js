@@ -24480,7 +24480,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.container {\n  max-width: 960px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.container {\r\n  max-width: 960px;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -61854,8 +61854,6 @@ var render = function() {
                         )
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm.loggedIn ? _c("app-notification") : _vm._e(),
-                    _vm._v(" "),
                     _vm.loggedIn
                       ? _c(
                           "div",
@@ -63780,20 +63778,26 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: {
-                          placeholder: "Project Name",
-                          autofocus: "",
-                          required: ""
-                        },
-                        model: {
-                          value: _vm.form.name,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "name", $$v)
-                          },
-                          expression: "form.name"
-                        }
-                      })
+                      _c(
+                        "v-html",
+                        [
+                          _c("v-text-field", {
+                            attrs: {
+                              placeholder: "Project Name",
+                              autofocus: "",
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.form.name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "name", $$v)
+                              },
+                              expression: "form.name"
+                            }
+                          })
+                        ],
+                        1
+                      )
                     ],
                     1
                   ),
@@ -67763,20 +67767,26 @@ var render = function() {
                           )
                         : _vm._e(),
                       _vm._v(" "),
-                      _c("v-text-field", {
-                        attrs: {
-                          placeholder: "Team Name",
-                          autofocus: "",
-                          required: ""
-                        },
-                        model: {
-                          value: _vm.form.name,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "name", $$v)
-                          },
-                          expression: "form.name"
-                        }
-                      })
+                      _c(
+                        "v-htm",
+                        [
+                          _c("v-text-field", {
+                            attrs: {
+                              placeholder: "Team Name",
+                              autofocus: "",
+                              required: ""
+                            },
+                            model: {
+                              value: _vm.form.name,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "name", $$v)
+                              },
+                              expression: "form.name"
+                            }
+                          })
+                        ],
+                        1
+                      )
                     ],
                     1
                   ),
