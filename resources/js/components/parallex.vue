@@ -1,7 +1,7 @@
 <template>
   <v-parallax
     height="700"
-    src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg" v-if="User.loggedIn()">
+    src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg" v-if="user.loggedIn()">
     <v-layout
         align-center
         column
@@ -13,7 +13,16 @@
 </template>
 
 <script>
+  import User from '../Helpers/User';
 export default {
+  data() {
+    return {
+      user:User
+    }
+  },
+  created() {
+
+  },
 
 }
 </script>

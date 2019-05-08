@@ -17,7 +17,9 @@
                         <v-card class="carteam">
                             <v-toolbar color="white" flat>
                                 <v-flex xs7>
-                                    <v-html><a><router-link :to="{ name: 'team-single', params: { id:  team.slug } }"  >  <h3 class="title font-weight-bold">{{ team.name }}</h3></router-link></a></v-html>
+
+                                        <a><router-link :to="{ name: 'team-single', params: { id:  team.slug } }"  >  <h3 class="title font-weight-bold">{{ team.name }}</h3></router-link></a>
+
                                 </v-flex>
 
                                 <v-flex xs2>
@@ -90,11 +92,11 @@
                         </v-alert>
 
 
-                       <v-htm><v-text-field
+                     <v-text-field
                                 placeholder="Team Name"
                                 autofocus
                                 v-model="form.name"
-                                required></v-text-field></v-htm>
+                                required></v-text-field>
 
 
                     </v-card-text>
@@ -139,8 +141,7 @@
         },
         created() {
 
-            axios.get('/api/role')
-                .then(res => this.roles = res.data.data);
+
 
             this.getData();
 

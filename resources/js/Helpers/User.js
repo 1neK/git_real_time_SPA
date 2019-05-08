@@ -2,92 +2,88 @@ import Token from "./Token";
 import AppStorage from './AppStorage'
 
 
+class User {
+    login(data, Vue) { /* router :this.$router */
 
 
-class User{
-    login(data,router){ /* router :this.$router */
-
-
-
-        axios.post('/api/auth/login',data)
-        .then(res =>this.responseAfterLogin(res,router))
-        .catch(error => console.log(error.response.data.error) )
+        axios.post('/api/auth/login', data)
+            .then(res => this.responseAfterLogin(res))
+            .catch(error =>   Vue.toasted.show(error.response.data.error))
     }
-responseAfterLogin(res,router){
-const access_token = res.data.access_token
-const user = res.data.user
+
+    responseAfterLogin(res) {
+        const access_token = res.data.access_token
+        const user = res.data.user
 //console.log(access_token);
-if(access_token != ''){
+        if (access_token != '') {
 
-    AppStorage.storeToken(access_token);
-    AppStorage.storeUser(user.name);
+            AppStorage.storeToken(access_token);
+            AppStorage.storeUser(user.name);
 
-    AppStorage.storeRole(user.role);
-
-
-    window.location='/';
+            AppStorage.storeRole(user.role);
 
 
+            window.location = '/';
 
-}
 
-}
+        }
 
-hasToken(){
+    }
 
-    const storedToken = AppStorage.getToken();
+    hasToken() {
 
-    if (storedToken){
+        const storedToken = AppStorage.getToken();
 
-            return  true ;
+        if (storedToken) {
+
+            return true;
         }
 
 
         return false;
 
-}
-
-loggedIn(){
-
-    return this.hasToken()
-
-
-}
-
-logout()
-{
-    AppStorage.clear()
-    window.location='/login'
-}
-
-name()
-{
-    if(this.loggedIn()){
-        return AppStorage.getUser()
     }
-}
-id()
-{
-    if(this.loggedIn()){
-        const payload = Token.payload(AppStorage.getToken())
-        return payload.sub
+
+    loggedIn() {
+
+        return this.hasToken()
+
+
     }
-}
 
-own(id){
-    return this.id() == id
+    logout() {
+        AppStorage.clear()
+        window.location = '/login'
+    }
 
-}
+    name() {
+        if (this.loggedIn()) {
+            return AppStorage.getUser()
+        }
+    }
 
-admin(){
+    id() {
+        if (this.loggedIn()) {
+            const payload = Token.payload(AppStorage.getToken())
+            return payload.sub
+        }
+    }
+
+    own(id) {
+        return this.id() == id
+
+    }
+
+    admin() {
 
         console.log(AppStorage.getRole());
-   return AppStorage.getRole()=='Admin';
+        return AppStorage.getRole() == 'Admin';
 
-}
-coordinator(){
-    return AppStorage.getRole()=='Coordinator';
- }
+    }
+
+    coordinator() {
+        return AppStorage.getRole() == 'Coordinator';
+    }
 
 
 }
