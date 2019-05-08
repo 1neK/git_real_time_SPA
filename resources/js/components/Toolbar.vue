@@ -12,7 +12,7 @@
                     <v-spacer></v-spacer>
                     <router-link class="font-weight-light subheading white--text" to="/login" v-if="!loggedIn">Login</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <router-link class="font-weight-light subheading white--text" to="/signup" v-if="!loggedIn">Sign Up</router-link>
-                    <!--<app-notification v-if="loggedIn"></app-notification>-->
+                    <app-notification v-if="loggedIn"></app-notification>
                     <div class="hidden-sm-and-down" v-if="loggedIn">
                         <v-menu offset-y>
                         <template v-slot:activator="{ on }">
