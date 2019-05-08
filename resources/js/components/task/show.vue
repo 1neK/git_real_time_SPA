@@ -103,7 +103,7 @@
 
 
                         <v-card-text class=" font-weight-bold">
-                            <v-flex md12>
+                            <v-flex md12  class="py-5">
                                 <v-subheader>
                                     <h3>Description:
                                         <small  v-if="!mark"><p > {{task.description}}</p></small>
@@ -264,6 +264,7 @@
 
                 this.editing[index] = true;
                 this.editForm = Object.assign({},this.task.task_comment[index]);
+                this.init();
 
             },
 
@@ -308,14 +309,7 @@
 
         },
 
-        mounted() {
 
-            Echo.channel('comment-channel')
-                .listen('.CommentEvent', (message) => {
-                    console.log(message);
-                });
-
-        },
 
 
     }

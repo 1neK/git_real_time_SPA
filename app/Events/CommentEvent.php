@@ -13,28 +13,22 @@ class CommentEvent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $username;
-
     public $message;
+    public $link;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($username, $message)
+    public function __construct($username, $message ,$link)
     {
         $this->username = $username;
         $this->message = $message;
+        $this->link=$link;
     }
 
-    public function broadcastWith()
-    {
-        // This must always be an array. Since it will be parsed with json_encode()
-        return [
-            'user' => $this->username,
-            'message' => $this->message,
-        ];
-    }
+
 
     /**
      * Get the channels the event should broadcast on.

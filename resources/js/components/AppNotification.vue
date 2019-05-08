@@ -6,13 +6,13 @@
             </v-btn>
       <v-list>
         <v-list-tile v-for="item in unread" :key="item.id">
-            <router-link :to="item.path">
-                <v-list-tile-title @click="readIt(item)">{{item.question}}</v-list-tile-title>
-            </router-link>
+
+                <v-list-tile-title @click="readIt(item)">{{item.text}}</v-list-tile-title>
+
         </v-list-tile>
         <v-divider></v-divider>
         <v-list-tile v-for="item in read" :key="item.id">
-            <v-list-tile-title>{{item.question}}</v-list-tile-title>
+            <v-list-tile-title>{{item.text}}</v-list-tile-title>
         </v-list-tile>
       </v-list>
     </v-menu>
@@ -59,8 +59,10 @@ export default {
             axios.post('/api/markAsRead',{id:notification.id})
             .then(res => {
                 this.unread.splice(notification,1)
-                this.read.push(notification)
-                this.unreadCount--
+
+                this.getNotifications()
+                window.location=notification.link
+
             })
         }
     },
@@ -69,6 +71,16 @@ export default {
             return this.unreadCount > 0 ? 'red' : 'red lighten-4'
         }
     }
+    ,mounted() {
+
+        Echo.channel('comment-channel')
+            .listen('.CommentEvent', (message) => {
+
+                this.getNotifications();
+
+            });
+
+    },
 }
 </script>
 

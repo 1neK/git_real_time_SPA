@@ -61,17 +61,45 @@ class TaskCommentController extends Controller
 
 
         $admins = User::whereIn('role_id', [1, 2])->get();
-
+        $link='http://127.0.0.1:8000/task/'.$task_id;
         foreach ($admins as $admin) {
 
-            if ($admin->id != $user->id) Notification::send($admin, new TelegramNotification(['text' => '@' . $user->name . ' commented on task  @' . $task_commment->task_id . ' :' . $task_commment->body]));
+            if ($admin->id != $user->id) {
+                Notification::send($admin, new TelegramNotification(['text' => '@' . $user->name . ' commented on task  @' . $task_commment->task_id . ' :' . $task_commment->body]));
+                \App\Notification::create([
+                    'user_id' => $admin->id,
+                    'link' => $link,
+                    'text' => $user->name.'commented on task',
+
+
+                ]);
+                }
+
+
         }
 
 
-        if ($to->id != $user->id) Notification::send($to, new TelegramNotification(['text' => '@' . $user->name . ' commented on task  @' . $task_commment->task_id . ' :' . $task_commment->body]));
+        if ($to->id != $user->id)
+        {
+            Notification::send($to, new TelegramNotification(['text' => '@' . $user->name . ' commented on task  @' . $task_commment->task_id . ' :' . $task_commment->body]));
+            \App\Notification::create([
+                'user_id' => $to->id,
+                'link' => $link,
+                'text' => $user->name.'commented on task',
 
 
-        //$data= event(new CommentEvent($user->name,$task_commment->body));
+            ]);
+        }
+
+
+
+
+
+
+
+     event(new CommentEvent($user->name,$task_commment->body,$link ));
+
+
 
         return response()->json("saved");
     }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05d51a3e09ef6b0a24d5ca5764e9e8c5",
+    "content-hash": "ae7a3aa6f5894ae90c739095061034ca",
     "packages": [
         {
             "name": "babenkoivan/telegram-notifications",
