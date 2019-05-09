@@ -22,7 +22,7 @@ class NotificationController extends Controller
     public function index(){
         $user =auth()->user()->id;
         return[
-            'read'   =>Notification::where('user_id',$user)->whereNotNull('read_at')->get(),
+            'read'   =>[],
             'unread' =>Notification::where('user_id',$user)->whereNull('read_at')->get()
         ];
     }

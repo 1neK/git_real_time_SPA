@@ -9,7 +9,7 @@ import Read from '../components/forum/Read'
 import Create from '../components/forum/create'
 import Admin from '../components/users/Admin'
 import Coordinator from '../components/users/Coordinator'
-import Designer from '../components/users/Designer'
+
 import Team from '../components/users/Team'
 import AddUsers from '../components/users/AddUsers'
 import AllUsers from '../components/users/AllUsers'
@@ -22,6 +22,7 @@ import taskSingle from '../components/task/show'
 import CreateCategory from '../components/category/CreateCategory'
 import TeamSingle from '../components/team/TeamSingle'
 import dashboard from '../components/dashboard/dashboard'
+import Profile from '../components/profile'
 import log from './middleware/log'
 import logged from './middleware/logged'
 import adminMiddleware from './middleware/AdminMiddleware'
@@ -86,8 +87,10 @@ const routes = [
         }
     },
 
+
+
     {
-        path: '/designer', component: Designer, name: 'designer',
+        path: '/profile', component: Profile, name: 'profile',
         meta: {
             middleware: logged,
         }

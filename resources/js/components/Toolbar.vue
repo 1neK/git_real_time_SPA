@@ -55,6 +55,7 @@ export default {
             loggedIn : User.loggedIn(),
             items:[
 
+                { 'title':'profile',to:'/profile',show:User.loggedIn() },
                    { 'title':'Task Types',to:'/category',show:User.admin() },
                    { 'title':'Login',to:'/login',show:!User.loggedIn() },
                    { 'title':'Logout',to:'/logout',show:User.loggedIn() },

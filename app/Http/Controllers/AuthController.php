@@ -1,28 +1,29 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Notifications\TelegramNotification;
 use App\Role;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
-use Symfony\Component\HttpFoundation\Request;
+
 use App\Http\Requests\SignupRequest;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-     /**
+    /**
      * Create a new AuthController instance.
      *
      * @return void
      */
     public function __construct()
     {
-        $this->middleware('JWT', ['except' => ['login','signup']]);
+        $this->middleware('JWT', ['except' => ['login', 'signup']]);
     }
-
 
 
     /**
@@ -33,24 +34,21 @@ class AuthController extends Controller
     public function login()
     {
         $credentials = request(['email', 'password']);
-/* that s validate your data in server */
+        /* that s validate your data in server */
         $rules = [
             'email' => 'required|email',
             'password' => 'required',
         ];
         $validator = Validator::make($credentials, $rules);
-/* end validation */
+        /* end validation */
 
-        if($validator->fails()) {
-            return response()->json(['success'=> false, 'error'=> $validator->messages()], 401);
+        if ($validator->fails()) {
+            return response()->json(['success' => false, 'error' => $validator->messages()], 401);
         }
- $credentials['status'] = 'Active';
-        if (! $token = auth()->attempt($credentials)) {
+        $credentials['status'] = 'Active';
+        if (!$token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
-
-
 
 
         return $this->respondWithToken($token);
@@ -64,13 +62,14 @@ class AuthController extends Controller
         $rules = [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' =>'required|min:6'
+            'password' => 'required|min:6'
         ];
         $validator = Validator::make($credentials, $rules);
 
         User::create($credentials);
         return $this->login($credentials);
     }
+
     /**
      * Get the authenticated User.
      *
@@ -106,27 +105,56 @@ class AuthController extends Controller
     /**
      * Get the token array structure.
      *
-     * @param  string $token
+     * @param string $token
      *
      * @return \Illuminate\Http\JsonResponse
      */
     protected function respondWithToken($token)
     {
-        $user =auth()->user();
+        $user = auth()->user();
 
 
-        Notification::send( $user,new TelegramNotification( ['text' => $user->name.' logged in ']));
+        Notification::send($user, new TelegramNotification(['text' => $user->name . ' logged in ']));
 
 
-        if (!empty($user->role_id)) $user->role =Role::where('id',$user->role_id)->value('name');
-
+        if (!empty($user->role_id)) $user->role = Role::where('id', $user->role_id)->value('name');
 
 
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-             'user'=> $user
+            'user' => $user
         ]);
     }
+
+    public function profile()
+    {
+        $user = auth()->user();
+
+        $user->team = Role::find($user->role_id)->value('name');
+
+        return $user;
+
+
+    }
+
+    public function updateprofile(Request $request)
+    {
+
+       $user = User::find($request->id);
+       $user->name=$request->name;
+       $user->email=$request->email;
+       if (!empty($request->newpassword))
+       {
+           $user->password=Hash::make($request->newpassword);
+       }
+
+       $user->save();
+
+        return "profile updated";
+
+
+    }
+
 }

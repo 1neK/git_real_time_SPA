@@ -32,6 +32,8 @@ Route::post('/tasks/accept', 'TaskController@accept');
 Route::post('/tasks/reject', 'TaskController@reject');
 Route::get('/count-task', 'RoleController@count_task');
 Route::get('/liste-task', 'RoleController@affiche_task');
+Route::get('profile', 'AuthController@profile');
+Route::post('profile', 'AuthController@updateprofile');
 
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/dashboard/stats', 'DashboardController@stats');
@@ -45,6 +47,7 @@ Route::group([
 ], function ($router) {
 
     Route::post('login', 'AuthController@login');
+
     Route::post('signup', 'AuthController@signup');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
