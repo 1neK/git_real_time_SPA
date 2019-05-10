@@ -14,7 +14,7 @@ class User {
     responseAfterLogin(res) {
         const access_token = res.data.access_token
         const user = res.data.user
-//console.log(access_token);
+
         if (access_token != '') {
 
             AppStorage.storeToken(access_token);
@@ -76,7 +76,6 @@ class User {
 
     admin() {
 
-        //console.log(AppStorage.getRole());
         return AppStorage.getRole() == 'Admin';
 
     }

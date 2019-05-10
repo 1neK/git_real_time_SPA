@@ -78,7 +78,14 @@ export default {
         Echo.channel('comment-channel')
             .listen('.CommentEvent', (message) => {
 
+
+
+                let count = this.unreadCount;
+
                 this.getNotifications();
+
+                if (count != this.unreadCount )               this.playSound();
+
 
             });
 

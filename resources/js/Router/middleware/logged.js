@@ -8,7 +8,7 @@ export default function log({ next, router }) {
     console.log('token :'+AppStorage.getToken());
   if(AppStorage.getToken())
   {
-      console.log(' logged');
+
   }else {
 
 

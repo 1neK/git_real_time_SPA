@@ -7,10 +7,7 @@
                 justify-center
                 wrap
         >
-            <v-flex
-                    xs12
-
-            >
+            <v-flex xs12 >
 
                 <v-form>
                     <v-container py-0>

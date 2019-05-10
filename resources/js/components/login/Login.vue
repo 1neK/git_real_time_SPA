@@ -28,12 +28,10 @@
                         ></v-text-field>
                         <v-flex xs12></v-flex>
                         <v-flex xs12></v-flex>
-                        <v-html>
                             <button class="button1" type="submit">Login</button> &nbsp;
                             <router-link to="/signup">
                                 <button class="button2">Sign Up</button>
                             </router-link>
-                        </v-html>
 
                         <v-flex xs12></v-flex>
 

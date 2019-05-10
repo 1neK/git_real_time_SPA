@@ -61,7 +61,6 @@ class TaskController extends Controller
         return response()->json($tasks);
 
 
-        return response()->json($tasks);
 
     }
 
