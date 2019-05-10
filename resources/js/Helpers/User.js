@@ -76,7 +76,7 @@ class User {
 
     admin() {
 
-        console.log(AppStorage.getRole());
+        //console.log(AppStorage.getRole());
         return AppStorage.getRole() == 'Admin';
 
     }

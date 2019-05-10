@@ -126,10 +126,11 @@
         font-weight: 500;
         font-size: 13px;
         display: flex;
+
     }
 
     .primary--text {
-        opacity: 0.5;
+        opacity: 0.70;
         color: white;
     }
 

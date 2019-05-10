@@ -169,7 +169,7 @@
 
                     <v-divider></v-divider>
                     <div v-if="!editing[index]">
-                        <v-card-actions v-if="own">
+                        <v-card-actions v-if="own(data.user_id)">
                             <v-spacer></v-spacer>
                             <v-btn icon small @click="edit(index)">
                                 <v-icon color="orange">edit</v-icon>
@@ -280,8 +280,8 @@
 
             },
 
-            own() {
-                return User.own(this.data.user_id)
+            own(id) {
+                return User.own(id);
             },
 
             destroy(index) {

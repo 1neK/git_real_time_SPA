@@ -4,7 +4,9 @@
             <v-btn icon slot="activator">
                 <v-icon :color="color"> notifications </v-icon> {{unreadCount}}
             </v-btn>
-      <v-list>
+      <v-list class="noti">
+        <v-list-title class="notif">Notifications</v-list-title>
+        <v-divider></v-divider>
         <v-list-tile v-for="item in unread" :key="item.id">
 
                 <v-list-tile-title @click="readIt(item)">{{item.text}}</v-list-tile-title>
@@ -85,6 +87,35 @@ export default {
 </script>
 
 <style>
+.noti{
+    color:cornflowerblue;
+    display: block;
+    padding: 6px 30px 5px 12px;
+    position:relative;
+    cursor: pointer;
+    text-decoration: none;
+    padding-right: 30px;
+    border: 1px solid rgba(100, 100, 100, .4);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    border-radius: 0 0 2px 2px;
+    top: 3px;
+    width: 430px;
+    z-index: -1;
+}
+.notif{
+    background-color: grey lighten-5;
+    color: #333;
+    outline:none;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 
+}
 </style>
 
