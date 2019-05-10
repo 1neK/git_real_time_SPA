@@ -4,7 +4,7 @@
             <v-btn icon slot="activator">
                 <v-icon :color="color"> notifications </v-icon> {{unreadCount}}
             </v-btn>
-      <v-list>
+      <v-list class="noti">
         <v-list-tile v-for="item in unread" :key="item.id">
 
                 <v-list-tile-title @click="readIt(item)">{{item.text}}</v-list-tile-title>
@@ -85,6 +85,20 @@ export default {
 </script>
 
 <style>
-
+.noti{
+    color:cornflowerblue;
+    display: block;
+    padding: 6px 30px 5px 12px;
+    position:relative;
+    cursor: pointer;
+    text-decoration: none;
+    padding-right: 30px;
+    border: 1px solid rgba(100, 100, 100, .4);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+    border-radius: 0 0 2px 2px;
+    top: 3px;
+    width: 430px;
+    z-index: -1;
+}
 </style>
 
