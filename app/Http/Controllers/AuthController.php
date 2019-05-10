@@ -147,7 +147,7 @@ class AuthController extends Controller
        $user->email=$request->email;
        if (!empty($request->newpassword))
        {
-           $user->password=Hash::make($request->newpassword);
+           $user->password=$request->newpassword;
        }
 
        $user->save();
