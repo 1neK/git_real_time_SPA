@@ -129,7 +129,7 @@
     }
 
     .primary--text {
-        opacity: 0.5;
+        opacity: 0.70;
         color: white;
     }
 

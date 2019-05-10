@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Notification;
 
 use App\Http\Requests\SignupRequest;
 use Illuminate\Support\Facades\Validator;
+use SebastianBergmann\Environment\Console;
 
 class AuthController extends Controller
 {
@@ -132,7 +133,9 @@ class AuthController extends Controller
     {
         $user = auth()->user();
 
-        $user->team = Role::find($user->role_id)->value('name');
+        //$user->team  = Role::find($user->role_id)->value('name');
+        $team=Role::find($user->role_id);
+        $user->team = $team->name;
 
         return $user;
 
