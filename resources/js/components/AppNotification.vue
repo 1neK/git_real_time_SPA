@@ -5,6 +5,8 @@
                 <v-icon :color="color"> notifications </v-icon> {{unreadCount}}
             </v-btn>
       <v-list class="noti">
+        <v-list-title class="notif">Notifications</v-list-title>
+        <v-divider></v-divider>
         <v-list-tile v-for="item in unread" :key="item.id">
 
                 <v-list-tile-title @click="readIt(item)">{{item.text}}</v-list-tile-title>
@@ -99,6 +101,21 @@ export default {
     top: 3px;
     width: 430px;
     z-index: -1;
+}
+.notif{
+    background-color: grey lighten-5;
+    color: #333;
+    outline:none;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
 }
 </style>
 
