@@ -61,7 +61,6 @@ class TaskController extends Controller
         return response()->json($tasks);
 
 
-
     }
 
 
@@ -94,14 +93,14 @@ class TaskController extends Controller
 
         Notification::send($to, new TelegramNotification(['text' => '@' . $from . ' create new task for @' . $to->name]));
 
-        $link='http://127.0.0.1:8000/task/'.$task->id;
+        $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
         \App\Notification::create([
             'user_id' => $to->id,
             'link' => $link,
             'text' => $from . ' create new task',
-   ]);
-        event(new CommentEvent($from,$from . ' create new task',$link ));
+        ]);
+        event(new CommentEvent($from, $from . ' create new task', $link));
 
 
         return response()->json('saved');
@@ -126,7 +125,10 @@ class TaskController extends Controller
 
         foreach ($task->comments as $comment) {
             $user = User::find($comment->user_id);
-            $comment->user =$user->name;
+            if (!empty($user)) {
+                $comment->user = $user->name;
+            } else   $comment->user = 'unkown';
+
 
         }
 
@@ -163,15 +165,14 @@ class TaskController extends Controller
 
         Notification::send($to, new TelegramNotification(['text' => '@' . $from . ' create new task for @' . $to->name]));
 
-        $link='http://127.0.0.1:8000/task/'.$task->id;
+        $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
         \App\Notification::create([
             'user_id' => $to->id,
             'link' => $link,
             'text' => $from . ' updated task',
         ]);
-        event(new CommentEvent($from,$from . ' updated task',$link ));
-
+        event(new CommentEvent($from, $from . ' updated task', $link));
 
 
         return response()->json("saved");
@@ -210,12 +211,10 @@ class TaskController extends Controller
         $to = User::where('id', $task->user_id)->value('name');
 
         $admins = User::whereIn('role_id', [1, 2])->get();
-        $link='http://127.0.0.1:8000/task/'.$task->id;
+        $link = 'http://127.0.0.1:8000/task/' . $task->id;
         foreach ($admins as $admin) {
 
             Notification::send($admin, new TelegramNotification(['text' => '@' . $to . ' started the task  @' . $task->id]));
-
-
 
 
             \App\Notification::create([
@@ -225,11 +224,8 @@ class TaskController extends Controller
             ]);
 
 
-
-
         }
-        event(new CommentEvent($to,$to . ' srated task',$link ));
-
+        event(new CommentEvent($to, $to . ' srated task', $link));
 
 
         return response()->json("saved");
@@ -246,13 +242,13 @@ class TaskController extends Controller
 
         $to = User::where('id', $task->user_id)->value('name');
 
-        $link='http://127.0.0.1:8000/task/'.$task->id;
+        $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
         $admins = User::whereIn('role_id', [1, 2])->get();
 
         foreach ($admins as $admin) {
 
-            Notification::send( $admin, new TelegramNotification(['text' => '@' . $to . ' completed the task  @' . $task->id]));
+            Notification::send($admin, new TelegramNotification(['text' => '@' . $to . ' completed the task  @' . $task->id]));
 
             \App\Notification::create([
                 'user_id' => $admin->id,
@@ -263,11 +259,7 @@ class TaskController extends Controller
         }
 
 
-
-
-
-
-        event(new CommentEvent($to,$to . ' completed task',$link ));
+        event(new CommentEvent($to, $to . ' completed task', $link));
 
         return response()->json("saved");
     }
@@ -279,9 +271,9 @@ class TaskController extends Controller
         $task->date_completed = now();
         $task->save();
 
-        $user =auth()->user()->name;
+        $user = auth()->user()->name;
         $to = User::where('id', $task->user_id)->first();
-        $link='http://127.0.0.1:8000/task/'.$task->id;
+        $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
         Notification::send($to, new TelegramNotification(['text' => '@' . $user . ' accpted the task  @' . $task->id]));
 
@@ -292,8 +284,7 @@ class TaskController extends Controller
         ]);
 
 
-        event(new CommentEvent($user,$user . ' accepted task',$link ));
-
+        event(new CommentEvent($user, $user . ' accepted task', $link));
 
 
         return response()->json("saved");
@@ -308,9 +299,9 @@ class TaskController extends Controller
         $task->save();
 
 
-        $user =auth()->user()->name;
+        $user = auth()->user()->name;
         $to = User::where('id', $task->user_id)->first();
-        $link='http://127.0.0.1:8000/task/'.$task->id;
+        $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
         Notification::send($to, new TelegramNotification(['text' => '@' . $user . ' rejected the task  @' . $task->id]));
 
@@ -321,8 +312,7 @@ class TaskController extends Controller
         ]);
 
 
-        event(new CommentEvent($user,$user . ' rejected task',$link ));
-
+        event(new CommentEvent($user, $user . ' rejected task', $link));
 
 
         return response()->json("saved");

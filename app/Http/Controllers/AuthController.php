@@ -6,6 +6,7 @@ use App\Notifications\TelegramNotification;
 use App\Role;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Notification;
 use App\Http\Requests\SignupRequest;
 use Illuminate\Support\Facades\Validator;
 use SebastianBergmann\Environment\Console;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -36,6 +38,8 @@ class AuthController extends Controller
     {
         $credentials = request(['email', 'password']);
         /* that s validate your data in server */
+
+
         $rules = [
             'email' => 'required|email',
             'password' => 'required',
@@ -47,7 +51,7 @@ class AuthController extends Controller
             return response()->json(['success' => false, 'error' => $validator->messages()], 401);
         }
         $credentials['status'] = 'Active';
-        if (!$token = auth()->attempt($credentials)) {
+        if (!$token = JWTAuth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
