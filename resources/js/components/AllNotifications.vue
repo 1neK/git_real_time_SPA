@@ -1,7 +1,7 @@
 <template>
 <v-container>
     <v-list class="noti1">
-        <v-list-title class="notif2">Notifications</v-list-title>
+        <v-list-tile class="notif2">Notifications</v-list-tile>
         <v-divider></v-divider>
         <v-list-tile-content v-for="item in unread" :key="item.id">
 
