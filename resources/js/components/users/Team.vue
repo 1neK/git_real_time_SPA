@@ -12,7 +12,7 @@
 
                 <v-layout row wrap>
 
-                    <v-flex xs12 sm4 v-for="team in teams" :key="team.id">
+                    <v-flex xs12 sm12 md6 v-for="team in teams" :key="team.id">
 
                         <v-card class="carteam">
                             <v-toolbar color="white" flat>

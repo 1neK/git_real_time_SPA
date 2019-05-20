@@ -4,6 +4,7 @@ import Parallex from '../components/parallex'
 import Login from '../components/login/Login'
 import Signup from '../components/login/Signup'
 import Logout from '../components/login/Logout'
+import AllNotifications from '../components/AllNotifications'
 
 import Read from '../components/forum/Read'
 import Create from '../components/forum/create'
@@ -86,7 +87,7 @@ const routes = [
             middleware: logged,
         }
     },
-
+    {path: '/all_notifications', component: AllNotifications},
 
 
     {

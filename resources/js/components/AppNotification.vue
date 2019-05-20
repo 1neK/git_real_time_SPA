@@ -16,6 +16,9 @@
         <v-list-tile v-for="item in read" :key="item.id">
             <v-list-tile-title>{{item.text}}</v-list-tile-title>
         </v-list-tile>
+        <v-divider></v-divider>
+        <router-link to="/all_notifications"><v-list-title class="notif1">See all</v-list-title></router-link>
+
       </v-list>
     </v-menu>
   </div>
@@ -35,13 +38,12 @@ export default {
         if(User.loggedIn()){
             this.getNotifications()
         }
-
-        // Echo.private('App.User.' + User.id())
-        //         .notification((notification) => {
-        //             this.playSound()
-        //             this.unread.unshift(notification)
-        //             this.unreadCount++
-        //         });
+    Echo.private('App.User.' + User.id())
+            .notification((notification) => {
+                this.playSound()
+                this.unread.unshift(notification)
+                this.unreadCount++
+            });
     },
     methods:{
         playSound(){
@@ -115,6 +117,22 @@ export default {
     outline:none;
     font-size: 13px;
     font-weight: bold;
+    margin: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+}
+.notif1{
+    background-color: grey lighten-5;
+    color: blue;
+    outline:none;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
     margin: 0;
     padding: 0;
     display: block;

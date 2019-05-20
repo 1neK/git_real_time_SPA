@@ -10,7 +10,7 @@
 
                 <v-layout row wrap>
 
-                    <v-flex xs12 sm4 v-for="project in projects" :key="project.id">
+                    <v-flex xs12 sm12 md6 v-for="project in projects" :key="project.id">
                         <v-card class="carteam1">
 
                             <v-toolbar color="white" flat>

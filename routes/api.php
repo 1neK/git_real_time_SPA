@@ -35,6 +35,8 @@ Route::get('/liste-task', 'RoleController@affiche_task');
 Route::get('profile', 'AuthController@profile');
 Route::post('profile', 'AuthController@updateprofile');
 
+Route::get('all_notifications', 'NotificationController@all_notifications');
+
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/dashboard/stats', 'DashboardController@stats');
 

@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Model\Task as AppTask;
+use App\TaskComment;
 
 class ProjectController extends Controller
 {
@@ -107,6 +108,7 @@ class ProjectController extends Controller
         $project->tasks = $tasks;
 
         foreach ($tasks as $task){
+            $task->comments = TaskComment::where('task_id', $task->id)->count();
 
             $user=User::find($task->user_id);
             if (!empty($user)){

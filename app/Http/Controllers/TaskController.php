@@ -86,19 +86,21 @@ class TaskController extends Controller
         $task->status = "Incompleted";
         $task->save();
 
+        $category= Category::find($task->category_id);
+        $project= Project::find($task->project_id);
 
         $from = User::where('id', $task->made_by)->value('name');
         $to = User::where('id', $task->user_id)->first();
 
 
-        Notification::send($to, new TelegramNotification(['text' => '@' . $from . ' create new task for @' . $to->name]));
+        Notification::send($to, new TelegramNotification(['text' => '@' . $from . ' create new task: '.$category->name.', Project: '.$project->name .'for @' . $to->name]));
 
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
         \App\Notification::create([
             'user_id' => $to->id,
             'link' => $link,
-            'text' => $from . ' create new task',
+            'text' => $from . ' create new task: '.$category->name.', Project: '.$project->name,
         ]);
         event(new CommentEvent($from, $from . ' create new task', $link));
 
@@ -158,19 +160,21 @@ class TaskController extends Controller
 
         $task->save();
 
+        $category= Category::find($task->category_id);
+        $project= Project::find($task->project_id);
 
         $from = auth()->user()->name;
         $to = User::where('id', $task->user_id)->first();
 
 
-        Notification::send($to, new TelegramNotification(['text' => '@' . $from . ' create new task for @' . $to->name]));
+        Notification::send($to, new TelegramNotification(['text' => '@' . $from . ' create new task: '.$category->name.', Project: '.$project->name.' for @' . $to->name]));
 
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
         \App\Notification::create([
             'user_id' => $to->id,
             'link' => $link,
-            'text' => $from . ' updated task',
+            'text' => $from . ' updated task: '.$category->name.', Project: '.$project->name,
         ]);
         event(new CommentEvent($from, $from . ' updated task', $link));
 
@@ -207,6 +211,10 @@ class TaskController extends Controller
         $task = Task::find($request->id);
         $task->status = 'In progress';
         $task->save();
+
+        $category= Category::find($task->category_id);
+        $project= Project::find($task->project_id);
+
         $from = User::where('id', $task->made_by)->value('name');
         $to = User::where('id', $task->user_id)->value('name');
 
@@ -214,13 +222,13 @@ class TaskController extends Controller
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
         foreach ($admins as $admin) {
 
-            Notification::send($admin, new TelegramNotification(['text' => '@' . $to . ' started the task  @' . $task->id]));
+            Notification::send($admin, new TelegramNotification(['text' => '@' . $to . ' started the task:  @' .$category->name.', Project: '.$project->name]));
 
 
             \App\Notification::create([
                 'user_id' => $admin->id,
                 'link' => $link,
-                'text' => $to . ' started the task',
+                'text' => $to . ' started the task: '.$category->name.', Project: '.$project->name,
             ]);
 
 
@@ -240,6 +248,9 @@ class TaskController extends Controller
 
         $task->save();
 
+        $category= Category::find($task->category_id);
+        $project= Project::find($task->project_id);
+
         $to = User::where('id', $task->user_id)->value('name');
 
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
@@ -248,12 +259,12 @@ class TaskController extends Controller
 
         foreach ($admins as $admin) {
 
-            Notification::send($admin, new TelegramNotification(['text' => '@' . $to . ' completed the task  @' . $task->id]));
+            Notification::send($admin, new TelegramNotification(['text' => '@' . $to . ' completed the task: '.$category->name.', Project: '.$project->name]));
 
             \App\Notification::create([
                 'user_id' => $admin->id,
                 'link' => $link,
-                'text' => $to . ' completed the task',
+                'text' => $to . ' completed the task: '.$category->name.', Project: '.$project->name,
             ]);
 
         }
@@ -271,16 +282,19 @@ class TaskController extends Controller
         $task->date_completed = now();
         $task->save();
 
+        $category= Category::find($task->category_id);
+        $project= Project::find($task->project_id);
+
         $user = auth()->user()->name;
         $to = User::where('id', $task->user_id)->first();
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
-        Notification::send($to, new TelegramNotification(['text' => '@' . $user . ' accpted the task  @' . $task->id]));
+        Notification::send($to, new TelegramNotification(['text' => '@' . $user . ' accpted the task:  @' .$category->name.', Project: '.$project->name]));
 
         \App\Notification::create([
             'user_id' => $to->id,
             'link' => $link,
-            'text' => $user . ' accepted the task',
+            'text' => $user . ' accepted the task: '.$category->name.', Project: '.$project->name,
         ]);
 
 
@@ -298,17 +312,20 @@ class TaskController extends Controller
 
         $task->save();
 
+        $category= Category::find($task->category_id);
+        $project= Project::find($task->project_id);
+
 
         $user = auth()->user()->name;
         $to = User::where('id', $task->user_id)->first();
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
-        Notification::send($to, new TelegramNotification(['text' => '@' . $user . ' rejected the task  @' . $task->id]));
+        Notification::send($to, new TelegramNotification(['text' => '@' . $user . ' rejected the task:  @' .$category->name.', Project: '.$project->name]));
 
         \App\Notification::create([
             'user_id' => $to->id,
             'link' => $link,
-            'text' => $user . ' rejected the task',
+            'text' => $user . ' rejected the task: '.$category->name.', Project: '.$project->name,
         ]);
 
 

@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use App\TaskComment;
 
 class DashboardController extends Controller
 {
@@ -44,6 +45,7 @@ class DashboardController extends Controller
             $task->project = Project::where('id', $task->project_id)->value('name');
             $task->user = User::where('id', $task->user_id)->value('name');
             $task->createdBy = User::where('id', $task->made_by)->value('name');
+            $task->comments = TaskComment::where('task_id', $task->id)->count();
         }
 
 

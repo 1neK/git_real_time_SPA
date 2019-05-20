@@ -49,7 +49,7 @@
                 <td class="text-center">{{ props.item.name }}</td>
                 <td class="text-center">{{ props.item.email }}</td>
                 <td class="text-center">{{ props.item.created_at }}</td>
-                <td class="text-center">{{ props.item.last_connexion }}</td>
+               <!-- <td class="text-center">{{ props.item.last_connexion }}</td>-->
                 <td class="text-center">{{ props.item.roles }}</td>
                 <td class="text-center">
                     <v-chip color="blue" text-color="white">{{ props.item.status }}</v-chip>
@@ -206,7 +206,7 @@
                     {text: 'Name', value: 'name'},
                     {text: 'Email', value: 'email'},
                     {text: 'Created at', value: 'created_at'},
-                    {text: 'Last connexion', value: 'last_connexion'},
+                   // {text: 'Last connexion', value: 'last_connexion'},
                     {text: 'Role ', value: 'role'},
                     {text: 'Status ', value: 'status'},
                     {text: 'Action ', value: 'action'},

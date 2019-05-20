@@ -30,4 +30,12 @@ class NotificationController extends Controller
     public function markAsRead(Request $request){
      return   Notification::where('id',$request->id)->update(['read_at'=> Carbon::now()]);
     }
+
+    public function all_notifications(){
+        $user =auth()->user()->id;
+        return[
+            'read'   =>Notification::where('user_id',$user)->whereNotNull('read_at')->get(),
+            'unread' =>Notification::where('user_id',$user)->whereNull('read_at')->get()
+        ];
+    }
 }

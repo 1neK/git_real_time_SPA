@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Notification;
 use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Model\Category;
+use App\Model\Project;
 
 class TaskCommentController extends Controller
 {
@@ -59,33 +61,33 @@ class TaskCommentController extends Controller
 
         $to = User::where('id', $task->user_id)->first();
 
-
+        $category= Category::find($task->category_id);
+        $project= Project::find($task->project_id);
         $admins = User::whereIn('role_id', [1, 2])->get();
         $link='http://127.0.0.1:8000/task/'.$task_id;
         foreach ($admins as $admin) {
 
             if ($admin->id != $user->id) {
-                Notification::send($admin, new TelegramNotification(['text' => '@' . $user->name . ' commented on task  @' . $task_commment->task_id . ' :' . $task_commment->body]));
+                Notification::send($admin, new TelegramNotification(['text' => '@' . $user->name . ' commented on task: ' .$category->name.', Project: '.$project->name . ' :' . $task_commment->body]));
                 \App\Notification::create([
                     'user_id' => $admin->id,
                     'link' => $link,
-                    'text' => $user->name.'commented on task',
-
+                    'text' => $user->name . ' commented on task: '.$category->name.', Project: '.$project->name,
 
                 ]);
                 }
-
 
         }
 
 
         if ($to->id != $user->id)
         {
-            Notification::send($to, new TelegramNotification(['text' => '@' . $user->name . ' commented on task  @' . $task_commment->task_id . ' :' . $task_commment->body]));
+            Notification::send($to, new TelegramNotification(['text' => '@' . $user->name . ' commented on task: '.$category->name.', Project: '.$project->name . ' :' . $task_commment->body]));
             \App\Notification::create([
+
                 'user_id' => $to->id,
                 'link' => $link,
-                'text' => $user->name.'commented on task',
+                'text' => $user->name.' commented on task: '.$category->name.', Project: '.$project->name,
 
 
             ]);
