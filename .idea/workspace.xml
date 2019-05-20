@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc14df5a-552a-42f8-9f17-df7de90917a1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/Helpers/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/Helpers/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AppNotification.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AppNotification.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/profile.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/users/AllUsers.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/AllUsers.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/users/Team.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/users/Team.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,11 +36,6 @@
               <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/AllNotifications.vue">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -94,11 +82,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/users/Team.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="206" column="10" lean-forward="true" selection-start-line="206" selection-start-column="10" selection-end-line="206" selection-end-column="10" />
+            <state relative-caret-position="386">
+              <caret line="206" column="10" selection-start-line="206" selection-start-column="10" selection-end-line="206" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -149,13 +146,13 @@
       <find>v-html</find>
       <find>AppNotification</find>
       <find>console.</find>
-      <find>console</find>
       <find>html</find>
       <find>v-list-title</find>
       <find>JWT_TTL</find>
       <find>required_claims</find>
       <find>status</find>
       <find>items</find>
+      <find>console</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -164,7 +161,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/app/TaskComment.php" />
         <option value="$PROJECT_DIR$/resources/js/components/reply/reply.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/task/editReply.vue" />
@@ -215,6 +211,7 @@
         <option value="$PROJECT_DIR$/resources/js/Helpers/User.js" />
         <option value="$PROJECT_DIR$/resources/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/resources/js/components/users/Team.vue" />
+        <option value="$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php" />
       </list>
     </option>
   </component>
@@ -352,6 +349,17 @@
             <path>
               <item name="realt" type="b2602c69:ProjectViewProjectNode" />
               <item name="realt" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="realt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="realt" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="realt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="realt" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Providers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="realt" type="b2602c69:ProjectViewProjectNode" />
@@ -531,18 +539,18 @@
       <workItem from="1557505494745" duration="1629000" />
       <workItem from="1557596926533" duration="13000" />
       <workItem from="1557940278359" duration="3114000" />
-      <workItem from="1558368916549" duration="1830000" />
+      <workItem from="1558368916549" duration="1963000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115354000" />
+    <option name="totallyTimeSpent" value="115487000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49888888" visible="true" weight="0.2056928" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49888888" visible="true" weight="0.2056928" />
       <window_info id="Structure" order="1" sideWeight="0.5011111" side_tool="true" weight="0.19495167" />
       <window_info id="npm" order="2" sideWeight="0.5011111" side_tool="true" weight="0.19495167" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -557,7 +565,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5016112" side_tool="true" weight="0.33666667" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" sideWeight="0.49838883" visible="true" weight="0.36" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49838883" visible="true" weight="0.36" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -592,13 +600,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="142" column="7" selection-start-line="142" selection-start-column="7" selection-end-line="142" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Task.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -933,8 +934,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/users/Team.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="206" column="10" lean-forward="true" selection-start-line="206" selection-start-column="10" selection-end-line="206" selection-end-column="10" />
+        <state relative-caret-position="386">
+          <caret line="206" column="10" selection-start-line="206" selection-start-column="10" selection-end-line="206" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="56" selection-start-line="16" selection-start-column="56" selection-end-line="16" selection-end-column="56" />
         </state>
       </provider>
     </entry>
