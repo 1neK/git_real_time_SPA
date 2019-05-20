@@ -199,7 +199,7 @@
                 axios.get('/api/count-team')
                     .then(res => {
                         this.teams = res.data;
-                        console.log(res.data);
+
                     });
 
                 this.reset();

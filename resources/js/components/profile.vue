@@ -7,7 +7,7 @@
                 justify-center
                 wrap
         >
-            <v-flex xs12 >
+            <v-flex xs12>
 
                 <v-form>
                     <v-container py-0>
@@ -54,7 +54,6 @@
                             </v-flex>
 
 
-
                             <v-flex
                                     xs12
                                     text-xs-right
@@ -99,8 +98,8 @@
                 axios.get('/api/profile').then(res => this.profile = res.data);
             },
 
-            update(){
-                axios.post('/api/profile',this.profile).then(res => Vue.toasted.show(res.data))
+            update() {
+                axios.post('/api/profile', this.profile).then(res => Vue.toasted.show(res.data))
             }
         }
 

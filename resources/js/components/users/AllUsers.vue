@@ -16,8 +16,7 @@
             </v-flex>
             <v-flex xs3>
                     <v-card-text class="px-0 font-weight-bold" id="pro">Role</v-card-text>
-                    <v-select
-                    :items="roles"
+                    <v-select  :items="roles"
                     placeholder="Role"
                     v-model="search.role_id"
                     item-text="name"
@@ -196,13 +195,9 @@
                 name: null,
                 btn_name: 'create'
             },
-            users:{},
+            users:[],
                 headers: [
-                    {
-                        text: 'ID',
-                        sortable: false,
-                        value: 'name'
-                    },
+                    {text: 'ID', sortable: false, value: 'name'},
                     {text: 'Name', value: 'name'},
                     {text: 'Email', value: 'email'},
                     {text: 'Created at', value: 'created_at'},
@@ -230,8 +225,7 @@
 
             this.getData();
 
-            axios.get('/api/count-team')
-                .then(res => this.roles = res.data);
+            axios.get('/api/count-team').then(res => this.roles = res.data);
             axios.get('/api/user').then(res => this.users = res.data);
 
         },

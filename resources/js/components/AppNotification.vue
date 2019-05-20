@@ -4,20 +4,18 @@
             <v-btn icon slot="activator">
                 <v-icon :color="color"> notifications </v-icon> {{unreadCount}}
             </v-btn>
-      <v-list class="noti">
-        <v-list-title class="notif">Notifications</v-list-title>
+      <v-list>
+
+        <v-list-tile>Notifications</v-list-tile>
         <v-divider></v-divider>
         <v-list-tile v-for="item in unread" :key="item.id">
 
                 <v-list-tile-title @click="readIt(item)">{{item.text}}</v-list-tile-title>
 
         </v-list-tile>
+
         <v-divider></v-divider>
-        <v-list-tile v-for="item in read" :key="item.id">
-            <v-list-tile-title>{{item.text}}</v-list-tile-title>
-        </v-list-tile>
-        <v-divider></v-divider>
-        <router-link to="/all_notifications"><v-list-title class="notif1">See all</v-list-title></router-link>
+        <router-link to="/all_notifications"><v-list-tile class="notif1">See all</v-list-tile></router-link>
 
       </v-list>
     </v-menu>

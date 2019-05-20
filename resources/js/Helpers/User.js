@@ -8,7 +8,7 @@ class User {
 
         axios.post('/api/auth/login', data)
             .then(res => this.responseAfterLogin(res))
-            .catch(error =>   Vue.toasted.show(error.response.data.error))
+            .catch(error => Vue.toasted.show(error.response.data.error))
     }
 
     responseAfterLogin(res) {
