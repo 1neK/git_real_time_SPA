@@ -63,6 +63,8 @@ class DashboardController extends Controller
 
         $prod= ($all >0 ) ? ($completed/$all)*100 : '0';
 
+        $prod=round($prod,2);
+
 
         return array('validated'=>$validated,'completed'=>$completed,'prod'=>$prod);
 

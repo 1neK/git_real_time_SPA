@@ -94,7 +94,7 @@
                                     </v-flex>
                                     <v-flex>
                                         <v-flex>
-                                            <v-icon color="#35851E">check_circle</v-icon> {{stats.validated}}
+                                            <v-icon color="#35851E">check_circle</v-icon> {{stats.completed}}
                                         </v-flex>
                                         <v-flex>
                                             Total Completed
@@ -103,7 +103,7 @@
                                 </div>
                                 <v-flex md6>
                                     <v-flex>
-                                        <v-card-text class="py-1 font-weight-bold"><h1> % <small>{{stats.validated}}</small></h1></v-card-text>
+                                        <v-card-text class="py-1 font-weight-bold"><h1> % <small>{{stats.prod}}</small></h1></v-card-text>
                                     </v-flex>
                                     <v-flex>
                                         Productivity
