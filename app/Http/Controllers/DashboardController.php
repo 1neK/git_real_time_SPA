@@ -56,13 +56,19 @@ class DashboardController extends Controller
 
     public function stats()
     {
-        $validated=Task::where('status','Validated')->count();
-        $completed=Task::where('status','Completed')->count();
+        $user =auth()->user();
+        if($user->role_id ==1 OR $user->role_id ==2 ){
+            $validated=Task::where('status','Validated')->count();
+            $completed=Task::where('status','Completed')->count();
+            $all=Task::count();
+        }else{
 
-        $all=Task::count();
+            $validated=Task::where('status','Validated')->where('user_id',$user->id)->count();
+            $completed=Task::where('status','Completed')->where('user_id',$user->id)->count();
+            $all=Task::where('user_id',$user->id)->count();
+        }
 
         $prod= ($all >0 ) ? ($completed/$all)*100 : '0';
-
         $prod=round($prod,2);
 
 
