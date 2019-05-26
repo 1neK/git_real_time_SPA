@@ -233,10 +233,8 @@
                     .then(res => {
                         this.init();
                         this.form.body = '';
-
-
-                    })
-                    .catch(error => this.errors = error.response.data.errors)
+                        this.$swal('Success', res.data, 'success');
+                    }).catch(error => this.$swal('Error', error.response.data.error, 'error'));
             }
             ,
 
@@ -246,7 +244,8 @@
 
                         this.init();
                         this.mark=false;
-                    })
+                        this.$swal('Success', res.data, 'success');
+                    }).catch(error => this.$swal('Error', error.response.data.error, 'error'));
             },
 
             init() {
@@ -255,7 +254,9 @@
                     .then(res => {
                         this.task = res.data;})
 
-                axios.get('/api/user').then(res => this.users = res.data)
+                axios.get('/api/user').then(res => {this.users = res.data ;
+
+                }).catch(error => this.$swal('Error', error.response.data.error, 'error'));
 
 
             }
@@ -288,8 +289,9 @@
 
 
                 axios.delete('/api/task/comment/' + index, this.form)
-                    .then(res => this.init())
-                    .catch(error => this.errors = error.response.data.errors)
+                    .then(res => {this.init();
+                        this.$swal('Success', res.data, 'success');
+                    }).catch(error => this.$swal('Error', error.response.data.error, 'error'));
             },
 
             cancel(index) {
@@ -297,7 +299,9 @@
             },
             updatecomment(index) {
                 axios.patch('/api/task/comment/'+this.editForm.id, this.editForm)
-                    .then(res =>  {this.cancel(index) ;this.init()})
+                    .then(res =>  {this.cancel(index) ;this.init();
+                        this.$swal('Success', res.data, 'success');
+                    }).catch(error => this.$swal('Error', error.response.data.error, 'error'));
             }
 
         },

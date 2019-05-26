@@ -13,8 +13,9 @@
                         <v-text-field
                                 class="px-1"
                                 v-model="form.email"
-                                placeholder="Username"
+                                placeholder="Email"
                                 type="email"
+                                required
                                 autofocus
                                 required
                         ></v-text-field>
@@ -62,14 +63,48 @@
 
 
         methods: {
-            validEmail: function (email) {
+            validEmail(email) {
                 var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return re.test(email);
             },
             login() {
-                if (this.form.password && this.form.email && this.validEmail(this.form.email))
-                    User.login(this.form, Vue)
+                if (this.form.password && this.form.email && this.validEmail(this.form.email)){
+
+                    axios.post('/api/auth/login', this.form)
+                        .then(res => this.responseAfterLogin(res))
+                        .catch(error =>  this.$swal('Error',error.response.data.error ,'error')  )
+
+                }
+
+                else
+                {
+
+                    this.$swal('Error','Email and Password are required ' ,'error')
+
+
+                }
+
+            },
+
+            responseAfterLogin(res) {
+                const access_token = res.data.access_token
+                const user = res.data.user
+
+                if (access_token != '') {
+
+                    AppStorage.storeToken(access_token);
+                    AppStorage.storeUser(user.name);
+
+                    AppStorage.storeRole(user.role);
+
+
+                    window.location = '/';
+
+
+                }
+
             }
+
 
         }
     }

@@ -3,12 +3,12 @@ import AppStorage from './AppStorage'
 
 
 class User {
-    login(data, Vue) { /* router :this.$router */
+    login(data) {
 
 
         axios.post('/api/auth/login', data)
             .then(res => this.responseAfterLogin(res))
-            .catch(error => Vue.toasted.show(error.response.data.error))
+            .catch(error =>  this.$swal(error.response.data.error) )
     }
 
     responseAfterLogin(res) {

@@ -4,29 +4,19 @@ import Parallex from '../components/parallex'
 import Login from '../components/login/Login'
 import Signup from '../components/login/Signup'
 import Logout from '../components/login/Logout'
-import AllNotifications from '../components/AllNotifications'
-
-import Read from '../components/forum/Read'
-import Create from '../components/forum/create'
-import Admin from '../components/users/Admin'
-import Coordinator from '../components/users/Coordinator'
-
-import Team from '../components/users/Team'
-import AddUsers from '../components/users/AddUsers'
-import AllUsers from '../components/users/AllUsers'
-import CreateUser from '../components/users/CreateUser'
-
-import Project from '../components/project/Project'
-import ProjectSingle from '../components/project/ProjectSingle'
-import Task from '../components/task/Task'
+import AllNotifications from '../components/notifications/notifications'
+import Team from '../components/team/index'
+import AllUsers from '../components/users/index'
+import Project from '../components/project/index'
+import ProjectSingle from '../components/project/show'
+import Task from '../components/task/index'
 import taskSingle from '../components/task/show'
-import CreateCategory from '../components/category/CreateCategory'
-import TeamSingle from '../components/team/TeamSingle'
+import CreateCategory from '../components/category/index'
+import TeamSingle from '../components/team/show'
 import dashboard from '../components/dashboard/dashboard'
 import Profile from '../components/profile'
 import log from './middleware/log'
 import logged from './middleware/logged'
-import adminMiddleware from './middleware/AdminMiddleware'
 
 
 Vue.use(VueRouter)
@@ -34,71 +24,20 @@ Vue.use(VueRouter)
 
 const routes = [
     {path: '/', component: Parallex, name: 'home'},
-    {
-        path: '/login',
-        component: Login,
-        name: 'login',
-        meta: {
-            middleware: log,
-        }
-    },
-    {path: '/logout', component: Logout},
-    {
-        path: '/signup', component: Signup,
-        name: 'signup',
-
-        meta: {
-            middleware: log,
-        }
-    },
-    {path: '/addusers', component: AddUsers},
-    {path: '/allusers', component: AllUsers},
-    {path: '/createuser', component: CreateUser},
-
-    //{ path: '/createproject', component: CreateProject },
-    {path: '/project', component: Project},
-    {path: '/project/:id', component: ProjectSingle, name: 'project-single'},
-
-    //{ path: '/createtask', component: CreateTask },
-    {path: '/task', component: Task},
-    {path: '/task/:id', component: taskSingle, name: 'task-single'},
-
-    {path: '/category', component: CreateCategory},
-
-
-    //{ path: '/create_team', component:CreateTeam   },
-    //{ path: '/liste_team', component:ListeTeam   },
-    {path: '/team', component: Team},
-    {path: '/team/:id', component: TeamSingle, name: 'team-single'},
-
-    {path: '/dashboard', component: dashboard},
-
-    {path: '/ask', component: Create},
-    {
-        path: '/admin', component: Admin, name: 'admin',
-        meta: {
-            middleware: adminMiddleware,
-        }
-    },
-
-    {
-        path: '/coordinator', component: Coordinator, name: 'coordinator',
-        meta: {
-            middleware: logged,
-        }
-    },
-    {path: '/all_notifications', component: AllNotifications},
-
-
-    {
-        path: '/profile', component: Profile, name: 'profile',
-        meta: {
-            middleware: logged,
-        }
-
-    },
-    // { path: '/forum', component: Forum ,name:'forum'},
-    {path: '/question/:slug', component: Read, name: 'read'},
+    {path: '/login', component: Login, name: 'login', meta: {middleware: log,}},
+    {path: '/logout', component: Logout, meta: {middleware: logged}},
+    {path: '/signup', component: Signup,name: 'signup', meta: {middleware: log,}},
+    {path: '/users', component: AllUsers, meta: {middleware: logged}},
+    {path: '/projects', component: Project, meta: {middleware: logged}},
+    {path: '/project/:id', component: ProjectSingle, name: 'project-single', meta: {middleware: logged}},
+    {path: '/tasks', component: Task, meta: {middleware: logged}},
+    {path: '/task/:id', component: taskSingle, name: 'task-single', meta: {middleware: logged}},
+    {path: '/category', component: CreateCategory, meta: {middleware: logged}},
+    {path: '/teams', component: Team, meta: {middleware: logged}},
+    {path: '/team/:id', component: TeamSingle, name: 'team-single', meta: {middleware: logged}},
+    {path: '/dashboard', component: dashboard, meta: {middleware: logged}},
+    {path: '/notifications', component: AllNotifications, meta: {middleware: logged}},
+    {path: '/profile', component: Profile, name: 'profile', meta: {middleware: logged}},
 
 
 ]

@@ -139,7 +139,7 @@ class AuthController extends Controller
     {
         $user = auth()->user();
 
-        //$user->team  = Role::find($user->role_id)->value('name');
+
         $team=Role::find($user->role_id);
         $user->team = $team->name;
 

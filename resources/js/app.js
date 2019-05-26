@@ -17,12 +17,12 @@ import Exception from './Helpers/Exception'
 // register the plugin on vue
 import Toasted from 'vue-toasted';
 import router from './Router/router.js'
-
+import VueSweetalert2 from 'vue-sweetalert2';
 Vue.use(Vuetify)
 
 Vue.component('downloadExcel', JsonExcel)
 
-
+Vue.use(VueSweetalert2);
 Vue.use(VueSimplemde)
 window.md = md
 
@@ -32,6 +32,10 @@ window.Exception = Exception
 
 
 Vue.use(Toasted)
+
+
+
+
 
 
 window.EventBus = new Vue();
@@ -48,7 +52,7 @@ window.EventBus = new Vue();
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('AppHome', require('./components/AppHome.vue').default);
+Vue.component('AppHome', require('./components/home.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

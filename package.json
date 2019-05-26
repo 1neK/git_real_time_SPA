@@ -29,6 +29,7 @@
         "vue-json-excel": "^0.2.98",
         "vue-router": "^3.0.2",
         "vue-simplemde": "^0.5.1",
+        "vue-sweetalert2": "^2.0.5",
         "vue-toasted": "^1.1.26",
         "vuetify": "^1.5.3"
     }
