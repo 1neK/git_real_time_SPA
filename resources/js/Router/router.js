@@ -23,20 +23,35 @@ Vue.use(VueRouter)
 
 
 const routes = [
-    {path: '/', component: Parallex, name: 'home'},
+
+    {path: '/', component: Parallex, name: 'home', meta: {middleware: logged}},
+
     {path: '/login', component: Login, name: 'login', meta: {middleware: log,}},
-    {path: '/logout', component: Logout, meta: {middleware: logged}},
-    {path: '/signup', component: Signup,name: 'signup', meta: {middleware: log,}},
+
+    {path: '/signup', component: Signup, name: 'signup', meta: {middleware: log,}},
+
+    {path: '/logout', component: Logout},
+
     {path: '/users', component: AllUsers, meta: {middleware: logged}},
+
     {path: '/projects', component: Project, meta: {middleware: logged}},
+
     {path: '/project/:id', component: ProjectSingle, name: 'project-single', meta: {middleware: logged}},
+
     {path: '/tasks', component: Task, meta: {middleware: logged}},
+
     {path: '/task/:id', component: taskSingle, name: 'task-single', meta: {middleware: logged}},
+
     {path: '/category', component: CreateCategory, meta: {middleware: logged}},
+
     {path: '/teams', component: Team, meta: {middleware: logged}},
+
     {path: '/team/:id', component: TeamSingle, name: 'team-single', meta: {middleware: logged}},
+
     {path: '/dashboard', component: dashboard, meta: {middleware: logged}},
+
     {path: '/notifications', component: AllNotifications, meta: {middleware: logged}},
+
     {path: '/profile', component: Profile, name: 'profile', meta: {middleware: logged}},
 
 

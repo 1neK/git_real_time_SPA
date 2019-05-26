@@ -55,9 +55,5 @@ if (token) {
      key: "ab48f8314a10e0ce6707",
      cluster: 'eu',
      encrypted: false,
-     auth: {
-         headers: {
-             Authorization: 'Bearer ' + localStorage.getItem('token')
-         },
-     },
+
  });

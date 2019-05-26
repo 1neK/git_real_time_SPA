@@ -121,7 +121,13 @@ class AuthController extends Controller
         $admins = User::whereIn('role_id', [1, 2])->get();
 
         foreach ($admins as $admin) {
-        Notification::send($admin, new TelegramNotification(['text' => $user->name . ' logged in ']));
+
+            try{
+                Notification::send($admin, new TelegramNotification(['text' => $user->name . ' logged in ']));
+            }catch( \Exception $e){
+
+            }
+
 
         }
         if (!empty($user->role_id)) $user->role = Role::where('id', $user->role_id)->value('name');

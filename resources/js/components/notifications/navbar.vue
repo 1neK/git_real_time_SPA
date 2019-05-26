@@ -1,21 +1,22 @@
 <template>
-    <div class="text-xs-center">
-    <v-menu offset-y>
-            <v-btn icon slot="activator">
+    <div class="text-xs-center ">
+    <v-menu offset-y >
+            <v-btn icon slot="activator" >
                 <v-icon :color="color"> notifications </v-icon> {{unreadCount}}
             </v-btn>
-      <v-list>
+      <v-list class="ness">
 
         <v-list-tile>Notifications</v-list-tile>
         <v-divider></v-divider>
-        <v-list-tile v-for="item in unread" :key="item.id">
+        <v-list-tile v-for="item in unread" :key="item.id" >
 
                 <v-list-tile-title @click="readIt(item)">{{item.text}}</v-list-tile-title>
 
         </v-list-tile>
 
         <v-divider></v-divider>
-        <router-link to="/notifications"><v-list-tile class="notif1">See all</v-list-tile></router-link>
+
+        <router-link to="/notifications"><v-list-tile class="ness1">See all</v-list-tile></router-link>
 
       </v-list>
     </v-menu>
@@ -33,6 +34,9 @@ export default {
         }
     },
     created(){
+
+
+
         if(User.loggedIn()){
             this.getNotifications()
         }
@@ -75,15 +79,21 @@ export default {
     }
     ,mounted() {
 
+
+Echo.options= ({
+    broadcaster: 'pusher',
+    key: "ab48f8314a10e0ce6707",
+    cluster: 'eu',
+    encrypted: false,
+    auth: {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token')
+        },
+    },
+})
         Echo.channel('comment-channel')
-            .listen('.CommentEvent', (message) => {
-
-
-
-                let count = this.unreadCount;
-
+            .listen('.CommentEvent', (message) => {   let count = this.unreadCount;
                 this.getNotifications();
-
                 if (count != this.unreadCount )               this.playSound();
 
 
@@ -94,7 +104,7 @@ export default {
 </script>
 
 <style>
-.noti{
+.ness{
     color:cornflowerblue;
     display: block;
     padding: 6px 30px 5px 12px;
@@ -124,7 +134,7 @@ export default {
     margin-inline-end: 0px;
 
 }
-.notif1{
+.ness1{
     background-color: grey lighten-5;
     color: blue;
     outline:none;

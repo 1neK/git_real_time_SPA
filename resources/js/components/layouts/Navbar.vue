@@ -1,5 +1,5 @@
 <template>
-    <v-navigation-drawer permanent v-if="User.loggedIn()">
+    <v-navigation-drawer permanent v-if="loggedIn">
         <v-container class="clnav1">
             <v-list dense>
 
@@ -24,7 +24,7 @@
                     </v-list-tile-content>
                 </v-list-tile>
 
-                <v-list-tile to="/teams" v-if="User.admin()">
+                <v-list-tile to="/teams" v-if="admin">
                     <v-list-tile-action>
                         <v-icon color="deep-purple lighten-4">supervised_user_circle</v-icon>
                     </v-list-tile-action>
@@ -35,7 +35,7 @@
                     </v-list-tile-content>
                 </v-list-tile>
 
-                <v-list-tile to="/projects" v-if="User.admin() || User.coordinator()">
+                <v-list-tile to="/projects" v-if="admin || coordinator">
                     <v-list-tile-action>
                         <v-icon color="deep-purple lighten-4">work</v-icon>
                     </v-list-tile-action>
@@ -57,7 +57,7 @@
                     </v-list-tile-content>
                 </v-list-tile>
 
-                <v-list-tile to="/users" v-if="User.admin()">
+                <v-list-tile to="/users" v-if="admin">
                     <v-list-tile-action>
                         <v-icon color="deep-purple lighten-4">supervisor_account</v-icon>
                     </v-list-tile-action>
@@ -85,11 +85,17 @@
 </template>
 
 <script>
+    import User from "../../Helpers/User";
+
     export default {
 
         data() {
             return {
+
+                loggedIn:false,
                 drawer: false,
+                coordinator:false,
+                admin:false,
                 User: User,
                 role: ""
 
@@ -97,9 +103,28 @@
 
         },
         created() {
+           this.refresh()
+            EventBus.$on('login',()=>{
+                this.refresh()
+            })
 
-            this.role = localStorage.getItem('role');
+            EventBus.$on('logout',()=>{
 
+                this.refresh()
+            })
+        },
+
+        methods :{
+
+            refresh(){
+
+                this.loggedIn=User.loggedIn();
+                this.role = localStorage.getItem('role');
+               this.admin=User.admin();
+                this.coordinator=User.coordinator();
+
+                console.log(this.loggedIn);
+            }
 
         }
     }

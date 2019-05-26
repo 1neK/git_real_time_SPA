@@ -32,12 +32,6 @@ window.Exception = Exception
 
 
 Vue.use(Toasted)
-
-
-
-
-
-
 window.EventBus = new Vue();
 
 
@@ -62,6 +56,7 @@ Vue.component('AppHome', require('./components/home.vue').default);
 const app = new Vue({
     el: '#app',
     router
+
 });
 
 

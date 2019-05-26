@@ -8,7 +8,7 @@ class User {
 
         axios.post('/api/auth/login', data)
             .then(res => this.responseAfterLogin(res))
-            .catch(error =>  this.$swal(error.response.data.error) )
+            .catch(error => this.$swal(error.response.data.error))
     }
 
     responseAfterLogin(res) {
@@ -52,8 +52,8 @@ class User {
     }
 
     logout() {
-        AppStorage.clear()
-        window.location = '/login'
+        AppStorage.clear();
+        // window.location = '/login'
     }
 
     name() {

@@ -12,7 +12,7 @@ export default function log({ next, router }) {
   }else {
 
 
-    return router.push({ name: 'forum' });
+    return router.push({ name: 'home' });
   }
 
     return next();

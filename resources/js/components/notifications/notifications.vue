@@ -3,13 +3,13 @@
     <v-list class="noti1">
         <v-list-tile class="notif2">Notifications</v-list-tile>
         <v-divider></v-divider>
-        <v-list-tile-content v-for="item in unread" :key="item.id">
+        <v-list-tile-content v-for="item in unread" :key="item.id" class="noti">
 
                 <v-list-tile-title @click="readIt(item)">{{item.text}}</v-list-tile-title>
 
         </v-list-tile-content>
         <v-divider></v-divider>
-        <v-list-tile-content v-for="item in read" :key="item.id">
+        <v-list-tile-content v-for="item in read" :key="item.id" class="notif">
             <v-list-tile-title @click="readIt(item)">{{item.text}}</v-list-tile-title>
         </v-list-tile-content>
     </v-list>
@@ -46,6 +46,35 @@ export default {
 </script>
 
 <style>
+.noti{
+    background-color:  grey lighten-5;
+    color: rgb(38, 96, 116);
+    outline:none;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.notif{
+    background-color: grey lighten-5;
+    color: #333;
+    outline:none;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+
+}
 .noti1{
     color:cornflowerblue;
     display: block;

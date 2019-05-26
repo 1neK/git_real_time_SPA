@@ -70,9 +70,47 @@ export default {
 
 
             EventBus.$on('logout',()=>{
-                User.logout()
+
+
+
+                this.refersh();
+                this.$router.push({name: 'home'});
+
+
+            })
+
+
+          EventBus.$on('login',()=>{
+
+              this.refersh();
+
+
+
+
             })
         }
+
+        ,
+    methods :{
+
+        refersh(){
+            const JWTtoken = `Bearer ${localStorage.getItem('token')}`
+   axios.defaults.headers.common['Authorization'] = JWTtoken;
+
+
+            this.loggedIn = User.loggedIn();
+           this.items=[
+
+                { 'title':'profile',to:'/profile',show:User.loggedIn() },
+                { 'title':'Task Types',to:'/category',show:User.admin() },
+                { 'title':'Login',to:'/login',show:!User.loggedIn() },
+                { 'title':'Logout',to:'/logout',show:User.loggedIn() },
+
+            ]
+        }
+
+
+    }
 }
 </script>
 

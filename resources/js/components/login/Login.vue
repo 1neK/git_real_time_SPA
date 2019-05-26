@@ -29,10 +29,10 @@
                         ></v-text-field>
                         <v-flex xs12></v-flex>
                         <v-flex xs12></v-flex>
-                            <button class="button1" type="submit">Login</button> &nbsp;
-                            <router-link to="/signup">
-                                <button class="button2">Sign Up</button>
-                            </router-link>
+                        <button class="button1" type="submit">Login</button> &nbsp;
+                        <router-link to="/signup">
+                            <button class="button2">Sign Up</button>
+                        </router-link>
 
                         <v-flex xs12></v-flex>
 
@@ -47,6 +47,7 @@
 <script>
 
     import User from '../../Helpers/User';
+    import AppStorage from '../../Helpers/AppStorage'
 
     export default {
         data() {
@@ -68,18 +69,18 @@
                 return re.test(email);
             },
             login() {
-                if (this.form.password && this.form.email && this.validEmail(this.form.email)){
+                if (this.form.password && this.form.email && this.validEmail(this.form.email)) {
 
                     axios.post('/api/auth/login', this.form)
-                        .then(res => this.responseAfterLogin(res))
-                        .catch(error =>  this.$swal('Error',error.response.data.error ,'error')  )
+                        .then(res => {
 
-                }
+                            this.responseAfterLogin(res.data)
+                        })
+                        .catch(error => this.$swal('Error', error.response.data.error, 'error'))
 
-                else
-                {
+                } else {
 
-                    this.$swal('Error','Email and Password are required ' ,'error')
+                    this.$swal('Error', 'Email and Password are required ', 'error')
 
 
                 }
@@ -87,8 +88,8 @@
             },
 
             responseAfterLogin(res) {
-                const access_token = res.data.access_token
-                const user = res.data.user
+                const access_token = res.access_token
+                const user = res.user;
 
                 if (access_token != '') {
 
@@ -97,8 +98,11 @@
 
                     AppStorage.storeRole(user.role);
 
+                    EventBus.$emit('login');
 
-                    window.location = '/';
+
+                    this.$router.push({name: 'home'});
+
 
 
                 }
