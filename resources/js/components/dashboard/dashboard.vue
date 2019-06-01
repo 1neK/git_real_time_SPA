@@ -100,6 +100,14 @@
                                             Total Completed
                                         </v-flex>
                                     </v-flex>
+                                    <v-flex>
+                                        <v-flex>
+                                            <v-icon color="#35851E">check_circle</v-icon> {{stats.all}}
+                                        </v-flex>
+                                        <v-flex>
+                                            Total
+                                        </v-flex>
+                                    </v-flex>
                                 </div>
                                 <v-flex md6>
                                     <v-flex>
@@ -180,7 +188,7 @@
                 projects:[],
                 categories:[],
                 tasks:[],
-                status:['In progress','Validated','Incompleted','Completed'],
+                status:['In progress','Validated','Incompleted','Completed','all'],
 
                 search:{user_id:null,project_id:null,year:null,month:null,token:'',status:null},
 
@@ -204,15 +212,14 @@
                     {id:'12' ,value: 'December'}],
 
                     json_fields: {
-            'project': 'project',
-            'Task': 'category',
-            'Affected to': 'user',
-            'start date':'start_date',
-            'due date':'due_date',
-            'status':'status',
-            'Completed on ': 'date_completed',
-            'Links ': 'final_link'
-
+                        'project': 'project',
+                        'Task': 'category',
+                        'Affected to': 'user',
+                        'start date':'start_date',
+                        'due date':'due_date',
+                        'status':'status',
+                        'Completed on ': 'date_completed',
+                        'Links ': 'final_link'
             },
 
 

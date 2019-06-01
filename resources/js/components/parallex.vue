@@ -6,8 +6,8 @@
         align-center
         column
         justify-center >
-      <h1 class="display-4 font-weight-thin mb-3">Real SPA</h1>
-      <h4 class="headline">Real Time Single Page Forum</h4>
+      <h1 class="display-4 font-weight-thin mb-3">RTM</h1>
+      <h4 class="headline">Real Time Monitoring</h4>
     </v-layout>
     </v-parallax>
 </template>

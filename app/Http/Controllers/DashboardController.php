@@ -56,6 +56,7 @@ class DashboardController extends Controller
 
     public function stats()
     {
+
         $user =auth()->user();
         if($user->role_id ==1 OR $user->role_id ==2 ){
             $validated=Task::where('status','Validated')->count();
@@ -72,7 +73,7 @@ class DashboardController extends Controller
         $prod=round($prod,2);
 
 
-        return array('validated'=>$validated,'completed'=>$completed,'prod'=>$prod);
+        return array('validated'=>$validated,'completed'=>$completed,'prod'=>$prod, 'all'=>$all);
 
 
 

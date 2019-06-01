@@ -195,7 +195,7 @@
 
                 this.form.name = null;
                 this.form.id = null;
-                this.form.btn_name = 'created';
+                this.form.btn_name = 'create';
 
             },
             getData() {
