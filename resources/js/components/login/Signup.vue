@@ -8,7 +8,7 @@
                     <h1> Sign Up </h1>
                 </div>
             </v-card-title>
-  <v-form @submit.prevent="signup">
+        <v-form @submit.prevent="signup">
 
           <v-text-field
             placeholder="Name"
@@ -35,7 +35,7 @@
           <v-text-field
             v-model="form.password_confirmation"
             type="password"
-            placeholder="Confirm Password   "
+            placeholder="Confirm Password"
             required
           ></v-text-field>
           <v-flex xs12></v-flex>
@@ -80,16 +80,16 @@ export default {
         return re.test(email);
     },
      signup(){
-         if (this.form.name && this.form.email && this.validEmail(this.form.email) ){
+         if (this.form.password && this.form.password_confirmation && this.form.name && this.form.email && this.validEmail(this.form.email) ){
             axios.post('/api/auth/signup',this.form)
             .then(res => {
-            User.responseAfterLogin(res)
-            window.location='/forum'
+            this.$swal('Success', res.data.message, 'success')
 
         })
-        .catch(error=>this.errors=error.response.data.errors)
-         }
-
+        .catch(error => this.$swal('Error', error.response.data.error, 'error'))
+         }else {
+                    this.$swal('Error', 'All fields are required ', 'error')
+                }
 
 
     }

@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 
-use App\Http\Requests\SignupRequest;
+//use App\Http\Requests\SignupRequest;
 use Illuminate\Support\Facades\Validator;
 use SebastianBergmann\Environment\Console;
 use Tymon\JWTAuth\Facades\JWTAuth;
@@ -59,20 +59,24 @@ class AuthController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function signup(SignupRequest $request)
+    public function signup(Request $request)
     {
         $credentials = $request->only('name', 'email', 'password');
-
-
         $rules = [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6'
+            'password' =>'min:6'
         ];
         $validator = Validator::make($credentials, $rules);
-
-        User::create($credentials);
-        return $this->login($credentials);
+        if($validator->fails()) {
+            return response()->json(['success'=> false, 'error'=> $validator->messages()]);
+        }
+        $user = User::create([
+            'name'   => $request->name,
+            'email'    => $request->email,
+            'password' => $request->password,
+        ]);
+        return response()->json(['success'=> true, 'message'=> 'Signed in Successfully! You have just to wait the confirmation of the administrator to login']);
     }
 
     /**
@@ -97,6 +101,16 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully logged out']);
     }
 
+    public function verif_mail(Request $request){
+        $user = User::where('email', $request->input('email'))->count();
+
+        if($user > 0)
+        {
+            echo "There is data";
+        }
+        else
+            echo "No data";
+    }
     /**
      * Refresh a token.
      *

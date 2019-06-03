@@ -47,7 +47,7 @@
 <script>
 
     import User from '../../Helpers/User';
-    import AppStorage from '../../Helpers/AppStorage'
+    import AppStorage from '../../Helpers/AppStorage';
 
     export default {
         data() {
@@ -84,6 +84,7 @@
 
 
                 }
+
 
             },
 
