@@ -101,16 +101,6 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully logged out']);
     }
 
-    public function verif_mail(Request $request){
-        $user = User::where('email', $request->input('email'))->count();
-
-        if($user > 0)
-        {
-            echo "There is data";
-        }
-        else
-            echo "No data";
-    }
     /**
      * Refresh a token.
      *

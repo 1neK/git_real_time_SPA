@@ -82,9 +82,11 @@ export default {
      signup(){
          if (this.form.password && this.form.password_confirmation && this.form.name && this.form.email && this.validEmail(this.form.email) ){
             axios.post('/api/auth/signup',this.form)
-            .then(res => {
+            .then( res => {if(res.data.success){
             this.$swal('Success', res.data.message, 'success')
-
+            }else{
+                this.$swal('Error', 'This account does already exist please enter another email adress', 'error')
+            }
         })
         .catch(error => this.$swal('Error', error.response.data.error, 'error'))
          }else {
