@@ -16,13 +16,13 @@
 
                         <v-card class="carteam">
                             <v-toolbar color="white" flat>
-                                <v-flex xs7>
+                                <v-flex md9 xs6>
 
                                     <a><router-link :to="{ name: 'team-single', params: { id:  team.slug } }"  >  <h3 class="title font-weight-bold">{{ team.name }}</h3></router-link></a>
 
                                 </v-flex>
 
-                                <v-flex xs2>
+                                <v-flex md4 xs6>
                                     <v-card-actions>
                                         <v-tooltip bottom>
                                             <template v-slot:activator="{ on }">

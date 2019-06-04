@@ -89,7 +89,7 @@
                             </v-card-text>
                         </v-flex>
 
-                        <v-card-text class=" font-weight-bold">
+                        <v-card-text class=" font-weight-bold py-3">
                             <v-flex md12>
                                 <v-subheader>
                                     <h3>Status:

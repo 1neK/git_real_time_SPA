@@ -6,13 +6,13 @@
                     <h2 class="title font-weight-bold">Dashboard</h2>
                 </v-flex>
 
-                <v-flex md1 xs1>
+                <v-flex md1 xs3>
                     <v-card-text class="px-0 font-weight-bold" id="pro"><h4> Filter </h4></v-card-text>
                 </v-flex>
 
 
 
-                <v-flex md2 xs6>
+                <v-flex md2 xs4>
                     <v-card-text class="px-0 font-weight-bold" id="pro">Project</v-card-text>
                     <v-select
                             v-model="search.project_id"
@@ -139,7 +139,7 @@
                 </download-excel>
                 </v-flex>
 
-                <v-container>
+                <v-flex md11 xs12 sm10>
                     <v-data-table colmd12 :headers="headers" :items="tasks" class="elevation-1">
                         <template v-slot:items="props">
                             <td>{{ props.item.project }}</td>
@@ -153,7 +153,7 @@
                             <td class="text-center">{{ props.item.final_link }}</td>
                         </template>
                     </v-data-table>
-                </v-container>
+                </v-flex>
 
 
             </v-layout>

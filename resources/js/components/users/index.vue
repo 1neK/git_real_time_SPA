@@ -42,6 +42,7 @@
 
         </v-layout>
         </v-container>
+        <v-flex md11 xs12 sm10>
         <v-data-table colmd12 :headers="headers" :items="teams" class="elevation-1">
             <template v-slot:items="props">
                 <td>{{ props.item.id }}</td>
@@ -60,7 +61,8 @@
 
             </template>
         </v-data-table>
-
+        </v-flex>
+        <v-flex md10 xs6>
         <v-dialog v-model="dialog" width="700">
             <template v-slot:activator="{ on }">
                 <v-card-text class="text-right" style="height: 100px; position: relative">
@@ -184,7 +186,7 @@
             </v-card>
 
         </v-dialog>
-
+    </v-flex>
     </v-container>
 
 </template>

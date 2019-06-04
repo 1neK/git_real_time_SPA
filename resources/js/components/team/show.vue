@@ -9,8 +9,8 @@
         <v-flex md12 xs12 md1>
 
         </v-flex>
-<v-container>
-    <v-data-table colmd1 xs12 sm1 :headers="headers" :items="team.users" class="elevation-1">
+<v-flex md11 xs12 sm10>
+    <v-data-table colmd12  :headers="headers" :items="team.users" class="elevation-1">
         <template v-slot:items="props">
             <td>{{ props.item.id }}</td>
             <td class="text-center">{{ props.item.name }}</td>
@@ -30,7 +30,7 @@
 
         </template>
     </v-data-table>
-</v-container>
+</v-flex>
             </v-layout>
     </v-container>
 </v-container>

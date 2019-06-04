@@ -96,7 +96,7 @@
 
                 </v-flex>
 
-                <v-flex md12 text-xs-center>
+                <v-flex md12 xs12 sm12 text-xs-center>
 
                     <v-btn dark @click="submit()">{{form.btn_name}}</v-btn>
 
@@ -105,7 +105,7 @@
                 </v-flex>
 
 
-                <v-flex xs12>
+                <v-flex xs12 md11 sm8>
                     <v-expansion-panel popout>
                         <v-expansion-panel-content>
                             <template v-slot:header>
@@ -113,7 +113,7 @@
                             </template>
                             <v-layout row wrap p4>
                                 <v-flex xs1></v-flex>
-                                <v-flex md3>
+                                <v-flex md3 xs5>
                                     <v-card-text class="font-weight-regular" id="pro">Project</v-card-text>
                                     <v-select
                                             :items="projects"
@@ -135,7 +135,7 @@
                                     ></v-select>
                                 </v-flex>
 
-                                <v-flex md3>
+                                <v-flex md3 xs5>
                                     <v-card-text v-if="myRole=='Admin' || myRole=='Coordinator'"
                                                  class="font-weight-regular" id="pro">Affected To
                                     </v-card-text>
@@ -183,7 +183,7 @@
                 </v-flex>
 
 
-                <v-container>
+                <v-flex md11 xs12 sm10>
                     <v-data-table colmd12 :headers="headers" :items="tasks" class="elevation-1">
                         <template v-slot:items="props">
                             <td>
@@ -268,7 +268,7 @@
 
                         </template>
                     </v-data-table>
-                </v-container>
+                </v-flex>
 
             </v-layout>
         </v-container>

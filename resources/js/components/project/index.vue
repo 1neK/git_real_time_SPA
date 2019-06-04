@@ -15,12 +15,12 @@
 
                             <v-toolbar color="white" flat>
 
-                                <v-flex xs7>
+                                <v-flex md9 xs6>
                                     <router-link :to="{ name: 'project-single', params: { id:  project.slug } }"><h3
                                             class="title font-weight-bold">{{ project.name }}</h3></router-link>
                                 </v-flex>
 
-                                <v-flex xs2>
+                                <v-flex md4 xs6>
                                     <v-card-actions>
                                         <v-tooltip bottom>
                                             <template v-slot:activator="{ on }">
