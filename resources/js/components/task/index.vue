@@ -3,7 +3,7 @@
         <h3 class="title font-weight-bold">Tasks</h3>
         <v-container fluid grid-list-md>
             <v-layout row wrap>
-                <v-flex md3>
+                <v-flex md3 xs5>
                     <v-card-text class="px-0 font-weight-bold" id="pro">Project</v-card-text>
                     <v-select
                             :items="projects"
@@ -58,7 +58,7 @@
                     </v-menu>
                 </v-flex>
 
-                <v-flex md3>
+                <v-flex md3 xs5>
                     <v-card-text class="px-0 font-weight-bold" id="pro">Task Type</v-card-text>
                     <v-select
                             :items="categories"
@@ -84,7 +84,7 @@
                     ></v-text-field>
                 </v-flex>
 
-                <v-flex md6>
+                <v-flex  md4 xs10>
                     <v-card-text class="px-0 font-weight-bold" id="pro">Description</v-card-text>
                     <v-textarea
                             outline

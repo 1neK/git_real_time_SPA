@@ -6,9 +6,9 @@
     <v-layout row-wrap>
 
         <v-flex xs3>
-            <navbar></navbar>
+            <navbar class="nv"></navbar>
         </v-flex>
-        <v-flex xs10>
+        <v-flex xs10 >
             <router-view class="rou"></router-view>
         </v-flex>
     </v-layout>

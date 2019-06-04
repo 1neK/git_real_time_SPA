@@ -4,7 +4,7 @@
             <v-app id="inspire">
                 <v-flex md8></v-flex>
                 <v-flex md4>
-                <v-toolbar app fixed clipped-left dark color="#3B3B53">
+                <v-toolbar app fixed clipped-left dark color="#3B3B53" md12 xs12>
                    <!-- <v-toolbar-side-icon v-if="loggedIn" class="white--text"  @click.stop="drawer = !drawer"></v-toolbar-side-icon>-->
                     <v-toolbar-title>
                         <router-link class="white--text" to="/"></router-link>
@@ -13,7 +13,7 @@
                     <router-link class="font-weight-light subheading white--text" to="/login" v-if="!loggedIn">Login</router-link>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <router-link class="font-weight-light subheading white--text" to="/signup" v-if="!loggedIn">Sign Up</router-link>
                     <app-notification v-if="loggedIn"></app-notification>
-                    <div class="hidden-sm-and-down" v-if="loggedIn">
+                    <div  v-if="loggedIn">
                         <v-menu offset-y>
                         <template v-slot:activator="{ on }">
                             <v-btn

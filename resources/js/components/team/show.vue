@@ -1,13 +1,16 @@
 <template>
 <v-container>
+    <v-container fluid grid-list-md>
+            <v-layout row wrap>
         <!--<v-flex v-for="team in teams" :key="team.id">
             <h3 class="title font-weight-bold" >{{team.name}}</h3>
         </v-flex>-->
 
-        <v-flex xs12></v-flex>
-        <v-flex xs12></v-flex>
+        <v-flex md12 xs12 md1>
 
-    <v-data-table colmd12  :headers="headers" :items="team.users" class="elevation-1">
+        </v-flex>
+<v-container>
+    <v-data-table colmd1 xs12 sm1 :headers="headers" :items="team.users" class="elevation-1">
         <template v-slot:items="props">
             <td>{{ props.item.id }}</td>
             <td class="text-center">{{ props.item.name }}</td>
@@ -27,6 +30,9 @@
 
         </template>
     </v-data-table>
+</v-container>
+            </v-layout>
+    </v-container>
 </v-container>
 
 </template>

@@ -165,8 +165,8 @@
                 </v-flex>
 
 
-                <v-container>
-                    <v-data-table colmd12 :headers="headers" :items="project.tasks" class="elevation-1">
+                <v-container >
+                    <v-data-table colmd12 xs12 sm1 :headers="headers" :items="project.tasks" class="elevation-1">
                         <template v-slot:items="props">
                             <td>
                                 <router-link :to="{ name: 'task-single', params: { id:  props.item.id } }"> {{props.item.category_id }}
@@ -191,8 +191,7 @@
                         </template>
                     </v-data-table>
                 </v-container>
-
-            </v-layout>
+                </v-layout>
         </v-container>
 
     </v-container>

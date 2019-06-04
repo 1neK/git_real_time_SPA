@@ -2,17 +2,17 @@
     <v-container>
         <v-container fluid grid-list-md>
             <v-layout row wrap>
-                <v-flex md2>
+                <v-flex md2 xs3>
                     <h2 class="title font-weight-bold">Dashboard</h2>
                 </v-flex>
 
-                <v-flex md1>
+                <v-flex md1 xs1>
                     <v-card-text class="px-0 font-weight-bold" id="pro"><h4> Filter </h4></v-card-text>
                 </v-flex>
 
 
 
-                <v-flex md2>
+                <v-flex md2 xs6>
                     <v-card-text class="px-0 font-weight-bold" id="pro">Project</v-card-text>
                     <v-select
                             v-model="search.project_id"
@@ -22,7 +22,7 @@
                             placeholder="Project"
                     ></v-select>
                 </v-flex>
-                <v-flex md2 v-if="myRole=='Admin' || myRole=='Coordinator'">
+                <v-flex md2 xs5 v-if="myRole=='Admin' || myRole=='Coordinator'">
                     <v-card-text class="px-0 font-weight-bold" id="pro">Affected To</v-card-text>
                     <v-select
 
@@ -35,7 +35,7 @@
                 </v-flex>
 
 
-                <v-flex md2>
+                <v-flex md2 xs5>
                     <v-card-text class="px-0 font-weight-bold" id="pro">Month</v-card-text>
                     <v-select
                             v-model="search.month"
@@ -47,7 +47,7 @@
 
                 </v-flex>
 
-                <v-flex md2>
+                <v-flex md2 xs5>
                     <v-card-text class="px-0 font-weight-bold" id="pro">Year</v-card-text>
                     <v-combobox
                             v-model="search.year"
@@ -55,8 +55,8 @@
                             placeholder="Year"
                     ></v-combobox>
                 </v-flex>
-                <v-flex md3></v-flex>
-                <v-flex md2>
+                <v-flex md3 xs5></v-flex>
+                <v-flex md2 xs5>
                     <v-card-text class="px-0 font-weight-bold" id="pro">Status</v-card-text>
                     <v-select
                             v-model="search.status"
@@ -124,8 +124,8 @@
                 </v-flex>
                 <!--<v-spacer></v-spacer>-->
                 <v-flex xs6></v-flex>
-                <v-flex xs10></v-flex>
-                <v-flex md2>
+                <v-flex xs8></v-flex>
+                <v-flex md4 xs10>
 
                 <download-excel
 	            class   = "btn btn-default"
