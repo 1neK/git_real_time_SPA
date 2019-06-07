@@ -1,10 +1,10 @@
 <template>
-    <v-navigation-drawer permanent v-if="loggedIn">
+    <v-navigation-drawer permanent v-if="loggedIn" sm1 xs12 md12>
         <v-container class="clnav1">
             <v-list dense>
 
-                <v-list-tile-content>
-                    <div class="center1" font-weight-bold>
+                <v-list-tile-content  sm3 xs12 md11>
+                    <div class="center1 font-weight-bold">
                         <h1>
                             <v-list-tile-title>{{role}}</v-list-tile-title>
                         </h1>

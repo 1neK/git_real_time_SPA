@@ -6,7 +6,7 @@
     <v-layout row-wrap>
 
         <v-flex xs3>
-            <navbar class="nv"></navbar>
+            <navbar></navbar>
         </v-flex>
         <v-flex xs10 >
             <router-view class="rou"></router-view>
@@ -15,7 +15,7 @@
     </v-container>
 
     <app-footer></app-footer>
-</div>
+</div> 
 
 
 </template>

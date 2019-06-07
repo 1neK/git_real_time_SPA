@@ -145,11 +145,12 @@
                                     <v-flex md6>
 
                                         <v-btn dark @click="filter()">filter</v-btn>
+                                        <v-btn dark @click="getData()">reset</v-btn>
 
                                     </v-flex>
                                     <v-flex md6>
 
-                                        <v-btn dark @click="getData()">reset</v-btn>
+
 
                                     </v-flex>
 

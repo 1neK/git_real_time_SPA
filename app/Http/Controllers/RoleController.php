@@ -81,6 +81,7 @@ return response()->json($teams);
         // Category::create($request->all());
        $role  = new Role();
        $role->name  = $request->name;
+       $role->telegram_id  = $request->telegram_id;
        $role->slug  = str_slug($request->name);
        $role->save();
        return response()->json('works');
@@ -122,6 +123,7 @@ return response()->json($teams);
 
             $role =Role::find($role);
             $role->name =$request->name;
+            $role->telegram_id  = $request->telegram_id;
             $role->save();
             return response()->json('updated');
         }

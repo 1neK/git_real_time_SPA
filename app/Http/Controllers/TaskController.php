@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use App\Role;
 
 class TaskController extends Controller
 {
@@ -98,6 +99,13 @@ class TaskController extends Controller
 
         Notification::send($to, new TelegramNotification(['text' => '@' . $from . ' create new task: ' . $category->name . ', Project: ' . $project->name . 'for @' . $to->name]));
 
+        $group=Role::find($to->role_id);
+
+        try{
+            Notification::send($group, new TelegramNotification(['text' => '@' . $from . ' create new task: ' . $category->name . ', Project: ' . $project->name . 'for @' . $to->name]));
+        }catch( \Exception $e){
+
+        }
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
         \App\Notification::create([

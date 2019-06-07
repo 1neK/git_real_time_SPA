@@ -124,6 +124,7 @@ class AuthController extends Controller
 
         $admins = User::whereIn('role_id', [1, 2])->get();
 
+
         foreach ($admins as $admin) {
 
             try{

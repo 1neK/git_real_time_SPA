@@ -103,7 +103,7 @@
 
 
                         <v-card-text class=" font-weight-bold">
-                            <v-flex md12  class="py-1">
+                            <v-flex md12  class="py-5">
                                 <v-subheader>
                                     <h3>Description:
                                         <small  v-if="!mark"><p > {{task.description}}</p></small>

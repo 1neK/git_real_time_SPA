@@ -68,8 +68,9 @@
                             placeholder="Task Type"
                     ></v-select>
 
-                    <v-card-text class="px-0 font-weight-bold" id="pro">Affected To</v-card-text>
+                    <v-card-text  v-if="user.admin() && user.coordinator()" class="px-0 font-weight-bold" id="pro">Affected To</v-card-text>
                     <v-select
+                    v-if="user.admin() && user.coordinator()"
                             :items="users"
                             placeholder="Affected To"
                             v-model="form.user_id"
@@ -278,11 +279,13 @@
 </template>
 
 <script>
+ import User from "../../Helpers/User";
     export default {
         data() {
             return {
 
                 final_link: '',
+                user :User,
                 dialog: false,
                 headers: [
                     {text: 'Project', value: 'project'},
@@ -380,6 +383,7 @@
             add() {
 
               if (this.formValidated()){
+
 
                   axios.post('/api/task?token=' + localStorage.getItem('token'), this.form).then(res => {
                       console.log(res);
@@ -479,6 +483,12 @@
             },
 
             formValidated() {
+
+           if(!this.user.admin() || !this.user.coordinator()) {
+
+     console.log(this.user.id());
+                     this.form.user_id=this.user.id();
+                 }
 
 
                 return (this.form.category_id != null && this.form.project_id != null && this.form.user_id != null && this.form.start_date != null && this.form.due_date != null);

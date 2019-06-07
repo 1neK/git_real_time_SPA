@@ -97,6 +97,12 @@
                                 autofocus
                                 v-model="form.name"
                                 required></v-text-field>
+                                 <v-text-field
+                                placeholder="Telegram group"
+                                autofocus
+                                v-model="form.telegram_id"
+                                required></v-text-field>
+
 
 
                     </v-card-text>
@@ -194,6 +200,7 @@
             reset() {
 
                 this.form.name = null;
+                this.form.telegram_id = null;
                 this.form.id = null;
                 this.form.btn_name = 'create';
 
