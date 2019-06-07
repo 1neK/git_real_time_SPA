@@ -81,6 +81,7 @@ class User extends Authenticatable implements JWTSubject
     {
 
         return $this->telegram_id;
+       // return '-292610400';
 
     }
 
