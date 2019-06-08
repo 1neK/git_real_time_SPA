@@ -155,14 +155,14 @@
                         </v-flex>
 
 
-                            <v-flex md6>
+                            <!--<v-flex md6>
                                 <v-text-field
                                         label="telegram id"
                                         v-model="form.telegram_id"
                                         type="text"
                                         required
                                 ></v-text-field>
-                            </v-flex>
+                            </v-flex>-->
                         </v-layout>
 
                     </v-card-text>

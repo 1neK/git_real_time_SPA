@@ -68,9 +68,9 @@
                             placeholder="Task Type"
                     ></v-select>
 
-                    <v-card-text  v-if="user.admin() && user.coordinator()" class="px-0 font-weight-bold" id="pro">Affected To</v-card-text>
+                    <v-card-text  v-if="user.admin() || user.coordinator()" class=" font-weight-bold" id="pro">Affected To</v-card-text>
                     <v-select
-                    v-if="user.admin() && user.coordinator()"
+                    v-if="user.admin() || user.coordinator()"
                             :items="users"
                             placeholder="Affected To"
                             v-model="form.user_id"
@@ -484,7 +484,7 @@
 
             formValidated() {
 
-           if(!this.user.admin() || !this.user.coordinator()) {
+           if(!this.user.admin() && !this.user.coordinator()) {
 
      console.log(this.user.id());
                      this.form.user_id=this.user.id();
