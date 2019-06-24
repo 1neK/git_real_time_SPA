@@ -6,6 +6,7 @@ use App\Events\CommentEvent;
 use App\Model\Category;
 use App\Model\Project;
 use App\Notifications\TelegramNotification;
+use App\Role;
 use App\Task;
 use App\TaskComment;
 use App\User;
@@ -13,9 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use App\Role;
 
 class TaskController extends Controller
 {
@@ -76,7 +75,6 @@ class TaskController extends Controller
     {
 
 
-
         $user = auth()->user();
         $task = new Task();
         $task->description = ($request->description) ?? '';
@@ -96,16 +94,18 @@ class TaskController extends Controller
         $from = User::where('id', $task->made_by)->value('name');
         $to = User::where('id', $task->user_id)->first();
 
-
-        //Notification::send($to, new TelegramNotification(['text' => '@' . $from . ' create new task: ' . $category->name . ', Project: ' . $project->name . 'for @' . $to->name]));
-
-        $group=Role::find($to->role_id);
-
-        try{
-            Notification::send($group, new TelegramNotification(['text' => '@' . $from . ' create new task: ' . $category->name . ', Project: ' . $project->name . 'for @' . $to->name]));
-        }catch( \Exception $e){
+        try {
+            Notification::send($to, new TelegramNotification(['text' => '@' . $from . ' create new task: ' . $category->name . ', Project: ' . $project->name . 'for @' . $to->name]));
+        } catch (\Exception $e) {
 
         }
+        $group = Role::find($to->role_id);
+
+//        try{
+//            Notification::send($group, new TelegramNotification(['text' => '@' . $from . ' create new task: ' . $category->name . ', Project: ' . $project->name . 'for @' . $to->name]));
+//        }catch( \Exception $e){
+//
+//        }
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
         \App\Notification::create([
@@ -177,16 +177,19 @@ class TaskController extends Controller
         $from = auth()->user()->name;
         $to = User::where('id', $task->user_id)->first();
 
-        $group=Role::find($to->role_id);
+        $group = Role::find($to->role_id);
 
-        try{
+        try {
             Notification::send($group, new TelegramNotification(['text' => '@' . $from . ' create new task: ' . $category->name . ', Project: ' . $project->name . '  for @' . $to->name]));
-        }catch( \Exception $e){
+        } catch (\Exception $e) {
 
         }
 
-        //Notification::send($to, new TelegramNotification(['text' => '@' . $from . ' create new task: ' . $category->name . ', Project: ' . $project->name . ' for @' . $to->name]));
+        try {
+            Notification::send($to, new TelegramNotification(['text' => '@' . $from . ' create new task: ' . $category->name . ', Project: ' . $project->name . ' for @' . $to->name]));
+        } catch (\Exception $e) {
 
+        }
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
         \App\Notification::create([
@@ -235,24 +238,35 @@ class TaskController extends Controller
 
         $from = User::where('id', $task->made_by)->value('name');
         $to = User::where('id', $task->user_id)->value('name');
-        $group=Role::find($to->role_id);
+        $group = Role::find($to->role_id);
 
         $admins = User::whereIn('role_id', [1, 2])->get();
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
-        //foreach ($admins as $admin) {
+        foreach ($admins as $admin) {
 
-            Notification::send($group, new TelegramNotification(['text' => '@' . $to . ' started the task:  @' . $category->name . ', Project: ' . $project->name]));
+            try {
+
+                Notification::send($admin, new TelegramNotification(['text' => '@' . $to . ' started the task:  @' . $category->name . ', Project: ' . $project->name]));
+            } catch (\Exception $e) {
+
+            }
+
+        }
+//       try{
+//
+//           Notification::send($group, new TelegramNotification(['text' => '@' . $to . ' started the task:  @' . $category->name . ', Project: ' . $project->name]));
+//       } catch (\Exception $e) {
+//
+//    }
+
+        \App\Notification::create([
+            'user_id' => $group->id,
+            'link' => $link,
+            'text' => $to . ' started the task: ' . $category->name . ', Project: ' . $project->name,
+        ]);
 
 
-            \App\Notification::create([
-                'user_id' => $group->id,
-                'link' => $link,
-                'text' => $to . ' started the task: ' . $category->name . ', Project: ' . $project->name,
-            ]);
-
-
-        //}
         event(new CommentEvent($to, $to . ' started task', $link));
 
 
@@ -274,21 +288,34 @@ class TaskController extends Controller
         $to = User::where('id', $task->user_id)->value('name');
 
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
-        $group=Role::find($to->role_id);
+        $group = Role::find($to->role_id);
+
 
         $admins = User::whereIn('role_id', [1, 2])->get();
 
-        //foreach ($admins as $admin) {
 
-            Notification::send($group, new TelegramNotification(['text' => '@' . $to . ' completed the task: ' . $category->name . ', Project: ' . $project->name]));
+        foreach ($admins as $admin) {
 
-            \App\Notification::create([
-                'user_id' => $group->id,
-                'link' => $link,
-                'text' => $to . ' completed the task: ' . $category->name . ', Project: ' . $project->name,
-            ]);
+            try {
 
-        //}
+                Notification::send($admin, new TelegramNotification(['text' => '@' . $to . ' completed the task: ' . $category->name . ', Project: ' . $project->name]));
+            } catch (\Exception $e) {
+
+            }
+
+        }
+
+//        try {
+//            Notification::send($group, new TelegramNotification(['text' => '@' . $to . ' completed the task: ' . $category->name . ', Project: ' . $project->name]));
+//        }catch (\Exception $e) {
+//
+//        }
+
+        \App\Notification::create([
+            'user_id' => $group->id,
+            'link' => $link,
+            'text' => $to . ' completed the task: ' . $category->name . ', Project: ' . $project->name,
+        ]);
 
 
         event(new CommentEvent($to, $to . ' completed task', $link));
@@ -308,11 +335,20 @@ class TaskController extends Controller
 
         $user = auth()->user()->name;
         $to = User::where('id', $task->user_id)->first();
-        $group=Role::find($to->role_id);
+        $group = Role::find($to->role_id);
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
-        Notification::send($group, new TelegramNotification(['text' => '@' . $user . ' accpted the task:  @' . $category->name . ', Project: ' . $project->name]));
+        try {
+            Notification::send($to, new TelegramNotification(['text' => '@' . $user . ' accpted the task:  @' . $category->name . ', Project: ' . $project->name]));
+        } catch (\Exception $e) {
 
+        }
+
+//        try {
+//            Notification::send($group, new TelegramNotification(['text' => '@' . $user . ' accpted the task:  @' . $category->name . ', Project: ' . $project->name]));
+//        } catch (\Exception $e) {
+//
+//        }
         \App\Notification::create([
             'user_id' => $to->id,
             'link' => $link,
@@ -340,10 +376,23 @@ class TaskController extends Controller
 
         $user = auth()->user()->name;
         $to = User::where('id', $task->user_id)->first();
-        $group=Role::find($to->role_id);
+        $group = Role::find($to->role_id);
         $link = 'http://127.0.0.1:8000/task/' . $task->id;
 
-        Notification::send($group, new TelegramNotification(['text' => '@' . $user . ' rejected the task:  @' . $category->name . ', Project: ' . $project->name]));
+
+        try {
+            Notification::send($to, new TelegramNotification(['text' => '@' . $user . ' rejected the task:  @' . $category->name . ', Project: ' . $project->name]));
+        } catch (\Exception $e) {
+
+        }
+
+//        try {
+//          Notification::send($group, new TelegramNotification(['text' => '@' . $user . ' rejected the task:  @' . $category->name . ', Project: ' . $project->name]))
+//        } catch (\Exception $e) {
+//
+//        }
+
+
 
         \App\Notification::create([
             'user_id' => $to->id,
