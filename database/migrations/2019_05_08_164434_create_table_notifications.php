@@ -17,7 +17,7 @@ class CreateTableNotifications extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('link');
-            $table->string('text');
+            $table->text('text');
             $table->timestamp('read_at')->nullable();
             $table->timestamps();
 
