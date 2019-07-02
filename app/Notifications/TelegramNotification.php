@@ -26,7 +26,10 @@ class TelegramNotification extends Notification
 
     public function toTelegram()
     {
-        return (new TelegramMessage())->text( $this->details['text']);
+      //  return (new TelegramMessage())->text( $this->details['text'],$this->parse_mode(true));
+        return (new TelegramMessage())
+        ->text($this->details['text'])
+        ->parse_mode('HTML');
     }
 
 

@@ -202,10 +202,10 @@
                             <td class="text-center">{{ props.item.status }}</td>
                             <td class="text-center">
 
-                                <a v-if="props.item.link" :href="  props.item.link ">
+                                <a v-if="props.item.link" target="_blank" :href="  props.item.link ">
                                     <v-icon medium color="green">link</v-icon>
                                 </a>
-                                <a v-if="props.item.final_link" :href="props.item.final_link ">
+                                <a v-if="props.item.final_link" target="_blank" :href="props.item.final_link ">
                                     <v-icon medium color="blue">link</v-icon>
                                 </a>
 
