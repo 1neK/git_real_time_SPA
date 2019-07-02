@@ -328,19 +328,19 @@ foreach ($admins as $admin) {
         $group=Role::find($to->role_id);
         $link = env('APP_URL','http://127.0.0.1:8000').'/task/' . $task->id;
 
-        Notification::send($group, new TelegramNotification(['text' => '@' . $user . ' accpted the task:  @' . $category->name . ', Project: ' . $project->name]));
+        Notification::send($group, new TelegramNotification(['text' => '@' . $user . ' validated the task:  @' . $category->name . ', Project: ' . $project->name]));
 
         \App\Notification::create([
             'user_id' => $to->id,
             'link' => $link,
-            'text' => $user . ' accepted the task: ' . $category->name . ', Project: ' . $project->name,
+            'text' => $user . ' validated the task: ' . $category->name . ', Project: ' . $project->name,
         ]);
 
 
-        event(new CommentEvent($user, $user . ' accepted task', $link));
+        event(new CommentEvent($user, $user . ' validated task', $link));
 
 
-        return response()->json("task has been accepted");
+        return response()->json("task has been validated");
     }
 
     public function reject(Request $request)
