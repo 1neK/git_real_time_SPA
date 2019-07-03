@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-layout>
-            <v-flex xs12 sm6 offset-sm1>
+            <v-flex xs12 md6 sm12  offset-md3>
                 <v-card class="text-xs-center" id="card1">
                     <v-card-title primary-title>
                         <div class="center" font-weight-bold>
