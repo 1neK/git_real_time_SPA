@@ -1,4 +1,5 @@
 <template>
+<v-flex flex sm9 xs9>
     <v-container>
         <v-container fluid grid-list-md>
             <v-layout row wrap>
@@ -196,7 +197,7 @@
         </v-container>
 
     </v-container>
-
+</v-flex>
 </template>
 
 <script>

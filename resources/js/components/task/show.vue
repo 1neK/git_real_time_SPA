@@ -1,4 +1,5 @@
 <template>
+<v-flex flex sm9 xs9>
     <v-layout row wrap>
         <v-container>
             <h3 class="title font-weight-bold">Task</h3>
@@ -198,6 +199,7 @@
         </v-container>
 
     </v-layout>
+</v-flex>
 </template>
 
 <script>

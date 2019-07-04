@@ -1,5 +1,5 @@
 <template>
-
+<v-flex flex sm9 xs9>
     <v-container>
         <h3 class="title font-weight-bold">Projects</h3>
         <v-flex xs12></v-flex>
@@ -124,6 +124,7 @@
             </v-card>
         </v-dialog>
     </v-container>
+</v-flex>
 </template>
 
 <script>

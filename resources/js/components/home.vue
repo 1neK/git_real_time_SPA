@@ -2,17 +2,16 @@
 
     <div>
         <toolbar></toolbar>
-        <v-container fluid grid-list-md style="padding:inherit;">
-            <v-layout row-wrap>
 
+
+ <v-layout row wrap>
 
                 <navbar ></navbar>
 
 
-                <router-view class="rou"></router-view>
+                <router-view  ></router-view>
 
-            </v-layout>
-        </v-container>
+ </v-layout>
 
         <app-footer></app-footer>
     </div>

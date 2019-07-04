@@ -1,5 +1,5 @@
 <template>
-
+<v-flex flex sm9 xs9>
     <v-container>
 
         <h3 class="title font-weight-bold">Teams</h3>
@@ -126,6 +126,7 @@
             </v-card>
         </v-dialog>
     </v-container>
+</v-flex>
 </template>
 
 <script>

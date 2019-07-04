@@ -1,4 +1,5 @@
 <template>
+  <v-flex flex sm9 xs9>
     <v-container>
         <h3 class="title font-weight-bold">Users</h3>
         <v-flex xs12></v-flex>
@@ -188,6 +189,7 @@
         </v-dialog>
     </v-flex>
     </v-container>
+  </v-flex>
 
 </template>
 

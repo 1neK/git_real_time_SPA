@@ -1,4 +1,5 @@
 <template>
+<v-flex flex sm9 xs9>
     <v-container>
         <h3 class="title font-weight-bold">Tasks</h3>
         <v-container fluid grid-list-md>
@@ -275,7 +276,7 @@
         </v-container>
 
     </v-container>
-
+</v-flex>
 </template>
 
 <script>

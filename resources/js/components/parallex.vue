@@ -1,4 +1,5 @@
 <template>
+<v-flex flex sm9 xs9>
   <v-parallax
     height="700"
     src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg" v-if="user.loggedIn()">
@@ -10,6 +11,7 @@
       <h4 class="headline">Real Time Monitoring</h4>
     </v-layout>
     </v-parallax>
+</v-flex>
 </template>
 
 <script>
