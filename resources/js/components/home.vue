@@ -2,7 +2,7 @@
 
     <div>
         <toolbar></toolbar>
-        <v-container fluid grid-list-md>
+        <v-container fluid grid-list-md style="padding:inherit;">
             <v-layout row-wrap>
 
 
