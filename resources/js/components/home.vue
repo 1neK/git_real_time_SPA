@@ -6,7 +6,7 @@
             <v-layout row-wrap>
 
 
-                <navbar></navbar>
+                <navbar ></navbar>
 
 
                 <router-view class="rou"></router-view>
@@ -39,4 +39,5 @@
         height: 100%;
         width: 100%;
     }
+
 </style>

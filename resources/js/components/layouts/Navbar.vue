@@ -1,5 +1,5 @@
 <template>
-    <v-flex sm3 xs3 v-if="loggedIn">
+    <v-flex sm3 xs3 v-if="loggedIn" style="padding:0px;">
         <v-navigation-drawer permanent sm1 xs12 md12>
             <v-container class="clnav1">
                 <v-list dense>
