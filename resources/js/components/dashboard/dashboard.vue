@@ -86,7 +86,7 @@
                                 <div md6>
                                     <v-flex>
                                         <v-flex>
-                                            <v-icon color="#188EF5">check_circle</v-icon>  {{stats.validated}}
+                                            <v-icon color="#F6951E">check_circle</v-icon>  {{stats.validated}}
                                         </v-flex>
                                         <v-flex>
                                             Total Validated :
@@ -94,7 +94,7 @@
                                     </v-flex>
                                     <v-flex>
                                         <v-flex>
-                                            <v-icon color="#35851E">check_circle</v-icon> {{stats.completed}}
+                                            <v-icon color="#02ADEF">check_circle</v-icon> {{stats.completed}}
                                         </v-flex>
                                         <v-flex>
                                             Total Completed
@@ -102,7 +102,7 @@
                                     </v-flex>
                                     <v-flex>
                                         <v-flex>
-                                            <v-icon color="#35851E">check_circle</v-icon> {{stats.all}}
+                                            <v-icon color="#3AB44A">check_circle</v-icon> {{stats.all}}
                                         </v-flex>
                                         <v-flex>
                                             Total
