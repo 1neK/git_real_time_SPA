@@ -10,11 +10,14 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
+
 
 //use App\Http\Requests\SignupRequest;
 use Illuminate\Support\Facades\Validator;
 use SebastianBergmann\Environment\Console;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use function GuzzleHttp\json_decode;
 
 class AuthController extends Controller
 {
@@ -162,8 +165,21 @@ class AuthController extends Controller
     public function updateprofile(Request $request)
     {
 
+
+        $upload = '';
+
+
+        if (is_file($request->image)) {
+
+            $upload = Storage::disk('media')->put("users", $request->image);
+        }
+
+
+
+        $request=json_decode($request->data);
        $user = User::find($request->id);
        $user->name=$request->name;
+      $user->avatar=$upload;
        $user->email=$request->email;
        if (!empty($request->newpassword))
        {

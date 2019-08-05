@@ -1,4 +1,5 @@
 <template>
+<v-flex flex sm9 xs9>
     <v-container
             fill-height
             fluid
@@ -53,6 +54,16 @@
                                 />
                             </v-flex>
 
+                              <v-flex xs12 md4>
+                                  <input type="file" name="image"  @change=uploadImage id="">
+                              </v-flex>
+                              <v-flex xs12 md4>
+
+                                  <v-avatar>
+      <img v-bind:src="preview" alt="avatar">
+    </v-avatar>
+                              </v-flex>
+
 
                             <v-flex
                                     xs12
@@ -74,6 +85,7 @@
 
         </v-layout>
     </v-container>
+</v-flex>
 </template>
 
 <script>
@@ -83,7 +95,9 @@
         data() {
 
             return {
-                profile: {}
+                profile: {},
+                 preview:'',
+                image: {},
 
             }
         },
@@ -93,13 +107,38 @@
         },
         methods: {
 
+             uploadImage(e) {
+                const image = e.target.files[0];
+                const reader = new FileReader();
+                reader.readAsDataURL(image);
+                this.image = image;
+
+
+                reader.onload = e => {
+                    this.preview = e.target.result;
+                };
+            },
+
             init() {
 
-                axios.get('/api/profile').then(res => this.profile = res.data);
+                axios.get('/api/profile').then(res => {this.profile = res.data
+
+                this.preview='http://localhost:8000/media/'+this.profile.avatar
+                });
             },
 
             update() {
-                axios.post('/api/profile', this.profile).then(res => Vue.toasted.show(res.data))
+                   let config= {
+                    header : {
+                        'Content-Type' : 'image/png'
+                    }
+                }
+
+                var that = this;
+                let formData = new FormData();
+                formData.append('image', this.image);
+                formData.append('data',JSON.stringify(this.profile) );
+                axios.post('/api/profile', formData,config).then(res => Vue.toasted.show(res.data))
             }
         }
 

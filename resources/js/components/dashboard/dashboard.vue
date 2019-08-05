@@ -160,7 +160,7 @@
             </v-layout>
         </v-container>
     </v-container>
-</v-flex>
+</v-flex>   
 </template>
 
 <script>

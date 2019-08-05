@@ -96,6 +96,7 @@
 
                     AppStorage.storeToken(access_token);
                     AppStorage.storeUser(user.name);
+                    localStorage.setItem('avatar',user.avatar);
 
                     AppStorage.storeRole(user.role);
 

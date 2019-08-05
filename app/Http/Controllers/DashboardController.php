@@ -69,7 +69,7 @@ class DashboardController extends Controller
             $all=Task::where('user_id',$user->id)->count();
         }
 
-        $prod= ($all >0 ) ? ($completed/$all)*100 : '0';
+        $prod= ($all >0 ) ? ($validated/$all)*100 : '0';
         $prod=round($prod,2);
 
 

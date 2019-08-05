@@ -111,7 +111,7 @@ class TaskController extends Controller
 
         try{
 
-            Notification::send($group, new TelegramNotification(['text' => '@' . $from . ' added a new task: ' . $category->name . ', Project: ' . $project->name . ' for @' . $to->name.' \n Link:  \n'.$task->link]));
+            Notification::send($group, new TelegramNotification(['text' => '@' . $from . ' added a new task: ' . $category->name . ', Project: ' . $project->name . ' for @' . $to->name.' Link: '.$task->link]));
 
             Notification::send($coordinator, new TelegramNotification(['text' => '@' . $from . ' added a new task: ' . $category->name . ', Project: ' . $project->name . ' for @' . $to->name]));
          }catch( \Exception $e){

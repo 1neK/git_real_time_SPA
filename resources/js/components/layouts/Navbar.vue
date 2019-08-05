@@ -6,6 +6,10 @@
 
                     <v-list-tile-content sm3 xs12 md11>
                         <div class="center1 font-weight-bold">
+
+                                  <v-avatar>
+      <img v-bind:src="preview" alt="avatar">
+    </v-avatar>
                             <h1>
                                 <v-list-tile-title>{{role}}</v-list-tile-title>
                             </h1>
@@ -94,6 +98,8 @@
         data() {
             return {
 
+                preview:'',
+
                 loggedIn: false,
                 drawer: false,
                 coordinator: false,
@@ -114,6 +120,8 @@
 
                 this.refresh()
             })
+
+            this.preview="http://localhost:8000/media/"+localStorage.getItem('avatar');
         },
 
         methods: {
